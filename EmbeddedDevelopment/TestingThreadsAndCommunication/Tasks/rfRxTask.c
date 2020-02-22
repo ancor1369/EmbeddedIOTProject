@@ -8,6 +8,10 @@
 #include <ti/drivers/rf/RF.h>
 #include <ti/drivers/PIN.h>
 #include <ti/drivers/GPIO.h>
+#include <ti/drivers/UART.h>
+
+/**/
+//#include <DataStructures/ComQueue.h>
 
 /* Driverlib Header files */
 #include DeviceFamily_constructPath(driverlib/rf_prop_mailbox.h)
@@ -63,11 +67,15 @@ bool state = false;
 mqd_t mq = NULL;
 char newPacket[MAX_LENGTH];
 
+UART_Handle uart;
+
 /***** Function definitions *****/
 
 void *rxTask(UArg *arg0)
 {
     //configuration
+
+    uart = (UART_Handle)arg0;
 
     RF_Params rfParams;
     RF_Params_init(&rfParams);
@@ -218,11 +226,14 @@ void callback(RF_Handle h, RF_CmdHandle ch, RF_EventMask e)
         /* Copy the payload + the status byte to the packet variable */
         memcpy(newPacket, packetDataPointer, (packetLength + 1));
 
-        if(mq==NULL)
-        {
-            mq = mq_open(receiveQueue, O_WRONLY);
-        }
-        mq_send(mq, (char *)&newPacket, MAX_LENGTH, 0);
+
+        UART_write(uart,&(newPacket) ,sizeof(newPacket));
+
+//        if(mq==NULL)
+//        {
+//            mq = mq_open(receiveQueue, O_WRONLY);
+//        }
+//        mq_send(mq, (char *)&newPacket, MAX_LENGTH, 0);
 
         RFQueue_nextEntry();
     }

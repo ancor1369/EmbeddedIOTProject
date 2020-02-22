@@ -6,6 +6,7 @@
 #include <ti/drivers/PIN.h>
 #include <ti/drivers/pin/PINCC26XX.h>
 #include <ti/drivers/GPIO.h>
+#include <ti/drivers/UART.h>
 
 /* Driverlib Header files */
 #include DeviceFamily_constructPath(driverlib/rf_prop_mailbox.h)
@@ -13,7 +14,8 @@
 /* Board Header files */
 #include "Board.h"
 #include "smartrf_settings/smartrf_settings.h"
-#include <DataStructures/llMessage.h>
+//#include <DataStructures/llMessage.h>
+#include <DataStructures/ComQueue.h>
 #include "taskDefinitions.h"
 
 #include "mqueue.h"
@@ -48,6 +50,8 @@ void *txTask(UArg *arg0)
 {
     //Configuration
 
+    //UART_Handle uart = (UART_Handle)arg0;
+
     RF_Params rfParams;
     RF_Params_init(&rfParams);
 
@@ -77,6 +81,8 @@ void *txTask(UArg *arg0)
 
     ssize_t bytes_read;
 
+    char messageReceived[MAX_LENGTH];
+
     while(1)
     {
         /* Create packet with incrementing sequence number and random payload */
@@ -88,9 +94,11 @@ void *txTask(UArg *arg0)
 //            packet[i] = (rand() % 50) + 48 ;
 //        }
 
+//        UART_read(uart, messageReceived, sizeof(messageReceived));
         bytes_read = mq_receive(tQm, (char *)packet, MAX_LENGTH, NULL);
 
         if(bytes_read)
+        //if(true)
         {
 
         /* Send packet */

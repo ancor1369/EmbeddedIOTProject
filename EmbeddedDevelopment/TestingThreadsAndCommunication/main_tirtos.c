@@ -111,7 +111,7 @@ int main(void)
 
 
 
-    taskParams.stackSize = 800;
+    taskParams.stackSize = 1024;
 
 
 //    task0 = Task_create((Task_FuncPtr)ledTask,&taskParams,NULL);
