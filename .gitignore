@@ -5,4 +5,6 @@ EmbeddedDevelopment/.jxbrowser-data/*
 EmbeddedDevelopment/.jxbrowser-data/*
 EmbeddedDevelopment/TestingThreadsAndCommunication/Debug/*
 EmbeddedDevelopment/rfNode/Debug/*
-/EmbeddedDevelopment/rfNode/Binaries/*
+EmbeddedDevelopment/rfNode/Binaries/*
+EmbeddedDevelopment/rfConcentrator/Binaries/*
+EmbeddedDevelopment/rfConcentrator/Debug/*

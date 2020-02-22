@@ -30,17 +30,15 @@
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-/*
- *  ======== rfEasyLinkEchoRx.c ========
- */
-/* Standard C Libraries */
-#include <stdlib.h>
+
 
 /* XDCtools Header files */
 #include <xdc/std.h>
 #include <xdc/runtime/Assert.h>
 #include <xdc/runtime/Error.h>
 #include <xdc/runtime/System.h>
+
+
 
 /* BIOS Header files */
 #include <ti/sysbios/BIOS.h>
@@ -62,11 +60,9 @@
 
 #include <Drivers/startUart.h>
 
-/* Undefine to not use async mode */
-#define RFEASYLINKECHO_ASYNC
+#include "taskDefinition.h"
 
 #define RFEASYLINKECHO_TASK_STACK_SIZE    1024
-#define RFEASYLINKECHO_TASK_PRIORITY      2
 
 #define RFEASYLINKECHO_PAYLOAD_LENGTH     40
 
@@ -74,23 +70,12 @@ char ackOK[] = "{\"CXT\":\"PRO\",\"Object\":{\"ACK\":\"OK\"}}";
 char message[128];
 
 Task_Struct echoTask;    /* not static so you can see in ROV */
-static Task_Params echoTaskParams;
-static uint8_t echoTaskStack[RFEASYLINKECHO_TASK_STACK_SIZE];
+
 
 /* Pin driver handle */
 static PIN_Handle pinHandle;
-static PIN_State pinState;
 static UART_Handle uart = NULL;
 
-/*
- * Application LED pin configuration table:
- *   - All LEDs board LEDs are off.
- */
-PIN_Config pinTable[] = {
-    Board_PIN_LED1 | PIN_GPIO_OUTPUT_EN | PIN_GPIO_LOW | PIN_PUSHPULL | PIN_DRVSTR_MAX,
-    Board_PIN_LED2 | PIN_GPIO_OUTPUT_EN | PIN_GPIO_LOW | PIN_PUSHPULL | PIN_DRVSTR_MAX,
-    PIN_TERMINATE
-};
 
 
 static Semaphore_Handle echoDoneSem;
@@ -99,7 +84,6 @@ static Semaphore_Handle echoDoneSem;
 static bool bBlockTransmit = false;
 
 EasyLink_TxPacket txPacket = {{0}, 0, 0, {0}};
-
 
 void echoTxDoneCb(EasyLink_Status status)
 {
@@ -146,13 +130,16 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
 }
 
 
-static void rfEasyLinkEchoRxFnx(UArg arg0, UArg arg1)
+void radioTask(UArg arg0, UArg arg1)
 {
+
+    uart = (UART_Handle)arg1;
     uint32_t absTime;
 
 
     /* Create a semaphore for Async */
     Semaphore_Params params;
+
     Error_Block      eb;
 
     /* Init params */
@@ -227,41 +214,4 @@ static void rfEasyLinkEchoRxFnx(UArg arg0, UArg arg1)
             Semaphore_pend(echoDoneSem, BIOS_WAIT_FOREVER);
         }
     }
-}
-
-void echoTask_init(PIN_Handle inPinHandle) {
-    pinHandle = inPinHandle;
-
-    Task_Params_init(&echoTaskParams);
-    echoTaskParams.stackSize = RFEASYLINKECHO_TASK_STACK_SIZE;
-    echoTaskParams.priority = RFEASYLINKECHO_TASK_PRIORITY;
-    echoTaskParams.stack = &echoTaskStack;
-    echoTaskParams.arg0 = (UInt)1000000;
-
-    Task_construct(&echoTask, rfEasyLinkEchoRxFnx, &echoTaskParams, NULL);
-}
-
-/*
- *  ======== main ========
- */
-int main(void)
-{
-    /* Call driver init functions. */
-    Board_initGeneral();
-
-    /* Open LED pins */
-    pinHandle = PIN_open(&pinState, pinTable);
-    Assert_isTrue(pinHandle != NULL, NULL);
-
-    /* Clear LED pins */
-    PIN_setOutputValue(pinHandle, Board_PIN_LED1, 0);
-    PIN_setOutputValue(pinHandle, Board_PIN_LED2, 0);
-
-    startUART(&uart);
-    echoTask_init(pinHandle);
-
-    /* Start BIOS */
-    BIOS_start();
-
-    return (0);
 }

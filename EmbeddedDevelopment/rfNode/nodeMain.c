@@ -17,9 +17,7 @@
 
 #include <Tasks/taskDefinition.h>
 
-///* Undefine to not use async mode */
-//#define RFEASYLINKECHO_ASYNC
-//
+
 #define RFEASYLINKECHO_TASK_STACK_SIZE    1024
 #define RFEASYLINKECHO_TASK_PRIORITY      2
 
