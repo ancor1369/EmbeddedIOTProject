@@ -62,6 +62,7 @@
 #include "easylink/EasyLink.h"
 
 #include "taskDefinition.h"
+#include <mqueue.h>
 
 PIN_Config pinTable[] = {
     Board_PIN_LED1 | PIN_GPIO_OUTPUT_EN | PIN_GPIO_LOW | PIN_PUSHPULL | PIN_DRVSTR_MAX,
@@ -80,7 +81,7 @@ static PIN_State pinState;
 static Semaphore_Handle echoDoneSem;
 
 EasyLink_TxPacket txPacket = {{0}, 0, 0, {0}};
-
+char packet[MSGLENGHT];
 
 mqd_t tQm = NULL;
 
@@ -188,15 +189,18 @@ void radioTaskFunction(UArg *arg0,UArg *arg1)
           PIN_setOutputValue(pinHandle, Board_PIN_LED1, 0);
           PIN_setOutputValue(pinHandle, Board_PIN_LED2, 0);
 
-       memcpy(txPacket.payload,&whatsNew,sizeof(whatsNew));
+       //memcpy(txPacket.payload,&whatsNew,sizeof(whatsNew));
 
 
        while(1) {
-           //Waits to get any new messages
+           //Waits to get any new messages from the serial interface
            bytes_read = mq_receive(tQm, (char *)packet, MSGLENGHT, NULL);
 
            if(bytes_read)
            {
+
+               memcpy(txPacket.payload,&packet,sizeof(packet));
+
                txPacket.len = RFEASYLINKECHO_PAYLOAD_LENGTH;
 
                /*
