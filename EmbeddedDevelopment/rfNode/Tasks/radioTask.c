@@ -83,7 +83,8 @@ static Semaphore_Handle echoDoneSem;
 EasyLink_TxPacket txPacket = {{0}, 0, 0, {0}};
 char packet[MSGLENGHT];
 
-mqd_t tQm = NULL;
+mqd_t txQm = NULL;
+mqd_t rxQm = NULL;
 
 struct mq_attr attr;
 
@@ -121,6 +122,10 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
         /* Toggle LED1, clear LED2 to indicate Echo RX */
         PIN_setOutputValue(pinHandle, Board_PIN_LED1,!PIN_getOutputValue(Board_PIN_LED1));
         PIN_setOutputValue(pinHandle, Board_PIN_LED2, 0);
+
+        //Push the received message over the serail interface
+        mq_send(rxQm, (char *)&rxPacket->payload, sizeof(rxPacket->len), 0);
+
     }
     else if (status == EasyLink_Status_Aborted)
     {
@@ -159,13 +164,17 @@ void radioTaskFunction(UArg *arg0,UArg *arg1)
            System_abort("Semaphore creation failed");
        }
 
-       //Start the receiver queue
+       //Start the send queue to send over RF
        ssize_t bytes_read;
        attr.mq_flags = 0;
        attr.mq_maxmsg = 1;
        attr.mq_msgsize = MSGLENGHT;
        attr.mq_curmsgs = 0;
-       tQm = mq_open(rfRXQueue, O_CREAT | O_RDONLY, 0644, &attr);
+       txQm = mq_open(rfTXQueue, O_CREAT | O_RDONLY, 0644, &attr);
+
+
+       //start the receive queue to sent over UART
+       rxQm = mq_open(rfRXQueue, O_WRONLY);
 
        // Initialize the EasyLink parameters to their default values
        EasyLink_Params easyLink_params;
@@ -194,7 +203,7 @@ void radioTaskFunction(UArg *arg0,UArg *arg1)
 
        while(1) {
            //Waits to get any new messages from the serial interface
-           bytes_read = mq_receive(tQm, (char *)packet, MSGLENGHT, NULL);
+           bytes_read = mq_receive(txQm, (char *)packet, MSGLENGHT, NULL);
 
            if(bytes_read)
            {

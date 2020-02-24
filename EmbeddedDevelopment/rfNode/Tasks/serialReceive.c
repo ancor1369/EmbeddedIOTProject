@@ -10,7 +10,7 @@ void *serialReceive(UArg *arg0, UArg *arg1)
 {
     uart = (UART_Handle)arg1;
     mqd_t tQm = NULL;
-    tQm = mq_open(rfRXQueue, O_WRONLY);
+    tQm = mq_open(rfTXQueue, O_WRONLY);
     uint8_t number=0;
 
     while(1)

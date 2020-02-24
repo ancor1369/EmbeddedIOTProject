@@ -12,19 +12,19 @@ void serialSend(UArg *arg0, UArg *arg1)
 {
     uart = (UART_Handle)arg1;
 
-//    mqd_t tQm = NULL;
-//
-//    struct mq_attr attr;
+    mqd_t rxQm = NULL;
 
-//    attr.mq_flags = 0;
-//    attr.mq_maxmsg = 1;
-//    attr.mq_msgsize = MSGLENGHT;
-//    attr.mq_curmsgs = 0;
-//    tQm = mq_open(rfRXQueue, O_CREAT | O_RDONLY, 0644, &attr);
+    struct mq_attr attr;
+
+    attr.mq_flags = 0;
+    attr.mq_maxmsg = 1;
+    attr.mq_msgsize = MSGLENGHT;
+    attr.mq_curmsgs = 0;
+    rxQm = mq_open(rfRXQueue, O_CREAT | O_RDONLY, 0644, &attr);
 
     while(1)
     {
-        //bytes_read = mq_receive(tQm, (char *)packet, MSGLENGHT, NULL);
+        bytes_read = mq_receive(rxQm, (char *)packet, MSGLENGHT, NULL);
 
         if(bytes_read)
         {
