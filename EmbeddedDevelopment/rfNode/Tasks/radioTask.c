@@ -77,10 +77,17 @@ PIN_Config pinTable[] = {
 static PIN_Handle pinHandle;
 static PIN_State pinState;
 
-
 static Semaphore_Handle echoDoneSem;
 
 EasyLink_TxPacket txPacket = {{0}, 0, 0, {0}};
+
+
+mqd_t tQm = NULL;
+
+struct mq_attr attr;
+
+
+
 
 
 char whatsNew[] = "{\"CXT\":\"PRO\",\"Object\":{\"DeviceID\":\"01\"}}";
@@ -131,7 +138,7 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
 }
 
 
-void radioTaskFunction(void *arg0,void *arg1)
+void radioTaskFunction(UArg *arg0,UArg *arg1)
 {
     uint32_t absTime;
 
@@ -151,7 +158,13 @@ void radioTaskFunction(void *arg0,void *arg1)
            System_abort("Semaphore creation failed");
        }
 
-
+       //Start the receiver queue
+       ssize_t bytes_read;
+       attr.mq_flags = 0;
+       attr.mq_maxmsg = 1;
+       attr.mq_msgsize = MSGLENGHT;
+       attr.mq_curmsgs = 0;
+       tQm = mq_open(rfRXQueue, O_CREAT | O_RDONLY, 0644, &attr);
 
        // Initialize the EasyLink parameters to their default values
        EasyLink_Params easyLink_params;
@@ -177,44 +190,50 @@ void radioTaskFunction(void *arg0,void *arg1)
 
        memcpy(txPacket.payload,&whatsNew,sizeof(whatsNew));
 
+
        while(1) {
+           //Waits to get any new messages
+           bytes_read = mq_receive(tQm, (char *)packet, MSGLENGHT, NULL);
 
-           txPacket.len = RFEASYLINKECHO_PAYLOAD_LENGTH;
-
-           /*
-            * Address filtering is enabled by default on the Rx device with the
-            * an address of 0xAA. This device must set the dstAddr accordingly.
-            */
-           txPacket.dstAddr[0] = 0xaa;
-
-           /* Set Tx absolute time to current time + 1000ms */
-           if(EasyLink_getAbsTime(&absTime) != EasyLink_Status_Success)
+           if(bytes_read)
            {
-               // Problem getting absolute time
-           }
-           txPacket.absTime = absTime + EasyLink_ms_To_RadioTime(1000);
+               txPacket.len = RFEASYLINKECHO_PAYLOAD_LENGTH;
 
-           EasyLink_transmitAsync(&txPacket, echoTxDoneCb);
+               /*
+                * Address filtering is enabled by default on the Rx device with the
+                * an address of 0xAA. This device must set the dstAddr accordingly.
+                */
+               txPacket.dstAddr[0] = 0xaa;
 
-           /* Wait for Tx to complete. A Successful TX will cause the echoTxDoneCb
-            * to be called and the echoDoneSem to be released, so we must
-            * consume the echoDoneSem
-            */
-           Semaphore_pend(echoDoneSem, BIOS_WAIT_FOREVER);
-
-           /* Switch to Receiver */
-           EasyLink_receiveAsync(echoRxDoneCb, 0);
-
-           /* Wait 500ms for Rx */
-           if(Semaphore_pend(echoDoneSem, (500000 / Clock_tickPeriod)) == FALSE)
-           {
-               /* RX timed out abort */
-               if(EasyLink_abort() == EasyLink_Status_Success)
+               /* Set Tx absolute time to current time + 1000ms */
+               if(EasyLink_getAbsTime(&absTime) != EasyLink_Status_Success)
                {
-                  /* Wait for the abort */
-                  Semaphore_pend(echoDoneSem, BIOS_WAIT_FOREVER);
+                   // Problem getting absolute time
+               }
+               txPacket.absTime = absTime + EasyLink_ms_To_RadioTime(1000);
+
+               EasyLink_transmitAsync(&txPacket, echoTxDoneCb);
+
+               /* Wait for Tx to complete. A Successful TX will cause the echoTxDoneCb
+                * to be called and the echoDoneSem to be released, so we must
+                * consume the echoDoneSem
+                */
+               Semaphore_pend(echoDoneSem, BIOS_WAIT_FOREVER);
+
+               /* Switch to Receiver */
+               EasyLink_receiveAsync(echoRxDoneCb, 0);
+
+               /* Wait 500ms for Rx */
+               if(Semaphore_pend(echoDoneSem, (500000 / Clock_tickPeriod)) == FALSE)
+               {
+                   /* RX timed out abort */
+                   if(EasyLink_abort() == EasyLink_Status_Success)
+                   {
+                      /* Wait for the abort */
+                      Semaphore_pend(echoDoneSem, BIOS_WAIT_FOREVER);
+                   }
                }
            }
-
+           usleep(50000);
        }
 }

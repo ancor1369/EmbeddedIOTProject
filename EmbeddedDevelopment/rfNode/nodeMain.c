@@ -1,4 +1,3 @@
-
  /* Standard C Libraries */
 #include <stdlib.h>
 
@@ -16,16 +15,20 @@
 #include "Board.h"
 
 #include <Tasks/taskDefinition.h>
-
+#include <Drivers/startUart.h>
 
 #define RFEASYLINKECHO_TASK_STACK_SIZE    1024
 #define RFEASYLINKECHO_TASK_PRIORITY      2
 
 static uint8_t echoTaskStack[RFEASYLINKECHO_TASK_STACK_SIZE];
 
-
-Task_Params radioTaskParams;
+Task_Params taskParams;
 Task_Handle radioTaskHandle;
+
+Task_Handle uartReceiveHandle;
+Task_Handle uartSendHandle;
+
+UART_Handle handleUART;
 
 /*
  *  ======== main ========
@@ -35,21 +38,41 @@ int main(void)
     /* Call driver init functions. */
     Board_initGeneral();
 
+    startUART(&handleUART);
+
+    Task_Params_init(&taskParams);
+    taskParams.stackSize = RFEASYLINKECHO_TASK_STACK_SIZE;
+    taskParams.priority = RFEASYLINKECHO_TASK_PRIORITY;
+    //taskParams.stack = &echoTaskStack;
+    taskParams.arg0 = (UInt)1000000;
+    taskParams.arg1 = (xdc_UArg)handleUART;
 
 
-    Task_Params_init(&radioTaskParams);
-    radioTaskParams.stackSize = RFEASYLINKECHO_TASK_STACK_SIZE;
-    radioTaskParams.priority = RFEASYLINKECHO_TASK_PRIORITY;
-    radioTaskParams.stack = &echoTaskStack;
-    radioTaskParams.arg0 = (UInt)1000000;
-
-
-    radioTaskHandle = Task_create((Task_FuncPtr)radioTaskFunction,&radioTaskParams,NULL);
+    radioTaskHandle = Task_create((Task_FuncPtr)radioTaskFunction,&taskParams,NULL);
     if(radioTaskHandle == NULL)
     {
         //Task Initialization failed
         while(1);
     }
+
+   taskParams.priority = 3;
+   uartSendHandle = Task_create((Task_FuncPtr)serialSend,&taskParams,NULL);
+   if(uartSendHandle == NULL)
+   {
+       //Task initialization failed
+       while(1);
+   }
+
+    taskParams.priority = 2;
+    uartReceiveHandle = Task_create((Task_FuncPtr)serialReceive,&taskParams,NULL);
+    if(uartReceiveHandle == NULL)
+    {
+        //Task initialization failed
+        while(1);
+    }
+
+
+
 
     /* Start BIOS */
     BIOS_start();
