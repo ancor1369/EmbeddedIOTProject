@@ -11,9 +11,7 @@ UART_Handle uart;
 void serialSend(UArg *arg0, UArg *arg1)
 {
     uart = (UART_Handle)arg1;
-
     mqd_t rxQm = NULL;
-
     struct mq_attr attr;
 
     attr.mq_flags = 0;
@@ -33,3 +31,4 @@ void serialSend(UArg *arg0, UArg *arg1)
         usleep(50000);
     }
 }
+

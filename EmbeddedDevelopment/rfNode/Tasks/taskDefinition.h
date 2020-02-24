@@ -6,7 +6,7 @@
 #define MSGLENGHT 40
 
 /*
- * @name : radioTask
+ * @name : radioTaskFunction
  * @Purpose: Manage the ussage of the radio interface of the microcontroller
  * @return: Void
  *

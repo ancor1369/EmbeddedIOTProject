@@ -61,6 +61,7 @@
 #include <Drivers/startUart.h>
 
 #include "taskDefinition.h"
+#include <mqueue.h>
 
 #define RFEASYLINKECHO_TASK_STACK_SIZE    1024
 
@@ -71,6 +72,8 @@ char message[128];
 
 Task_Struct echoTask;    /* not static so you can see in ROV */
 
+mqd_t txQm = NULL;
+mqd_t rxQm = NULL;
 
 /* Pin driver handle */
 static PIN_Handle pinHandle;
@@ -87,6 +90,8 @@ EasyLink_TxPacket txPacket = {{0}, 0, 0, {0}};
 
 void echoTxDoneCb(EasyLink_Status status)
 {
+
+
     if (status == EasyLink_Status_Success)
     {
         /* Toggle LED2 to indicate Echo TX, clear LED1 */
@@ -112,7 +117,9 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
         PIN_setOutputValue(pinHandle, Board_PIN_LED1, 0);
         /* Copy contents of RX packet to TX packet */
         //memcpy(&txPacket.payload, rxPacket->payload, rxPacket->len);
-        memcpy(message,rxPacket->payload, rxPacket->len);
+        //memcpy(message,rxPacket->payload, rxPacket->len);
+
+        mq_send(rxQm, (char *)&rxPacket->payload, rxPacket->len, 0);
 
         /* Permit echo transmission */
         bBlockTransmit = false;
@@ -135,6 +142,19 @@ void radioTask(UArg arg0, UArg arg1)
 
     uart = (UART_Handle)arg1;
     uint32_t absTime;
+
+
+    //Start the send queue to send over RF
+    ssize_t bytes_read;
+    attr.mq_flags = 0;
+    attr.mq_maxmsg = 1;
+    attr.mq_msgsize = MSGLENGHT;
+    attr.mq_curmsgs = 0;
+    txQm = mq_open(rfTXQueue, O_CREAT | O_RDONLY, 0644, &attr);
+
+
+    //start the receive queue to sent over UART
+    rxQm = mq_open(rfRXQueue, O_WRONLY);
 
 
     /* Create a semaphore for Async */
@@ -189,7 +209,7 @@ void radioTask(UArg arg0, UArg arg1)
             /* Switch to Transmitter and echo the packet if transmission
              * is not blocked
              */
-            UART_write(uart,&(message),sizeof(message));
+            //UART_write(uart,&(message),sizeof(message));
 
             txPacket.len = sizeof(ackOK);//RFEASYLINKECHO_PAYLOAD_LENGTH;
 
