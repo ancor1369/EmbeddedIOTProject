@@ -71,9 +71,6 @@ int main(void)
         while(1);
     }
 
-
-
-
     /* Start BIOS */
     BIOS_start();
 
