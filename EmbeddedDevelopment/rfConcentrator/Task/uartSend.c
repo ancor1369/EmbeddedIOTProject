@@ -1,5 +1,6 @@
 #include <ti/drivers/UART.h>
 #include <Drivers/startUart.h>
+#include <ti/sysbios/knl/Task.h>
 #include "unistd.h"
 #include "mqueue.h"
 #include "taskDefinition.h"
@@ -8,7 +9,7 @@ char packet[MSGLENGHT];
 ssize_t bytes_read;
 UART_Handle uart;
 
-void serialSend(UArg *arg0, UArg *arg1)
+void serialSend(UArg arg0, UArg arg1)
 {
     uart = (UART_Handle)arg1;
     mqd_t rxQm = NULL;
@@ -24,11 +25,11 @@ void serialSend(UArg *arg0, UArg *arg1)
     {
         bytes_read = mq_receive(rxQm, (char *)packet, MSGLENGHT, NULL);
 
-        if(bytes_read)
+        if(bytes_read != 0)
         {
             UART_write(uart, &packet, sizeof(packet));
         }
-        usleep(50000);
+        Task_sleep(5000);
     }
 }
 

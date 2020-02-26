@@ -20,8 +20,8 @@ UART_Handle uart1 = NULL;
 void serialReceive(UArg arg0, UArg arg1)
 {
     uart1 = (UART_Handle)arg1;
-    //mqd_t tQm = NULL;
-    //tQm = mq_open(rfTXQueue, O_WRONLY);
+    mqd_t tQm = NULL;
+    tQm = mq_open(rfTXQueue, O_WRONLY);
     uint8_t number=0;
 
     while(1)
@@ -29,8 +29,8 @@ void serialReceive(UArg arg0, UArg arg1)
        number = UART_read(uart1, &buffer, sizeof(buffer));
        if(number!=0)
        {
-           UART_write(uart1, &buffer, sizeof(buffer));
-          // mq_send(tQm, (char *)&buffer, sizeof(buffer), 0);
+           //UART_write(uart1, &buffer, sizeof(buffer));
+           mq_send(tQm, (char *)&buffer, sizeof(buffer), 0);
            number=0;
        }
        Task_sleep(5000);

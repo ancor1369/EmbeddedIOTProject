@@ -88,28 +88,21 @@ int main(void)
 
     struct mq_attr attr;
 
-    attr.mq_flags = 0;
-    attr.mq_maxmsg = 1;
-    attr.mq_msgsize = MSGLENGHT;
-    attr.mq_curmsgs = 0;
-    txQm = mq_open(rfTXQueue, O_CREAT | O_RDONLY, 0644, &attr);
+//    attr.mq_flags = 0;
+//    attr.mq_maxmsg = 1;
+//    attr.mq_msgsize = MSGLENGHT;
+//    attr.mq_curmsgs = 0;
+//    txQm = mq_open(rfTXQueue, O_CREAT | O_RDONLY, 0644, &attr);
 
 
 
+
+    TaskParams.priority = 2;
     radioTaskHandle = Task_create((Task_FuncPtr)radioTask,&TaskParams,NULL);
     if(radioTaskHandle == NULL)
     {
         while(1);
     }
-//
-//    TaskParams.priority = 6;
-//    uartSendhandle = Task_create((Task_FuncPtr)serialSend,&TaskParams,NULL);
-//    if(uartSendhandle == NULL)
-//    {
-//        //Failed to initialize the task
-//        while(1);
-//    }
-//
 
     TaskParams.priority = 2;
     uartReceiveHandle = Task_create((Task_FuncPtr)serialReceive,&TaskParams,NULL);
@@ -118,6 +111,14 @@ int main(void)
         //Failed to start the task
         while(1);
     }
+
+//    TaskParams.priority = 4;
+//    uartSendhandle = Task_create((Task_FuncPtr)serialSend,&TaskParams,NULL);
+//    if(uartSendhandle == NULL)
+//    {
+//          //Failed to initialize the task
+//        while(1);
+//    }
 
     /* Start BIOS */
     BIOS_start();

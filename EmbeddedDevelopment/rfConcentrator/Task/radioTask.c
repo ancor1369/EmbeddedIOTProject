@@ -81,10 +81,7 @@ struct mq_attr attr;
 static PIN_Handle pinHandle;
 static UART_Handle uart = NULL;
 
-
-
 static Semaphore_Handle echoDoneSem;
-
 
 static bool bBlockTransmit = true;
 
@@ -122,7 +119,6 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
         memcpy(&message,rxPacket->payload,rxPacket->len);
         //mq_send(rxQm, (char *)&message, sizeof(message), 0);
 
-
         /* Permit echo transmission */
         bBlockTransmit = false;
     }
@@ -152,9 +148,10 @@ void radioTask(UArg arg0, UArg arg1)
     attr.mq_curmsgs = 0;
     txQm = mq_open(rfTXQueue, O_CREAT | O_RDONLY, 0644, &attr);
 
+    //rxQm = mq_open(rfRXQueue, O_WRONLY);
+
     /* Create a semaphore for Async */
     Semaphore_Params params;
-
     Error_Block      eb;
 
     /* Init params */
@@ -188,6 +185,8 @@ void radioTask(UArg arg0, UArg arg1)
      * the following API:
      * EasyLink_setFrequency(868000000);
      */
+    ssize_t bytes_read1;
+    char messageReceived[MSGLENGHT];
 
     while(1) {
 
@@ -213,6 +212,8 @@ void radioTask(UArg arg0, UArg arg1)
             /* Switch to Transmitter and echo the packet if transmission
              * is not blocked
              */
+
+            //Send the received package to the UART interface
             UART_write(uart,&(message),sizeof(message));
 
             txPacket.len = sizeof(ackOK);//RFEASYLINKECHO_PAYLOAD_LENGTH;
@@ -237,12 +238,27 @@ void radioTask(UArg arg0, UArg arg1)
              */
             Semaphore_pend(echoDoneSem, BIOS_WAIT_FOREVER);
 
-            //Send the received packet to the UART, when I get somehting
-            //on the UART interface, I will need to send it over the RF interface
+            //Wait the message to arrive from serial interfaceMAX_LENGTH
+
+            bytes_read1 = mq_receive(txQm, (char *)messageReceived, MSGLENGHT, NULL);
+            if(bytes_read)
+            {
+                //UART_write(uart,&(messageReceived) ,sizeof(messageReceived));
+
+                //Transmit the response goten on the serial interface
+
+                memcpy(txPacket.payload,&messageReceived,sizeof(messageReceived));
+                txPacket.absTime = absTime + EasyLink_ms_To_RadioTime(100);
+                EasyLink_transmitAsync(&txPacket, echoTxDoneCb);
+                /* Wait for Tx to complete. A Successful TX will cause the echoTxDoneCb
+                 * to be called and the echoDoneSem to be released, so we must
+                 * consume the echoDoneSem
+                 */
+                Semaphore_pend(echoDoneSem, BIOS_WAIT_FOREVER);
+            }
 
             bBlockTransmit = true;
         }
-
         Task_sleep(5000);
     }
 }
