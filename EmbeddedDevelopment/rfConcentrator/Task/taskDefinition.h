@@ -23,7 +23,7 @@ void radioTask(UArg arg0, UArg arg1);
  *
  */
 
-void *serialReceive(UArg *arg0, UArg *arg1);
+void serialReceive(UArg arg0, UArg arg1);
 
 
 

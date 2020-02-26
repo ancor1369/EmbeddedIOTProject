@@ -26,6 +26,7 @@
 #include <Drivers/startUart.h>
 
 #include <Task/taskDefinition.h>
+#include "mqueue.h"
 
 /* Undefine to not use async mode */
 #define RFEASYLINKECHO_ASYNC
@@ -34,14 +35,20 @@
 #define RFEASYLINKECHO_TASK_PRIORITY      2
 
 
-static Task_Params radioTaskParams;
+static Task_Params TaskParams;
 static Task_Handle radioTaskHandle;
+static Task_Handle uartReceiveHandle;
+static Task_Handle uartSendhandle;
+
 static uint8_t echoTaskStack[RFEASYLINKECHO_TASK_STACK_SIZE];
 //
 ///* Pin driver handle */
 static PIN_Handle pinHandle;
 static PIN_State pinState;
 static UART_Handle uart = NULL;
+
+
+
 
 //
 ///*
@@ -72,16 +79,43 @@ int main(void)
 
     startUART(&uart);
 
-    Task_Params_init(&radioTaskParams);
-    radioTaskParams.stackSize = RFEASYLINKECHO_TASK_STACK_SIZE;
-    radioTaskParams.priority = RFEASYLINKECHO_TASK_PRIORITY;
-    radioTaskParams.stack = &echoTaskStack;
-    radioTaskParams.arg0 = (UInt)1000000;
-    radioTaskParams.arg1 = (UArg)uart;
+    Task_Params_init(&TaskParams);
+    TaskParams.stackSize = RFEASYLINKECHO_TASK_STACK_SIZE;
+    TaskParams.priority = 3;
+    TaskParams.arg1 = (xdc_UArg)uart;
 
-    radioTaskHandle = Task_create((Task_FuncPtr)radioTask,&radioTaskParams,NULL);
+    mqd_t txQm = NULL;
+
+    struct mq_attr attr;
+
+    attr.mq_flags = 0;
+    attr.mq_maxmsg = 1;
+    attr.mq_msgsize = MSGLENGHT;
+    attr.mq_curmsgs = 0;
+    txQm = mq_open(rfTXQueue, O_CREAT | O_RDONLY, 0644, &attr);
+
+
+
+    radioTaskHandle = Task_create((Task_FuncPtr)radioTask,&TaskParams,NULL);
     if(radioTaskHandle == NULL)
     {
+        while(1);
+    }
+//
+//    TaskParams.priority = 6;
+//    uartSendhandle = Task_create((Task_FuncPtr)serialSend,&TaskParams,NULL);
+//    if(uartSendhandle == NULL)
+//    {
+//        //Failed to initialize the task
+//        while(1);
+//    }
+//
+
+    TaskParams.priority = 2;
+    uartReceiveHandle = Task_create((Task_FuncPtr)serialReceive,&TaskParams,NULL);
+    if(uartReceiveHandle == NULL)
+    {
+        //Failed to start the task
         while(1);
     }
 

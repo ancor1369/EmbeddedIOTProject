@@ -63,7 +63,7 @@
 #include "easylink/EasyLink.h"
 
 #include "taskDefinition.h"
-#include <mqueue.h>
+#include "mqueue.h"
 
 PIN_Config pinTable[] = {
     Board_PIN_LED1 | PIN_GPIO_OUTPUT_EN | PIN_GPIO_LOW | PIN_PUSHPULL | PIN_DRVSTR_MAX,
@@ -249,7 +249,7 @@ void radioTaskFunction(UArg *arg0,UArg *arg1)
                           Semaphore_pend(echoDoneSem, BIOS_WAIT_FOREVER);
                        }
                    }
-                   //remain in Rx Mode to get the answer comming from the concentrator Device
+                   //remain in Rx Mode to get the answer coming from the concentrator Device
                    if(sendOK)
                    {
                        EasyLink_receiveAsync(echoRxDoneCb,0);

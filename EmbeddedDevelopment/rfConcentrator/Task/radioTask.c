@@ -61,7 +61,7 @@
 #include <Drivers/startUart.h>
 
 #include "taskDefinition.h"
-#include <mqueue.h>
+#include "mqueue.h"
 
 #define RFEASYLINKECHO_TASK_STACK_SIZE    1024
 
@@ -75,6 +75,8 @@ Task_Struct echoTask;    /* not static so you can see in ROV */
 mqd_t txQm = NULL;
 mqd_t rxQm = NULL;
 
+struct mq_attr attr;
+
 /* Pin driver handle */
 static PIN_Handle pinHandle;
 static UART_Handle uart = NULL;
@@ -84,7 +86,7 @@ static UART_Handle uart = NULL;
 static Semaphore_Handle echoDoneSem;
 
 
-static bool bBlockTransmit = false;
+static bool bBlockTransmit = true;
 
 EasyLink_TxPacket txPacket = {{0}, 0, 0, {0}};
 
@@ -117,9 +119,9 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
         PIN_setOutputValue(pinHandle, Board_PIN_LED1, 0);
         /* Copy contents of RX packet to TX packet */
         //memcpy(&txPacket.payload, rxPacket->payload, rxPacket->len);
-        //memcpy(message,rxPacket->payload, rxPacket->len);
+        memcpy(&message,rxPacket->payload,rxPacket->len);
+        //mq_send(rxQm, (char *)&message, sizeof(message), 0);
 
-        mq_send(rxQm, (char *)&rxPacket->payload, rxPacket->len, 0);
 
         /* Permit echo transmission */
         bBlockTransmit = false;
@@ -139,10 +141,8 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
 
 void radioTask(UArg arg0, UArg arg1)
 {
-
     uart = (UART_Handle)arg1;
     uint32_t absTime;
-
 
     //Start the send queue to send over RF
     ssize_t bytes_read;
@@ -151,11 +151,6 @@ void radioTask(UArg arg0, UArg arg1)
     attr.mq_msgsize = MSGLENGHT;
     attr.mq_curmsgs = 0;
     txQm = mq_open(rfTXQueue, O_CREAT | O_RDONLY, 0644, &attr);
-
-
-    //start the receive queue to sent over UART
-    rxQm = mq_open(rfRXQueue, O_WRONLY);
-
 
     /* Create a semaphore for Async */
     Semaphore_Params params;
@@ -172,8 +167,6 @@ void radioTask(UArg arg0, UArg arg1)
     {
         System_abort("Semaphore creation failed");
     }
-
-
 
     // Initialize the EasyLink parameters to their default values
     EasyLink_Params easyLink_params;
@@ -202,14 +195,25 @@ void radioTask(UArg arg0, UArg arg1)
         EasyLink_receiveAsync(echoRxDoneCb, 0);
 
         /* Wait indefinitely for Rx */
-        Semaphore_pend(echoDoneSem, BIOS_WAIT_FOREVER);
+        //Semaphore_pend(echoDoneSem, BIOS_WAIT_FOREVER);
+        //Every 500 seconds allow for other tasks to be executed
+
+        if(Semaphore_pend(echoDoneSem, (500000 / Clock_tickPeriod)) == FALSE)
+        {
+           /* RX timed out abort */
+           if(EasyLink_abort() == EasyLink_Status_Success)
+           {
+              /* Wait for the abort */
+              Semaphore_pend(echoDoneSem, BIOS_WAIT_FOREVER);
+           }
+        }
 
         if(bBlockTransmit == false)
         {
             /* Switch to Transmitter and echo the packet if transmission
              * is not blocked
              */
-            //UART_write(uart,&(message),sizeof(message));
+            UART_write(uart,&(message),sizeof(message));
 
             txPacket.len = sizeof(ackOK);//RFEASYLINKECHO_PAYLOAD_LENGTH;
 
@@ -232,6 +236,13 @@ void radioTask(UArg arg0, UArg arg1)
              * consume the echoDoneSem
              */
             Semaphore_pend(echoDoneSem, BIOS_WAIT_FOREVER);
+
+            //Send the received packet to the UART, when I get somehting
+            //on the UART interface, I will need to send it over the RF interface
+
+            bBlockTransmit = true;
         }
+
+        Task_sleep(5000);
     }
 }
