@@ -3,6 +3,7 @@
 #define rfTXQueue "TXQueue"
 #define rfRXQueue "RXQueue"
 #define MSGLENGHT 40
+#define UARTMSGLENGHT 512
 
 /*
  * @name : radioTask

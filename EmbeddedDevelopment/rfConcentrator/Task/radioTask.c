@@ -90,6 +90,8 @@ EasyLink_TxPacket txPacket = {{0}, 0, 0, {0}};
 //Semaphore to handle transmission of UART received messages
 Semaphore_Handle sendSemHandle;
 
+char enter[] = "\r\n";
+
 void echoTxDoneCb(EasyLink_Status status)
 {
 
@@ -119,8 +121,10 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
         PIN_setOutputValue(pinHandle, Board_PIN_LED1, 0);
         memcpy(&message,rxPacket->payload,rxPacket->len);
 
-        mq_send(rxQm, (char *)&message, sizeof(message), 0);
-        Semaphore_post(sendSemHandle);
+
+
+//        mq_send(rxQm, (char *)&message, sizeof(message), 0);
+//        Semaphore_post(sendSemHandle);
 
         /* Permit echo transmission */
         bBlockTransmit = false;
@@ -206,7 +210,7 @@ void radioTask(UArg arg0, UArg arg1)
         //Break from receiver to listener on other tasks. This allow the system
         //to review other tasks that need to run
 
-        if(Semaphore_pend(echoDoneSem, (500000 / Clock_tickPeriod)) == FALSE)
+        if(Semaphore_pend(echoDoneSem, (5000000 / Clock_tickPeriod)) == FALSE)
         {
            /* RX timed out abort */
            if(EasyLink_abort() == EasyLink_Status_Success)
@@ -222,12 +226,11 @@ void radioTask(UArg arg0, UArg arg1)
              * is not blocked
              */
             //Send the received package to the UART interface
-            //UART_write(uart,&(message),sizeof(message));
+            UART_write(uart,&(message),sizeof(message));
+            UART_write(uart,&enter,sizeof(enter));
 
             //Add received data to to the Queue and set the semaphore to release showing
             //on the serial interface
-
-
 
             txPacket.len = sizeof(ackOK);//RFEASYLINKECHO_PAYLOAD_LENGTH;
 

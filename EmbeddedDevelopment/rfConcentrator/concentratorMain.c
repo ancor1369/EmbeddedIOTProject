@@ -112,13 +112,13 @@ int main(void)
         while(1);
     }
 
-    TaskParams.priority = 4;
-    uartSendhandle = Task_create((Task_FuncPtr)serialSend,&TaskParams,NULL);
-    if(uartSendhandle == NULL)
-    {
-          //Failed to initialize the task
-        while(1);
-    }
+//    TaskParams.priority = 4;
+//    uartSendhandle = Task_create((Task_FuncPtr)serialSend,&TaskParams,NULL);
+//    if(uartSendhandle == NULL)
+//    {
+//          //Failed to initialize the task
+//        while(1);
+//    }
 
     /* Start BIOS */
     BIOS_start();

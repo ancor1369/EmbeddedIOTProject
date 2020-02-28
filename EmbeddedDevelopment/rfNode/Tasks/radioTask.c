@@ -208,9 +208,7 @@ void radioTaskFunction(UArg *arg0,UArg *arg1)
 
            if(bytes_read)
            {
-
               txPacket.len = RFEASYLINKECHO_PAYLOAD_LENGTH;
-
               /*
                * Address filtering is enabled by default on the Rx device with the
                * an address of 0xAA. This device must set the dstAddr accordingly.

@@ -7,6 +7,7 @@
 char packet[MSGLENGHT];
 ssize_t bytes_read;
 UART_Handle uart;
+char enter[] = "\r\n";
 
 void serialSend(UArg *arg0, UArg *arg1)
 {
@@ -29,6 +30,7 @@ void serialSend(UArg *arg0, UArg *arg1)
         if(bytes_read)
         {
             UART_write(uart, &packet, sizeof(packet));
+            UART_write(uart, &enter, sizeof(enter));
         }
         usleep(50000);
     }
