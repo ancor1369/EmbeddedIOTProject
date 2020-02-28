@@ -87,6 +87,9 @@ static bool bBlockTransmit = true;
 
 EasyLink_TxPacket txPacket = {{0}, 0, 0, {0}};
 
+//Semaphore to handle transmission of UART received messages
+Semaphore_Handle sendSemHandle;
+
 void echoTxDoneCb(EasyLink_Status status)
 {
 
@@ -114,10 +117,10 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
         /* Toggle LED2 to indicate RX, clear LED1 */
         PIN_setOutputValue(pinHandle, Board_PIN_LED2,!PIN_getOutputValue(Board_PIN_LED2));
         PIN_setOutputValue(pinHandle, Board_PIN_LED1, 0);
-        /* Copy contents of RX packet to TX packet */
-        //memcpy(&txPacket.payload, rxPacket->payload, rxPacket->len);
         memcpy(&message,rxPacket->payload,rxPacket->len);
-        //mq_send(rxQm, (char *)&message, sizeof(message), 0);
+
+        mq_send(rxQm, (char *)&message, sizeof(message), 0);
+        Semaphore_post(sendSemHandle);
 
         /* Permit echo transmission */
         bBlockTransmit = false;
@@ -137,6 +140,9 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
 
 void radioTask(UArg arg0, UArg arg1)
 {
+    sendSemHandle =  (Semaphore_Handle)arg0;
+
+
     uart = (UART_Handle)arg1;
     uint32_t absTime;
 
@@ -148,7 +154,9 @@ void radioTask(UArg arg0, UArg arg1)
     attr.mq_curmsgs = 0;
     txQm = mq_open(rfTXQueue, O_CREAT | O_RDONLY, 0644, &attr);
 
-    //rxQm = mq_open(rfRXQueue, O_WRONLY);
+    rxQm = mq_open(rfRXQueue, O_WRONLY);
+
+
 
     /* Create a semaphore for Async */
     Semaphore_Params params;
@@ -179,7 +187,7 @@ void radioTask(UArg arg0, UArg arg1)
         System_abort("EasyLink_init failed");
     }
 
-    memcpy(txPacket.payload,ackOK,sizeof(ackOK));
+
     /*
      * If you wish to use a frequency other than the default, use
      * the following API:
@@ -190,12 +198,13 @@ void radioTask(UArg arg0, UArg arg1)
 
     while(1) {
 
+        //Load the OK message to be send to the requester
+        memcpy(txPacket.payload,ackOK,sizeof(ackOK));
         // Wait to receive a packet
         EasyLink_receiveAsync(echoRxDoneCb, 0);
 
-        /* Wait indefinitely for Rx */
-        //Semaphore_pend(echoDoneSem, BIOS_WAIT_FOREVER);
-        //Every 500 seconds allow for other tasks to be executed
+        //Break from receiver to listener on other tasks. This allow the system
+        //to review other tasks that need to run
 
         if(Semaphore_pend(echoDoneSem, (500000 / Clock_tickPeriod)) == FALSE)
         {
@@ -212,9 +221,13 @@ void radioTask(UArg arg0, UArg arg1)
             /* Switch to Transmitter and echo the packet if transmission
              * is not blocked
              */
-
             //Send the received package to the UART interface
-            UART_write(uart,&(message),sizeof(message));
+            //UART_write(uart,&(message),sizeof(message));
+
+            //Add received data to to the Queue and set the semaphore to release showing
+            //on the serial interface
+
+
 
             txPacket.len = sizeof(ackOK);//RFEASYLINKECHO_PAYLOAD_LENGTH;
 
@@ -240,13 +253,14 @@ void radioTask(UArg arg0, UArg arg1)
 
             //Wait the message to arrive from serial interfaceMAX_LENGTH
 
+            //I can try to get here only the message needed. Not all the messages are
+            //going to the same destination. So I need to process the receeive queue
+            //To send the messages to the correct destination and empty the queue
+
             bytes_read1 = mq_receive(txQm, (char *)messageReceived, MSGLENGHT, NULL);
             if(bytes_read)
             {
-                //UART_write(uart,&(messageReceived) ,sizeof(messageReceived));
-
-                //Transmit the response goten on the serial interface
-
+                //Transmit the response gotten on the serial interface
                 memcpy(txPacket.payload,&messageReceived,sizeof(messageReceived));
                 txPacket.absTime = absTime + EasyLink_ms_To_RadioTime(100);
                 EasyLink_transmitAsync(&txPacket, echoTxDoneCb);

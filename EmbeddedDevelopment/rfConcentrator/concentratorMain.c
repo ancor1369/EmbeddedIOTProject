@@ -47,9 +47,6 @@ static PIN_Handle pinHandle;
 static PIN_State pinState;
 static UART_Handle uart = NULL;
 
-
-
-
 //
 ///*
 // * Application LED pin configuration table:
@@ -61,6 +58,8 @@ PIN_Config pinTable[] = {
     PIN_TERMINATE
 };
 
+Semaphore_Handle uartSendHandlesem = NULL;
+
 /*
  *  ======== main ========
  */
@@ -68,6 +67,20 @@ int main(void)
 {
     /* Call driver init functions. */
     Board_initGeneral();
+
+    /* Create a semaphore for Async */
+    Semaphore_Params params;
+    Error_Block      eb;
+
+    /* Init params */
+    Semaphore_Params_init(&params);
+    Error_init(&eb);
+
+    uartSendHandlesem = Semaphore_create(0, &params, &eb);
+    if(uartSendHandlesem == NULL)
+    {
+       System_abort("Semaphore creation failed");
+    }
 
     /* Open LED pins */
     pinHandle = PIN_open(&pinState, pinTable);
@@ -81,21 +94,8 @@ int main(void)
 
     Task_Params_init(&TaskParams);
     TaskParams.stackSize = RFEASYLINKECHO_TASK_STACK_SIZE;
-    TaskParams.priority = 3;
     TaskParams.arg1 = (xdc_UArg)uart;
-
-    mqd_t txQm = NULL;
-
-    struct mq_attr attr;
-
-//    attr.mq_flags = 0;
-//    attr.mq_maxmsg = 1;
-//    attr.mq_msgsize = MSGLENGHT;
-//    attr.mq_curmsgs = 0;
-//    txQm = mq_open(rfTXQueue, O_CREAT | O_RDONLY, 0644, &attr);
-
-
-
+    TaskParams.arg0 = (xdc_UArg)uartSendHandlesem;
 
     TaskParams.priority = 2;
     radioTaskHandle = Task_create((Task_FuncPtr)radioTask,&TaskParams,NULL);
@@ -112,13 +112,13 @@ int main(void)
         while(1);
     }
 
-//    TaskParams.priority = 4;
-//    uartSendhandle = Task_create((Task_FuncPtr)serialSend,&TaskParams,NULL);
-//    if(uartSendhandle == NULL)
-//    {
-//          //Failed to initialize the task
-//        while(1);
-//    }
+    TaskParams.priority = 4;
+    uartSendhandle = Task_create((Task_FuncPtr)serialSend,&TaskParams,NULL);
+    if(uartSendhandle == NULL)
+    {
+          //Failed to initialize the task
+        while(1);
+    }
 
     /* Start BIOS */
     BIOS_start();
