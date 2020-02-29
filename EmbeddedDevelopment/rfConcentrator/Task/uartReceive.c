@@ -13,6 +13,7 @@
 #include <ti/sysbios/knl/Task.h>
 #include <unistd.h>
 #include "mqueue.h"
+char err[]="Error";
 
 char buffer[MSGLENGHT];
 UART_Handle uart1 = NULL;
@@ -30,7 +31,11 @@ void serialReceive(UArg arg0, UArg arg1)
        if(number!=0)
        {
            //UART_write(uart1, &buffer, sizeof(buffer));
-           mq_send(tQm, (char *)&buffer, sizeof(buffer), 0);
+           number = mq_send(tQm, (char *)&buffer, sizeof(buffer), 0);
+           if(number!=0)
+           {
+               UART_write(uart1, &err, sizeof(err));
+           }
            number=0;
        }
        Task_sleep(5000);

@@ -38,7 +38,7 @@ void serialSend(UArg arg0, UArg arg1)
             UART_write(uart, &packet, sizeof(packet));
         }
         UART_write(uart, &taks, sizeof(taks));
-        //Task_sleep(5000);
+        Task_sleep(5000);
     }
 }
 

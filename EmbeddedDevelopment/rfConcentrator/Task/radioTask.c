@@ -116,18 +116,20 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
 {
     if (status == EasyLink_Status_Success)
     {
-        /* Toggle LED2 to indicate RX, clear LED1 */
-        PIN_setOutputValue(pinHandle, Board_PIN_LED2,!PIN_getOutputValue(Board_PIN_LED2));
-        PIN_setOutputValue(pinHandle, Board_PIN_LED1, 0);
-        memcpy(&message,rxPacket->payload,rxPacket->len);
 
+        if(rxPacket->dstAddr[0] == 0xaa)
+        {
+            /* Toggle LED2 to indicate RX, clear LED1 */
+            PIN_setOutputValue(pinHandle, Board_PIN_LED2,!PIN_getOutputValue(Board_PIN_LED2));
+            PIN_setOutputValue(pinHandle, Board_PIN_LED1, 0);
+            memcpy(&message,rxPacket->payload,rxPacket->len);
 
+    //        mq_send(rxQm, (char *)&message, sizeof(message), 0);
+    //        Semaphore_post(sendSemHandle);
 
-//        mq_send(rxQm, (char *)&message, sizeof(message), 0);
-//        Semaphore_post(sendSemHandle);
-
-        /* Permit echo transmission */
-        bBlockTransmit = false;
+            /* Permit echo transmission */
+            bBlockTransmit = false;
+        }
     }
     else
     {
@@ -238,7 +240,7 @@ void radioTask(UArg arg0, UArg arg1)
              * Address filtering is enabled by default on the Rx device with the
              * an address of 0xAA. This device must set the dstAddr accordingly.
              */
-            txPacket.dstAddr[0] = 0xaa;
+            txPacket.dstAddr[0] = 0xAB;
 
             /* Set Tx absolute time to current time + 100ms*/
             if(EasyLink_getAbsTime(&absTime) != EasyLink_Status_Success)
@@ -254,28 +256,30 @@ void radioTask(UArg arg0, UArg arg1)
              */
             Semaphore_pend(echoDoneSem, BIOS_WAIT_FOREVER);
 
-            //Wait the message to arrive from serial interfaceMAX_LENGTH
-
-            //I can try to get here only the message needed. Not all the messages are
-            //going to the same destination. So I need to process the receeive queue
-            //To send the messages to the correct destination and empty the queue
-
-            bytes_read1 = mq_receive(txQm, (char *)messageReceived, MSGLENGHT, NULL);
-            if(bytes_read)
-            {
-                //Transmit the response gotten on the serial interface
-                memcpy(txPacket.payload,&messageReceived,sizeof(messageReceived));
-                txPacket.absTime = absTime + EasyLink_ms_To_RadioTime(100);
-                EasyLink_transmitAsync(&txPacket, echoTxDoneCb);
-                /* Wait for Tx to complete. A Successful TX will cause the echoTxDoneCb
-                 * to be called and the echoDoneSem to be released, so we must
-                 * consume the echoDoneSem
-                 */
-                Semaphore_pend(echoDoneSem, BIOS_WAIT_FOREVER);
-            }
-
             bBlockTransmit = true;
         }
+
+
+        //Wait the message to arrive from serial interfaceMAX_LENGTH
+        //I can try to get here only the message needed. Not all the messages are
+        //going to the same destination. So I need to process the received queue
+        //To send the messages to the correct destination and empty the queue
+
+
+          bytes_read1 = mq_receive(txQm, (char *)messageReceived, MSGLENGHT, NULL);
+          if(bytes_read1 > 0)
+          {
+              //Transmit the response gotten on the serial interface
+              memcpy(txPacket.payload,&messageReceived,sizeof(messageReceived));
+              txPacket.absTime = absTime + EasyLink_ms_To_RadioTime(100);
+              EasyLink_transmitAsync(&txPacket, echoTxDoneCb);
+              /* Wait for Tx to complete. A Successful TX will cause the echoTxDoneCb
+               * to be called and the echoDoneSem to be released, so we must
+               * consume the echoDoneSem
+               */
+              Semaphore_pend(echoDoneSem, BIOS_WAIT_FOREVER);
+          }
+
         Task_sleep(5000);
     }
 }
