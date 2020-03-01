@@ -258,7 +258,7 @@ void radioTask(UArg arg0, UArg arg1)
 
         //Takes messages pending to be sent to the other side and sends
 
-        if(!Queue_empty(qHandle1))
+        while(!Queue_empty(qHandle1))
         {
             bufferReceiver = Queue_dequeue(qHandle1);
             //Transmit the response gotten on the serial interface

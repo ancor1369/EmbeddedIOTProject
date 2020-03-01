@@ -12,6 +12,7 @@
 #include <ti/drivers/UART.h>
 #include <ti/sysbios/knl/Task.h>
 #include <DataStructures/QueudData.h>
+#include <DataStructures/messageReceived.h>
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
@@ -21,16 +22,18 @@ char err[]="Error";
 //char buffer[MSGLENGHT];
 char buffer[uartMSGLENGHT];
 char buffer1[MSGLENGHT];
-char buffer2[MSGLENGHT];
-char buffer3[MSGLENGHT];
-char buffer4[MSGLENGHT];
-char buffer5[MSGLENGHT];
 
 char i;
 UART_Handle uart1 = NULL;
 Queue_Handle qHandle = NULL;
 
 msgBuffer_t bufferSend;
+msgBuffer_t bufferSend1;
+msgBuffer_t bufferSend2;
+msgBuffer_t bufferSend3;
+msgBuffer_t bufferSend4;
+
+packet_t packetToSend;
 
 void serialReceive(UArg arg0, UArg arg1)
 {
@@ -46,6 +49,7 @@ void serialReceive(UArg arg0, UArg arg1)
     uint8_t internalIndex = 0;
     uint8_t pkgNumber = 1;
 
+    packetToSend.sdrAddr = 0xAA;
 
 
     while(1)
@@ -68,6 +72,13 @@ void serialReceive(UArg arg0, UArg arg1)
            totalPackages = counter / PAYLOADSize;
            totalPackages++;
            currentIndex = 1;
+           //Setting parameters of the package to send. However it is not very userful here
+           //unless I make reimplementation to fill this one first and then
+           //copy all the content into the queue element to push it
+           packetToSend.total = totalPackages;
+           packetToSend.seqn = pkgNumber;
+           packetToSend.dstAddr = sendAddr;
+
            //Chop chop chop
            for(pkgNumber = 1;pkgNumber <= totalPackages;pkgNumber++)
            {
@@ -85,7 +96,37 @@ void serialReceive(UArg arg0, UArg arg1)
                }
                internalIndex = 0;
                //Write each one of the chopped packages
-               UART_write( uart1, &buffer1, sizeof(buffer1));
+               //UART_write( uart1, &buffer1, sizeof(buffer1));
+
+               //This creation might be implemented by using a linked list
+               //At this point I need to have this communication setting up and running because I have
+               //Not very much time left
+
+               //This is a dirty implementation. Many things can be improved here! such as using a data structure
+               //and calling a dynamic data structure to fill and send the chopped messages. I will support only 5 so far.
+               switch(pkgNumber)
+               {
+                   case 1:
+                      memcpy(bufferSend.buffer, buffer1,sizeof(buffer1));
+                      Queue_enqueue(qHandle,&(bufferSend.elem));
+                      break;
+                   case 2:
+                      memcpy(bufferSend1.buffer, buffer1,sizeof(buffer1));
+                      Queue_enqueue(qHandle,&(bufferSend1.elem));
+                      break;
+                   case 3:
+                      memcpy(bufferSend2.buffer, buffer1,sizeof(buffer1));
+                      Queue_enqueue(qHandle,&(bufferSend2.elem));
+                      break;
+                   case 4:
+                      memcpy(bufferSend3.buffer, buffer1,sizeof(buffer1));
+                      Queue_enqueue(qHandle,&(bufferSend3.elem));
+                      break;
+                   case 5:
+                      memcpy(bufferSend4.buffer, buffer1,sizeof(buffer1));
+                      Queue_enqueue(qHandle,&(bufferSend4.elem));
+                      break;
+               }
                memset(&buffer1[0],0,sizeof(buffer1));
            }
 
@@ -99,6 +140,9 @@ void serialReceive(UArg arg0, UArg arg1)
 //               memset(&buffer[0], 0, sizeof(buffer));
 //           }
 //           This task does not have an sleep function because it is blocking on receiving
+
+           //Clean the receiver buffer to give space for new data
+           memset(&buffer[0], 0, sizeof(buffer));
         }
     }
 }
