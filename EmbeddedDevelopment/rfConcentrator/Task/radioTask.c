@@ -124,9 +124,6 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
             PIN_setOutputValue(pinHandle, Board_PIN_LED1, 0);
             memcpy(&message,rxPacket->payload,rxPacket->len);
 
-//            memcpy(&pack.addr,rxPacket->dstAddr,sizeof(rxPacket->dstAddr));
-//            memcpy(&pack.payload,rxPacket->payload,rxPacket->len);
-
             /* Permit echo transmission */
             bBlockTransmit = false;
 

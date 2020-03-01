@@ -114,7 +114,7 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
 {
     //The package is to be processes here
 
-    if ((status == EasyLink_Status_Success))//&&(isPacketCorrect(rxPacket, &txPacket)))
+    if ((status == EasyLink_Status_Success))
     {
         /* Toggle LED1, clear LED2 to indicate Echo RX */
         PIN_setOutputValue(pinHandle, Board_PIN_LED1,!PIN_getOutputValue(Board_PIN_LED1));
