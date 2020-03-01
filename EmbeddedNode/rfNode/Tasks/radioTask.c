@@ -89,8 +89,6 @@ mqd_t rxQm = NULL;
 
 struct mq_attr attr;
 
-//char whatsNew[] = "{\"CXT\":\"PRO\",\"Object\":{\"DeviceID\":\"01\"}}";
-
 bool sendOK = false;
 
 void echoTxDoneCb(EasyLink_Status status)
@@ -205,14 +203,17 @@ void radioTaskFunction(UArg *arg0,UArg *arg1)
 
            if(bytes_read>=0)
            {
-              txPacket.len = RFEASYLINKECHO_PAYLOAD_LENGTH;
+              txPacket.len = MSGLENGHT;
               /*
                * Address filtering is enabled by default on the Rx device with the
                * an address of 0xAA. This device must set the dstAddr accordingly.
                */
-              txPacket.dstAddr[0] = 0xaa;
+              txPacket.dstAddr[0] = 0xAA;
                //Receive the message from the Queue to then be sent over the RF Interface
               memcpy(txPacket.payload,&packet,sizeof(packet));
+              txPacket.payload[0] = 0X41;
+              txPacket.payload[1] = 0X42;
+              txPacket.payload[2] = 0X43;
                while(!sendOK)
                {
                    /* Set Tx absolute time to current time + 1000ms */
@@ -221,6 +222,7 @@ void radioTaskFunction(UArg *arg0,UArg *arg1)
                        // Problem getting absolute time
                    }
                    txPacket.absTime = absTime + EasyLink_ms_To_RadioTime(1000);
+
 
                    EasyLink_transmitAsync(&txPacket, echoTxDoneCb);
 

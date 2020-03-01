@@ -117,16 +117,19 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
 {
     if (status == EasyLink_Status_Success)
     {
-        if(rxPacket->dstAddr[0] == 0xaa)
-        {
+
+
             /* Toggle LED2 to indicate RX, clear LED1 */
             PIN_setOutputValue(pinHandle, Board_PIN_LED2,!PIN_getOutputValue(Board_PIN_LED2));
             PIN_setOutputValue(pinHandle, Board_PIN_LED1, 0);
             memcpy(&message,rxPacket->payload,rxPacket->len);
 
+//            memcpy(&pack.addr,rxPacket->dstAddr,sizeof(rxPacket->dstAddr));
+//            memcpy(&pack.payload,rxPacket->payload,rxPacket->len);
+
             /* Permit echo transmission */
             bBlockTransmit = false;
-        }
+
     }
     else
     {
@@ -232,7 +235,7 @@ void radioTask(UArg arg0, UArg arg1)
              * Address filtering is enabled by default on the Rx device with the
              * an address of 0xAA. This device must set the dstAddr accordingly.
              */
-            txPacket.dstAddr[0] = 0xAB;  //I need to get the address feom
+            txPacket.dstAddr[0] = 0xAA;  //I need to get the address feom
 
             /* Set Tx absolute time to current time + 100ms*/
             if(EasyLink_getAbsTime(&absTime) != EasyLink_Status_Success)

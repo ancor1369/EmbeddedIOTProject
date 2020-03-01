@@ -9,7 +9,7 @@ char buffer[MSGLENGHT];
 char i;
 
 //Testing puroses
-char whatsNew[] = "{\"CXT\":\"PRO\",\"Object\":{\"DeviceID\":\"01\"}}";
+char whatsNew[] = "   {\"CXT\":\"PRO\",\"Object\":{\"DeviceID\":\"01\"}}";
 
 
 void *serialReceive(UArg *arg0, UArg *arg1)

@@ -30,7 +30,7 @@ void serialReceive(UArg arg0, UArg arg1)
     qHandle = (Queue_Handle)arg0;
 
     uart1 = (UART_Handle)arg1;
-    tQm = mq_open(rfTXQueue, O_WRONLY);
+
     uint8_t number=0;
     uint8_t counter = 0;
 

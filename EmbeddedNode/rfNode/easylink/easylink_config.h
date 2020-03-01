@@ -57,12 +57,13 @@ extern "C"
 //! of 0xABCD should be defined as {0xCD,0xAB})
 #define EASYLINK_DEFAULT_ADDR {0xAA}
 
+
 //! \brief When false, the Easylink stack expects the application to provide an
 //! accompanying address for each EasyLink_TxPacket passed to the
 //! EasyLink_transmit(), EasyLink_transmitAsync(), and
 //! EasyLink_transmitCcaAsync() APIs. Otherwise, these APIs will use the address
 //! defined in EASYLINK_DEFAULT_ADDR
-#define EASYLINK_USE_DEFAULT_ADDR false
+#define EASYLINK_USE_DEFAULT_ADDR true
 
 //! \brief Defines the largest Tx/Rx payload that the interface can support
 #define EASYLINK_MAX_DATA_LENGTH            128
@@ -77,7 +78,7 @@ extern "C"
 #define EASYLINK_NUM_ADDR_FILTER            1
 
 //! \brief The table for setting the Rx Address Filters
-#define EASYLINK_ADDR_FILTER_TABLE          {0xAB}
+#define EASYLINK_ADDR_FILTER_TABLE          {0xAA}
 
 //! \brief Defines the time for the radio to return to idle after inactivity
 #define EASYLINK_IDLE_TIMEOUT               EasyLink_ms_To_RadioTime(1)
