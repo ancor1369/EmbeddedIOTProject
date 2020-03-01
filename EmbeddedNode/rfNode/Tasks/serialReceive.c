@@ -8,8 +8,8 @@ UART_Handle uart;
 char buffer[MSGLENGHT];
 char i;
 
-//Testing puroses
-char whatsNew[] = "   {\"CXT\":\"PRO\",\"Object\":{\"DeviceID\":\"01\"}}";
+//Testing purposes
+char whatsNew[] = "    {\"CXT\":\"PRO\",\"Object\":{\"DeviceID\":\"01\"}}";
 
 
 void *serialReceive(UArg *arg0, UArg *arg1)

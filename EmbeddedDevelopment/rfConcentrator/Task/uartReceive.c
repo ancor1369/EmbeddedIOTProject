@@ -129,16 +129,6 @@ void serialReceive(UArg arg0, UArg arg1)
                }
                memset(&buffer1[0],0,sizeof(buffer1));
            }
-
-//           This code snippet sends a new packge to be transmitted to the receiver
-//           if(number!=0)
-//           {
-//               memcpy(bufferSend.buffer,buffer,sizeof(buffer));
-//               Queue_put(qHandle,&(bufferSend.elem));
-//               number = 0;
-//               counter = 0;
-//               memset(&buffer[0], 0, sizeof(buffer));
-//           }
 //           This task does not have an sleep function because it is blocking on receiving
 
            //Clean the receiver buffer to give space for new data

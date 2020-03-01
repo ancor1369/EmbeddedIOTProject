@@ -48,7 +48,7 @@
 #include <ti/sysbios/knl/Task.h>
 #include <ti/sysbios/knl/Semaphore.h>
 #include <ti/sysbios/knl/Clock.h>
-
+#include <DataStructures/QueueData.h>
 
 /* TI-RTOS Header files */
 #include <ti/drivers/PIN.h>
@@ -91,6 +91,19 @@ struct mq_attr attr;
 
 bool sendOK = false;
 
+Queue_Handle qHandle = NULL;
+
+//This is to hold each of the messages
+//arriving to the device
+
+msgBuffer_t bufferSend;
+msgBuffer_t bufferSend1;
+msgBuffer_t bufferSend2;
+msgBuffer_t bufferSend3;
+msgBuffer_t bufferSend4;
+
+uint8_t pkgNum = 0;
+
 void echoTxDoneCb(EasyLink_Status status)
 {
     if (status == EasyLink_Status_Success)
@@ -112,17 +125,54 @@ void echoTxDoneCb(EasyLink_Status status)
 
 void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
 {
-    //The package is to be processes here
+    //Received packages are used here. The package needs to be filtered
+    //so that I just recognize packages sent for this node
 
-    if ((status == EasyLink_Status_Success))
+    //This value needs to be taken from any configuration file so that
+    //it is possible to configure this device according to the deployment
+    //requirements. The adders of the concentrator shall be set able as well
+
+    if ((status == EasyLink_Status_Success))// && rxPacket->payload[1] == 0x41)
     {
         /* Toggle LED1, clear LED2 to indicate Echo RX */
         PIN_setOutputValue(pinHandle, Board_PIN_LED1,!PIN_getOutputValue(Board_PIN_LED1));
         PIN_setOutputValue(pinHandle, Board_PIN_LED2, 0);
 
         //Push the received message over the serial interface
-        mq_send(rxQm, (char *)&rxPacket->payload, sizeof(rxPacket->len), 0);
-        sendOK = true;
+        //mq_send(rxQm, (char *)&rxPacket->payload, sizeof(rxPacket->len), 0);
+//        memcpy(bufferSend.buffer,rxPacket->payload, sizeof(bufferSend.buffer));
+//        Queue_enqueue(qHandle,&(bufferSend.elem));
+
+        pkgNum = rxPacket->payload[3];
+
+        switch(pkgNum)
+        {
+            case 1:
+                memcpy(bufferSend.buffer,rxPacket->payload, sizeof(rxPacket->payload));
+                Queue_enqueue(qHandle,&(bufferSend.elem));
+                break;
+            case 2:
+                memcpy(bufferSend1.buffer,rxPacket->payload, sizeof(rxPacket->payload));
+                Queue_enqueue(qHandle,&(bufferSend1.elem));
+                break;
+            case 3:
+                memcpy(bufferSend2.buffer,rxPacket->payload, sizeof(rxPacket->payload));
+                Queue_enqueue(qHandle,&(bufferSend2.elem));
+                break;
+            case 4:
+                memcpy(bufferSend3.buffer,rxPacket->payload, sizeof(rxPacket->payload));
+                Queue_enqueue(qHandle,&(bufferSend3.elem));
+                break;
+            case 5:
+                memcpy(bufferSend4.buffer,rxPacket->payload, sizeof(rxPacket->payload));
+                Queue_enqueue(qHandle,&(bufferSend4.elem));
+                break;
+        }
+
+        //if(rxPacket->payload[3] == rxPacket->payload[2])
+        {
+            sendOK = true;
+        }
     }
     else if (status == EasyLink_Status_Aborted)
     {
@@ -137,12 +187,17 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
         PIN_setOutputValue(pinHandle, Board_PIN_LED2, 1);
     }
 
-    Semaphore_post(echoDoneSem);
+    //if(rxPacket->payload[3] == rxPacket->payload[2])
+    {
+        Semaphore_post(echoDoneSem);
+    }
 }
 
 
 void radioTaskFunction(UArg *arg0,UArg *arg1)
 {
+       qHandle = (Queue_Handle)arg0;
+
        uint32_t absTime;
        /* Create a semaphore for Async */
        Semaphore_Params params;
@@ -197,9 +252,9 @@ void radioTaskFunction(UArg *arg0,UArg *arg1)
 
 
        while(1) {
-
-           //Allways in receiver mode tor testing purposes
-
+//
+//           //Always in receiver mode for testing purposes
+//
            EasyLink_receiveAsync(echoRxDoneCb, 0);
 
           /* Wait for Tx to complete. A Successful TX will cause the echoTxDoneCb
@@ -210,7 +265,9 @@ void radioTaskFunction(UArg *arg0,UArg *arg1)
 
 
 
-//           //Waits to get any new messages from the serial interface
+
+
+           //Waits to get any new messages from the serial interface
 //           bytes_read = mq_receive(txQm, (char *)packet, MSGLENGHT, NULL);
 //           sendOK = false;
 //
@@ -224,9 +281,10 @@ void radioTaskFunction(UArg *arg0,UArg *arg1)
 //              txPacket.dstAddr[0] = 0xAA;
 //               //Receive the message from the Queue to then be sent over the RF Interface
 //              memcpy(txPacket.payload,&packet,sizeof(packet));
-//              txPacket.payload[0] = 0X41;
+//              txPacket.payload[0] = 0x41; //This is the address of this device. This might come from a confile
 //              txPacket.payload[1] = 0X42;
-//              txPacket.payload[2] = 0X43;
+//              txPacket.payload[2] = 0x01;
+//              txPacket.payload[3] = 0x01;
 //               while(!sendOK)
 //               {
 //                   /* Set Tx absolute time to current time + 1000ms */
@@ -266,7 +324,10 @@ void radioTaskFunction(UArg *arg0,UArg *arg1)
 //                       Semaphore_pend(echoDoneSem,BIOS_WAIT_FOREVER);
 //                   }
 //               }
-//           }
-           Task_sleep(5000);
+
+
+
+           //}
+           //Task_sleep(5000);
        }
 }

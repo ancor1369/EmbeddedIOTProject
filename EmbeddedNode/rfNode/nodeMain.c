@@ -17,6 +17,8 @@
 #include <Tasks/taskDefinition.h>
 #include <Drivers/startUart.h>
 
+#include <DataStructures/QueueData.h>
+
 #define RFEASYLINKECHO_TASK_STACK_SIZE    1024
 #define RFEASYLINKECHO_TASK_PRIORITY      2
 
@@ -30,6 +32,8 @@ Task_Handle uartSendHandle;
 
 UART_Handle handleUART;
 
+Queue_Handle receiveHandle = NULL;
+
 /*
  *  ======== main ========
  */
@@ -40,11 +44,12 @@ int main(void)
 
     startUART(&handleUART);
 
+    receiveHandle = Queue_create(NULL,NULL);
+
     Task_Params_init(&taskParams);
     taskParams.stackSize = RFEASYLINKECHO_TASK_STACK_SIZE;
     taskParams.priority = RFEASYLINKECHO_TASK_PRIORITY;
-    //taskParams.stack = &echoTaskStack;
-    taskParams.arg0 = (UInt)1000000;
+    taskParams.arg0 = (xdc_UArg)receiveHandle;
     taskParams.arg1 = (xdc_UArg)handleUART;
 
 

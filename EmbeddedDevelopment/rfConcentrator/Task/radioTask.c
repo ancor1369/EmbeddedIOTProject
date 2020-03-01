@@ -69,7 +69,8 @@
 
 #define RFEASYLINKECHO_PAYLOAD_LENGTH     40
 
-char ackOK[] = "{\"CXT\":\"PRO\",\"Object\":{\"ACK\":\"OK\"}}";
+//ACK message needs to be customized to every requesting node
+char ackOK[] = "    {\"CXT\":\"PRO\",\"Object\":{\"ACK\":\"OK\"}}";
 char message[142];
 
 Task_Struct echoTask;    /* not static so you can see in ROV */
@@ -117,15 +118,13 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
 {
     if (status == EasyLink_Status_Success)
     {
+        /* Toggle LED2 to indicate RX, clear LED1 */
+        PIN_setOutputValue(pinHandle, Board_PIN_LED2,!PIN_getOutputValue(Board_PIN_LED2));
+        PIN_setOutputValue(pinHandle, Board_PIN_LED1, 0);
+        memcpy(&message,rxPacket->payload,rxPacket->len);
 
-
-            /* Toggle LED2 to indicate RX, clear LED1 */
-            PIN_setOutputValue(pinHandle, Board_PIN_LED2,!PIN_getOutputValue(Board_PIN_LED2));
-            PIN_setOutputValue(pinHandle, Board_PIN_LED1, 0);
-            memcpy(&message,rxPacket->payload,rxPacket->len);
-
-            /* Permit echo transmission */
-            bBlockTransmit = false;
+        /* Permit echo transmission */
+        bBlockTransmit = false;
 
     }
     else
@@ -208,18 +207,32 @@ void radioTask(UArg arg0, UArg arg1)
            }
         }
 
+        //This block of code acknowledge any received package
+        //After it is received, I need to send the ACK with the
+        //particular information of the requester.
         if(bBlockTransmit == false)
         {
             /* Switch to Transmitter and echo the packet if transmission
              * is not blocked
              */
+
+            pack.sdrAddr = message[0];
+            pack.dstAddr = message[1];
+            pack.total = message[2];
+            pack.seqn = message[3];
+
             //Send the received package to the UART interface
+
             UART_write(uart,&(message),sizeof(message));
             UART_write(uart,&enter,sizeof(enter));
 
             //Add received data to to the Queue and set the semaphore to release showing
             //on the serial interface
 
+            ackOK[0] = 0x42; //This node will be AA
+            ackOK[1] = pack.sdrAddr; //destination address to that of the recipient
+            ackOK[2] = 0x01; //send totally one
+            ackOK[3] = 0x01; //Number of sequence is one of one
 
             //Load the OK message to be send to the requester
             memset(&txPacket.payload[0], 0, sizeof(txPacket.payload));
@@ -256,7 +269,11 @@ void radioTask(UArg arg0, UArg arg1)
         //going to the same destination. So I need to process the received queue
         //To send the messages to the correct destination and empty the queue
 
-        //Takes messages pending to be sent to the other side and sends
+        //This address assignation is done in the uartReceive task. They are complitelly
+        //processed there and are passed over the Queue to this task so that it is possible
+        //to transmmite them.
+
+        //Takes messages pending to be sent to the other side and sends until the queue is empty
 
         while(!Queue_empty(qHandle1))
         {
@@ -266,6 +283,7 @@ void radioTask(UArg arg0, UArg arg1)
             memcpy(txPacket.payload,&bufferReceiver->buffer,sizeof(bufferReceiver->buffer));
             txPacket.len = sizeof(bufferReceiver->buffer);
             txPacket.absTime = absTime + EasyLink_ms_To_RadioTime(100);
+            UART_write(uart, &bufferReceiver->buffer, sizeof(bufferReceiver->buffer));
             EasyLink_transmitAsync(&txPacket, echoTxDoneCb);
              /* Wait for Tx to complete. A Successful TX will cause the echoTxDoneCb
               * to be called and the echoDoneSem to be released, so we must
