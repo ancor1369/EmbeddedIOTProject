@@ -65,7 +65,7 @@ extern "C"
 #define EASYLINK_USE_DEFAULT_ADDR false
 
 //! \brief Defines the largest Tx/Rx payload that the interface can support
-#define EASYLINK_MAX_DATA_LENGTH            40
+#define EASYLINK_MAX_DATA_LENGTH            128//40
 
 //! \brief Defines the default address size for rx and tx operations
 #define EASYLINK_ADDR_SIZE                  1

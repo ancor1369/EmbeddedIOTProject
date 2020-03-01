@@ -8,12 +8,12 @@ uint8_t startUART(UART_Handle *uartPt)
     UART_init();
     /* Create a UART with data processing off. */
     UART_Params_init(&uartParams);
-    uartParams.writeDataMode = UART_DATA_BINARY;
-    uartParams.readDataMode = UART_DATA_BINARY;
-    uartParams.readEcho = UART_ECHO_OFF;
-    uartParams.baudRate = 115200;
+    uartParams.writeDataMode = UART_DATA_TEXT;
+    uartParams.readDataMode = UART_DATA_TEXT;
     uartParams.readReturnMode = UART_RETURN_NEWLINE;
     uartParams.readMode = UART_MODE_BLOCKING;
+    uartParams.readEcho = UART_ECHO_OFF;
+    uartParams.baudRate = 115200;
 
     *uartPt = UART_open(Board_UART0, &uartParams);
 

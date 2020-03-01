@@ -271,6 +271,7 @@ void radioTask(UArg arg0, UArg arg1)
           {
               //Transmit the response gotten on the serial interface
               memcpy(txPacket.payload,&messageReceived,sizeof(messageReceived));
+              txPacket.len = sizeof(messageReceived);
               txPacket.absTime = absTime + EasyLink_ms_To_RadioTime(100);
               EasyLink_transmitAsync(&txPacket, echoTxDoneCb);
               /* Wait for Tx to complete. A Successful TX will cause the echoTxDoneCb
