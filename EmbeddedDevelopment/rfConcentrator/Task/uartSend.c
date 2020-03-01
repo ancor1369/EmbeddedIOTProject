@@ -30,7 +30,7 @@ void serialSend(UArg arg0, UArg arg1)
     while(1)
     {
         //Wait the semaphore so that this task can execute when data is available
-        Semaphore_pend(sendSemHandle,BIOS_WAIT_FOREVER);
+        //Semaphore_pend(sendSemHandle,BIOS_WAIT_FOREVER);
         //Retrive the data from the queue and use it.
         bytes_read = mq_receive(rxQm, (char *)packet, MSGLENGHT, NULL);
         if(bytes_read != 0)

@@ -11,7 +11,9 @@
 #include <Task/taskDefinition.h>
 #include <ti/drivers/UART.h>
 #include <ti/sysbios/knl/Task.h>
+#include <DataStructures/QueudData.h>
 #include <stdio.h>
+#include <string.h>
 #include <unistd.h>
 #include "mqueue.h"
 char err[]="Error";
@@ -19,12 +21,15 @@ char err[]="Error";
 char buffer[MSGLENGHT];
 char i;
 UART_Handle uart1 = NULL;
+Queue_Handle qHandle = NULL;
 
+msgBuffer_t bufferSend;
 
 void serialReceive(UArg arg0, UArg arg1)
 {
+    qHandle = (Queue_Handle)arg0;
+
     uart1 = (UART_Handle)arg1;
-    mqd_t tQm = NULL;
     tQm = mq_open(rfTXQueue, O_WRONLY);
     uint8_t number=0;
     uint8_t counter = 0;
@@ -42,29 +47,12 @@ void serialReceive(UArg arg0, UArg arg1)
         {
            if(number!=0)
            {
-               number = mq_send(tQm, (char *)&buffer, counter, 0);
-               if(number!=0)
-               {
-                   UART_write(uart1, &err, sizeof(err));
-               }
+               memcpy(bufferSend.buffer,buffer,sizeof(buffer));
+               Queue_put(qHandle,&(bufferSend.elem));
                number = 0;
                counter = 0;
                memset(&buffer[0], 0, sizeof(buffer));
            }
         }
-
-//       number = UART_read(uart1, buffer, sizeof(buffer));
-//       if(number!=0)
-//       {
-//           //UART_write(uart1, &buffer, sizeof(buffer));
-//           number = mq_send(tQm, (char *)&buffer, sizeof(buffer), 0);
-//           if(number!=0)
-//           {
-//               UART_write(uart1, &err, sizeof(err));
-//           }
-//           number=0;
-//           memset(&buffer[0], 0, sizeof(buffer));
-//       }
-       //Task_sleep(10);
     }
 }
