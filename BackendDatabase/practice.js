@@ -4,5 +4,5 @@
 const add=require('./utils.js')
 const sum=add(4,-2)
 
-//const name ='gs'
+const name ='gs'
 console.log(sum)
