@@ -133,6 +133,7 @@ void serialReceive(UArg arg0, UArg arg1)
 
            //Clean the receiver buffer to give space for new data
            memset(&buffer[0], 0, sizeof(buffer));
+           counter=0;
         }
     }
 }

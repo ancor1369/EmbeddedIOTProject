@@ -70,17 +70,20 @@ void serialSend(UArg *arg0, UArg *arg1)
             memcpy(packet, bufferReceiver->buffer, sizeof(bufferReceiver->buffer));
             UART_write(uart, &packet, sizeof(packet));
 
-//            for(packetIndex=4;packetIndex<MSGLENGHT;packetIndex++)
-//            {
-//                bigMesage[bigIndex] = packet[packetIndex];
-//                bigIndex++;
-//            }
-//            if(bufferReceiver->buffer[3]==bufferReceiver->buffer[2])
-//            {
-//                UART_write(uart, &bigMesage, sizeof(bigMesage));
-//                UART_write(uart, &enter, sizeof(enter));
-//                break;
-//            }
+            for(packetIndex=4;packetIndex<MSGLENGHT;packetIndex++)
+            {
+                bigMesage[bigIndex] = packet[packetIndex];
+                bigIndex++;
+            }
+            memset(&packet[0],0,sizeof(packet));
+            if(bufferReceiver->buffer[3]==bufferReceiver->buffer[2])
+            {
+                UART_write(uart, &bigMesage, sizeof(bigMesage));
+                UART_write(uart, &enter, sizeof(enter));
+                memset(&bigMesage[0],0,sizeof(bigMesage));
+
+                break;
+            }
         }
 
 
