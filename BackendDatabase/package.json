@@ -1,0 +1,11 @@
+{
+  "name": "backenddatabase",
+  "version": "1.0",
+  "description": "backend database program files for interacting with webpage and web server",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "gurwinder",
+  "license": "ISC"
+}
