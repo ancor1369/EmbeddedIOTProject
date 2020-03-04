@@ -9,6 +9,7 @@
   "author": "gurwinder",
   "license": "ISC",
   "dependencies": {
+    "unirest": "^0.6.0",
     "validator": "^12.2.0"
   }
 }
