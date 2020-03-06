@@ -38,9 +38,6 @@ uint8_t packetIndex = 0; //Index in the package
 
 bool write = false;
 
-
-
-
 void serialSend(UArg *arg0, UArg *arg1)
 {
     extern UART_Handle handleUART;

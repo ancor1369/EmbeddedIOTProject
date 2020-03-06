@@ -177,11 +177,14 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
         if(rxPacket->payload[2] == rxPacket->payload[3])
         {
             Semaphore_post(packProSem);
+            //Paste this two guys here to try
+            sendOK = true;
+            Semaphore_post(echoDoneSem);
         }
 
         //if(rxPacket->payload[3] == rxPacket->payload[2])
         {
-            sendOK = true;
+
         }
     }
     else if (status == EasyLink_Status_Aborted)
@@ -199,13 +202,15 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
 
     //if(rxPacket->payload[3] == rxPacket->payload[2])
     {
-        Semaphore_post(echoDoneSem);
+
     }
 }
 
 
 void radioTaskFunction(UArg *arg0,UArg *arg1)
 {
+
+       uint32_t absTime;
        /* Create a semaphore for Async */
        Semaphore_Params params;
        Error_Block      eb;
@@ -221,22 +226,26 @@ void radioTaskFunction(UArg *arg0,UArg *arg1)
            System_abort("Semaphore creation failed");
        }
 
-       ///////////
-         Semaphore_Params params1;
-         Error_Block      eb1;
+       Semaphore_Params params1;
+       Error_Block      eb1;
 
          /* Init params */
-         Semaphore_Params_init(&params1);
-         Error_init(&eb1);
+       Semaphore_Params_init(&params1);
+       Error_init(&eb1);
 
          /* Create semaphore instance */
-         packProSem = Semaphore_create(0, &params1, &eb1);
-         if(packProSem == NULL)
-         {
+       packProSem = Semaphore_create(0, &params1, &eb1);
+       if(packProSem == NULL)
+       {
              System_abort("Semaphore creation failed");
-         }
-       //////////
-
+       }
+       //Start the send queue to send over RF
+       ssize_t bytes_read;
+       attr.mq_flags = 0;
+       attr.mq_maxmsg = 1;
+       attr.mq_msgsize = MSGLENGHT;
+       attr.mq_curmsgs = 0;
+       txQm = mq_open(rfTXQueue, O_CREAT | O_RDONLY, 0644, &attr);
 
           // Initialize the EasyLink parameters to their default values
        EasyLink_Params easyLink_params;
@@ -267,79 +276,77 @@ void radioTaskFunction(UArg *arg0,UArg *arg1)
 //
 //           //Always in receiver mode for testing purposes
 //
-           EasyLink_receiveAsync(echoRxDoneCb, 0);
+//           EasyLink_receiveAsync(echoRxDoneCb, 0);
+//
+//          /* Wait for Tx to complete. A Successful TX will cause the echoTxDoneCb
+//           * to be called and the echoDoneSem to be released, so we must
+//           * consume the echoDoneSem
+//           */
+//           Semaphore_pend(echoDoneSem, BIOS_WAIT_FOREVER);
 
-          /* Wait for Tx to complete. A Successful TX will cause the echoTxDoneCb
-           * to be called and the echoDoneSem to be released, so we must
-           * consume the echoDoneSem
-           */
-           Semaphore_pend(echoDoneSem, BIOS_WAIT_FOREVER);
 
 
 
 
 
            //Waits to get any new messages from the serial interface
-//           bytes_read = mq_receive(txQm, (char *)packet, MSGLENGHT, NULL);
-//           sendOK = false;
-//
-//           if(bytes_read>=0)
-//           {
-//              txPacket.len = MSGLENGHT;
-//              /*
-//               * Address filtering is enabled by default on the Rx device with the
-//               * an address of 0xAA. This device must set the dstAddr accordingly.
-//               */
-//              txPacket.dstAddr[0] = 0xAA;
-//               //Receive the message from the Queue to then be sent over the RF Interface
-//              memcpy(txPacket.payload,&packet,sizeof(packet));
-//              txPacket.payload[0] = 0x41; //This is the address of this device. This might come from a confile
-//              txPacket.payload[1] = 0X42;
-//              txPacket.payload[2] = 0x01;
-//              txPacket.payload[3] = 0x01;
-//               while(!sendOK)
-//               {
-//                   /* Set Tx absolute time to current time + 1000ms */
-//                   if(EasyLink_getAbsTime(&absTime) != EasyLink_Status_Success)
-//                   {
-//                       // Problem getting absolute time
-//                   }
-//                   txPacket.absTime = absTime + EasyLink_ms_To_RadioTime(1000);
-//
-//
-//                   EasyLink_transmitAsync(&txPacket, echoTxDoneCb);
-//
-//                   /* Wait for Tx to complete. A Successful TX will cause the echoTxDoneCb
-//                    * to be called and the echoDoneSem to be released, so we must
-//                    * consume the echoDoneSem
-//                    */
-//                   Semaphore_pend(echoDoneSem, BIOS_WAIT_FOREVER);
-//
-//                   /* Switch to Receiver */
-//                   EasyLink_receiveAsync(echoRxDoneCb, 0);
-//                   /* Wait 500ms for Rx */
-//                   if(Semaphore_pend(echoDoneSem, (500000 / Clock_tickPeriod)) == FALSE)
-//                   {
-//                       /* RX timed out abort */
-//                       if(EasyLink_abort() == EasyLink_Status_Success)
-//                       {
-//                          /* Wait for the abort */
-//                          Semaphore_pend(echoDoneSem, BIOS_WAIT_FOREVER);
-//                       }
-//                   }
-//                   //remain in Rx Mode to get the answer coming from the concentrator Device
-//                   if(sendOK)
-//                   {
-//                       EasyLink_receiveAsync(echoRxDoneCb,0);
-//                       //Remain waiting for ever until the concentrator sends the
-//                       //message that is pending for me to continue to do my work
-//                       Semaphore_pend(echoDoneSem,BIOS_WAIT_FOREVER);
-//                   }
-//               }
+           bytes_read = mq_receive(txQm, (char *)packet, MSGLENGHT, NULL);
+           sendOK = false;
+
+           if(bytes_read>=0)
+           {
+              txPacket.len = MSGLENGHT;
+              /*
+               * Address filtering is enabled by default on the Rx device with the
+               * an address of 0xAA. This device must set the dstAddr accordingly.
+               */
+              txPacket.dstAddr[0] = 0xAA;
+               //Receive the message from the Queue to then be sent over the RF Interface
+              memcpy(txPacket.payload,&packet,sizeof(packet));
+              txPacket.payload[0] = 0x41; //This is the address of this device. This might come from a confile
+              txPacket.payload[1] = 0X42;
+              txPacket.payload[2] = 0x01;
+              txPacket.payload[3] = 0x01;
+               while(!sendOK)
+               {
+                   /* Set Tx absolute time to current time + 1000ms */
+                   if(EasyLink_getAbsTime(&absTime) != EasyLink_Status_Success)
+                   {
+                       // Problem getting absolute time
+                   }
+                   txPacket.absTime = absTime + EasyLink_ms_To_RadioTime(1000);
 
 
+                   EasyLink_transmitAsync(&txPacket, echoTxDoneCb);
 
-           //}
-           //Task_sleep(5000);
+                   /* Wait for Tx to complete. A Successful TX will cause the echoTxDoneCb
+                    * to be called and the echoDoneSem to be released, so we must
+                    * consume the echoDoneSem
+                    */
+                   Semaphore_pend(echoDoneSem, BIOS_WAIT_FOREVER);
+
+                   /* Switch to Receiver */
+                   EasyLink_receiveAsync(echoRxDoneCb, 0);
+                   /* Wait 500ms for Rx */
+                   if(Semaphore_pend(echoDoneSem, (500000 / Clock_tickPeriod)) == FALSE)
+                   {
+                       /* RX timed out abort */
+                       if(EasyLink_abort() == EasyLink_Status_Success)
+                       {
+                          /* Wait for the abort */
+                          Semaphore_pend(echoDoneSem, BIOS_WAIT_FOREVER);
+                       }
+                   }
+                   //remain in Rx Mode to get the answer coming from the concentrator Device
+                   if(sendOK)
+                   {
+                       EasyLink_receiveAsync(echoRxDoneCb,0);
+                       //Remain waiting for ever until the concentrator sends the
+                       //message that is pending for me to continue to do my work
+                       Semaphore_pend(echoDoneSem,BIOS_WAIT_FOREVER);
+                   }
+               }
+           }
+           Task_sleep(5000);
        }
 }
