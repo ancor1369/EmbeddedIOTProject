@@ -31,6 +31,7 @@ Queue_Handle qHandle1 = NULL;
 
 ssize_t bytes_read;
 UART_Handle uart;
+
 char enter[] = "\r\n";
 
 uint8_t bigIndex = 0; //index in the big array
@@ -38,11 +39,27 @@ uint8_t packetIndex = 0; //Index in the package
 
 bool write = false;
 
+
+
+//UART_Handle handleUART;
+//Queue_Handle receiveHandle;
+
 void serialSend(UArg *arg0, UArg *arg1)
 {
-    qHandle1 = (Queue_Handle)arg0;
-    uart = (UART_Handle)arg1;
+//    qHandle1 = (Queue_Handle)arg0;
+//    uart = (UART_Handle)arg1;
 
+//    qHandle1 = receiveHandle;
+//    uart = handleUART;
+
+    //Obtain pointers to needed infrasteructure!!
+//    interTaskComm = (sharedCommuniocation_t*)arg0;
+//
+//    qHandle1 = &interTaskComm->qHandlePtr;
+//    uart = &interTaskComm->uartHandlePtr;
+
+    extern UART_Handle handleUART;
+    extern Queue_Handle receiveHandle;
 
     mqd_t rxQm = NULL;
 
@@ -64,11 +81,15 @@ void serialSend(UArg *arg0, UArg *arg1)
 
         bigIndex = 0;
 
-        while(!Queue_empty(qHandle1))
+
+//        while(!Queue_empty(qHandle1))
+        while(!Queue_empty(receiveHandle))
         {
-            bufferReceiver = Queue_dequeue(qHandle1);
+//            bufferReceiver = Queue_dequeue(qHandle1);
+            bufferReceiver = Queue_dequeue(receiveHandle);
             memcpy(packet, bufferReceiver->buffer, sizeof(bufferReceiver->buffer));
-            UART_write(uart, &packet, sizeof(packet));
+//            UART_write(uart, &packet, sizeof(packet));
+            //UART_write(handleUART, &packet, sizeof(packet));
 
             for(packetIndex=4;packetIndex<MSGLENGHT;packetIndex++)
             {
@@ -78,8 +99,10 @@ void serialSend(UArg *arg0, UArg *arg1)
             memset(&packet[0],0,sizeof(packet));
             if(bufferReceiver->buffer[3]==bufferReceiver->buffer[2])
             {
-                UART_write(uart, &bigMesage, sizeof(bigMesage));
-                UART_write(uart, &enter, sizeof(enter));
+//                UART_write(uart, &bigMesage, sizeof(bigMesage));
+//                UART_write(uart, &enter, sizeof(enter));
+                UART_write(handleUART, &bigMesage, sizeof(bigMesage));
+                UART_write(handleUART, &enter, sizeof(enter));
                 memset(&bigMesage[0],0,sizeof(bigMesage));
 
                 break;

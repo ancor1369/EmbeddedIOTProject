@@ -48,7 +48,9 @@
 #include <ti/sysbios/knl/Task.h>
 #include <ti/sysbios/knl/Semaphore.h>
 #include <ti/sysbios/knl/Clock.h>
+#include <ti/drivers/UART.h>
 #include <DataStructures/QueueData.h>
+
 
 /* TI-RTOS Header files */
 #include <ti/drivers/PIN.h>
@@ -104,6 +106,12 @@ msgBuffer_t bufferSend4;
 
 uint8_t pkgNum = 0;
 
+
+
+//
+//UART_Handle handleUART;
+//Queue_Handle receiveHandle;
+
 void echoTxDoneCb(EasyLink_Status status)
 {
     if (status == EasyLink_Status_Success)
@@ -132,6 +140,9 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
     //it is possible to configure this device according to the deployment
     //requirements. The adders of the concentrator shall be set able as well
 
+    extern UART_Handle handleUART;
+    extern Queue_Handle receiveHandle;
+
     if ((status == EasyLink_Status_Success))// && rxPacket->payload[1] == 0x41)
     {
         /* Toggle LED1, clear LED2 to indicate Echo RX */
@@ -149,25 +160,34 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
         {
             case 1:
                 memcpy(bufferSend.buffer,rxPacket->payload, sizeof(rxPacket->payload));
-                Queue_enqueue(qHandle,&(bufferSend.elem));
+//                Queue_enqueue(qHandle,&(bufferSend.elem));
+                Queue_enqueue(receiveHandle,&(bufferSend.elem));
                 break;
             case 2:
                 memcpy(bufferSend1.buffer,rxPacket->payload, sizeof(rxPacket->payload));
-                Queue_enqueue(qHandle,&(bufferSend1.elem));
+//                Queue_enqueue(qHandle,&(bufferSend1.elem));
+                Queue_enqueue(receiveHandle,&(bufferSend1.elem));
                 break;
             case 3:
                 memcpy(bufferSend2.buffer,rxPacket->payload, sizeof(rxPacket->payload));
-                Queue_enqueue(qHandle,&(bufferSend2.elem));
+//                Queue_enqueue(qHandle,&(bufferSend2.elem));
+                Queue_enqueue(receiveHandle,&(bufferSend2.elem));
                 break;
             case 4:
                 memcpy(bufferSend3.buffer,rxPacket->payload, sizeof(rxPacket->payload));
-                Queue_enqueue(qHandle,&(bufferSend3.elem));
+//                Queue_enqueue(qHandle,&(bufferSend3.elem));
+                Queue_enqueue(receiveHandle,&(bufferSend3.elem));
                 break;
             case 5:
                 memcpy(bufferSend4.buffer,rxPacket->payload, sizeof(rxPacket->payload));
-                Queue_enqueue(qHandle,&(bufferSend4.elem));
+//                Queue_enqueue(qHandle,&(bufferSend4.elem));
+                Queue_enqueue(receiveHandle,&(bufferSend4.elem));
                 break;
         }
+//        if(rxPacket->payload[2] == rxPacket->payload[3])
+//        {
+//            //Set a mutex to work on the serial receiver.
+//        }
 
         //if(rxPacket->payload[3] == rxPacket->payload[2])
         {
@@ -196,7 +216,13 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
 
 void radioTaskFunction(UArg *arg0,UArg *arg1)
 {
-       qHandle = (Queue_Handle)arg0;
+       //qHandle = (Queue_Handle)arg0;
+//       qHandle = receiveHandle;
+
+//
+//       extern UART_Handle handleUART;
+//       extern Queue_Handle receiveHandle;
+
 
        uint32_t absTime;
        /* Create a semaphore for Async */
@@ -215,16 +241,16 @@ void radioTaskFunction(UArg *arg0,UArg *arg1)
        }
 
        //Start the send queue to send over RF
-       ssize_t bytes_read;
-       attr.mq_flags = 0;
-       attr.mq_maxmsg = 1;
-       attr.mq_msgsize = MSGLENGHT;
-       attr.mq_curmsgs = 0;
-       txQm = mq_open(rfTXQueue, O_CREAT | O_RDONLY, 0644, &attr);
+//       ssize_t bytes_read;
+//       attr.mq_flags = 0;
+//       attr.mq_maxmsg = 1;
+//       attr.mq_msgsize = MSGLENGHT;
+//       attr.mq_curmsgs = 0;
+//       txQm = mq_open(rfTXQueue, O_CREAT | O_RDONLY, 0644, &attr);
 
 
        //start the receive queue to sent over UART
-       rxQm = mq_open(rfRXQueue, O_WRONLY);
+//       rxQm = mq_open(rfRXQueue, O_WRONLY);
 
        // Initialize the EasyLink parameters to their default values
        EasyLink_Params easyLink_params;

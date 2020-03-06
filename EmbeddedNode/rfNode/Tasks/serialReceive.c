@@ -11,7 +11,6 @@ char i;
 //Testing purposes
 char whatsNew[] = "    {\"CXT\":\"PRO\",\"Object\":{\"DeviceID\":\"01\"}}";
 
-
 void *serialReceive(UArg *arg0, UArg *arg1)
 {
     uart = (UART_Handle)arg1;
