@@ -81,7 +81,13 @@ PIN_Config pinTable[] = {
 static PIN_Handle pinHandle;
 static PIN_State pinState;
 
+/*Semaphore to sync the message receiving*/
 static Semaphore_Handle echoDoneSem;
+
+/*Semaphore to sync package processing*/
+Semaphore_Handle packProSem;
+
+
 
 EasyLink_TxPacket txPacket = {{0}, 0, 0, {0}};
 char packet[MSGLENGHT];
@@ -105,12 +111,6 @@ msgBuffer_t bufferSend3;
 msgBuffer_t bufferSend4;
 
 uint8_t pkgNum = 0;
-
-
-
-//
-//UART_Handle handleUART;
-//Queue_Handle receiveHandle;
 
 void echoTxDoneCb(EasyLink_Status status)
 {
@@ -149,45 +149,35 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
         PIN_setOutputValue(pinHandle, Board_PIN_LED1,!PIN_getOutputValue(Board_PIN_LED1));
         PIN_setOutputValue(pinHandle, Board_PIN_LED2, 0);
 
-        //Push the received message over the serial interface
-        //mq_send(rxQm, (char *)&rxPacket->payload, sizeof(rxPacket->len), 0);
-//        memcpy(bufferSend.buffer,rxPacket->payload, sizeof(bufferSend.buffer));
-//        Queue_enqueue(qHandle,&(bufferSend.elem));
-
         pkgNum = rxPacket->payload[3];
 
         switch(pkgNum)
         {
             case 1:
                 memcpy(bufferSend.buffer,rxPacket->payload, sizeof(rxPacket->payload));
-//                Queue_enqueue(qHandle,&(bufferSend.elem));
                 Queue_enqueue(receiveHandle,&(bufferSend.elem));
                 break;
             case 2:
                 memcpy(bufferSend1.buffer,rxPacket->payload, sizeof(rxPacket->payload));
-//                Queue_enqueue(qHandle,&(bufferSend1.elem));
                 Queue_enqueue(receiveHandle,&(bufferSend1.elem));
                 break;
             case 3:
                 memcpy(bufferSend2.buffer,rxPacket->payload, sizeof(rxPacket->payload));
-//                Queue_enqueue(qHandle,&(bufferSend2.elem));
                 Queue_enqueue(receiveHandle,&(bufferSend2.elem));
                 break;
             case 4:
                 memcpy(bufferSend3.buffer,rxPacket->payload, sizeof(rxPacket->payload));
-//                Queue_enqueue(qHandle,&(bufferSend3.elem));
                 Queue_enqueue(receiveHandle,&(bufferSend3.elem));
                 break;
             case 5:
                 memcpy(bufferSend4.buffer,rxPacket->payload, sizeof(rxPacket->payload));
-//                Queue_enqueue(qHandle,&(bufferSend4.elem));
                 Queue_enqueue(receiveHandle,&(bufferSend4.elem));
                 break;
         }
-//        if(rxPacket->payload[2] == rxPacket->payload[3])
-//        {
-//            //Set a mutex to work on the serial receiver.
-//        }
+        if(rxPacket->payload[2] == rxPacket->payload[3])
+        {
+            Semaphore_post(packProSem);
+        }
 
         //if(rxPacket->payload[3] == rxPacket->payload[2])
         {
@@ -216,15 +206,6 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
 
 void radioTaskFunction(UArg *arg0,UArg *arg1)
 {
-       //qHandle = (Queue_Handle)arg0;
-//       qHandle = receiveHandle;
-
-//
-//       extern UART_Handle handleUART;
-//       extern Queue_Handle receiveHandle;
-
-
-       uint32_t absTime;
        /* Create a semaphore for Async */
        Semaphore_Params params;
        Error_Block      eb;
@@ -240,19 +221,24 @@ void radioTaskFunction(UArg *arg0,UArg *arg1)
            System_abort("Semaphore creation failed");
        }
 
-       //Start the send queue to send over RF
-//       ssize_t bytes_read;
-//       attr.mq_flags = 0;
-//       attr.mq_maxmsg = 1;
-//       attr.mq_msgsize = MSGLENGHT;
-//       attr.mq_curmsgs = 0;
-//       txQm = mq_open(rfTXQueue, O_CREAT | O_RDONLY, 0644, &attr);
+       ///////////
+         Semaphore_Params params1;
+         Error_Block      eb1;
+
+         /* Init params */
+         Semaphore_Params_init(&params1);
+         Error_init(&eb1);
+
+         /* Create semaphore instance */
+         packProSem = Semaphore_create(0, &params1, &eb1);
+         if(packProSem == NULL)
+         {
+             System_abort("Semaphore creation failed");
+         }
+       //////////
 
 
-       //start the receive queue to sent over UART
-//       rxQm = mq_open(rfRXQueue, O_WRONLY);
-
-       // Initialize the EasyLink parameters to their default values
+          // Initialize the EasyLink parameters to their default values
        EasyLink_Params easyLink_params;
        EasyLink_Params_init(&easyLink_params);
 

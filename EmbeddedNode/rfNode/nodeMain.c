@@ -21,7 +21,7 @@
 
 
 #define RFEASYLINKECHO_TASK_STACK_SIZE    1024
-#define RFEASYLINKECHO_TASK_PRIORITY      2
+#define RFEASYLINKECHO_TASK_PRIORITY      4
 
 static uint8_t echoTaskStack[RFEASYLINKECHO_TASK_STACK_SIZE];
 
@@ -31,23 +31,14 @@ Task_Handle radioTaskHandle;
 Task_Handle uartReceiveHandle;
 Task_Handle uartSendHandle;
 
-//static UART_Handle handleUART = NULL;
-//
-//static Queue_Handle receiveHandle = NULL;
-
-
 UART_Handle handleUART;
 Queue_Handle receiveHandle;
-
 
 /*
  *  ======== main ========
  */
 int main(void)
 {
-
-//    extern UART_Handle handleUART;
-//    extern Queue_Handle receiveHandle;
     /* Call driver init functions. */
     Board_initGeneral();
 
@@ -61,12 +52,6 @@ int main(void)
 
 //    taskParams.arg0 = (xdc_UArg)receiveHandle;
     taskParams.arg1 = (xdc_UArg)handleUART;
-
-    //Passing a pointer to adata structure that contains
-    //Pointers to common facilities needed in the program
-    //Ton control diverse common things
-
-
 
     radioTaskHandle = Task_create((Task_FuncPtr)radioTaskFunction,&taskParams,NULL);
     if(radioTaskHandle == NULL)

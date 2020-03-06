@@ -1,6 +1,8 @@
 #include <ti/drivers/UART.h>
 #include <Drivers/startUart.h>
+#include <ti/sysbios/BIOS.h>
 #include <ti/sysbios/knl/Task.h>
+#include <ti/sysbios/knl/Semaphore.h>
 #include <DataStructures/QueueData.h>
 #include <stdbool.h>
 #include <string.h>
@@ -21,10 +23,7 @@ char packet[MSGLENGHT];
 char bigMesage[uartMSGLENGT];
 //To keep fractions of the message
 char chunk[MSGLENGHT];
-//char chunk1[MSGLENGHT];
-//char chunk2[MSGLENGHT];
-//char chunk3[MSGLENGHT];
-//char chunk4[MSGLENGHT];
+
 
 msgBuffer_t* bufferReceiver;
 Queue_Handle qHandle1 = NULL;
@@ -41,37 +40,12 @@ bool write = false;
 
 
 
-//UART_Handle handleUART;
-//Queue_Handle receiveHandle;
 
 void serialSend(UArg *arg0, UArg *arg1)
 {
-//    qHandle1 = (Queue_Handle)arg0;
-//    uart = (UART_Handle)arg1;
-
-//    qHandle1 = receiveHandle;
-//    uart = handleUART;
-
-    //Obtain pointers to needed infrasteructure!!
-//    interTaskComm = (sharedCommuniocation_t*)arg0;
-//
-//    qHandle1 = &interTaskComm->qHandlePtr;
-//    uart = &interTaskComm->uartHandlePtr;
-
     extern UART_Handle handleUART;
     extern Queue_Handle receiveHandle;
-
-    mqd_t rxQm = NULL;
-
-    struct mq_attr attr;
-
-    attr.mq_flags = 0;
-    attr.mq_maxmsg = 1;
-    attr.mq_msgsize = MSGLENGHT;
-    attr.mq_curmsgs = 0;
-    rxQm = mq_open(rfRXQueue, O_CREAT | O_RDONLY, 0644, &attr);
-
-
+    extern Semaphore_Handle packProSem;
 
     while(1)
     {
@@ -81,15 +55,12 @@ void serialSend(UArg *arg0, UArg *arg1)
 
         bigIndex = 0;
 
-
-//        while(!Queue_empty(qHandle1))
+        //Keeps waiting until the message can be processed
+        Semaphore_pend(packProSem, BIOS_WAIT_FOREVER);
         while(!Queue_empty(receiveHandle))
         {
-//            bufferReceiver = Queue_dequeue(qHandle1);
             bufferReceiver = Queue_dequeue(receiveHandle);
             memcpy(packet, bufferReceiver->buffer, sizeof(bufferReceiver->buffer));
-//            UART_write(uart, &packet, sizeof(packet));
-            //UART_write(handleUART, &packet, sizeof(packet));
 
             for(packetIndex=4;packetIndex<MSGLENGHT;packetIndex++)
             {
@@ -99,8 +70,6 @@ void serialSend(UArg *arg0, UArg *arg1)
             memset(&packet[0],0,sizeof(packet));
             if(bufferReceiver->buffer[3]==bufferReceiver->buffer[2])
             {
-//                UART_write(uart, &bigMesage, sizeof(bigMesage));
-//                UART_write(uart, &enter, sizeof(enter));
                 UART_write(handleUART, &bigMesage, sizeof(bigMesage));
                 UART_write(handleUART, &enter, sizeof(enter));
                 memset(&bigMesage[0],0,sizeof(bigMesage));
@@ -108,19 +77,6 @@ void serialSend(UArg *arg0, UArg *arg1)
                 break;
             }
         }
-
-
-
-
-
-
-//        bytes_read = mq_receive(rxQm, (char *)packet, MSGLENGHT, NULL);
-//
-//        if(bytes_read)
-//        {
-//            UART_write(uart, &packet, sizeof(packet));
-//            UART_write(uart, &enter, sizeof(enter));
-//        }
         Task_sleep(5000);
     }
 }
