@@ -98,6 +98,7 @@ mqd_t rxQm = NULL;
 struct mq_attr attr;
 
 bool sendOK = false;
+bool receiveCycle = false;
 
 Queue_Handle qHandle = NULL;
 
@@ -176,10 +177,11 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
         }
         if(rxPacket->payload[2] == rxPacket->payload[3])
         {
+
             Semaphore_post(packProSem);
             //Paste this two guys here to try
             sendOK = true;
-            Semaphore_post(echoDoneSem);
+            receiveCycle = false;
         }
 
         //if(rxPacket->payload[3] == rxPacket->payload[2])
@@ -200,10 +202,9 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
         PIN_setOutputValue(pinHandle, Board_PIN_LED2, 1);
     }
 
-    //if(rxPacket->payload[3] == rxPacket->payload[2])
-    {
-
-    }
+    //This semaphore is so important that I can not remove it from here!
+    //This semaphore is packet based and must be respected and honored
+    Semaphore_post(echoDoneSem);
 }
 
 
@@ -284,11 +285,6 @@ void radioTaskFunction(UArg *arg0,UArg *arg1)
 //           */
 //           Semaphore_pend(echoDoneSem, BIOS_WAIT_FOREVER);
 
-
-
-
-
-
            //Waits to get any new messages from the serial interface
            bytes_read = mq_receive(txQm, (char *)packet, MSGLENGHT, NULL);
            sendOK = false;
@@ -338,12 +334,22 @@ void radioTaskFunction(UArg *arg0,UArg *arg1)
                        }
                    }
                    //remain in Rx Mode to get the answer coming from the concentrator Device
-                   if(sendOK)
+                   receiveCycle = sendOK;
+                   while(receiveCycle)
                    {
                        EasyLink_receiveAsync(echoRxDoneCb,0);
                        //Remain waiting for ever until the concentrator sends the
                        //message that is pending for me to continue to do my work
-                       Semaphore_pend(echoDoneSem,BIOS_WAIT_FOREVER);
+                       //Semaphore_pend(echoDoneSem,BIOS_WAIT_FOREVER);
+                      if(Semaphore_pend(echoDoneSem, (500000 / Clock_tickPeriod)) == FALSE)
+                      {
+                          /* RX timed out abort */
+                          if(EasyLink_abort() == EasyLink_Status_Success)
+                          {
+                             /* Wait for the abort */
+                             Semaphore_pend(echoDoneSem, BIOS_WAIT_FOREVER);
+                         }
+                      }
                    }
                }
            }

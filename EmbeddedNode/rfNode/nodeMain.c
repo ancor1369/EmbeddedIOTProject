@@ -48,11 +48,10 @@ int main(void)
 
     Task_Params_init(&taskParams);
     taskParams.stackSize = RFEASYLINKECHO_TASK_STACK_SIZE;
-    taskParams.priority = RFEASYLINKECHO_TASK_PRIORITY;
-
 //    taskParams.arg0 = (xdc_UArg)receiveHandle;
     taskParams.arg1 = (xdc_UArg)handleUART;
 
+    taskParams.priority = 4;
     radioTaskHandle = Task_create((Task_FuncPtr)radioTaskFunction,&taskParams,NULL);
     if(radioTaskHandle == NULL)
     {

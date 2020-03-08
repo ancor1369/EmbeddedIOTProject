@@ -70,8 +70,6 @@ void serialSend(UArg *arg0, UArg *arg1)
                 UART_write(handleUART, &bigMesage, sizeof(bigMesage));
                 UART_write(handleUART, &enter, sizeof(enter));
                 memset(&bigMesage[0],0,sizeof(bigMesage));
-
-                break;
             }
         }
         Task_sleep(5000);
