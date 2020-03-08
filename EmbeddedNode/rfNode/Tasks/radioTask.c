@@ -155,23 +155,28 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
         switch(pkgNum)
         {
             case 1:
-                memcpy(bufferSend.buffer,rxPacket->payload, sizeof(rxPacket->payload));
+                memset(&bufferSend.buffer[0],0,sizeof(bufferSend.buffer));
+                memcpy(bufferSend.buffer,rxPacket->payload, rxPacket->len);//sizeof(rxPacket->payload));
                 Queue_enqueue(receiveHandle,&(bufferSend.elem));
                 break;
             case 2:
-                memcpy(bufferSend1.buffer,rxPacket->payload, sizeof(rxPacket->payload));
+                memset(&bufferSend1.buffer[0],0,sizeof(bufferSend1.buffer));
+                memcpy(bufferSend1.buffer,rxPacket->payload, rxPacket->len);//sizeof(rxPacket->payload));
                 Queue_enqueue(receiveHandle,&(bufferSend1.elem));
                 break;
             case 3:
-                memcpy(bufferSend2.buffer,rxPacket->payload, sizeof(rxPacket->payload));
+                memset(&bufferSend2.buffer[0],0,sizeof(bufferSend2.buffer));
+                memcpy(bufferSend2.buffer,rxPacket->payload, rxPacket->len);//sizeof(rxPacket->payload));
                 Queue_enqueue(receiveHandle,&(bufferSend2.elem));
                 break;
             case 4:
-                memcpy(bufferSend3.buffer,rxPacket->payload, sizeof(rxPacket->payload));
+                memset(&bufferSend3.buffer[0],0,sizeof(bufferSend3.buffer));
+                memcpy(bufferSend3.buffer,rxPacket->payload, rxPacket->len);//sizeof(rxPacket->payload));
                 Queue_enqueue(receiveHandle,&(bufferSend3.elem));
                 break;
             case 5:
-                memcpy(bufferSend4.buffer,rxPacket->payload, sizeof(rxPacket->payload));
+                memset(&bufferSend4.buffer[0],0,sizeof(bufferSend4.buffer));
+                memcpy(bufferSend4.buffer,rxPacket->payload, rxPacket->len);//sizeof(rxPacket->payload));
                 Queue_enqueue(receiveHandle,&(bufferSend4.elem));
                 break;
         }

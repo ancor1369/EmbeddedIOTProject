@@ -56,6 +56,7 @@ void serialSend(UArg *arg0, UArg *arg1)
         Semaphore_pend(packProSem, BIOS_WAIT_FOREVER);
         while(!Queue_empty(receiveHandle))
         {
+
             bufferReceiver = Queue_dequeue(receiveHandle);
             memcpy(packet, bufferReceiver->buffer, sizeof(bufferReceiver->buffer));
 
@@ -70,6 +71,7 @@ void serialSend(UArg *arg0, UArg *arg1)
                 UART_write(handleUART, &bigMesage, sizeof(bigMesage));
                 UART_write(handleUART, &enter, sizeof(enter));
                 memset(&bigMesage[0],0,sizeof(bigMesage));
+                //memset(&bufferReceiver->buffer[0],0,sizeof(bufferReceiver->buffer));
             }
         }
         Task_sleep(5000);
