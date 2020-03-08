@@ -62,10 +62,10 @@ extern "C"
 //! EasyLink_transmit(), EasyLink_transmitAsync(), and
 //! EasyLink_transmitCcaAsync() APIs. Otherwise, these APIs will use the address
 //! defined in EASYLINK_DEFAULT_ADDR
-#define EASYLINK_USE_DEFAULT_ADDR false
+#define EASYLINK_USE_DEFAULT_ADDR true
 
 //! \brief Defines the largest Tx/Rx payload that the interface can support
-#define EASYLINK_MAX_DATA_LENGTH            40
+#define EASYLINK_MAX_DATA_LENGTH            128
 
 //! \brief Defines the default address size for rx and tx operations
 #define EASYLINK_ADDR_SIZE                  1

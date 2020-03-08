@@ -26,6 +26,8 @@
 #include <Drivers/startUart.h>
 
 #include <Task/taskDefinition.h>
+#include <DataStructures/QueudData.h>
+
 #include "mqueue.h"
 
 /* Undefine to not use async mode */
@@ -59,6 +61,7 @@ PIN_Config pinTable[] = {
 };
 
 Semaphore_Handle uartSendHandlesem = NULL;
+Queue_Handle receiveHandle = NULL;
 
 /*
  *  ======== main ========
@@ -68,19 +71,7 @@ int main(void)
     /* Call driver init functions. */
     Board_initGeneral();
 
-    /* Create a semaphore for Async */
-    Semaphore_Params params;
-    Error_Block      eb;
-
-    /* Init params */
-    Semaphore_Params_init(&params);
-    Error_init(&eb);
-
-    uartSendHandlesem = Semaphore_create(0, &params, &eb);
-    if(uartSendHandlesem == NULL)
-    {
-       System_abort("Semaphore creation failed");
-    }
+    receiveHandle = Queue_create(NULL,NULL);
 
     /* Open LED pins */
     pinHandle = PIN_open(&pinState, pinTable);
@@ -95,7 +86,7 @@ int main(void)
     Task_Params_init(&TaskParams);
     TaskParams.stackSize = RFEASYLINKECHO_TASK_STACK_SIZE;
     TaskParams.arg1 = (xdc_UArg)uart;
-    TaskParams.arg0 = (xdc_UArg)uartSendHandlesem;
+    TaskParams.arg0 = (xdc_UArg)receiveHandle;
 
     TaskParams.priority = 2;
     radioTaskHandle = Task_create((Task_FuncPtr)radioTask,&TaskParams,NULL);
