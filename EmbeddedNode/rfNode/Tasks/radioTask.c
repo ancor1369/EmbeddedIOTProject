@@ -78,7 +78,6 @@ PIN_Config pinTable[] = {
 #define ConcentratorAddress               0X41
 
 
-
 /* Pin driver handle */
 static PIN_Handle pinHandle;
 static PIN_State pinState;
