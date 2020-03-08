@@ -69,6 +69,8 @@
 
 #define RFEASYLINKECHO_PAYLOAD_LENGTH     40
 
+#define DeviceAddress                      0x41
+
 //ACK message needs to be customized to every requesting node
 char ackOK[] = "    {\"CXT\":\"PRO\",\"Object\":{\"ACK\":\"OK\"}}";
 char message[142];
@@ -116,7 +118,7 @@ void echoTxDoneCb(EasyLink_Status status)
 
 void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
 {
-    if (status == EasyLink_Status_Success)
+    if ((status == EasyLink_Status_Success) && rxPacket->payload[1] == DeviceAddress)
     {
         /* Toggle LED2 to indicate RX, clear LED1 */
         PIN_setOutputValue(pinHandle, Board_PIN_LED2,!PIN_getOutputValue(Board_PIN_LED2));
@@ -229,7 +231,7 @@ void radioTask(UArg arg0, UArg arg1)
             //Add received data to to the Queue and set the semaphore to release showing
             //on the serial interface
 
-            ackOK[0] = 0x42; //This node will be AA
+            ackOK[0] = DeviceAddress; //This is the address of this node
             ackOK[1] = pack.sdrAddr; //destination address to that of the recipient
             ackOK[2] = 0x01; //send totally one
             ackOK[3] = 0x01; //Number of sequence is one of one

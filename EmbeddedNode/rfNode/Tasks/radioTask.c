@@ -74,6 +74,8 @@ PIN_Config pinTable[] = {
 };
 
 #define RFEASYLINKECHO_PAYLOAD_LENGTH     40
+#define DeviceAddress                     0x43 //This one needs to change according to the device where it is deployed
+#define ConcentratorAddress               0X41
 
 
 
@@ -144,7 +146,9 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
     extern UART_Handle handleUART;
     extern Queue_Handle receiveHandle;
 
-    if ((status == EasyLink_Status_Success))// && rxPacket->payload[1] == 0x41)
+    //The packages are filtered by destinateion. This will receive only pakcages for this
+    //destination
+    if ((status == EasyLink_Status_Success) && rxPacket->payload[1] == DeviceAddress)//0x41)
     {
         /* Toggle LED1, clear LED2 to indicate Echo RX */
         PIN_setOutputValue(pinHandle, Board_PIN_LED1,!PIN_getOutputValue(Board_PIN_LED1));
@@ -156,27 +160,27 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
         {
             case 1:
                 memset(&bufferSend.buffer[0],0,sizeof(bufferSend.buffer));
-                memcpy(bufferSend.buffer,rxPacket->payload, rxPacket->len);//sizeof(rxPacket->payload));
+                memcpy(bufferSend.buffer,rxPacket->payload, rxPacket->len);
                 Queue_enqueue(receiveHandle,&(bufferSend.elem));
                 break;
             case 2:
                 memset(&bufferSend1.buffer[0],0,sizeof(bufferSend1.buffer));
-                memcpy(bufferSend1.buffer,rxPacket->payload, rxPacket->len);//sizeof(rxPacket->payload));
+                memcpy(bufferSend1.buffer,rxPacket->payload, rxPacket->len);
                 Queue_enqueue(receiveHandle,&(bufferSend1.elem));
                 break;
             case 3:
                 memset(&bufferSend2.buffer[0],0,sizeof(bufferSend2.buffer));
-                memcpy(bufferSend2.buffer,rxPacket->payload, rxPacket->len);//sizeof(rxPacket->payload));
+                memcpy(bufferSend2.buffer,rxPacket->payload, rxPacket->len);
                 Queue_enqueue(receiveHandle,&(bufferSend2.elem));
                 break;
             case 4:
                 memset(&bufferSend3.buffer[0],0,sizeof(bufferSend3.buffer));
-                memcpy(bufferSend3.buffer,rxPacket->payload, rxPacket->len);//sizeof(rxPacket->payload));
+                memcpy(bufferSend3.buffer,rxPacket->payload, rxPacket->len);
                 Queue_enqueue(receiveHandle,&(bufferSend3.elem));
                 break;
             case 5:
                 memset(&bufferSend4.buffer[0],0,sizeof(bufferSend4.buffer));
-                memcpy(bufferSend4.buffer,rxPacket->payload, rxPacket->len);//sizeof(rxPacket->payload));
+                memcpy(bufferSend4.buffer,rxPacket->payload, rxPacket->len);
                 Queue_enqueue(receiveHandle,&(bufferSend4.elem));
                 break;
         }
@@ -187,11 +191,6 @@ void echoRxDoneCb(EasyLink_RxPacket * rxPacket, EasyLink_Status status)
             //Paste this two guys here to try
             sendOK = true;
             receiveCycle = false;
-        }
-
-        //if(rxPacket->payload[3] == rxPacket->payload[2])
-        {
-
         }
     }
     else if (status == EasyLink_Status_Aborted)
@@ -304,8 +303,8 @@ void radioTaskFunction(UArg *arg0,UArg *arg1)
               txPacket.dstAddr[0] = 0xAA;
                //Receive the message from the Queue to then be sent over the RF Interface
               memcpy(txPacket.payload,&packet,sizeof(packet));
-              txPacket.payload[0] = 0x41; //This is the address of this device. This might come from a confile
-              txPacket.payload[1] = 0X42;
+              txPacket.payload[0] = DeviceAddress;//0x41; //This is the address of this device. This might come from a confile
+              txPacket.payload[1] = ConcentratorAddress;//
               txPacket.payload[2] = 0x01;
               txPacket.payload[3] = 0x01;
                while(!sendOK)
