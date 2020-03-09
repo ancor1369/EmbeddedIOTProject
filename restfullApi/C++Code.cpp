@@ -27,6 +27,7 @@ RestClient::HeaderFields headers;
 headers["Accept"] = "application/json";
 conn->SetHeaders(headers)
 
+
 // append additional headers
 conn->AppendHeader("X-MY-HEADER", "foo")
 
