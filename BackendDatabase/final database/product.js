@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 7000
-const testData = {
+const productData = {
     ProductID:'46',
     Name:"mouse",
     PriceDollar:'20',
@@ -15,5 +15,5 @@ const testData = {
     Update:"true",
     Blink:"False"
 }
-app.get('/', (req, res) => res.send(testData))
+app.get('/', (req, res) => res.send(productData))
 app.listen(port, () => console.log(`Server listening on port ${port}`))
