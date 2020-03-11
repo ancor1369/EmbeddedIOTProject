@@ -9,7 +9,7 @@ const productData = {
     Description:"wireless optical mouse",
     URL:"https://bit.ly/largo1",
     SKU:'4532324',
-    Model:"FM7544",
+    Model:"FM7544", 
     DueDate:'2018-11-22T05:00:00.000+00:00',
     LayoutName:"RegularTag",
     Update:"true",
