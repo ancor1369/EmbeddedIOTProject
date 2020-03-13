@@ -20,7 +20,8 @@ class Database {
       password: { 
           type: mongoose.SchemaTypes.String, 
           required: true, 
-          select: false
+          select: false,
+          
       }
   };
   const collectionName = "product";
