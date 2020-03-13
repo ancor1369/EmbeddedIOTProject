@@ -2,30 +2,30 @@ var mongooose=require('mongoose');
 var types=mongoose.Schema.types;
 
 var devices=mongoose.model('product',{
-    ProductID:{type:types.string,
+    ProductID:{type:types.String,
     required:true,unique:true},
     
-    Name:{type:types.string,
+    Name:{type:types.String,
         
-    PriceDollar:types.string,
+    PriceDollar:types.String,
        
-    PriceCents:types.string,
+    PriceCents:types.String,
       
-    Description:types.string,
+    Description:types.String,
         
-    URL:types.string,
+    URL:types.String,
        
-    SKU:types.string,
+    SKU:types.String,
        
-    Model:types.string,
+    Model:types.String,
         
-    DueDate:types.date,
+    DueDate:types.Date,
         
-    LayoutName:types.string,
+    LayoutName:types.String,
        
-    Update:types.boolean,
+    Update:types.Boolean,
        
-    Blink:{type:types.string,
+    Blink:{type:types.String,
         required:true,default:false}
 });
 
