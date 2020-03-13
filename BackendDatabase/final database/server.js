@@ -24,7 +24,7 @@ app.get('/product',(req,res)=>{
 });
 
 app.get('/product/:ProductID',(req,res)=>{
-  var id = req.params.SN;    
+  var id = req.params.ProductID;    
   product.find({ProductID:id}).then((result)=>{
       res.send(result);
   }).catch((err)=>{
@@ -47,30 +47,18 @@ app.post('/product',(req,res)=>{
   var newproduct = new product({
       
       ProductID:body.ProductID,
-        
       Name:body.Name,
-
-        PriceDollar:body.PriceDollar,
-           
-        PriceCents:body.pricecents,
-          
-        Description:body.Description,
-            
-        URL:body.URL,
-           
-        SKU:body.SKU,
-           
-        Model:body.Model,
-            
-        DueDate:body.DueDate,
-            
-        LayoutName:body.LayoutName,
-           
-        Update:body.Update,
-           
-        Blink:body.blink,
-
-        Available:body.avl
+      PriceDollar:body.PriceDollar,
+      PriceCents:body.pricecents,
+      Description:body.Description,
+      URL:body.URL,
+      SKU:body.SKU,
+      Model:body.Model,
+      DueDate:body.DueDate,
+      LayoutName:body.LayoutName,
+      Update:body.Update,
+      Blink:body.blink,
+      Available:body.avl
 
   });    
   console.log(newproduct);
@@ -84,32 +72,24 @@ app.post('/product',(req,res)=>{
 
 app.patch('/product',(req,res)=>{
   //makes the update of the product
-  product.findOneAndUpdate({ProductID:body.ProductID},{       
+  console.log('patchproduct');
+  product.findOneAndUpdate({ProductID:body.ProductID},{
+       
     ProductID:body.ProductID,
-        
     Name:body.Name,
-          
-      PriceDollar:body.PriceDollar,
-         
-      PriceCents:body.pricecents,
-        
-      Description:body.Description,
-          
-      URL:body.URL,
-         
-      SKU:body.SKU,
-         
-      Model:body.Model,
-          
-      DueDate:body.DueDate,
-          
-      LayoutName:body.LayoutName,
-         
-      Update:body.Update,
-         
-      Blink:body.blink,
-
-      Available: avl
+    PriceDollar:body.PriceDollar,
+    PriceCents:body.pricecents,
+    Description:body.Description,
+    URL:body.URL,
+    SKU:body.SKU,
+    Model:body.Model,
+    DueDate:body.DueDate,
+    LayoutName:body.LayoutName,
+    Update:body.Update,
+    Blink:body.blink,
+    Available: avl
+   
+  
   }).then((result)=>{
       console.log('result');
       res.send(result);
@@ -118,6 +98,7 @@ app.patch('/product',(req,res)=>{
       res.send(error);
   });
 });
+
 
 
 var listener = app.listen(port, () => {
