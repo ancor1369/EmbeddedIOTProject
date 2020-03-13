@@ -72,6 +72,7 @@ app.post('/product',(req,res)=>{
 
 app.patch('/product',(req,res)=>{
   //makes the update of the product
+  console.log('patchproduct');
   product.findOneAndUpdate({ProductID:body.ProductID},{
        
     ProductID:body.ProductID,
@@ -87,6 +88,8 @@ app.patch('/product',(req,res)=>{
     Update:body.Update,
     Blink:body.blink,
     Available: avl
+   
+  
   }).then((result)=>{
       console.log('result');
       res.send(result);
