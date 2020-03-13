@@ -1,11 +1,11 @@
-var mongooose=require('mongoose');
+var mongoose=require('mongoose');
 var types=mongoose.Schema.types;
 
 var devices=mongoose.model('product',{
     ProductID:{type:types.String,
     required:true,unique:true},
     
-    Name:{type:types.String,
+    Name:types.String,
         
     PriceDollar:types.String,
        
