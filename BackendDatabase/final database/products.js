@@ -17,5 +17,3 @@ const productData = {
 }
 app.get('/', (req, res) => res.send(productData))
 app.listen(port, () => console.log(`Server listening on port ${port}`))
-
-
