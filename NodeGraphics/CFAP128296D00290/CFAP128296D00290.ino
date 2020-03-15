@@ -646,12 +646,12 @@ void powerOff()
 //=============================================================================
 //The following code enables/disables different demos
 #define waittime 20000
-//#define splashscreen 0
-//#define white 0
-//#define black 0
-//#define red 0
-//#define checkerboard 1
-//#define partialUpdate 1
+#define splashscreen 0
+#define white 0
+#define black 0
+#define red 0
+#define checkerboard 1
+#define partialUpdate 1
 #define showBMPs 0
 //It is recommended that at least 2min are waited in between each update for multicolored EPDs. For demo purposes
 //we are bypassing this but in the final use environment, the recommendation should be followed
