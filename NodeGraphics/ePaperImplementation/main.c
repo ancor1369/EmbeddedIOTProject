@@ -162,8 +162,8 @@ void initEPD(void)
 }
 
 /*
- * This initialiozation is done first
- * to implement the exaple the maker provides
+ * This initialization is done first
+ * to implement the example the maker provides
  * and then it is going to be further ported to make
  * sure it implements other modules necessary to
  * create a complete integration with the communications
@@ -206,100 +206,6 @@ void initDevices(void)
      initEPD();
 }
 
-
-
-void setRegisterLUT()
-{
-  //set LUTs
-  //The following block allows the LUTs to be changed.
-  //In order for these LUTs to take effect, command 0x00 must have bit 5 set to "1"
-  //set panel setting to call LUTs from the register
-  writeCMD(0x00);
-  writeData(0xa3);
-
-  //VCOM_LUT_LUTC
-  writeCMD(0x20);
-  for (int i = 0; i < 44; i++)
-  {
-    writeData(pgm_read_byte(&VCOM_LUT_LUTC[i]));
-  }
-  //W2W_LUT_LUTWW
-  writeCMD(0x21);
-  for (int i = 0; i < 42; i++)
-  {
-    writeData(pgm_read_byte(&W2W_LUT_LUTWW[i]));
-  }
-  //B2W_LUT_LUTBW_LUTR
-  writeCMD(0x22);
-  for (int i = 0; i < 42; i++)
-  {
-    writeData(pgm_read_byte(&B2W_LUT_LUTBW_LUTR[i]));
-  }
-  //W2B_LUT_LUTWB_LUTW
-  writeCMD(0x23);
-  for (int i = 0; i < 42; i++)
-  {
-    writeData(pgm_read_byte(&W2B_LUT_LUTWB_LUTW[i]));
-  }
-  //B2B_LUT_LUTBB_LUTB
-  writeCMD(0x24);
-  for (int i = 0; i < 42; i++)
-  {
-    writeData(pgm_read_byte(&B2B_LUT_LUTBB_LUTB[i]));
-  }
-}
-
-void setPartialRegisterLUT()
-{
-  //set LUTs
-  //The following block allows the LUTs to be changed.
-  //This code is mostly for example only - it is recommended to use the OTP LUTs as the
-  //waveforms can change from batch to batch due to the fluctuation of the material used.
-
-  //In order for these LUTs to take effect, command 0x00 must have bit 5 set to "1"
-  //set panel setting to call LUTs from the register
-  writeCMD(0x00);
-  writeData(0xb3);
-
-  //VCOM_LUT_LUTC
-  writeCMD(0x20);
-  for (int i = 0; i < 44; i++)
-  {
-    writeData(pgm_read_byte(&VCOM_LUT_LUTC_PARTIAL[i]));
-  }
-  //W2W_LUT_LUTWW
-  writeCMD(0x21);
-  for (int i = 0; i < 42; i++)
-  {
-    writeData(pgm_read_byte(&W2W_LUT_LUTWW_PARTIAL[i]));
-  }
-  //B2W_LUT_LUTBW_LUTR
-  writeCMD(0x22);
-  for (int i = 0; i < 42; i++)
-  {
-    writeData(pgm_read_byte(&B2W_LUT_LUTBW_LUTR_PARTIAL[i]));
-  }
-  //W2B_LUT_LUTWB_LUTW
-  writeCMD(0x23);
-  for (int i = 0; i < 42; i++)
-  {
-    writeData(pgm_read_byte(&W2B_LUT_LUTWB_LUTW_PARTIAL[i]));
-  }
-  //B2B_LUT_LUTBB_LUTB
-  writeCMD(0x24);
-  for (int i = 0; i < 42; i++)
-  {
-    writeData(pgm_read_byte(&B2B_LUT_LUTBB_LUTB_PARTIAL[i]));
-  }
-}
-
-void setOTPLUT()
-{
-  //set panel setting to call LUTs from OTP
-  //These are the original settings in the init block
-  writeCMD(0x00);
-  writeData(0x83);
-}
 
 void partialUpdateSolid(uint8_t x1, uint16_t y1, uint8_t x2, uint16_t y2, uint8_t color1, uint8_t color2)
 {
@@ -638,6 +544,7 @@ void send_pixels_Y(uint8_t byteCount, uint8_t *dataPtr)
 void powerON()
 {
   writeCMD(0x04);
+
 }
 
 void powerOff()
