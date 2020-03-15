@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "express-generator": "^4.16.1",
+    "http.request": "^1.1.0",
     "lodash": "^4.17.15",
     "mongoose": "^5.9.4",
     "parse-data-uri": "^0.2.0",

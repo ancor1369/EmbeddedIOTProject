@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Prifast</title>
+ 
+  <!-- Bootstrap core CSS-->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Date picker -->
+  <!-- <link rel="stylesheet" href="datepicker.min.css"> -->
+
+  <!-- Page level plugin CSS-->
+  <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin.css" rel="stylesheet"> 
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+    <a class="navbar-brand mr-1" href="index.html">Prifast</a>
+
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+      <i class="fas fa-bars"></i>
+    </button>
+  
+</nav>   
+    
+  <div id="wrapper"> 
+        <!-- Sidebar -->
+      <ul class="sidebar navbar-nav">
+
+        <li class="nav-item active">
+          <a class="nav-link" href="dashboard.html">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </a>
+      </li>            
+
+      <li class="nav-item active">
+        <a class="nav-link" href="products.html">
+          <i class="fas fa-fw fa-shopping-basket"></i>
+          <span>Products</span>
+        </a>
+      </li>                 
+
+      <li class="nav-item active">
+        <a class="nav-link" href="priman.html">
+          <i class="fas fa-fw fa-compass"></i>
+          <span>Price management</span>
+        </a>
+      </li>  
+      
+      <li class="nav-item active">
+        <a class="nav-link" href="branches.html">
+          <i class="fas fa-fw fa-store-alt"></i>
+          <span>Branches</span>
+        </a>
+      </li>           
+      
+      <li class="nav-item active">
+        <a class="nav-link" href="productBranch.html">
+          <i class="fas fa-fw fa-tag"></i>
+          <span>Products in Branches</span>
+        </a>
+      </li>
+
+        </ul>      
+        <div id="content-wraper">
+        </div>  
+        
+    <!--this is the modal windows needed in the system -->
+    <div id="createPrice" class="modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Product Creation</h5>         
+          </div>
+          <div class="modal-body">                
+           <div id="createIncompleteAlert" class="alert alert-dismissible alert-warning">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <h4 class="alert-heading">Warning!</h4>
+              <p class="mb-0">Please fill all the fields before creating<a href="#" class="alert-link"></a>.</p>
+            </div>
+            <label for="lblPrice">Price</label>
+            <input class="form-control" id="txtPrice" placeholder="Enter product new price">
+            <label for="txtSKU">Type</label>
+            <select class="form-control" id="ddlPriceType">
+              <!-- This opcions shall come from the database, they will be like this until it makes sense changing into the dabase -->
+              <!-- <option value="Select" selected="selected">Select</option> -->
+              <option value="Regular">Regular</option>
+              <option value="Sale">Sale</option>
+              <option value="Clearance">Clearance</option>
+            </select>
+            <label for="txtUPC">Start Date</label>
+            <input class="form-control" id="datePiStartDate" type="date">
+            <label for="txtURL">End Date</label>
+            <input class="form-control" id="dateDueDate" type="date">            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="btnUpdatePrice">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCancelUpdate">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>    
+
+
+  </div>
+  
+  <script src="scripts/variables.js"></script>
+  <script src="scripts/PriceUpdate/prices.js"></script>
+  <script src="scripts/PriceUpdate/create.js"></script>
+  
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin.min.js"></script>
+
+   <!-- Page level plugin JavaScript-->
+   <script src="vendor/datatables/jquery.dataTables.js"></script>
+   <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+
+   <!-- Demo scripts for this page-->
+   <!-- <script src="js/demo/datatables-demo.js"></script> -->
+
+   <!-- Date Picker -->
+   <!-- <script src="datepicker.min.js"></script> -->
+  
+
+</body>
+
+</html>
