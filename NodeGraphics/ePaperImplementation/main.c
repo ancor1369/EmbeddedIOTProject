@@ -33,7 +33,7 @@
 #define EPD_DC      GPIO_PIN7
 #define EPD_CS      GPIO_PIN2
 #define LOW         0
-#define HIGHT       1
+#define HIGH       1
 
 //Create functions to address this function call
 #define ePaper_RST_0  (digitalWrite(EPD_RESET, LOW))
@@ -57,7 +57,7 @@ void sipTransmitData(uint8_t data)
       while (!USCI_B_SPI_getInterruptStatus(USCI_B0_BASE,
                  USCI_B_SPI_TRANSMIT_INTERRUPT)) ;
       //Transmit Data to slave
-      USCI_B_SPI_transmitData(USCI_B0_BASE, command);
+      USCI_B_SPI_transmitData(USCI_B0_BASE, data);
 }
 
 
@@ -95,11 +95,11 @@ void digitalWrite(uint8_t pin, uint8_t state)
     switch(pin)
     {
         case EPD_RESET:
-            port = GPIO_PORT_P4;
+            tempPort = GPIO_PORT_P4;
         case EPD_DC:
-            port = GPIO_PORT_P3;
+            tempPort = GPIO_PORT_P3;
         case EPD_CS:
-            port = GPIO_PORT_P8;
+            tempPort = GPIO_PORT_P8;
     }
     if(state == LOW)
     {
@@ -111,10 +111,12 @@ void digitalWrite(uint8_t pin, uint8_t state)
     }
 }
 
-unit8_t digitalRead(uint8_t pin)
+uint8_t result;
+uint8_t digitalRead(uint8_t pin)
 {
-    uint8_t result;
-    result = GPIO_getInputPinValue(GPIO_PORT_P4, pin);
+    //result = GPIO_getInputPinValue(GPIO_PORT_P4, pin);
+    __delay_cycles(50000);
+    result=1;
     return result;
 }
 
@@ -297,10 +299,12 @@ void Load_Flash_Image_To_Display_RAM(uint16_t width_pixels,
   //Pump out the BW data.
   ePaper_DC_1;
   index = 0;
-  Serial.println("first loop");
-  for (uint16_t y = 0; y<height_pixels; y++)
+  uint16_t y = 0;
+  uint8_t x = 0;
+  //Serial.println("first loop");
+  for (y = 0; y<height_pixels; y++)
   {
-    for (uint8_t x = 0; x<width_bytes; x++)
+    for (x = 0; x<width_bytes; x++)
     {
       //SPI.transfer(&BW_image[index]);
       sipTransmitData(&BW_image[index]);
@@ -324,10 +328,10 @@ void Load_Flash_Image_To_Display_RAM(uint16_t width_pixels,
   //Pump out the Red data.
   ePaper_DC_1;
   index = 0;
-  Serial.println("second loop");
-  for (uint16_t y = 0; y<height_pixels; y++)
+  //Serial.println("second loop");
+  for (y = 0; y<height_pixels; y++)
   {
-    for (uint8_t x = 0; x<width_bytes; x++)
+    for (x = 0; x<width_bytes; x++)
     {
       //SPI.transfer(&Y_image[index]);
       sipTransmitData(&Y_image[index]);
@@ -348,110 +352,13 @@ void Load_Flash_Image_To_Display_RAM(uint16_t width_pixels,
 }
 
 //================================================================================
-//void show_BMPs_in_root(void)
-//{
-//  File
-//    root_dir;
-//  root_dir = SD.open("/");
-//  if (0 == root_dir)
-//  {
-//    Serial.println("show_BMPs_in_root: Can't open \"root\"");
-//    return;
-//  }
-//  File
-//    bmp_file;
-//
-//  while (1)
-//  {
-//    bmp_file = root_dir.openNextFile();
-//    if (0 == bmp_file)
-//    {
-//      // no more files, break out of while()
-//      // root_dir will be closed below.
-//      break;
-//    }
-//    //Skip directories (what about volume name?)
-//    if (0 == bmp_file.isDirectory())
-//    {
-//      //The file name must include ".BMP"
-//      if (0 != strstr(bmp_file.name(), ".BMP"))
-//      {
-//        Serial.println(bmp_file.name());
-//        //The BMP must be exactly 36918 long
-//        //(this is correct for182x96, 24-bit)
-//        uint32_t size = bmp_file.size();
-//
-//        Serial.println(size);
-//        if ((uint32_t)HRES*VRES * 3  + 50 <= size <= (uint32_t)HRES * VRES * 3 + 60)
-//        {
-//          Serial.println("in final loop");
-//
-//
-//          //Make sure the display is not busy before starting a new command.
-//          while (0 == digitalRead(EPD_READY));
-//          //Select the controller
-//
-//          writeCMD(0x10);
-//          //Jump over BMP header
-//          bmp_file.seek(54);
-//          //grab one row of pixels from the SD card at a time
-//          static uint8_t one_line[HRES / 2 * 3];
-//          for (int line = 0; line < VRES * 2; line++)
-//          {
-//
-//            //Set the LCD to the left of this line. BMPs store data
-//            //to have the image drawn from the other end, uncomment the line below
-//
-//            //read a line from the SD card
-//            bmp_file.read(one_line, HRES / 2 * 3);
-//
-//            //send the line to the display
-//            send_pixels_BW(HRES / 2 * 3, one_line);
-//          }
-//
-//          writeCMD(0x13);
-//          //Jump over BMP header
-//          bmp_file.seek(54);
-//          //grab one row of pixels from the SD card at a time
-//          for (int line = 0; line < VRES * 2; line++)
-//          {
-//
-//            //Set the LCD to the left of this line. BMPs store data
-//            //to have the image drawn from the other end, uncomment the line below
-//
-//            //read a line from the SD card
-//            bmp_file.read(one_line, HRES / 2 * 3);
-//
-//            //send the line to the display
-//            send_pixels_Y(HRES / 2 * 3, one_line);
-//          }
-//
-//          Serial.println("refreshing......");
-//          //Write the command: Display Refresh (DRF)
-//          writeCMD(0x12);
-//          //Make sure the display is not busy before starting a new command.
-//          while (0 == digitalRead(EPD_READY));
-//
-//          Serial.print(" complete");
-//          //Give a bit to let them see it
-//          delay(3000);
-//        }
-//      }
-//    }
-//    //Release the BMP file handle
-//    bmp_file.close();
-//  }
-//  //Release the root directory file handle
-//  root_dir.close();
-//}
-
-//================================================================================
 void send_pixels_BW(uint16_t byteCount, uint8_t *dataPtr)
 {
   uint8_t data;
   uint8_t red;
   uint8_t green;
   uint8_t blue;
+  uint8_t i = 0;
   while (byteCount != 0)
   {
     uint8_t data = 0;
@@ -472,7 +379,7 @@ void send_pixels_BW(uint16_t byteCount, uint8_t *dataPtr)
       data = data | 0x01;
     }
 
-    for (uint8_t i = 0; i < 7; i++)
+    for (i = 0; i < 7; i++)
     {
       red = *dataPtr;
       dataPtr++;
@@ -508,6 +415,7 @@ void send_pixels_Y(uint8_t byteCount, uint8_t *dataPtr)
   uint8_t red;
   uint8_t green;
   uint8_t blue;
+  uint8_t i = 0;
   while (byteCount != 0)
   {
     uint8_t data = 0;
@@ -527,7 +435,7 @@ void send_pixels_Y(uint8_t byteCount, uint8_t *dataPtr)
       data |= 0x01;
     }
 
-    for (uint8_t i = 0; i < 7; i++)
+    for (i = 0; i < 7; i++)
     {
       blue = *dataPtr;
       dataPtr++;
@@ -584,19 +492,72 @@ int main(void)
 {
     initDevices();
 
-    #if splashscreen
-      //power on the display
-      powerON();
-      //load an image to the display
-      Load_Flash_Image_To_Display_RAM(HRES, VRES, Splash_Mono_1BPP, Splash_Red_1BPP);
+    uint8_t i = 0;
 
-      //Serial.print("refreshing . . . ");
-      while (0 == digitalRead(EPD_READY));
-      //Serial.println("refresh complete");
-      //for maximum power conservation, power off the EPD
-      powerOff();
-      //delay(waittime);
-    #endif
+    //for(;;)
+    {
+        //I will clear the screen and make it white!
+
+          //power on the display
+          powerON();
+          ePaper_CS_0;
+          ePaper_DC_0;
+          //start data transmission 1
+          //SPI.transfer(0x10);
+          sipTransmitData(0x10);
+          ePaper_DC_1;
+
+          for (i = 0; i < (uint32_t)VRES*HRES >> 3; i++)
+          {
+            //SPI.transfer(0x00);
+              sipTransmitData(0x00);
+          }
+          //start data transmission 2
+          ePaper_DC_0;
+          //SPI.transfer(0x13);
+          sipTransmitData(0x13);
+          ePaper_DC_1;
+          for (i = 0; i < (uint32_t)VRES*HRES >> 3; i++)
+          {
+            //SPI.transfer(0x00);
+              sipTransmitData(0x00);
+          }
+
+          //Aim back at the command register
+          ePaper_DC_0;
+          //Write the command: DATA STOP (DSP) (R11H)
+          //SPI.transfer(0x11);
+          sipTransmitData(0x11);
+          //Write the command: Display Refresh (DRF)
+          //SPI.transfer(0x12);
+          sipTransmitData(0x12);
+          //Deslect the controller
+          ePaper_CS_1;
+          //refresh the display
+          //Serial.println("before refresh wait");
+          while (0 == digitalRead(EPD_READY));
+          //Serial.println("after refresh wait");
+          //for maximum power conservation, power off the EPD
+          powerOff();
+          //delay(waittime);
+
+
+    }
+
+
+//    #if splashscreen
+//      //power on the display
+//      powerON();
+//      //load an image to the display
+//      Load_Flash_Image_To_Display_RAM(HRES, VRES, Splash_Mono_1BPP, Splash_Red_1BPP);
+//
+//      //Serial.print("refreshing . . . ");
+//      while (0 == digitalRead(EPD_READY));
+//      //Serial.println("refresh complete");
+//      //for maximum power conservation, power off the EPD
+//      powerOff();
+//      //delay(waittime);
+//    #endif
 
 	return 0;
 }
