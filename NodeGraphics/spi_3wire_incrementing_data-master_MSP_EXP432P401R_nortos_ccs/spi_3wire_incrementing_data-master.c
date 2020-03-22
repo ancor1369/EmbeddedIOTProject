@@ -51,7 +51,40 @@
 static volatile uint8_t RXData = 0;
 static uint8_t TXData = 0;
 
+void writeCMD(uint8_t command)
+{
+  ePaper_DC_0;
+  ePaper_CS_0;
+//  //USCI_A0 TX buffer ready?
+//    while (!USCI_B_SPI_getInterruptStatus(USCI_B0_BASE,
+//               USCI_B_SPI_TRANSMIT_INTERRUPT)) ;
+//    //Transmit Data to slave
+//    USCI_B_SPI_transmitData(USCI_B0_BASE, command);
 
+  /* Polling to see if the TX buffer is ready */
+  while (!(SPI_getInterruptStatus(EUSCI_B0_BASE,EUSCI_SPI_TRANSMIT_INTERRUPT)));
+     /* Transmitting data to slave */
+  SPI_transmitData(EUSCI_B0_BASE, command);
+
+  ePaper_CS_1;
+}
+
+//this function will take in a byte and send it to the display with the
+//command bit high for data transmission
+void writeData(uint8_t data)
+{
+  ePaper_DC_1;
+  ePaper_CS_0;
+//  //USCI_A0 TX buffer ready?
+//     while (!USCI_B_SPI_getInterruptStatus(USCI_B0_BASE,
+//                USCI_B_SPI_TRANSMIT_INTERRUPT)) ;
+//     //Transmit Data to slave
+//     USCI_B_SPI_transmitData(USCI_B0_BASE, data);
+  while (!(SPI_getInterruptStatus(EUSCI_B0_BASE,EUSCI_SPI_TRANSMIT_INTERRUPT)));
+  /* Transmitting data to slave */
+  SPI_transmitData(EUSCI_B0_BASE, data);
+  ePaper_CS_1;
+}
 
 void digitalWrite(uint8_t pin, uint8_t state)
 {
@@ -114,40 +147,47 @@ int main(void)
 {
     initDevices();
 
-    //![Simple SPI Example]
     TXData = 0x01;
-    uint32_t jj;
-
-    ePaper_CS_1;
-    //GPIO_setOutputHighOnPin(GPIO_PORT_P2,  BIT7);
+    writeCMD(TXData);
+    writeData(0x25);
 
 
-    /* Polling to see if the TX buffer is ready */
-    while (!(SPI_getInterruptStatus(EUSCI_B0_BASE,EUSCI_SPI_TRANSMIT_INTERRUPT)));
-
-    //GPIO_setOutputLowOnPin(GPIO_PORT_P2,  BIT7);
-    ePaper_CS_0;
-    /* Transmitting data to slave */
-    SPI_transmitData(EUSCI_B0_BASE, TXData);
-    for(jj=0;jj<10;jj++);
-    //GPIO_setOutputHighOnPin(GPIO_PORT_P2,  BIT7);
-    ePaper_CS_1;
 
 
-    for(jj=0;jj<50;jj++);
-    TXData = 0x02;
+//    //![Simple SPI Example]
 
-    /* Polling to see if the TX buffer is ready */
-    while (!(SPI_getInterruptStatus(EUSCI_B0_BASE,EUSCI_SPI_TRANSMIT_INTERRUPT)));
-
-    //GPIO_setOutputLowOnPin(GPIO_PORT_P2,  BIT7);
-    ePaper_CS_0;
-    /* Transmitting data to slave */
-    SPI_transmitData(EUSCI_B0_BASE, TXData);
-    for(jj=0;jj<10;jj++);
-    //GPIO_setOutputHighOnPin(GPIO_PORT_P2,  BIT7);
-    ePaper_CS_1;
-
-    PCM_gotoLPM0();
-    __no_operation();
+//    uint32_t jj;
+//
+//    ePaper_CS_1;
+//    //GPIO_setOutputHighOnPin(GPIO_PORT_P2,  BIT7);
+//
+//
+//    /* Polling to see if the TX buffer is ready */
+//    while (!(SPI_getInterruptStatus(EUSCI_B0_BASE,EUSCI_SPI_TRANSMIT_INTERRUPT)));
+//
+//    //GPIO_setOutputLowOnPin(GPIO_PORT_P2,  BIT7);
+//    ePaper_CS_0;
+//    /* Transmitting data to slave */
+//    SPI_transmitData(EUSCI_B0_BASE, TXData);
+//    for(jj=0;jj<10;jj++);
+//    //GPIO_setOutputHighOnPin(GPIO_PORT_P2,  BIT7);
+//    ePaper_CS_1;
+//
+//
+//    for(jj=0;jj<50;jj++);
+//    TXData = 0x02;
+//
+//    /* Polling to see if the TX buffer is ready */
+//    while (!(SPI_getInterruptStatus(EUSCI_B0_BASE,EUSCI_SPI_TRANSMIT_INTERRUPT)));
+//
+//    //GPIO_setOutputLowOnPin(GPIO_PORT_P2,  BIT7);
+//    ePaper_CS_0;
+//    /* Transmitting data to slave */
+//    SPI_transmitData(EUSCI_B0_BASE, TXData);
+//    for(jj=0;jj<10;jj++);
+//    //GPIO_setOutputHighOnPin(GPIO_PORT_P2,  BIT7);
+//    ePaper_CS_1;
+//
+//    PCM_gotoLPM0();
+//    __no_operation();
 }
