@@ -49,6 +49,8 @@ spi_3wire_incrementing_data-master.obj: /home/andres/ti/simplelink_msp432p4_sdk_
 spi_3wire_incrementing_data-master.obj: /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/devices/msp432p4xx/driverlib/wdt_a.h
 spi_3wire_incrementing_data-master.obj: /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/devices/msp432p4xx/driverlib/sysctl.h
 spi_3wire_incrementing_data-master.obj: /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/devices/msp432p4xx/driverlib/flash.h
+spi_3wire_incrementing_data-master.obj: /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/drivers/SPI.h
+spi_3wire_incrementing_data-master.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stddef.h
 
 ../spi_3wire_incrementing_data-master.c: 
 /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/devices/msp432p4xx/driverlib/driverlib.h: 
@@ -99,3 +101,5 @@ spi_3wire_incrementing_data-master.obj: /home/andres/ti/simplelink_msp432p4_sdk_
 /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/devices/msp432p4xx/driverlib/wdt_a.h: 
 /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/devices/msp432p4xx/driverlib/sysctl.h: 
 /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/devices/msp432p4xx/driverlib/flash.h: 
+/home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/drivers/SPI.h: 
+/home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stddef.h: 

@@ -21,6 +21,8 @@
 
 /* DriverLib Includes */
 #include <ti/devices/msp432p4xx/driverlib/driverlib.h>
+#include <ti/drivers/SPI.h>
+
 
 /* Standard Includes */
 #include <stdint.h>
@@ -33,13 +35,12 @@
 #define LOW         0
 #define HIGH        1
 
-//Create functions to address this function call
-#define ePaper_RST_0  (digitalWrite(EPD_RESET, LOW))
-#define ePaper_RST_1  (digitalWrite(EPD_RESET, HIGH))
-#define ePaper_CS_0   (digitalWrite(EPD_CS, LOW))
-#define ePaper_CS_1   (digitalWrite(EPD_CS, HIGH))
-#define ePaper_DC_0   (digitalWrite(EPD_DC, LOW))
-#define ePaper_DC_1   (digitalWrite(EPD_DC, HIGH))
+#define ePaper_RST_0  (digitalLow(EPD_RESET))
+#define ePaper_RST_1  (digitalHigh(EPD_RESET))
+#define ePaper_CS_0   (digitalLow(EPD_CS))
+#define ePaper_CS_1   (digitalHigh(EPD_CS))
+#define ePaper_DC_0   (digitalLow(EPD_DC))
+#define ePaper_DC_1   (digitalHigh(EPD_DC))
 
 #define HRES 128
 #define VRES 296
@@ -47,39 +48,14 @@
 /* Statics */
 static volatile uint8_t RXData = 0;
 
-void writeCMD(uint8_t command)
+void digitalLow(uint8_t pin)
 {
-  ePaper_DC_0;
-  ePaper_CS_0;
-  /* Polling to see if the TX buffer is ready */
-  //while (!(SPI_getInterruptStatus(EUSCI_B0_BASE,EUSCI_SPI_TRANSMIT_INTERRUPT)));
-  SPI_transmitData(EUSCI_B0_BASE, command);
-
-  ePaper_CS_1;
+    GPIO_setOutputLowOnPin(GPIO_PORT_P2, pin);
 }
 
-//this function will take in a byte and send it to the display with the
-//command bit high for data transmission
-void writeData(uint8_t data)
+void digitalHigh(uint8_t pin)
 {
-  ePaper_DC_1;
-  ePaper_CS_0;
-  //while (!(SPI_getInterruptStatus(EUSCI_B0_BASE,EUSCI_SPI_TRANSMIT_INTERRUPT)));
-  /* Transmitting data to slave */
-  SPI_transmitData(EUSCI_B0_BASE, data);
-  ePaper_CS_1;
-}
-
-void digitalWrite(uint8_t pin, uint8_t state)
-{
-    if(state == LOW)
-    {
-        GPIO_setOutputLowOnPin(GPIO_PORT_P2, pin);
-    }
-    else
-    {
-        GPIO_setOutputHighOnPin(GPIO_PORT_P2, pin);
-    }
+    GPIO_setOutputHighOnPin(GPIO_PORT_P2, pin);
 }
 
 uint8_t result = 0;
@@ -87,8 +63,30 @@ uint8_t j;
 uint8_t digitalRead(uint8_t pin)
 {
     result = GPIO_getInputPinValue(GPIO_PORT_P3, pin);
-    for(j=0;j<50;j++);
+    //for(j=0;j<50;j++);
     return result;
+}
+
+
+void writeCMD(uint8_t command)
+{
+
+  digitalLow(EPD_DC);
+  digitalLow(EPD_CS);
+  SPI_transmitData(EUSCI_B0_BASE, command);
+  digitalHigh(EPD_CS);
+  GPIO_setOutputHighOnPin(GPIO_PORT_P1, GPIO_PIN6);
+}
+
+//this function will take in a byte and send it to the display with the
+//command bit high for data transmission
+void writeData(uint8_t data)
+{
+  digitalHigh(EPD_DC);
+  digitalLow(EPD_CS);
+  SPI_transmitData(EUSCI_B0_BASE, data);
+  digitalHigh(EPD_CS);
+  GPIO_setOutputHighOnPin(GPIO_PORT_P1, GPIO_PIN6);
 }
 
 //![Simple SPI Config]
@@ -100,36 +98,11 @@ const eUSCI_SPI_MasterConfig spiMasterConfig =
         500000,                                    // SPICLK = 500khz
         EUSCI_B_SPI_MSB_FIRST,                     // MSB First
         EUSCI_B_SPI_PHASE_DATA_CHANGED_ONFIRST_CAPTURED_ON_NEXT,    // Phase
-        EUSCI_B_SPI_CLOCKPOLARITY_INACTIVITY_LOW, // High polarity
-        //EUSCI_B_SPI_3PIN                           // 3Wire SPI Mode
-        EUSCI_B_SPI_4PIN_UCxSTE_ACTIVE_HIGH
+        EUSCI_B_SPI_CLOCKPOLARITY_INACTIVITY_HIGH,  // High polarity
+        EUSCI_B_SPI_3PIN                           // 3Wire SPI Mode
 };
 //![Simple SPI Config]
 
-
-void initDevices()
-{
-    //SPI interface
-    /* Halting WDT  */
-   WDT_A_holdTimer();
-
-   //![Simple SPI Example]
-   /* Selecting P1.5 P1.6 and P1.7 in SPI mode */
-   GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P1,
-           GPIO_PIN5 | GPIO_PIN6 | GPIO_PIN7, GPIO_PRIMARY_MODULE_FUNCTION);
-   /* Configuring SPI in 3wire master mode */
-   SPI_initMaster(EUSCI_B0_BASE, &spiMasterConfig);
-   /* Enable SPI module */
-   SPI_enableModule(EUSCI_B0_BASE);
-
-   /* Enabling interrupts */
-//    SPI_enableInterrupt(EUSCI_B0_BASE, EUSCI_SPI_RECEIVE_INTERRUPT);
-//    Interrupt_enableInterrupt(INT_EUSCIB0);
-//    Interrupt_enableSleepOnIsrExit();
-   //GPIO initialization
-   GPIO_setAsOutputPin(GPIO_PORT_P2, EPD_CS | EPD_DC | EPD_RESET);
-   GPIO_setAsInputPin(GPIO_PORT_P3, EPD_READY);
-}
 
 void initEPD()
 {
@@ -184,13 +157,46 @@ void initEPD()
 }
 
 
+
+
+void initDevices()
+{
+    //SPI interface
+    /* Halting WDT  */
+   WDT_A_holdTimer();
+
+   //GPIO initialization
+   GPIO_setAsOutputPin(GPIO_PORT_P2, EPD_CS | EPD_DC | EPD_RESET);
+   GPIO_setOutputLowOnPin(GPIO_PORT_P2, EPD_CS | EPD_DC);
+   GPIO_setAsInputPin(GPIO_PORT_P3, EPD_READY);
+
+   //![Simple SPI Example]
+   /* Selecting P1.5 P1.6 and P1.7 in SPI mode */
+   GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P1,
+           GPIO_PIN5 | GPIO_PIN6 | GPIO_PIN7, GPIO_PRIMARY_MODULE_FUNCTION);
+   /* Configuring SPI in 3wire master mode */
+   SPI_initMaster(EUSCI_B0_BASE, &spiMasterConfig);
+   /* Enable SPI module */
+   SPI_enableModule(EUSCI_B0_BASE);
+
+   ePaper_RST_0;
+   for(j=0;j<10;j++);
+   ePaper_RST_1;
+   for(j=0;j<10;j++);
+
+
+   initEPD();
+
+}
+
 int main(void)
 {
     initDevices();
-
-    initEPD();
-
-
     PCM_gotoLPM0();
     __no_operation();
 }
+
+
+
+
+
