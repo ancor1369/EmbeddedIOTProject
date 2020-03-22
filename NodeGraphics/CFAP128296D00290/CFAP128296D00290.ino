@@ -137,7 +137,8 @@ void setup(void)
   }
 
   //Set up SPI interface @ 2MHz
-  SPI.beginTransaction(SPISettings(2000000, MSBFIRST, SPI_MODE0));
+  //SPI.beginTransaction(SPISettings(2000000, MSBFIRST, SPI_MODE0));
+  SPI.beginTransaction(SPISettings(500000, MSBFIRST, SPI_MODE0));
   SPI.begin();
 
   //reset driver
