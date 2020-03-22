@@ -1,63 +1,24 @@
-/* --COPYRIGHT--,BSD
- * Copyright (c) 2017, Texas Instruments Incorporated
- * All rights reserved.
+/*
+ * Epaper Demonstration code:
  *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
+ * I write this software to create an interface over the Crystalfontz E-Paper displays.
  *
- * *  Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
+ * This software ports the vendor provided code which is created for Arduino IDE initially,
+ * So I am contributing this work to enable MSP430 platforms to drive this kind of screens.*
  *
- * *  Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the distribution.
  *
- * *  Neither the name of Texas Instruments Incorporated nor the names of
- *    its contributors may be used to endorse or promote products derived
- *    from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
- * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
- * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
- * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
- * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- * --/COPYRIGHT--*/
-/******************************************************************************
- * MSP432 SPI - 3-wire Master Incremented Data
- *
- * This example shows how SPI master talks to SPI slave using 3-wire mode.
- * Incrementing data is sent by the master starting at 0x01. Received data is
- * expected to be same as the previous transmission.  eUSCI RX ISR is used to
- * handle communication with the CPU, normally in LPM0. Because all execution 
- * after LPM0 is in ISRs, initialization waits for DCO to stabilize against 
- * ACLK.
- *
- * Note that in this example, EUSCIB0 is used for the SPI port. If the user
- * wants to use EUSCIA for SPI operation, they are able to with the same APIs
- * with the EUSCI_AX parameters.
- *
- * ACLK = ~32.768kHz, MCLK = SMCLK = DCO 3MHz
- *
- * Use with SPI Slave Data Echo code example.
- *
- *                MSP432P401
- *              -----------------
- *             |                 |
- *             |                 |
- *             |                 |
- *             |             P1.6|-> Data Out (UCB0SIMO)
- *             |                 |
- *             |             P1.7|<- Data In (UCB0SOMI)
- *             |                 |
- *             |             P1.5|-> Serial Clock Out (UCB0CLK)
- *******************************************************************************/
+ * EXP430F5529 Port | Screen pin
+ * -----------------+-----------
+ *  3.3 V           | 3.3 V
+ *  GND             | GND
+ *  P1.5| SPI CLK   | SCK
+ *  P1.6| SPI MOSI  | MOSI
+ *  P2.7| GPIO      | ~CS
+ *  P2.6| GPIO      | D/~C
+ *  P2.4| GPIO      | ~RST
+ *  P3.0| GPIO      | Busy
+ */
+
 /* DriverLib Includes */
 #include <ti/devices/msp432p4xx/driverlib/driverlib.h>
 
@@ -65,9 +26,46 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+#define EPD_READY   GPIO_PIN0
+#define EPD_RESET   GPIO_PIN4
+#define EPD_DC      GPIO_PIN6
+#define EPD_CS      GPIO_PIN7
+#define LOW         0
+#define HIGH        1
+
+//Create functions to address this function call
+#define ePaper_RST_0  (digitalWrite(EPD_RESET, LOW))
+#define ePaper_RST_1  (digitalWrite(EPD_RESET, HIGH))
+#define ePaper_CS_0   (digitalWrite(EPD_CS, LOW))
+#define ePaper_CS_1   (digitalWrite(EPD_CS, HIGH))
+#define ePaper_DC_0   (digitalWrite(EPD_DC, LOW))
+#define ePaper_DC_1   (digitalWrite(EPD_DC, HIGH))
+
+#define HRES 128
+#define VRES 296
+
+#define SPICLK                          2000000
+
+
 /* Statics */
 static volatile uint8_t RXData = 0;
 static uint8_t TXData = 0;
+
+
+
+void digitalWrite(uint8_t pin, uint8_t state)
+{
+    if(state == LOW)
+    {
+        GPIO_setOutputLowOnPin(GPIO_PORT_P2, pin);
+    }
+    else
+    {
+        GPIO_setOutputHighOnPin(GPIO_PORT_P2, pin);
+    }
+}
+
+
 
 //![Simple SPI Config]
 /* SPI Master Configuration Parameter */
@@ -83,78 +81,73 @@ const eUSCI_SPI_MasterConfig spiMasterConfig =
 };
 //![Simple SPI Config]
 
+
+void initDevices()
+{
+    //SPI interface
+    /* Halting WDT  */
+   WDT_A_holdTimer();
+
+   //![Simple SPI Example]
+   /* Selecting P1.5 P1.6 and P1.7 in SPI mode */
+   GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P1,
+           GPIO_PIN5 | GPIO_PIN6 | GPIO_PIN7, GPIO_PRIMARY_MODULE_FUNCTION);
+   /* Configuring SPI in 3wire master mode */
+   SPI_initMaster(EUSCI_B0_BASE, &spiMasterConfig);
+   /* Enable SPI module */
+   SPI_enableModule(EUSCI_B0_BASE);
+
+   /* Enabling interrupts */
+//    SPI_enableInterrupt(EUSCI_B0_BASE, EUSCI_SPI_RECEIVE_INTERRUPT);
+//    Interrupt_enableInterrupt(INT_EUSCIB0);
+//    Interrupt_enableSleepOnIsrExit();
+   //GPIO initialization
+   GPIO_setAsOutputPin(GPIO_PORT_P2, EPD_CS);
+   GPIO_setAsOutputPin(GPIO_PORT_P2, EPD_DC);
+   GPIO_setAsOutputPin(GPIO_PORT_P2, EPD_RESET);
+   GPIO_setAsInputPin(GPIO_PORT_P3, EPD_READY);
+
+}
+
+
 int main(void)
 {
-    /* Halting WDT  */
-    WDT_A_holdTimer();
+    initDevices();
 
-    //![Simple SPI Example]
-    /* Selecting P1.5 P1.6 and P1.7 in SPI mode */
-    GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P1,
-            GPIO_PIN5 | GPIO_PIN6 | GPIO_PIN7, GPIO_PRIMARY_MODULE_FUNCTION);
-
-    /* Configuring SPI in 3wire master mode */
-    SPI_initMaster(EUSCI_B0_BASE, &spiMasterConfig);
-
-    /* Enable SPI module */
-    SPI_enableModule(EUSCI_B0_BASE);
-
-    /* Enabling interrupts */
-    SPI_enableInterrupt(EUSCI_B0_BASE, EUSCI_SPI_RECEIVE_INTERRUPT);
-    Interrupt_enableInterrupt(INT_EUSCIB0);
-    Interrupt_enableSleepOnIsrExit();
     //![Simple SPI Example]
     TXData = 0x01;
+    uint32_t jj;
 
-    GPIO_setAsOutputPin(GPIO_PORT_P3, BIT7);
-    GPIO_setAsOutputPin(GPIO_PORT_P3, BIT6);
-    GPIO_setOutputLowOnPin(GPIO_PORT_P3,  BIT7);
-    GPIO_setOutputHighOnPin(GPIO_PORT_P3,  BIT6);
+    ePaper_CS_1;
+    //GPIO_setOutputHighOnPin(GPIO_PORT_P2,  BIT7);
 
 
     /* Polling to see if the TX buffer is ready */
     while (!(SPI_getInterruptStatus(EUSCI_B0_BASE,EUSCI_SPI_TRANSMIT_INTERRUPT)));
-    GPIO_setOutputHighOnPin(GPIO_PORT_P3,  BIT7);
-    GPIO_setOutputLowOnPin(GPIO_PORT_P3,  BIT6);
+
+    //GPIO_setOutputLowOnPin(GPIO_PORT_P2,  BIT7);
+    ePaper_CS_0;
     /* Transmitting data to slave */
     SPI_transmitData(EUSCI_B0_BASE, TXData);
+    for(jj=0;jj<10;jj++);
+    //GPIO_setOutputHighOnPin(GPIO_PORT_P2,  BIT7);
+    ePaper_CS_1;
 
 
-    GPIO_setOutputHighOnPin(GPIO_PORT_P3,  BIT6);
+    for(jj=0;jj<50;jj++);
+    TXData = 0x02;
+
+    /* Polling to see if the TX buffer is ready */
+    while (!(SPI_getInterruptStatus(EUSCI_B0_BASE,EUSCI_SPI_TRANSMIT_INTERRUPT)));
+
+    //GPIO_setOutputLowOnPin(GPIO_PORT_P2,  BIT7);
+    ePaper_CS_0;
+    /* Transmitting data to slave */
+    SPI_transmitData(EUSCI_B0_BASE, TXData);
+    for(jj=0;jj<10;jj++);
+    //GPIO_setOutputHighOnPin(GPIO_PORT_P2,  BIT7);
+    ePaper_CS_1;
 
     PCM_gotoLPM0();
     __no_operation();
-}
-
-//******************************************************************************
-//
-//This is the EUSCI_B0 interrupt vector service routine.
-//
-//******************************************************************************
-void EUSCIB0_IRQHandler(void)
-{
-    uint32_t status = SPI_getEnabledInterruptStatus(EUSCI_B0_BASE);
-    uint32_t jj;
-
-
-    if(status & EUSCI_SPI_RECEIVE_INTERRUPT)
-    {
-        /* USCI_B0 TX buffer ready? */
-        while (!(SPI_getInterruptStatus(EUSCI_B0_BASE, EUSCI_SPI_TRANSMIT_INTERRUPT)));
-
-        RXData = SPI_receiveData(EUSCI_B0_BASE);
-
-        GPIO_setOutputLowOnPin(GPIO_PORT_P3,  BIT6);
-        /* Send the next data packet */
-        SPI_transmitData(EUSCI_B0_BASE, ++TXData);
-
-        /* Delay between transmissions for slave to process information */
-        for(jj=0;jj<50;jj++);
-        GPIO_setOutputHighOnPin(GPIO_PORT_P3,  BIT6);
-
-        /* Delay between transmissions for slave to process information */
-        for(jj=50;jj<50;jj++);
-
-    }
-
 }
