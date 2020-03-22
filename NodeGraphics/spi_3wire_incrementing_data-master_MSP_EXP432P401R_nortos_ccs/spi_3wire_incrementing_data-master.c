@@ -98,6 +98,14 @@ void digitalWrite(uint8_t pin, uint8_t state)
     }
 }
 
+uint8_t result = 0;
+uint8_t j;
+uint8_t digitalRead(uint8_t pin)
+{
+    result = GPIO_getInputPinValue(GPIO_PORT_P3, pin);
+    for(j=0;j<50;j++);
+    return result;
+}
 
 
 //![Simple SPI Config]
@@ -110,7 +118,8 @@ const eUSCI_SPI_MasterConfig spiMasterConfig =
         EUSCI_B_SPI_MSB_FIRST,                     // MSB First
         EUSCI_B_SPI_PHASE_DATA_CHANGED_ONFIRST_CAPTURED_ON_NEXT,    // Phase
         EUSCI_B_SPI_CLOCKPOLARITY_INACTIVITY_LOW, // High polarity
-        EUSCI_B_SPI_3PIN                           // 3Wire SPI Mode
+        //EUSCI_B_SPI_3PIN                           // 3Wire SPI Mode
+        EUSCI_B_SPI_4PIN_UCxSTE_ACTIVE_HIGH
 };
 //![Simple SPI Config]
 
@@ -139,7 +148,58 @@ void initDevices()
    GPIO_setAsOutputPin(GPIO_PORT_P2, EPD_DC);
    GPIO_setAsOutputPin(GPIO_PORT_P2, EPD_RESET);
    GPIO_setAsInputPin(GPIO_PORT_P3, EPD_READY);
+}
 
+void initEPD()
+{
+    //-----------------------------------------------------------------------------
+     // more detail on the following commands and additional commands not used here
+     // can be found on the CFAP128296D0-0290 datasheet on the Crystalfontz website
+     //-----------------------------------------------------------------------------
+
+     //Power Setting
+     writeCMD(0x01);
+     writeData(0x03);
+     writeData(0x00);
+     writeData(0x0A);
+     writeData(0x00);
+     writeData(0x03);
+
+     //Booster Soft Start
+     writeCMD(0x06);
+     writeData(0x17);
+     writeData(0x17);
+     writeData(0x17);
+
+     //Power On
+     writeCMD(0x04);
+     //Serial.println("before wait");
+     //wait until powered on
+
+     while (!digitalRead(EPD_READY));
+     //Serial.println("after wait");
+
+     //Panel Setting
+     writeCMD(0x00);
+     writeData(0x83);
+
+     //PLL Control
+     writeCMD(0x30);
+     writeData(0x3c);
+
+     //Resolution
+     writeCMD(0x61);
+     writeData(HRES);
+     writeData(VRES>>8);
+     writeData(VRES&0xff);
+
+     //VCOM_DC Setting
+     writeCMD(0x82);
+     writeData(0x0A);
+
+     //Vcom and data interval setting
+     writeCMD(0x50);
+     writeData(0x87);
 }
 
 
@@ -147,10 +207,11 @@ int main(void)
 {
     initDevices();
 
-    TXData = 0x01;
-    writeCMD(TXData);
-    writeData(0x25);
+//    TXData = 0x01;
+//    writeCMD(TXData);
+//    writeData(0x25);
 
+    initEPD();
 
 
 
