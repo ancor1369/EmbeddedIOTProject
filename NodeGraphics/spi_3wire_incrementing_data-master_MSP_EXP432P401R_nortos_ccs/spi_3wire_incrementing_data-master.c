@@ -89,6 +89,26 @@ void writeData(uint8_t data)
   GPIO_setOutputHighOnPin(GPIO_PORT_P1, GPIO_PIN6);
 }
 
+void SPI_transmit(uint8_t data)
+{
+    digitalLow(EPD_CS);
+    SPI_transmitData(EUSCI_B0_BASE, data);
+    digitalHigh(EPD_CS);
+}
+
+
+void powerON()
+{
+  writeCMD(0x04);
+}
+
+void powerOff()
+{
+  writeCMD(0x02);
+  writeCMD(0x03);
+  writeData(0x00);
+}
+
 //![Simple SPI Config]
 /* SPI Master Configuration Parameter */
 const eUSCI_SPI_MasterConfig spiMasterConfig =
@@ -189,9 +209,51 @@ void initDevices()
 
 }
 
+
+void turnWhite()
+{
+    //power on the display
+      uint32_t i = 0;
+      powerON();
+      //SPI.transfer(0x10);
+      writeCMD(0x10);
+
+      for (i = 0; i < (uint32_t)VRES*HRES >> 3; i++)
+      {
+          writeData(0x00);
+      }
+      //start data transmission 2
+      writeCMD(0x13);
+      for (i = 0; i < (uint32_t)VRES*HRES >> 3; i++)
+      {
+          writeData(0x00);
+      }
+
+      //Aim back at the command register
+
+      //Write the command: DATA STOP (DSP) (R11H)
+      writeCMD(0x11);
+      //Write the command: Display Refresh (DRF)
+      writeCMD(0x12);
+      //refresh the display
+      //Serial.println("before refresh wait");
+      while (!digitalRead(EPD_READY));
+      //Serial.println("after refresh wait");
+      //for maximum power conservation, power off the EPD
+      powerOff();
+      //delay(waittime);
+}
+
+
 int main(void)
 {
     initDevices();
+    turnWhite();
+
+
+
+
+
     PCM_gotoLPM0();
     __no_operation();
 }
