@@ -130,20 +130,20 @@ void partialUpdateSolid(uint8_t x1, uint16_t y1, uint8_t x2, uint16_t y2, uint8_
 
   //set the partial area
   writeCMD(0x90);
-  writeData(((x1 ) << 1) | 0x07);    //x1
-  writeData(((x2 ) << 1));   //x2
-  writeData(y1 );     //1st half y1
+  writeData(((x1 / 8) << 1) | 0x07);    //x1
+  writeData(((x2 / 8) << 1));   //x2
+  writeData(y1 >> 8);     //1st half y1
   writeData(y1 & 0xff); //2nd half y1
-  writeData(y2 );     //1st half y2
+  writeData(y2 >> 8);     //1st half y2
   writeData(y2 & 0xff); //2nd half y2
 
   writeData(0x01);
 
   int i;
   int h;
+
   //send black and white information
   writeCMD(0x10);
-
   for (h = 0; h < y2 - y1; h++)
   {
     for (i = 0; i < (x2 - x1) / 8; i++)
@@ -352,77 +352,86 @@ void turnYellow()
          //delay(waittime);
 }
 
+void makeSquarePattern()
+{
+    //power on the display
+        powerON();
+
+        //color1 is for the bw data, color2 is for the red data
+        uint8_t color1 = 0x00;
+        uint8_t color2 = 0xff;
+
+        //start data transmission 1
+        writeCMD(0x10);
+        uint32_t i = 0;
+        uint8_t j = 0;
+        for (i = 0; i < VRES; i++)
+        {
+          //every 8 rows, change the color
+          if (i % 8 == 0)
+          {
+            color1 = ~color1;
+          }
+          //run for 13 loops to complete a row --- 104 / 8 = 13
+          for (j = 0; j < HRES / 8; j++)
+          {
+            writeData(color1);
+            //every 8 pixels, change the color
+            color1 = ~color1;
+          }
+        }
+        writeCMD(0x13);
+        for (i = 0; i < VRES; i++)
+        {
+          if (i % 8 == 0)
+          {
+            color2 = ~color2;
+          }
+          for (j = 0; j < HRES / 8; j++)
+          {
+            writeData(color2);
+            color2 = ~color2;
+          }
+        }
+
+        //Serial.println("before refresh wait");
+        //refresh the display
+        writeCMD(0x12);
+        while (0 == digitalRead(EPD_READY));
+        //Serial.println("after refresh wait");
+        //for maximum power conservation, power off the EPD
+        powerOff();
+        //delay(waittime);
+
+}
+
 int main(void)
 {
     initDevices();
 
+    turnBlack();
+
+//    for(;;)
+//    {
 
 
-    //power on the display
-    powerON();
-
-    //color1 is for the bw data, color2 is for the red data
-    uint8_t color1 = 0x00;
-    uint8_t color2 = 0xff;
-
-    //start data transmission 1
-    writeCMD(0x10);
-    uint32_t i = 0;
-    uint8_t j = 0;
-    for (i = 0; i < VRES; i++)
-    {
-      //every 8 rows, change the color
-      if (i % 8 == 0)
-      {
-        color1 = ~color1;
-      }
-      //run for 13 loops to complete a row --- 104 / 8 = 13
-      for (j = 0; j < HRES / 8; j++)
-      {
-        writeData(color1);
-        //every 8 pixels, change the color
-        color1 = ~color1;
-      }
-    }
-    writeCMD(0x13);
-    for (i = 0; i < VRES; i++)
-    {
-      if (i % 8 == 0)
-      {
-        color2 = ~color2;
-      }
-      for (j = 0; j < HRES / 8; j++)
-      {
-        writeData(color2);
-        color2 = ~color2;
-      }
-    }
-
-    //Serial.println("before refresh wait");
-    //refresh the display
-    writeCMD(0x12);
-    while (0 == digitalRead(EPD_READY));
-    //Serial.println("after refresh wait");
-    //for maximum power conservation, power off the EPD
-    powerOff();
-    //delay(waittime);
-
-
-
-//    turnYellow();
-
-//    uint8_t jj=0;
-//    for(jj=0;jj<255;j++);
+//        turnYellow();
 //
-//    turnBlack();
+//        //for(jj=0;jj<255;j++);
 //
-//    for(jj=0;jj<255;j++);
+//        turnBlack();
 //
-//    turnWhite();
+//        //for(jj=0;jj<255;j++);
+//
+//        turnWhite();
+//
+//        //for(jj=0;jj<255;j++);
+//
+//        makeSquarePattern();
 
+        //for(jj=0;jj<255;j++);
+//    }
 
-    while (0 == digitalRead(EPD_READY));
-    //delay(1000);
 
     PCM_gotoLPM0();
     __no_operation();
