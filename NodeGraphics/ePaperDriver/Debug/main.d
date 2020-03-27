@@ -53,6 +53,13 @@ main.obj: /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/devices/m
 main.obj: /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/devices/msp432p4xx/driverlib/flash.h
 main.obj: /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/drivers/SPI.h
 main.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stddef.h
+main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/GPIOInit.h
+main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/pinDefinintions.h
+main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/pinDefinintions.h
+main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/ePaper.h
+main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/GPIOInit.h
+main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/pinDefinintions.h
+main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/SPIinit.h
 main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/pinDefinintions.h
 
 ../main.c: 
@@ -108,4 +115,11 @@ main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphi
 /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/devices/msp432p4xx/driverlib/flash.h: 
 /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/drivers/SPI.h: 
 /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stddef.h: 
+/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/GPIOInit.h: 
+/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/pinDefinintions.h: 
+/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/pinDefinintions.h: 
+/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/ePaper.h: 
+/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/GPIOInit.h: 
+/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/pinDefinintions.h: 
+/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/SPIinit.h: 
 /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/pinDefinintions.h: 
