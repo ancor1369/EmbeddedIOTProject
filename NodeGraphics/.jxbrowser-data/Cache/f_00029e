@@ -1,0 +1,194 @@
+[
+  {
+    "downloadLink": "api/bundle?vid=com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02&download=true",
+    "makeofflineLink": "api/bundles?vids=com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02",
+    "removeofflineLink": "api/resources?id=wAn0aasIGg8TXA&path=Software/SimpleLink MSP432P4 SDK/Examples/Development Tools/MSP432P4111 LaunchPad/TI Drivers/spimaster/TI-RTOS/CCS Compiler/spimaster&removeoffline=true",
+    "_id": "wAn0aasIGg8TXA",
+    "advanced": {
+      "overrideProjectSpecDeviceId": true
+    },
+    "devtools": [
+      "MSP432P4111 LaunchPad"
+    ],
+    "link": "api/linkTo/wAn0aasIGg8TXA?extname=.c",
+    "linkType": "local",
+    "name": "spimaster.c",
+    "packageUId": "com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02",
+    "parentID": "wAnu09GdlpXVso",
+    "resourceType": "file",
+    "shortDescription": "spimaster",
+    "type": "resource",
+    "text": "spimaster.c",
+    "url": "/api/resources?path=Software/SimpleLink%20MSP432P4%20SDK/Examples/Development%20Tools/MSP432P4111%20LaunchPad/TI%20Drivers/spimaster/TI-RTOS/CCS%20Compiler/spimaster&package=c2000ware_software_package__3.01.00.00::digital_power_c2000ware_sdk_software_package__2.00.01.00::motor_control_c2000ware_sdk_software_package__2.01.00.00::sitara__1.02.00.00::ascstudio__1.0.0.0::com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::energia.boards.cc13xx__5.20.0::energia.boards.cc3220emt__5.6.2::energia.core__18.0.0::energia.boards.msp432r__5.25.2::energia.tool.arm-none-eabi-gcc__6.3.1-20170620::energia.tool.ino2cpp__1.0.6::arm.gnu__9.2.1::com.ti.mmwave_automotive_toolbox__2.9.1::com.ti.mmwave_industrial_toolbox__4.2.1::msp430ware__3.80.09.03::powerSUITE_software_package__2.05.01.00::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC13X0_SDK__3.20.00.23::com.ti.SIMPLELINK_CC13X2_26X2_SDK__3.40.00.02::com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_CC32XX_SDK__3.40.00.05::com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_MSP432E4_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.ti154stack_linux_x64__3.30.00.12::tirtos_cc13xx_cc26xx__2.21.00.06::tirtos_tivac__2.16.00.08::tm4c__2.1.4.178::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04::xdctools__3.60.02.34",
+    "packageOrder": 277,
+    "offline": "true"
+  },
+  {
+    "downloadLink": "api/bundle?vid=com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02&download=true",
+    "makeofflineLink": "api/bundles?vids=com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02",
+    "removeofflineLink": "api/resources?id=wAnYNvtI1xIR88&path=Software/SimpleLink MSP432P4 SDK/Examples/Development Tools/MSP432P4111 LaunchPad/TI Drivers/spimaster/TI-RTOS/CCS Compiler/spimaster&removeoffline=true",
+    "_id": "wAnYNvtI1xIR88",
+    "advanced": {
+      "overrideProjectSpecDeviceId": true
+    },
+    "devtools": [
+      "MSP432P4111 LaunchPad"
+    ],
+    "link": "api/linkTo/wAnYNvtI1xIR88?extname=.md",
+    "linkType": "local",
+    "name": "README.md",
+    "packageUId": "com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02",
+    "parentID": "wAnu09GdlpXVso",
+    "resourceType": "file",
+    "shortDescription": "spimaster",
+    "type": "resource",
+    "text": "README.md",
+    "url": "/api/resources?path=Software/SimpleLink%20MSP432P4%20SDK/Examples/Development%20Tools/MSP432P4111%20LaunchPad/TI%20Drivers/spimaster/TI-RTOS/CCS%20Compiler/spimaster&package=c2000ware_software_package__3.01.00.00::digital_power_c2000ware_sdk_software_package__2.00.01.00::motor_control_c2000ware_sdk_software_package__2.01.00.00::sitara__1.02.00.00::ascstudio__1.0.0.0::com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::energia.boards.cc13xx__5.20.0::energia.boards.cc3220emt__5.6.2::energia.core__18.0.0::energia.boards.msp432r__5.25.2::energia.tool.arm-none-eabi-gcc__6.3.1-20170620::energia.tool.ino2cpp__1.0.6::arm.gnu__9.2.1::com.ti.mmwave_automotive_toolbox__2.9.1::com.ti.mmwave_industrial_toolbox__4.2.1::msp430ware__3.80.09.03::powerSUITE_software_package__2.05.01.00::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC13X0_SDK__3.20.00.23::com.ti.SIMPLELINK_CC13X2_26X2_SDK__3.40.00.02::com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_CC32XX_SDK__3.40.00.05::com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_MSP432E4_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.ti154stack_linux_x64__3.30.00.12::tirtos_cc13xx_cc26xx__2.21.00.06::tirtos_tivac__2.16.00.08::tm4c__2.1.4.178::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04::xdctools__3.60.02.34",
+    "packageOrder": 277,
+    "offline": "true"
+  },
+  {
+    "downloadLink": "api/bundle?vid=com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02&download=true",
+    "makeofflineLink": "api/bundles?vids=com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02",
+    "removeofflineLink": "api/resources?id=wAne8Kwz4WYPPY&path=Software/SimpleLink MSP432P4 SDK/Examples/Development Tools/MSP432P4111 LaunchPad/TI Drivers/spimaster/TI-RTOS/CCS Compiler/spimaster&removeoffline=true",
+    "_id": "wAne8Kwz4WYPPY",
+    "advanced": {
+      "overrideProjectSpecDeviceId": true
+    },
+    "devtools": [
+      "MSP432P4111 LaunchPad"
+    ],
+    "link": "api/linkTo/wAne8Kwz4WYPPY?extname=.html",
+    "linkType": "local",
+    "name": "README.html",
+    "packageUId": "com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02",
+    "parentID": "wAnu09GdlpXVso",
+    "resourceType": "file",
+    "shortDescription": "spimaster",
+    "type": "resource",
+    "text": "README.html",
+    "url": "/api/resources?path=Software/SimpleLink%20MSP432P4%20SDK/Examples/Development%20Tools/MSP432P4111%20LaunchPad/TI%20Drivers/spimaster/TI-RTOS/CCS%20Compiler/spimaster&package=c2000ware_software_package__3.01.00.00::digital_power_c2000ware_sdk_software_package__2.00.01.00::motor_control_c2000ware_sdk_software_package__2.01.00.00::sitara__1.02.00.00::ascstudio__1.0.0.0::com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::energia.boards.cc13xx__5.20.0::energia.boards.cc3220emt__5.6.2::energia.core__18.0.0::energia.boards.msp432r__5.25.2::energia.tool.arm-none-eabi-gcc__6.3.1-20170620::energia.tool.ino2cpp__1.0.6::arm.gnu__9.2.1::com.ti.mmwave_automotive_toolbox__2.9.1::com.ti.mmwave_industrial_toolbox__4.2.1::msp430ware__3.80.09.03::powerSUITE_software_package__2.05.01.00::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC13X0_SDK__3.20.00.23::com.ti.SIMPLELINK_CC13X2_26X2_SDK__3.40.00.02::com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_CC32XX_SDK__3.40.00.05::com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_MSP432E4_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.ti154stack_linux_x64__3.30.00.12::tirtos_cc13xx_cc26xx__2.21.00.06::tirtos_tivac__2.16.00.08::tm4c__2.1.4.178::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04::xdctools__3.60.02.34",
+    "packageOrder": 277,
+    "offline": "true"
+  },
+  {
+    "downloadLink": "api/bundle?vid=com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02&download=true",
+    "makeofflineLink": "api/bundles?vids=com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02",
+    "removeofflineLink": "api/resources?id=wAnm68dTwdF7Bw&path=Software/SimpleLink MSP432P4 SDK/Examples/Development Tools/MSP432P4111 LaunchPad/TI Drivers/spimaster/TI-RTOS/CCS Compiler/spimaster&removeoffline=true",
+    "_id": "wAnm68dTwdF7Bw",
+    "advanced": {
+      "overrideProjectSpecDeviceId": true
+    },
+    "devtools": [
+      "MSP432P4111 LaunchPad"
+    ],
+    "link": "api/linkTo/wAnm68dTwdF7Bw?extname=.json",
+    "linkType": "local",
+    "name": "overview.rov.json",
+    "packageUId": "com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02",
+    "parentID": "wAnu09GdlpXVso",
+    "resourceType": "file",
+    "shortDescription": "spimaster",
+    "type": "resource",
+    "text": "overview.rov.json",
+    "url": "/api/resources?path=Software/SimpleLink%20MSP432P4%20SDK/Examples/Development%20Tools/MSP432P4111%20LaunchPad/TI%20Drivers/spimaster/TI-RTOS/CCS%20Compiler/spimaster&package=c2000ware_software_package__3.01.00.00::digital_power_c2000ware_sdk_software_package__2.00.01.00::motor_control_c2000ware_sdk_software_package__2.01.00.00::sitara__1.02.00.00::ascstudio__1.0.0.0::com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::energia.boards.cc13xx__5.20.0::energia.boards.cc3220emt__5.6.2::energia.core__18.0.0::energia.boards.msp432r__5.25.2::energia.tool.arm-none-eabi-gcc__6.3.1-20170620::energia.tool.ino2cpp__1.0.6::arm.gnu__9.2.1::com.ti.mmwave_automotive_toolbox__2.9.1::com.ti.mmwave_industrial_toolbox__4.2.1::msp430ware__3.80.09.03::powerSUITE_software_package__2.05.01.00::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC13X0_SDK__3.20.00.23::com.ti.SIMPLELINK_CC13X2_26X2_SDK__3.40.00.02::com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_CC32XX_SDK__3.40.00.05::com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_MSP432E4_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.ti154stack_linux_x64__3.30.00.12::tirtos_cc13xx_cc26xx__2.21.00.06::tirtos_tivac__2.16.00.08::tm4c__2.1.4.178::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04::xdctools__3.60.02.34",
+    "packageOrder": 277,
+    "offline": "true"
+  },
+  {
+    "downloadLink": "api/bundle?vid=com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02&download=true",
+    "makeofflineLink": "api/bundles?vids=com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02",
+    "removeofflineLink": "api/resources?id=wAnoM98MG-9DYA&path=Software/SimpleLink MSP432P4 SDK/Examples/Development Tools/MSP432P4111 LaunchPad/TI Drivers/spimaster/TI-RTOS/CCS Compiler/spimaster&removeoffline=true",
+    "_id": "wAnoM98MG-9DYA",
+    "advanced": {
+      "overrideProjectSpecDeviceId": true
+    },
+    "devtools": [
+      "MSP432P4111 LaunchPad"
+    ],
+    "link": "api/linkTo/wAnoM98MG-9DYA?extname=.c",
+    "linkType": "local",
+    "name": "main_tirtos.c",
+    "packageUId": "com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02",
+    "parentID": "wAnu09GdlpXVso",
+    "resourceType": "file",
+    "shortDescription": "spimaster",
+    "type": "resource",
+    "text": "main_tirtos.c",
+    "url": "/api/resources?path=Software/SimpleLink%20MSP432P4%20SDK/Examples/Development%20Tools/MSP432P4111%20LaunchPad/TI%20Drivers/spimaster/TI-RTOS/CCS%20Compiler/spimaster&package=c2000ware_software_package__3.01.00.00::digital_power_c2000ware_sdk_software_package__2.00.01.00::motor_control_c2000ware_sdk_software_package__2.01.00.00::sitara__1.02.00.00::ascstudio__1.0.0.0::com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::energia.boards.cc13xx__5.20.0::energia.boards.cc3220emt__5.6.2::energia.core__18.0.0::energia.boards.msp432r__5.25.2::energia.tool.arm-none-eabi-gcc__6.3.1-20170620::energia.tool.ino2cpp__1.0.6::arm.gnu__9.2.1::com.ti.mmwave_automotive_toolbox__2.9.1::com.ti.mmwave_industrial_toolbox__4.2.1::msp430ware__3.80.09.03::powerSUITE_software_package__2.05.01.00::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC13X0_SDK__3.20.00.23::com.ti.SIMPLELINK_CC13X2_26X2_SDK__3.40.00.02::com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_CC32XX_SDK__3.40.00.05::com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_MSP432E4_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.ti154stack_linux_x64__3.30.00.12::tirtos_cc13xx_cc26xx__2.21.00.06::tirtos_tivac__2.16.00.08::tm4c__2.1.4.178::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04::xdctools__3.60.02.34",
+    "packageOrder": 277,
+    "offline": "true"
+  },
+  {
+    "downloadLink": "api/bundle?vid=com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02&download=true",
+    "makeofflineLink": "api/bundles?vids=com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02",
+    "removeofflineLink": "api/resources?id=wAnkpkgWNKtEDk&path=Software/SimpleLink MSP432P4 SDK/Examples/Development Tools/MSP432P4111 LaunchPad/TI Drivers/spimaster/TI-RTOS/CCS Compiler/spimaster&removeoffline=true",
+    "_id": "wAnkpkgWNKtEDk",
+    "advanced": {
+      "overrideProjectSpecDeviceId": true
+    },
+    "devtools": [
+      "MSP432P4111 LaunchPad"
+    ],
+    "link": "api/linkTo/wAnkpkgWNKtEDk?extname=.syscfg",
+    "linkType": "local",
+    "name": "spimaster.syscfg",
+    "packageUId": "com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02",
+    "parentID": "wAnu09GdlpXVso",
+    "resourceType": "file",
+    "shortDescription": "spimaster",
+    "type": "resource",
+    "text": "spimaster.syscfg",
+    "url": "/api/resources?path=Software/SimpleLink%20MSP432P4%20SDK/Examples/Development%20Tools/MSP432P4111%20LaunchPad/TI%20Drivers/spimaster/TI-RTOS/CCS%20Compiler/spimaster&package=c2000ware_software_package__3.01.00.00::digital_power_c2000ware_sdk_software_package__2.00.01.00::motor_control_c2000ware_sdk_software_package__2.01.00.00::sitara__1.02.00.00::ascstudio__1.0.0.0::com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::energia.boards.cc13xx__5.20.0::energia.boards.cc3220emt__5.6.2::energia.core__18.0.0::energia.boards.msp432r__5.25.2::energia.tool.arm-none-eabi-gcc__6.3.1-20170620::energia.tool.ino2cpp__1.0.6::arm.gnu__9.2.1::com.ti.mmwave_automotive_toolbox__2.9.1::com.ti.mmwave_industrial_toolbox__4.2.1::msp430ware__3.80.09.03::powerSUITE_software_package__2.05.01.00::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC13X0_SDK__3.20.00.23::com.ti.SIMPLELINK_CC13X2_26X2_SDK__3.40.00.02::com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_CC32XX_SDK__3.40.00.05::com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_MSP432E4_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.ti154stack_linux_x64__3.30.00.12::tirtos_cc13xx_cc26xx__2.21.00.06::tirtos_tivac__2.16.00.08::tm4c__2.1.4.178::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04::xdctools__3.60.02.34",
+    "packageOrder": 277,
+    "offline": "true"
+  },
+  {
+    "downloadLink": "api/bundle?vid=com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02&download=true",
+    "makeofflineLink": "api/bundles?vids=com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02",
+    "removeofflineLink": "api/resources?id=wAnoKjg3Z0RL3o&path=Software/SimpleLink MSP432P4 SDK/Examples/Development Tools/MSP432P4111 LaunchPad/TI Drivers/spimaster/TI-RTOS/CCS Compiler/spimaster&removeoffline=true",
+    "_id": "wAnoKjg3Z0RL3o",
+    "advanced": {
+      "overrideProjectSpecDeviceId": true
+    },
+    "devtools": [
+      "MSP432P4111 LaunchPad"
+    ],
+    "link": "api/linkTo/wAnoKjg3Z0RL3o?extname=.html",
+    "linkType": "local",
+    "name": "Board.html",
+    "packageUId": "com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02",
+    "parentID": "wAnu09GdlpXVso",
+    "resourceType": "file",
+    "shortDescription": "spimaster",
+    "type": "resource",
+    "text": "Board.html",
+    "url": "/api/resources?path=Software/SimpleLink%20MSP432P4%20SDK/Examples/Development%20Tools/MSP432P4111%20LaunchPad/TI%20Drivers/spimaster/TI-RTOS/CCS%20Compiler/spimaster&package=c2000ware_software_package__3.01.00.00::digital_power_c2000ware_sdk_software_package__2.00.01.00::motor_control_c2000ware_sdk_software_package__2.01.00.00::sitara__1.02.00.00::ascstudio__1.0.0.0::com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::energia.boards.cc13xx__5.20.0::energia.boards.cc3220emt__5.6.2::energia.core__18.0.0::energia.boards.msp432r__5.25.2::energia.tool.arm-none-eabi-gcc__6.3.1-20170620::energia.tool.ino2cpp__1.0.6::arm.gnu__9.2.1::com.ti.mmwave_automotive_toolbox__2.9.1::com.ti.mmwave_industrial_toolbox__4.2.1::msp430ware__3.80.09.03::powerSUITE_software_package__2.05.01.00::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC13X0_SDK__3.20.00.23::com.ti.SIMPLELINK_CC13X2_26X2_SDK__3.40.00.02::com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_CC32XX_SDK__3.40.00.05::com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_MSP432E4_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.ti154stack_linux_x64__3.30.00.12::tirtos_cc13xx_cc26xx__2.21.00.06::tirtos_tivac__2.16.00.08::tm4c__2.1.4.178::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04::xdctools__3.60.02.34",
+    "packageOrder": 277,
+    "offline": "true"
+  },
+  {
+    "downloadLink": "api/bundle?vid=com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02&download=true",
+    "makeofflineLink": "api/bundles?vids=com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02",
+    "removeofflineLink": "api/resources?id=wAnmTNZ8vgkYYo&path=Software/SimpleLink MSP432P4 SDK/Examples/Development Tools/MSP432P4111 LaunchPad/TI Drivers/spimaster/TI-RTOS/CCS Compiler/spimaster&removeoffline=true",
+    "_id": "wAnmTNZ8vgkYYo",
+    "advanced": {
+      "overrideProjectSpecDeviceId": true
+    },
+    "devtools": [
+      "MSP432P4111 LaunchPad"
+    ],
+    "link": "api/linkTo/wAnmTNZ8vgkYYo?extname=.cmd",
+    "linkType": "local",
+    "name": "MSP_EXP432P4111_TIRTOS.cmd",
+    "packageUId": "com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02",
+    "parentID": "wAnu09GdlpXVso",
+    "resourceType": "file",
+    "shortDescription": "spimaster",
+    "type": "resource",
+    "text": "MSP_EXP432P4111_TIRTOS.cmd",
+    "url": "/api/resources?path=Software/SimpleLink%20MSP432P4%20SDK/Examples/Development%20Tools/MSP432P4111%20LaunchPad/TI%20Drivers/spimaster/TI-RTOS/CCS%20Compiler/spimaster&package=c2000ware_software_package__3.01.00.00::digital_power_c2000ware_sdk_software_package__2.00.01.00::motor_control_c2000ware_sdk_software_package__2.01.00.00::sitara__1.02.00.00::ascstudio__1.0.0.0::com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::energia.boards.cc13xx__5.20.0::energia.boards.cc3220emt__5.6.2::energia.core__18.0.0::energia.boards.msp432r__5.25.2::energia.tool.arm-none-eabi-gcc__6.3.1-20170620::energia.tool.ino2cpp__1.0.6::arm.gnu__9.2.1::com.ti.mmwave_automotive_toolbox__2.9.1::com.ti.mmwave_industrial_toolbox__4.2.1::msp430ware__3.80.09.03::powerSUITE_software_package__2.05.01.00::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC13X0_SDK__3.20.00.23::com.ti.SIMPLELINK_CC13X2_26X2_SDK__3.40.00.02::com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_CC32XX_SDK__3.40.00.05::com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_MSP432E4_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.ti154stack_linux_x64__3.30.00.12::tirtos_cc13xx_cc26xx__2.21.00.06::tirtos_tivac__2.16.00.08::tm4c__2.1.4.178::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04::xdctools__3.60.02.34",
+    "packageOrder": 277,
+    "offline": "true"
+  }
+]
