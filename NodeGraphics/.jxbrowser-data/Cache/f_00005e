@@ -1,0 +1,300 @@
+[
+  {
+    "text": "SimpleLink CC32XX SDK AWS IoT Plugin",
+    "type": "folder",
+    "numChildren": 105,
+    "numChildrenLocal": 3345,
+    "children": true,
+    "state": {
+      "opened": false
+    },
+    "package": "SimpleLink CC32XX SDK AWS IoT Plugin",
+    "packageUId": "com.ti.AWS_CC32XX__3.30.00.03",
+    "url": "/api/resources?path=Software/SimpleLink%20SDK%20Plugins&package=com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.AWS_CC32XX__3.30.00.03::com.ti.SAIL__1.50.00.00::com.ti.mmwave_industrial_toolbox__4.2.1::c2000ware_software_package__2.01.00.00::tirtos_cc13xx_cc26xx__2.21.00.06::xdctools__3.60.02.34",
+    "downloadLink": "api/bundle?vid=com.ti.AWS_CC32XX__3.30.00.03&download=true",
+    "makeofflineLink": "api/bundles?vids=com.ti.AWS_CC32XX__3.30.00.03",
+    "removeofflineLink": "api/resources?package=com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::com.ti.HAP_CC26X2__3.30.00.02::com.ti.HAP_CC32XX__3.30.00.02::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_ACADEMY_154STACKPLUGIN__3.20.01.00::com.ti.SIMPLELINK_ACADEMY_AWSPLUGIN__3.40.01.00::com.ti.SIMPLELINK_ACADEMY_BLEPLUGIN__3.10.02.00::com.ti.SIMPLELINK_ACADEMY_WIFIPLUGIN__2.40.00.17::com.ti.SIMPLELINK_ACADEMY_ZIGBEEPLUGIN__2.20.02.02::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04&path=Software/SimpleLink SDK Plugins/SimpleLink CC32XX SDK AWS IoT Plugin&removeoffline=true",
+    "overviewImage": "aws_cc32xx_3_30_00_03/.metadata/.tirex/images/simplelink_cc32xx_sdk_logo.png",
+    "overviewDescription": "SimpleLink CC32XX SDK AWS IoT Plugin",
+    "resourceType": "packageOverview",
+    "packageId": "com.ti.AWS_CC32XX",
+    "packageVersion": "3.30.00.03",
+    "packageOrder": 27
+  },
+  {
+    "text": "SimpleLink MSP432E4 SDK AWS IoT Plugin",
+    "type": "folder",
+    "numChildren": 30,
+    "numChildrenLocal": 858,
+    "children": true,
+    "state": {
+      "opened": false
+    },
+    "package": "SimpleLink MSP432E4 SDK AWS IoT Plugin",
+    "packageUId": "com.ti.AWS_MSP432E4__3.30.00.03",
+    "url": "/api/resources?path=Software/SimpleLink%20SDK%20Plugins&package=com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.AWS_CC32XX__3.30.00.03::com.ti.SAIL__1.50.00.00::com.ti.mmwave_industrial_toolbox__4.2.1::c2000ware_software_package__2.01.00.00::tirtos_cc13xx_cc26xx__2.21.00.06::xdctools__3.60.02.34",
+    "downloadLink": "api/bundle?vid=com.ti.AWS_MSP432E4__3.30.00.03&download=true",
+    "makeofflineLink": "api/bundles?vids=com.ti.AWS_MSP432E4__3.30.00.03",
+    "removeofflineLink": "api/resources?package=com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::com.ti.HAP_CC26X2__3.30.00.02::com.ti.HAP_CC32XX__3.30.00.02::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_ACADEMY_154STACKPLUGIN__3.20.01.00::com.ti.SIMPLELINK_ACADEMY_AWSPLUGIN__3.40.01.00::com.ti.SIMPLELINK_ACADEMY_BLEPLUGIN__3.10.02.00::com.ti.SIMPLELINK_ACADEMY_WIFIPLUGIN__2.40.00.17::com.ti.SIMPLELINK_ACADEMY_ZIGBEEPLUGIN__2.20.02.02::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04&path=Software/SimpleLink SDK Plugins/SimpleLink MSP432E4 SDK AWS IoT Plugin&removeoffline=true",
+    "overviewImage": "aws_msp432e4_3_30_00_03/.metadata/.tirex/images/simplelink_msp432e4_sdk_logo.png",
+    "overviewDescription": "SimpleLink MSP432E4 SDK AWS IoT Plugin",
+    "resourceType": "packageOverview",
+    "packageId": "com.ti.AWS_MSP432E4",
+    "packageVersion": "3.30.00.03",
+    "packageOrder": 31
+  },
+  {
+    "text": "SimpleLink CC32XX SDK Azure IoT Plugin",
+    "type": "folder",
+    "numChildren": 167,
+    "numChildrenLocal": 1895,
+    "children": true,
+    "state": {
+      "opened": false
+    },
+    "package": "SimpleLink CC32XX SDK Azure IoT Plugin",
+    "packageUId": "com.ti.AZURE_CC32XX__3.30.00.02",
+    "url": "/api/resources?path=Software/SimpleLink%20SDK%20Plugins&package=com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.AWS_CC32XX__3.30.00.03::com.ti.SAIL__1.50.00.00::com.ti.mmwave_industrial_toolbox__4.2.1::c2000ware_software_package__2.01.00.00::tirtos_cc13xx_cc26xx__2.21.00.06::xdctools__3.60.02.34",
+    "downloadLink": "api/bundle?vid=com.ti.AZURE_CC32XX__3.30.00.02&download=true",
+    "makeofflineLink": "api/bundles?vids=com.ti.AZURE_CC32XX__3.30.00.02",
+    "removeofflineLink": "api/resources?package=com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::com.ti.HAP_CC26X2__3.30.00.02::com.ti.HAP_CC32XX__3.30.00.02::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_ACADEMY_154STACKPLUGIN__3.20.01.00::com.ti.SIMPLELINK_ACADEMY_AWSPLUGIN__3.40.01.00::com.ti.SIMPLELINK_ACADEMY_BLEPLUGIN__3.10.02.00::com.ti.SIMPLELINK_ACADEMY_WIFIPLUGIN__2.40.00.17::com.ti.SIMPLELINK_ACADEMY_ZIGBEEPLUGIN__2.20.02.02::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04&path=Software/SimpleLink SDK Plugins/SimpleLink CC32XX SDK Azure IoT Plugin&removeoffline=true",
+    "overviewImage": "azure_cc32xx_3_30_00_02/.metadata/.tirex/images/simplelink_cc32xx_sdk_logo.png",
+    "overviewDescription": "SimpleLink CC32XX SDK Azure IoT Plugin",
+    "resourceType": "packageOverview",
+    "packageId": "com.ti.AZURE_CC32XX",
+    "packageVersion": "3.30.00.02",
+    "packageOrder": 37
+  },
+  {
+    "text": "SimpleLink MSP432E4 SDK Azure IoT Plugin",
+    "type": "folder",
+    "numChildren": 39,
+    "numChildrenLocal": 315,
+    "children": true,
+    "state": {
+      "opened": false
+    },
+    "package": "SimpleLink MSP432E4 SDK Azure IoT Plugin",
+    "packageUId": "com.ti.AZURE_MSP432E4__3.30.00.02",
+    "url": "/api/resources?path=Software/SimpleLink%20SDK%20Plugins&package=com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.AWS_CC32XX__3.30.00.03::com.ti.SAIL__1.50.00.00::com.ti.mmwave_industrial_toolbox__4.2.1::c2000ware_software_package__2.01.00.00::tirtos_cc13xx_cc26xx__2.21.00.06::xdctools__3.60.02.34",
+    "downloadLink": "api/bundle?vid=com.ti.AZURE_MSP432E4__3.30.00.02&download=true",
+    "makeofflineLink": "api/bundles?vids=com.ti.AZURE_MSP432E4__3.30.00.02",
+    "removeofflineLink": "api/resources?package=com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::com.ti.HAP_CC26X2__3.30.00.02::com.ti.HAP_CC32XX__3.30.00.02::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_ACADEMY_154STACKPLUGIN__3.20.01.00::com.ti.SIMPLELINK_ACADEMY_AWSPLUGIN__3.40.01.00::com.ti.SIMPLELINK_ACADEMY_BLEPLUGIN__3.10.02.00::com.ti.SIMPLELINK_ACADEMY_WIFIPLUGIN__2.40.00.17::com.ti.SIMPLELINK_ACADEMY_ZIGBEEPLUGIN__2.20.02.02::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04&path=Software/SimpleLink SDK Plugins/SimpleLink MSP432E4 SDK Azure IoT Plugin&removeoffline=true",
+    "overviewImage": "azure_msp432e4_3_30_00_02/.metadata/.tirex/images/simplelink_msp432e4_sdk_logo.png",
+    "overviewDescription": "SimpleLink MSP432E4 SDK Azure IoT Plugin",
+    "resourceType": "packageOverview",
+    "packageId": "com.ti.AZURE_MSP432E4",
+    "packageVersion": "3.30.00.02",
+    "packageOrder": 42
+  },
+  {
+    "text": "SimpleLink CC26X2 SDK Plugin for HomeKit",
+    "type": "folder",
+    "numChildren": 15,
+    "numChildrenLocal": 15,
+    "children": true,
+    "state": {
+      "opened": false
+    },
+    "package": "SimpleLink CC26X2 SDK Plugin for HomeKit",
+    "packageUId": "com.ti.HAP_CC26X2__3.30.00.02",
+    "url": "/api/resources?path=Software/SimpleLink%20SDK%20Plugins&package=com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.AWS_CC32XX__3.30.00.03::com.ti.SAIL__1.50.00.00::com.ti.mmwave_industrial_toolbox__4.2.1::c2000ware_software_package__2.01.00.00::tirtos_cc13xx_cc26xx__2.21.00.06::xdctools__3.60.02.34",
+    "downloadLink": "api/bundle?vid=com.ti.HAP_CC26X2__3.30.00.02&download=true",
+    "makeofflineLink": "api/bundles?vids=com.ti.HAP_CC26X2__3.30.00.02",
+    "removeofflineLink": "api/resources?package=com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::com.ti.HAP_CC26X2__3.30.00.02::com.ti.HAP_CC32XX__3.30.00.02::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_ACADEMY_154STACKPLUGIN__3.20.01.00::com.ti.SIMPLELINK_ACADEMY_AWSPLUGIN__3.40.01.00::com.ti.SIMPLELINK_ACADEMY_BLEPLUGIN__3.10.02.00::com.ti.SIMPLELINK_ACADEMY_WIFIPLUGIN__2.40.00.17::com.ti.SIMPLELINK_ACADEMY_ZIGBEEPLUGIN__2.20.02.02::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04&path=Software/SimpleLink SDK Plugins/SimpleLink CC26X2 SDK Plugin for HomeKit&removeoffline=true",
+    "overviewImage": "hap_cc26x2_3_30_00_02/.metadata/.tirex/cc26x2-tirex.png",
+    "overviewDescription": "SimpleLink CC26X2 SDK Plugin for HomeKit",
+    "resourceType": "packageOverview",
+    "packageId": "com.ti.HAP_CC26X2",
+    "packageVersion": "3.30.00.02",
+    "packageOrder": 56
+  },
+  {
+    "text": "SimpleLink CC32XX SDK Plugin for HomeKit",
+    "type": "folder",
+    "numChildren": 78,
+    "numChildrenLocal": 78,
+    "children": true,
+    "state": {
+      "opened": false
+    },
+    "package": "SimpleLink CC32XX SDK Plugin for HomeKit",
+    "packageUId": "com.ti.HAP_CC32XX__3.30.00.02",
+    "url": "/api/resources?path=Software/SimpleLink%20SDK%20Plugins&package=com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.AWS_CC32XX__3.30.00.03::com.ti.SAIL__1.50.00.00::com.ti.mmwave_industrial_toolbox__4.2.1::c2000ware_software_package__2.01.00.00::tirtos_cc13xx_cc26xx__2.21.00.06::xdctools__3.60.02.34",
+    "downloadLink": "api/bundle?vid=com.ti.HAP_CC32XX__3.30.00.02&download=true",
+    "makeofflineLink": "api/bundles?vids=com.ti.HAP_CC32XX__3.30.00.02",
+    "removeofflineLink": "api/resources?package=com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::com.ti.HAP_CC26X2__3.30.00.02::com.ti.HAP_CC32XX__3.30.00.02::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_ACADEMY_154STACKPLUGIN__3.20.01.00::com.ti.SIMPLELINK_ACADEMY_AWSPLUGIN__3.40.01.00::com.ti.SIMPLELINK_ACADEMY_BLEPLUGIN__3.10.02.00::com.ti.SIMPLELINK_ACADEMY_WIFIPLUGIN__2.40.00.17::com.ti.SIMPLELINK_ACADEMY_ZIGBEEPLUGIN__2.20.02.02::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04&path=Software/SimpleLink SDK Plugins/SimpleLink CC32XX SDK Plugin for HomeKit&removeoffline=true",
+    "overviewImage": "hap_cc32xx_3_30_00_02/.metadata/.tirex/simplelink_cc32xx.jpg",
+    "overviewDescription": "SimpleLink CC32XX SDK Plugin for HomeKit",
+    "resourceType": "packageOverview",
+    "packageId": "com.ti.HAP_CC32XX",
+    "packageVersion": "3.30.00.02",
+    "packageOrder": 57
+  },
+  {
+    "text": "SimpleLink Sensor and Actuator Plugin",
+    "type": "folder",
+    "numChildren": 463,
+    "numChildrenLocal": 3102,
+    "children": true,
+    "state": {
+      "opened": false
+    },
+    "package": "SimpleLink Sensor and Actuator Plugin",
+    "packageUId": "com.ti.SAIL__1.50.00.00",
+    "url": "/api/resources?path=Software/SimpleLink%20SDK%20Plugins&package=com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.AWS_CC32XX__3.30.00.03::com.ti.SAIL__1.50.00.00::com.ti.mmwave_industrial_toolbox__4.2.1::c2000ware_software_package__2.01.00.00::tirtos_cc13xx_cc26xx__2.21.00.06::xdctools__3.60.02.34",
+    "downloadLink": "api/bundle?vid=com.ti.SAIL__1.50.00.00&download=true",
+    "makeofflineLink": "api/bundles?vids=com.ti.SAIL__1.50.00.00",
+    "removeofflineLink": "api/resources?package=com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::com.ti.HAP_CC26X2__3.30.00.02::com.ti.HAP_CC32XX__3.30.00.02::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_ACADEMY_154STACKPLUGIN__3.20.01.00::com.ti.SIMPLELINK_ACADEMY_AWSPLUGIN__3.40.01.00::com.ti.SIMPLELINK_ACADEMY_BLEPLUGIN__3.10.02.00::com.ti.SIMPLELINK_ACADEMY_WIFIPLUGIN__2.40.00.17::com.ti.SIMPLELINK_ACADEMY_ZIGBEEPLUGIN__2.20.02.02::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04&path=Software/SimpleLink SDK Plugins/SimpleLink Sensor and Actuator Plugin&removeoffline=true",
+    "overviewImage": "sail_1_50_00_00/.metadata/.tirex/sailplugin.png",
+    "overviewDescription": "Quicken your development time in interfacing sensors and actuators, The sensor and actuator plugin for SimpleLink SDK eases your efforts to interface sensors and actuator. Using this GUI or clicking through the folder tree to the left, we offer code examples, documentation and other resources - all at the tip of your fingers.",
+    "resourceType": "packageOverview",
+    "packageId": "com.ti.SAIL",
+    "packageVersion": "1.50.00.00",
+    "packageOrder": 124,
+    "offline": "true"
+  },
+  {
+    "text": "Connectivity",
+    "type": "folder",
+    "numChildren": 450,
+    "numChildrenLocal": 18470,
+    "children": true,
+    "state": {
+      "opened": false
+    },
+    "packageUId": "com.ti.SIMPLELINK_ACADEMY_154STACKPLUGIN__3.20.01.00",
+    "url": "/api/resources?path=Software/SimpleLink%20SDK%20Plugins&package=com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.AWS_CC32XX__3.30.00.03::com.ti.SAIL__1.50.00.00::com.ti.mmwave_industrial_toolbox__4.2.1::c2000ware_software_package__2.01.00.00::tirtos_cc13xx_cc26xx__2.21.00.06::xdctools__3.60.02.34",
+    "downloadLink": "api/bundle?vid=com.ti.SIMPLELINK_ACADEMY_154STACKPLUGIN__3.20.01.00&download=true",
+    "makeofflineLink": "api/bundles?vids=com.ti.SIMPLELINK_ACADEMY_154STACKPLUGIN__3.20.01.00",
+    "removeofflineLink": "api/resources?package=com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::com.ti.HAP_CC26X2__3.30.00.02::com.ti.HAP_CC32XX__3.30.00.02::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_ACADEMY_154STACKPLUGIN__3.20.01.00::com.ti.SIMPLELINK_ACADEMY_AWSPLUGIN__3.40.01.00::com.ti.SIMPLELINK_ACADEMY_BLEPLUGIN__3.10.02.00::com.ti.SIMPLELINK_ACADEMY_WIFIPLUGIN__2.40.00.17::com.ti.SIMPLELINK_ACADEMY_ZIGBEEPLUGIN__2.20.02.02::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04&path=Software/SimpleLink SDK Plugins/Connectivity&removeoffline=true",
+    "packageOrder": 126
+  },
+  {
+    "text": "SimpleLink Audio Plugin",
+    "type": "folder",
+    "numChildren": 127,
+    "numChildrenLocal": 4159,
+    "children": true,
+    "state": {
+      "opened": false
+    },
+    "package": "SimpleLink Audio Plugin",
+    "packageUId": "com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06",
+    "url": "/api/resources?path=Software/SimpleLink%20SDK%20Plugins&package=com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.AWS_CC32XX__3.30.00.03::com.ti.SAIL__1.50.00.00::com.ti.mmwave_industrial_toolbox__4.2.1::c2000ware_software_package__2.01.00.00::tirtos_cc13xx_cc26xx__2.21.00.06::xdctools__3.60.02.34",
+    "downloadLink": "api/bundle?vid=com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06&download=true",
+    "makeofflineLink": "api/bundles?vids=com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06",
+    "removeofflineLink": "api/resources?package=com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::com.ti.HAP_CC26X2__3.30.00.02::com.ti.HAP_CC32XX__3.30.00.02::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_ACADEMY_154STACKPLUGIN__3.20.01.00::com.ti.SIMPLELINK_ACADEMY_AWSPLUGIN__3.40.01.00::com.ti.SIMPLELINK_ACADEMY_BLEPLUGIN__3.10.02.00::com.ti.SIMPLELINK_ACADEMY_WIFIPLUGIN__2.40.00.17::com.ti.SIMPLELINK_ACADEMY_ZIGBEEPLUGIN__2.20.02.02::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04&path=Software/SimpleLink SDK Plugins/SimpleLink Audio Plugin&removeoffline=true",
+    "overviewImage": "simplelink_audio_plugin_3_30_00_06/.metadata/.tirex/simplelink_sdk_plugin.png",
+    "overviewDescription": "SimpleLink Audio Plugin",
+    "resourceType": "packageOverview",
+    "packageId": "com.ti.SIMPLELINK_AUDIO_PLUGIN",
+    "packageVersion": "3.30.00.06",
+    "packageOrder": 210
+  },
+  {
+    "text": "Example Packs",
+    "type": "folder",
+    "numChildren": 15,
+    "numChildrenLocal": 308,
+    "children": true,
+    "state": {
+      "opened": false
+    },
+    "packageUId": "com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22",
+    "url": "/api/resources?path=Software/SimpleLink%20SDK%20Plugins&package=com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.AWS_CC32XX__3.30.00.03::com.ti.SAIL__1.50.00.00::com.ti.mmwave_industrial_toolbox__4.2.1::c2000ware_software_package__2.01.00.00::tirtos_cc13xx_cc26xx__2.21.00.06::xdctools__3.60.02.34",
+    "downloadLink": "api/bundle?vid=com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22&download=true",
+    "makeofflineLink": "api/bundles?vids=com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22",
+    "removeofflineLink": "api/resources?package=com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::com.ti.HAP_CC26X2__3.30.00.02::com.ti.HAP_CC32XX__3.30.00.02::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_ACADEMY_154STACKPLUGIN__3.20.01.00::com.ti.SIMPLELINK_ACADEMY_AWSPLUGIN__3.40.01.00::com.ti.SIMPLELINK_ACADEMY_BLEPLUGIN__3.10.02.00::com.ti.SIMPLELINK_ACADEMY_WIFIPLUGIN__2.40.00.17::com.ti.SIMPLELINK_ACADEMY_ZIGBEEPLUGIN__2.20.02.02::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04&path=Software/SimpleLink SDK Plugins/Example Packs&removeoffline=true",
+    "packageOrder": 211
+  },
+  {
+    "text": "SimpleLink SDK LVGL Plugin",
+    "type": "folder",
+    "numChildren": 172,
+    "numChildrenLocal": 24408,
+    "children": true,
+    "state": {
+      "opened": false
+    },
+    "package": "SimpleLink SDK LVGL Plugin",
+    "packageUId": "com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06",
+    "url": "/api/resources?path=Software/SimpleLink%20SDK%20Plugins&package=com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.AWS_CC32XX__3.30.00.03::com.ti.SAIL__1.50.00.00::com.ti.mmwave_industrial_toolbox__4.2.1::c2000ware_software_package__2.01.00.00::tirtos_cc13xx_cc26xx__2.21.00.06::xdctools__3.60.02.34",
+    "downloadLink": "api/bundle?vid=com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06&download=true",
+    "makeofflineLink": "api/bundles?vids=com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06",
+    "removeofflineLink": "api/resources?package=com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::com.ti.HAP_CC26X2__3.30.00.02::com.ti.HAP_CC32XX__3.30.00.02::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_ACADEMY_154STACKPLUGIN__3.20.01.00::com.ti.SIMPLELINK_ACADEMY_AWSPLUGIN__3.40.01.00::com.ti.SIMPLELINK_ACADEMY_BLEPLUGIN__3.10.02.00::com.ti.SIMPLELINK_ACADEMY_WIFIPLUGIN__2.40.00.17::com.ti.SIMPLELINK_ACADEMY_ZIGBEEPLUGIN__2.20.02.02::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04&path=Software/SimpleLink SDK Plugins/SimpleLink SDK LVGL Plugin&removeoffline=true",
+    "overviewImage": "simplelink_sdk_lvgl_plugin_3_30_00_06/.metadata/.tirex/lvgl-tirex.png",
+    "overviewDescription": "<p>The SimpleLink™ SDK LVGL Plugin is a companion software package that enables advanced graphics capabilities on various SimpleLink™ MCU platforms by integrating the free and open-source 3rd party library, <a href=\"https://littlevgl.com\">LittlevGL</a>.</p>",
+    "resourceType": "packageOverview",
+    "packageId": "com.ti.SIMPLELINK_SDK_LVGL_PLUGIN",
+    "packageVersion": "3.30.00.06",
+    "packageOrder": 301,
+    "license": "simplelink_sdk_lvgl_plugin_3_30_00_06/license_simplelink_sdk_lvgl_plugin_3_30_00_06.txt"
+  },
+  {
+    "text": "SimpleLink SDK Voice Detection Plugin",
+    "type": "folder",
+    "numChildren": 12,
+    "numChildrenLocal": 12,
+    "children": true,
+    "state": {
+      "opened": false
+    },
+    "package": "SimpleLink SDK Voice Detection Plugin",
+    "packageUId": "com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15",
+    "url": "/api/resources?path=Software/SimpleLink%20SDK%20Plugins&package=com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.AWS_CC32XX__3.30.00.03::com.ti.SAIL__1.50.00.00::com.ti.mmwave_industrial_toolbox__4.2.1::c2000ware_software_package__2.01.00.00::tirtos_cc13xx_cc26xx__2.21.00.06::xdctools__3.60.02.34",
+    "downloadLink": "api/bundle?vid=com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15&download=true",
+    "makeofflineLink": "api/bundles?vids=com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15",
+    "removeofflineLink": "api/resources?package=com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::com.ti.HAP_CC26X2__3.30.00.02::com.ti.HAP_CC32XX__3.30.00.02::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_ACADEMY_154STACKPLUGIN__3.20.01.00::com.ti.SIMPLELINK_ACADEMY_AWSPLUGIN__3.40.01.00::com.ti.SIMPLELINK_ACADEMY_BLEPLUGIN__3.10.02.00::com.ti.SIMPLELINK_ACADEMY_WIFIPLUGIN__2.40.00.17::com.ti.SIMPLELINK_ACADEMY_ZIGBEEPLUGIN__2.20.02.02::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04&path=Software/SimpleLink SDK Plugins/SimpleLink SDK Voice Detection Plugin&removeoffline=true",
+    "overviewImage": "simplelink_sdk_voice_detection_plugin_1_50_00_15/.metadata/.tirex/simplelink_msp432_sdk_logo.png",
+    "overviewDescription": "<p>The SimpleLink SDK Voice Detection Plugin implements a fixed-point speaker-dependent command recognizer targeted toward ultra-low power embedded processors. The plugin libraries provide easy-to-use APIs that can enable voice controlled applications as well as an example demo project showcasing the use of the APIs.</p>",
+    "resourceType": "packageOverview",
+    "packageId": "com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN",
+    "packageVersion": "1.50.00.15",
+    "packageOrder": 305
+  },
+  {
+    "text": "SimpleLink CC32XX SDK Watson IoT Plugin",
+    "type": "folder",
+    "numChildren": 54,
+    "numChildrenLocal": 726,
+    "children": true,
+    "state": {
+      "opened": false
+    },
+    "package": "SimpleLink CC32XX SDK Watson IoT Plugin",
+    "packageUId": "com.ti.WATSON_CC32XX__1.20.00.04",
+    "url": "/api/resources?path=Software/SimpleLink%20SDK%20Plugins&package=com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.AWS_CC32XX__3.30.00.03::com.ti.SAIL__1.50.00.00::com.ti.mmwave_industrial_toolbox__4.2.1::c2000ware_software_package__2.01.00.00::tirtos_cc13xx_cc26xx__2.21.00.06::xdctools__3.60.02.34",
+    "downloadLink": "api/bundle?vid=com.ti.WATSON_CC32XX__1.20.00.04&download=true",
+    "makeofflineLink": "api/bundles?vids=com.ti.WATSON_CC32XX__1.20.00.04",
+    "removeofflineLink": "api/resources?package=com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::com.ti.HAP_CC26X2__3.30.00.02::com.ti.HAP_CC32XX__3.30.00.02::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_ACADEMY_154STACKPLUGIN__3.20.01.00::com.ti.SIMPLELINK_ACADEMY_AWSPLUGIN__3.40.01.00::com.ti.SIMPLELINK_ACADEMY_BLEPLUGIN__3.10.02.00::com.ti.SIMPLELINK_ACADEMY_WIFIPLUGIN__2.40.00.17::com.ti.SIMPLELINK_ACADEMY_ZIGBEEPLUGIN__2.20.02.02::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04&path=Software/SimpleLink SDK Plugins/SimpleLink CC32XX SDK Watson IoT Plugin&removeoffline=true",
+    "overviewImage": "watson_cc32xx_1_20_00_04/.metadata/.tirex/images/simplelink_cc32xx_sdk_logo.png",
+    "overviewDescription": "SimpleLink CC32XX SDK Watson IoT Plugin",
+    "resourceType": "packageOverview",
+    "packageId": "com.ti.WATSON_CC32XX",
+    "packageVersion": "1.20.00.04",
+    "packageOrder": 343
+  },
+  {
+    "text": "SimpleLink MSP432E4 SDK Watson IoT Plugin",
+    "type": "folder",
+    "numChildren": 18,
+    "numChildrenLocal": 172,
+    "children": true,
+    "state": {
+      "opened": false
+    },
+    "package": "SimpleLink MSP432E4 SDK Watson IoT Plugin",
+    "packageUId": "com.ti.WATSON_MSP432E4__1.20.00.04",
+    "url": "/api/resources?path=Software/SimpleLink%20SDK%20Plugins&package=com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.AWS_CC32XX__3.30.00.03::com.ti.SAIL__1.50.00.00::com.ti.mmwave_industrial_toolbox__4.2.1::c2000ware_software_package__2.01.00.00::tirtos_cc13xx_cc26xx__2.21.00.06::xdctools__3.60.02.34",
+    "downloadLink": "api/bundle?vid=com.ti.WATSON_MSP432E4__1.20.00.04&download=true",
+    "makeofflineLink": "api/bundles?vids=com.ti.WATSON_MSP432E4__1.20.00.04",
+    "removeofflineLink": "api/resources?package=com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::com.ti.HAP_CC26X2__3.30.00.02::com.ti.HAP_CC32XX__3.30.00.02::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_ACADEMY_154STACKPLUGIN__3.20.01.00::com.ti.SIMPLELINK_ACADEMY_AWSPLUGIN__3.40.01.00::com.ti.SIMPLELINK_ACADEMY_BLEPLUGIN__3.10.02.00::com.ti.SIMPLELINK_ACADEMY_WIFIPLUGIN__2.40.00.17::com.ti.SIMPLELINK_ACADEMY_ZIGBEEPLUGIN__2.20.02.02::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04&path=Software/SimpleLink SDK Plugins/SimpleLink MSP432E4 SDK Watson IoT Plugin&removeoffline=true",
+    "overviewImage": "watson_msp432e4_1_20_00_04/.metadata/.tirex/images/simplelink_msp432e4_sdk_logo.png",
+    "overviewDescription": "SimpleLink MSP432E4 SDK Watson IoT Plugin",
+    "resourceType": "packageOverview",
+    "packageId": "com.ti.WATSON_MSP432E4",
+    "packageVersion": "1.20.00.04",
+    "packageOrder": 347
+  }
+]
