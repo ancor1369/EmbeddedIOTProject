@@ -2,23 +2,22 @@
 
 grx/graphics.obj: ../grx/graphics.c
 grx/graphics.obj: ../grx/graphics.h
-grx/graphics.obj: ../grx/graphic_types.h
-grx/graphics.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdint.h
-grx/graphics.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/sys/stdint.h
-grx/graphics.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/sys/cdefs.h
-grx/graphics.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/sys/_types.h
-grx/graphics.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/machine/_types.h
-grx/graphics.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/machine/_stdint.h
-grx/graphics.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/sys/_stdint.h
-grx/graphics.obj: ../grx/../fonts/resources.h
 grx/graphics.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdio.h
 grx/graphics.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/_ti_config.h
 grx/graphics.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/linkage.h
 grx/graphics.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdarg.h
+grx/graphics.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/sys/_types.h
+grx/graphics.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/sys/cdefs.h
+grx/graphics.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/machine/_types.h
 grx/graphics.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/string.h
-grx/graphics.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/ePaper.h
-grx/graphics.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/GPIOInit.h
-grx/graphics.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/pinDefinintions.h
+grx/graphics.obj: ../grx/graphic_types.h
+grx/graphics.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdint.h
+grx/graphics.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/sys/stdint.h
+grx/graphics.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/machine/_stdint.h
+grx/graphics.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/sys/_stdint.h
+grx/graphics.obj: ../grx/../Driver/ePaper.h
+grx/graphics.obj: ../grx/../Driver/GPIOInit.h
+grx/graphics.obj: ../grx/../Driver/pinDefinintions.h
 grx/graphics.obj: /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/devices/msp432p4xx/driverlib/driverlib.h
 grx/graphics.obj: /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/devices/msp432p4xx/driverlib/adc14.h
 grx/graphics.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdbool.h
@@ -62,28 +61,28 @@ grx/graphics.obj: /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/d
 grx/graphics.obj: /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/devices/msp432p4xx/driverlib/flash.h
 grx/graphics.obj: /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/drivers/SPI.h
 grx/graphics.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stddef.h
-grx/graphics.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/SPIinit.h
-grx/graphics.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/pinDefinintions.h
+grx/graphics.obj: ../grx/../Driver/SPIinit.h
+grx/graphics.obj: ../grx/../Driver/pinDefinintions.h
+grx/graphics.obj: ../grx/../fonts/resources.h
 
 ../grx/graphics.c: 
 ../grx/graphics.h: 
-../grx/graphic_types.h: 
-/home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdint.h: 
-/home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/sys/stdint.h: 
-/home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/sys/cdefs.h: 
-/home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/sys/_types.h: 
-/home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/machine/_types.h: 
-/home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/machine/_stdint.h: 
-/home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/sys/_stdint.h: 
-../grx/../fonts/resources.h: 
 /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdio.h: 
 /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/_ti_config.h: 
 /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/linkage.h: 
 /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdarg.h: 
+/home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/sys/_types.h: 
+/home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/sys/cdefs.h: 
+/home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/machine/_types.h: 
 /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/string.h: 
-/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/ePaper.h: 
-/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/GPIOInit.h: 
-/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/pinDefinintions.h: 
+../grx/graphic_types.h: 
+/home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdint.h: 
+/home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/sys/stdint.h: 
+/home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/machine/_stdint.h: 
+/home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/sys/_stdint.h: 
+../grx/../Driver/ePaper.h: 
+../grx/../Driver/GPIOInit.h: 
+../grx/../Driver/pinDefinintions.h: 
 /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/devices/msp432p4xx/driverlib/driverlib.h: 
 /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/devices/msp432p4xx/driverlib/adc14.h: 
 /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdbool.h: 
@@ -127,5 +126,6 @@ grx/graphics.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/No
 /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/devices/msp432p4xx/driverlib/flash.h: 
 /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/drivers/SPI.h: 
 /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stddef.h: 
-/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/SPIinit.h: 
-/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/pinDefinintions.h: 
+../grx/../Driver/SPIinit.h: 
+../grx/../Driver/pinDefinintions.h: 
+../grx/../fonts/resources.h: 

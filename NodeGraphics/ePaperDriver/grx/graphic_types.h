@@ -1,6 +1,7 @@
 #pragma once
 #include <stdint.h>
 
+
 /* This is a generic bitmap */
 typedef struct {
     const uint16_t size_x; //size is in pixels

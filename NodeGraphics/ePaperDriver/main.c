@@ -29,11 +29,15 @@
 
 /* Included libraries written to integrate the screen*/
 
-#include <Driver/SPIinit.h>
-#include <Driver/GPIOInit.h>
-#include <Driver/pinDefinintions.h>
-#include <Driver/ePaper.h>
+#include "Driver/SPIinit.h"
+#include "Driver/GPIOInit.h"
+#include "Driver/pinDefinintions.h"
+#include "Driver/ePaper.h"
+#include "grx/graphics.h"
+#include "fonts/resources.h"
 
+
+//extern uint8_t GLOBAL_framebuffer[VRES][HRES / 8];
 
 int main(void)
 {

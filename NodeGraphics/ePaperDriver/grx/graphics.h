@@ -1,5 +1,11 @@
 #pragma once
+#include <stdio.h>
+//for memset
+#include <string.h>
 #include "graphic_types.h"
+#include "../Driver/ePaper.h"
+#include "../fonts/resources.h"
+
 
 #define CHARACTER_SPACING_PIXELS 2 //number of pixels between characters
 

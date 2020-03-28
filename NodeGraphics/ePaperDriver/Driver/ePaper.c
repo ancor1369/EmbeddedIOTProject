@@ -1,6 +1,9 @@
 
 #include "ePaper.h"
 
+void powerON(void);
+void powerOff(void);
+
 void powerON()
 {
   writeCMD(0x04);
@@ -75,26 +78,48 @@ void initEPD()
 
 }
 
+void updateEPD(void)
+{
+    //Power on the display
+    uint32_t i = 0;
+    uint8_t j = 0;
+    uint8_t color1 = 0x00;
+    uint8_t color2 = 0x00;
 
-//TODO: Rewrite this function to call the command my display needs and make sure everything is in place
-//void disp_update(void){ //pushes framebuffer to the display
-//    disp_set_target_area(0/*x_start*/, 0/*y_start*/, DISPLAY_WIDTH-1/*x_end*/, DISPLAY_HEIGHT-1/*y_end*/);
-//    disp_set_pointer(0, 0);
-//
-//    disp_write_generic((uint8_t[]){ cmd_WRITE_RAM }, 1, WRITE_COMMAND);
-//    disp_write_generic((uint8_t*)GLOBAL_framebuffer, sizeof(GLOBAL_framebuffer), WRITE_DATA);
-//    disp_write_transfer((uint8_t[]){ cmd_TERMINATE_FRAME_READ_WRITE }, 0);
-//
-//    disp_trigger_update();
-//}
+    powerON();
 
+    writeCMD(0x10);
+
+    for (i = 0; i < VRES; i++)
+    {
+      //This is divided by 8 because it
+      //is represented as
+      for (j = 0; j < HRES / 8; j++)
+      {
+          writeData(GLOBAL_framebuffer[i][j]);
+      }
+    }
+    writeCMD(0x13);
+    for (i = 0; i < VRES; i++)
+    {
+      for (j = 0; j < HRES / 8; j++)
+      {
+        writeData(color2);
+      }
+    }
+
+    writeCMD(0x12);
+    while (!digitalRead(EPD_READY));
+
+    powerOff();
+}
 
 void turnWhite()
 {
     //power on the display
       uint32_t i = 0;
       powerON();
-      //SPI.transfer(0x10);
+
       writeCMD(0x10);
 
       for (i = 0; i < (uint32_t)VRES*HRES >> 3; i++)

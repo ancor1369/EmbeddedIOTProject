@@ -1,13 +1,11 @@
 
 #include "graphics.h"
-#include "../fonts/resources.h"
-#include <stdio.h>
-//for memset
-#include <string.h>
-#include <Driver/ePaper.h>
+
+
 
 void gfxInit(void){
-    disp_init();
+    //disp_init(); Call your own
+    initEPD();
     memset(GLOBAL_framebuffer, 0xFF, sizeof(GLOBAL_framebuffer)); //set background to white
 }
 
@@ -19,13 +17,10 @@ void gfxWriteText(const font_t *font, uint16_t pos_x, uint16_t pos_y, const char
     uint32_t x = 0;
 
     while (*text){
-        const glyph_t *glyph = gfx_get_glyph(font, *text);
+        const glyph_t *glyph = gfxGetGlyph(font, *text);
         if (glyph){
-
             //move the pointer to the appropriate glyph within the bitmap
             const uint8_t *payload = bitmap->payload + (bitmap->size_x/8)*glyph->x_offset;
-
-
 
             for (y = pos_y; (y < pos_y+glyph->width) && (y < HRES); y++){
                 for (x= pos_x; x < (bitmap->size_x/8) + pos_x; x++){
@@ -54,7 +49,7 @@ const glyph_t * gfxGetGlyph(const font_t *font, char c){
 }
 
 uint8_t gfxGetGlyphWidth(const font_t *font, char c){
-    const glyph_t *g = gfx_get_glyph(font, c); //can be NULL
+    const glyph_t *g = gfxGetGlyph(font, c); //can be NULL
     if (g){
         return g->width;
     }
@@ -68,7 +63,7 @@ uint8_t gfxGetGlyphHeight(const font_t *font){
 uint16_t gfxGetTextWidth(const font_t *font, const char *text){
     uint32_t width = 0;
     while (*text){
-        width += gfx_get_glyph_width(font, *text);
+        width += gfxGetGlyphWidth(font, *text);
         width += CHARACTER_SPACING_PIXELS;
         text++;
     }
