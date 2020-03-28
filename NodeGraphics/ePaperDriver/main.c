@@ -1,5 +1,5 @@
 /*
- * Epaper Demonstration code:
+ * Electronic Epaper
  *
  * I write this software to create an interface over the Crystalfontz E-Paper displays.
  *

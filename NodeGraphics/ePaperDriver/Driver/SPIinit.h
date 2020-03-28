@@ -2,7 +2,7 @@
  * SPIInit.h
  *
  *  Created on: Mar 27, 2020
- *      Author: andres
+ *      Author: andres rogelio cordoba
  */
 
 #include "pinDefinintions.h"

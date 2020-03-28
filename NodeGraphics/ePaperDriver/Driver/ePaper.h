@@ -5,11 +5,13 @@
 #define HRES 128
 #define VRES 296
 
+extern uint8_t GLOBAL_framebuffer[VRES][HRES / 8];
+
+void initEPD(void);
+
 void powerON(void);
 
 void powerOff(void);
-
-void initEPD(void);
 
 void turnWhite(void);
 
