@@ -44,10 +44,15 @@ int main(void)
     SPI_Init();
     GPIO_Init();
 
-    initEPD();
+    //initEPD();
+    //turnBlack();
 
-    turnYellow();
+    //Start the engine which starts the EPAPER screen and then
+    //send a message the the screen
+    gfxInit();
+    gfxWriteText(&FONT_ubuntu_bold_65, 0, 0, "Hi + ");
 
+    updateEPD();
 
     PCM_gotoLPM0();
     __no_operation();

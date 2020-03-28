@@ -63,6 +63,7 @@ grx/graphics.obj: /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/d
 grx/graphics.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stddef.h
 grx/graphics.obj: ../grx/../Driver/SPIinit.h
 grx/graphics.obj: ../grx/../Driver/pinDefinintions.h
+grx/graphics.obj: ../grx/../Driver/../buffer.h
 grx/graphics.obj: ../grx/../fonts/resources.h
 
 ../grx/graphics.c: 
@@ -128,4 +129,5 @@ grx/graphics.obj: ../grx/../fonts/resources.h
 /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stddef.h: 
 ../grx/../Driver/SPIinit.h: 
 ../grx/../Driver/pinDefinintions.h: 
+../grx/../Driver/../buffer.h: 
 ../grx/../fonts/resources.h: 

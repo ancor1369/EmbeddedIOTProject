@@ -56,6 +56,7 @@ Driver/ePaper.obj: /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/
 Driver/ePaper.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stddef.h
 Driver/ePaper.obj: ../Driver/SPIinit.h
 Driver/ePaper.obj: ../Driver/pinDefinintions.h
+Driver/ePaper.obj: ../Driver/../buffer.h
 
 ../Driver/ePaper.c: 
 ../Driver/ePaper.h: 
@@ -113,3 +114,4 @@ Driver/ePaper.obj: ../Driver/pinDefinintions.h
 /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stddef.h: 
 ../Driver/SPIinit.h: 
 ../Driver/pinDefinintions.h: 
+../Driver/../buffer.h: 

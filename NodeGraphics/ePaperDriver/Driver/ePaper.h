@@ -1,12 +1,12 @@
 
 #include "GPIOInit.h"
 #include "SPIinit.h"
+#include "../buffer.h"
 
-
-#define HRES 128
-#define VRES 296
-
-extern uint8_t GLOBAL_framebuffer[VRES][HRES / 8];
+//#define HRES 128
+//#define VRES 296
+//
+//extern uint8_t GLOBAL_framebuffer[VRES][HRES / 8];
 
 void initEPD(void);
 

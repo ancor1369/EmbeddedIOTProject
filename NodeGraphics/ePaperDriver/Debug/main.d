@@ -61,6 +61,7 @@ main.obj: ../Driver/GPIOInit.h
 main.obj: ../Driver/pinDefinintions.h
 main.obj: ../Driver/SPIinit.h
 main.obj: ../Driver/pinDefinintions.h
+main.obj: ../Driver/../buffer.h
 main.obj: ../grx/graphics.h
 main.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdio.h
 main.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/_ti_config.h
@@ -137,6 +138,7 @@ main.obj: ../fonts/resources.h
 ../Driver/pinDefinintions.h: 
 ../Driver/SPIinit.h: 
 ../Driver/pinDefinintions.h: 
+../Driver/../buffer.h: 
 ../grx/graphics.h: 
 /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdio.h: 
 /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/_ti_config.h: 

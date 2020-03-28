@@ -1,6 +1,8 @@
 
 #include "ePaper.h"
 
+uint8_t GLOBAL_framebuffer[VRES][HRES / 8];
+
 void powerON(void);
 void powerOff(void);
 
