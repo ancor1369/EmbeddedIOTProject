@@ -22,7 +22,7 @@ void gfxWriteText(const font_t *font, uint16_t pos_x, uint16_t pos_y, const char
             //move the pointer to the appropriate glyph within the bitmap
             const uint8_t *payload = bitmap->payload + (bitmap->size_x/8)*glyph->x_offset;
 
-            for (y = pos_y; (y < pos_y+glyph->width) && (y < HRES); y++){
+            for (y = pos_y; (y < pos_y+glyph->width) ; y++){
                 for (x= pos_x; x < (bitmap->size_x/8) + pos_x; x++){
                     GLOBAL_framebuffer[y][x] = *payload;
                     payload++;

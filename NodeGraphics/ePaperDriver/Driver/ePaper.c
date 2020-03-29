@@ -84,7 +84,7 @@ void updateEPD(void)
 {
     //Power on the display
     uint32_t i = 0;
-    uint8_t j = 0;
+    uint16_t j = 0;
     uint8_t color1 = 0x00;
     uint8_t color2 = 0x00;
 
@@ -95,9 +95,10 @@ void updateEPD(void)
     for (i = 0; i < VRES; i++)
     {
       //This is divided by 8 because it
-      //is represented as
-      for (j = 0; j < HRES / 8; j++)
+      //is represented as chunks of data
+      for (j = 0; j < HRES /8 ; j++)
       {
+          //writeData(0xff);
           writeData(GLOBAL_framebuffer[i][j]);
       }
     }
@@ -106,7 +107,9 @@ void updateEPD(void)
     {
       for (j = 0; j < HRES / 8; j++)
       {
-        writeData(color2);
+        writeData(0x00);
+         //writeData(GLOBAL_framebuffer[i][j]);
+
       }
     }
 
