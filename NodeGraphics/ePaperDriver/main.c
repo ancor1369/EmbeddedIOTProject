@@ -35,6 +35,9 @@
 #include "Driver/ePaper.h"
 #include "grx/graphics.h"
 #include "fonts/resources.h"
+#include "LabelEngine/labelEngine.h"
+
+#include "LabelEngine/lableObject.h"
 
 
 int main(void)
@@ -51,6 +54,12 @@ int main(void)
     gfxWriteText(&FONT_ubuntu_bold_24, 58, 100, "98");
     gfxWriteText(&FONT_ubuntu_bold_16, 20, 0, "SKU: 4568, 12/13/2020");
     gfxWriteText(&FONT_ubuntu_bold_16, 0, 0, "Model: MFX4587");
+
+    LabelJSON object;
+
+
+
+
 
     updateEPD();
 
