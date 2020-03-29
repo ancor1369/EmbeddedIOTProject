@@ -37,8 +37,6 @@
 #include "fonts/resources.h"
 
 
-//extern uint8_t GLOBAL_framebuffer[VRES][HRES / 8];
-
 int main(void)
 {
     SPI_Init();
@@ -47,8 +45,12 @@ int main(void)
     //Start the engine which starts the EPAPER screen and then
     //send a message the the screen
     gfxInit();
-    gfxWriteText(&FONT_ubuntu_bold_65, 0, 50, "Hi @ @");
-    gfxWriteText(&FONT_ubuntu_bold_65, 64, 0, "More text");
+    gfxWriteText(&FONT_ubuntu_bold_16, 115, 0, "Scientific calculator for large");
+    gfxWriteText(&FONT_ubuntu_bold_16, 100, 0, "and digital part");
+    gfxWriteText(&FONT_ubuntu_medium_48, 24, 0, "545");
+    gfxWriteText(&FONT_ubuntu_bold_24, 58, 100, "98");
+    gfxWriteText(&FONT_ubuntu_bold_16, 20, 0, "SKU: 4568, 12/13/2020");
+    gfxWriteText(&FONT_ubuntu_bold_16, 0, 0, "Model: MFX4587");
 
     updateEPD();
 
