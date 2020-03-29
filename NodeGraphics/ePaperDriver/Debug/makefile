@@ -11,7 +11,11 @@ ORDERED_OBJS += \
 "./main.obj" \
 "./startup_msp432p401r_ccs.obj" \
 "./system_msp432p401r.obj" \
+"./Driver/GPIOInit.obj" \
 "./Driver/SPIinit.obj" \
+"./Driver/ePaper.obj" \
+"./fonts/resources.obj" \
+"./grx/graphics.obj" \
 "../msp432p401r.cmd" \
 $(GEN_CMDS__FLAG) \
 -l"ti/display/lib/display.aem4f" \
@@ -31,8 +35,12 @@ RMDIR := rm -rf
 -include sources.mk
 -include subdir_vars.mk
 -include Driver/subdir_vars.mk
+-include fonts/subdir_vars.mk
+-include grx/subdir_vars.mk
 -include subdir_rules.mk
 -include Driver/subdir_rules.mk
+-include fonts/subdir_rules.mk
+-include grx/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -163,8 +171,8 @@ ePaperDriver.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "main.obj" "startup_msp432p401r_ccs.obj" "system_msp432p401r.obj" "Driver/SPIinit.obj" 
-	-$(RM) "main.d" "startup_msp432p401r_ccs.d" "system_msp432p401r.d" "Driver/SPIinit.d" 
+	-$(RM) "main.obj" "startup_msp432p401r_ccs.obj" "system_msp432p401r.obj" "Driver/GPIOInit.obj" "Driver/SPIinit.obj" "Driver/ePaper.obj" "fonts/resources.obj" "grx/graphics.obj" 
+	-$(RM) "main.d" "startup_msp432p401r_ccs.d" "system_msp432p401r.d" "Driver/GPIOInit.d" "Driver/SPIinit.d" "Driver/ePaper.d" "fonts/resources.d" "grx/graphics.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
