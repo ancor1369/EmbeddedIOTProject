@@ -80,7 +80,7 @@ main.obj: ../LabelEngine/labelEngine.h
 main.obj: /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/utils/json/json.h
 main.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdlib.h
 main.obj: /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/utils/json/json_engine.h
-main.obj: ../LabelEngine/lableObject.h
+main.obj: ../LabelEngine/label_types.h
 
 ../main.c: 
 /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdint.h: 
@@ -162,4 +162,4 @@ main.obj: ../LabelEngine/lableObject.h
 /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/utils/json/json.h: 
 /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdlib.h: 
 /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/utils/json/json_engine.h: 
-../LabelEngine/lableObject.h: 
+../LabelEngine/label_types.h: 

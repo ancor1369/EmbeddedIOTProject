@@ -1,7 +1,7 @@
 ******************************************************************************
                   TI ARM Linker Unix v18.1.4                   
 ******************************************************************************
->> Linked Sun Mar 29 18:21:45 2020
+>> Linked Mon Mar 30 13:14:26 2020
 
 OUTPUT FILE NAME:   <ePaperDriver.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 0000589d
@@ -13,8 +13,8 @@ MEMORY CONFIGURATION
 ----------------------  --------  ---------  --------  --------  ----  --------
   MAIN                  00000000   00040000  00005aa0  0003a560  R  X
   INFO                  00200000   00004000  00000000  00004000  R  X
-  SRAM_CODE             01000000   00010000  00001485  0000eb7b  RW X
-  SRAM_DATA             20000000   00010000  00001485  0000eb7b  RW  
+  SRAM_CODE             01000000   00010000  00001885  0000e77b  RW X
+  SRAM_DATA             20000000   00010000  00001885  0000e77b  RW  
 
 
 SEGMENT ALLOCATION MAP
@@ -26,9 +26,10 @@ run origin  load origin   length   init length attrs members
   000000e4    000000e4    00004978   00004978    r-- .const
   00004a5c    00004a5c    00001014   00001014    r-x .text
   00005a70    00005a70    00000030   00000030    r-- .cinit
-20000000    20000000    00001285   00000000    rw-
+20000000    20000000    00001685   00000000    rw-
   20000000    20000000    00001280   00000000    rw- .bss
-  20001280    20001280    00000005   00000000    rw- .data
+  20001280    20001280    00000400   00000000    rw- .sysmem
+  20001680    20001680    00000005   00000000    rw- .data
 2000fe00    2000fe00    00000200   00000000    rw-
   2000fe00    2000fe00    00000200   00000000    rw- .stack
 
@@ -109,9 +110,13 @@ section   page    origin      length       input sections
 .bss       0    20000000    00001280     UNINITIALIZED
                   20000000    00001280     (.common:GLOBAL_framebuffer)
 
-.data      0    20001280    00000005     UNINITIALIZED
-                  20001280    00000004     system_msp432p401r.obj (.data)
-                  20001284    00000001     GPIOInit.obj (.data)
+.sysmem    0    20001280    00000400     UNINITIALIZED
+                  20001280    00000008     rtsv7M4_T_le_v4SPD16_eabi.lib : memory.c.obj (.sysmem)
+                  20001288    000003f8     --HOLE--
+
+.data      0    20001680    00000005     UNINITIALIZED
+                  20001680    00000004     system_msp432p401r.obj (.data)
+                  20001684    00000001     GPIOInit.obj (.data)
 
 .stack     0    2000fe00    00000200     UNINITIALIZED
                   2000fe00    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
@@ -167,16 +172,17 @@ MODULE SUMMARY
     +--+-----------------------------+------+---------+---------+
        Total:                        878    48        0      
                                                              
+       Heap:                         0      0         2048   
        Stack:                        0      0         1024   
        Linker Generated:             0      45        0      
     +--+-----------------------------+------+---------+---------+
-       Grand Total:                  4112   19081     10506  
+       Grand Total:                  4112   19081     12554  
 
 
 LINKER GENERATED COPY TABLES
 
 __TI_cinit_table @ 00005a90 records: 2, size/record: 8, table size: 16
-	.data: load addr=00005a7c, load size=00000009 bytes, run addr=20001280, run size=00000005 bytes, compression=lzss
+	.data: load addr=00005a7c, load size=00000009 bytes, run addr=20001680, run size=00000005 bytes, compression=lzss
 	.bss: load addr=00005a88, load size=00000008 bytes, run addr=20000000, run size=00001280 bytes, compression=zero_init
 
 
@@ -257,7 +263,7 @@ address   name
 0000597d  SPI_transmitData                          
 00005a57  SVC_Handler                               
 00005a57  SysTick_Handler                           
-20001280  SystemCoreClock                           
+20001680  SystemCoreClock                           
 00004a5d  SystemCoreClockUpdate                     
 00004cd5  SystemInit                                
 00005a57  T32_INT1_IRQHandler                       
@@ -277,6 +283,7 @@ address   name
 000059a5  WDT_A_holdTimer                           
 20010000  __STACK_END                               
 00000200  __STACK_SIZE                              
+00000400  __SYSMEM_SIZE                             
 00005a90  __TI_CINIT_Base                           
 00005aa0  __TI_CINIT_Limit                          
 00005a70  __TI_Handler_Table_Base                   
@@ -303,6 +310,7 @@ ffffffff  __c_args__
 UNDEFED   __mpu_init                                
 2000fe00  __stack                                   
 0000589d  _c_int00_noargs                           
+20001280  _sys_memory                               
 UNDEFED   _system_post_cinit                        
 00005a69  _system_pre_init                          
 00005a6d  abort                                     
@@ -324,7 +332,7 @@ ffffffff  binit
 00005649  memset                                    
 00004d91  powerON                                   
 00004d9b  powerOff                                  
-20001284  result                                    
+20001684  result                                    
 00004a04  spiMasterConfig                           
 00004fd7  turnBlack                                 
 00004f65  turnWhite                                 
@@ -341,6 +349,7 @@ address   name
 00000000  __TI_static_base__                        
 00000000  interruptVectors                          
 00000200  __STACK_SIZE                              
+00000400  __SYSMEM_SIZE                             
 00004a04  spiMasterConfig                           
 00004a20  FONT_ubuntu_bold_16                       
 00004a2c  FONT_ubuntu_bold_24                       
@@ -465,8 +474,9 @@ address   name
 00005a90  __TI_CINIT_Base                           
 00005aa0  __TI_CINIT_Limit                          
 20000000  GLOBAL_framebuffer                        
-20001280  SystemCoreClock                           
-20001284  result                                    
+20001280  _sys_memory                               
+20001680  SystemCoreClock                           
+20001684  result                                    
 2000fe00  __stack                                   
 20010000  __STACK_END                               
 4000480c  WDTCTL_SYM                                
@@ -479,4 +489,4 @@ ffffffff  binit
 UNDEFED   __mpu_init                                
 UNDEFED   _system_post_cinit                        
 
-[140 symbols]
+[142 symbols]
