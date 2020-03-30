@@ -11,14 +11,14 @@ uint16_t valueSize;
 void *valueBuff;
 Json_Handle labelTemplateHandle;
 Json_Handle labelObjectHandle;
-//LabelJSON resultLabel;
+LabelJSON resultLabel;
 /*
  * This method will take the API and will create the
  * information necessary to drive the screen and
  * actually locate the received information in a proper
  * way taking into account the size of the data
  */
-void buildLabel(void);
+void printLabel(void);
 
 
 int8_t createLabel(const char *object)
@@ -62,10 +62,24 @@ int8_t createLabel(const char *object)
         return -1;
     }
 
-    //Cast the result and assign
-    //it to my data structure
-    //resultLabel.ProductID = valueBuff;
+    //Make sure the values are located in place
+    strcpy(resultLabel.ProductID, valueBuff);
 
+    return 0;
+}
 
+void printLabel(void)
+{
+    gfxInit();
 
+    gfxWriteText(&FONT_ubuntu_bold_16, 115, 0, resultLabel.ProductID);
+
+//    gfxWriteText(&FONT_ubuntu_bold_16, 115, 0, "Scientific calculator for large");
+//    gfxWriteText(&FONT_ubuntu_bold_16, 100, 0, "and digital part");
+//    gfxWriteText(&FONT_ubuntu_medium_48, 24, 0, "545");
+//    gfxWriteText(&FONT_ubuntu_bold_24, 58, 100, "98");
+//    gfxWriteText(&FONT_ubuntu_bold_16, 20, 0, "SKU: 4568, 12/13/2020");
+//    gfxWriteText(&FONT_ubuntu_bold_16, 0, 0, "Model: MFX4587");
+
+    updateEPD();
 }

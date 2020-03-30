@@ -160,7 +160,7 @@ all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 ePaperDriver.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: ARM Linker'
-	"/home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --advice:power="all" --define=__MSP432P401R__ --define=ccs -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"ePaperDriver.map" --heap_size=1024 --stack_size=512 -i"/home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source" -i"/home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/lib" --diag_wrap=off --display_error_number --warn_sections --xml_link_info="ePaperDriver_linkInfo.xml" --rom_model -o "ePaperDriver.out" $(ORDERED_OBJS)
+	"/home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --advice:power="all" --define=__MSP432P401R__ --define=ccs -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"ePaperDriver.map" --heap_size=1024 --stack_size=512 -i"/home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source" -i"/home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/utils" -i"/home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/lib" --diag_wrap=off --display_error_number --warn_sections --xml_link_info="ePaperDriver_linkInfo.xml" --rom_model -o "ePaperDriver.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 

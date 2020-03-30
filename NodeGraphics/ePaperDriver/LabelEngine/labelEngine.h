@@ -11,7 +11,10 @@
 #include <ti/utils/json/json.h>
 #include "label_types.h"
 
-
+#include "Driver/pinDefinintions.h"
+#include "Driver/ePaper.h"
+#include "grx/graphics.h"
+#include "fonts/resources.h"
 
 /*
  * This method is the only one I expose.

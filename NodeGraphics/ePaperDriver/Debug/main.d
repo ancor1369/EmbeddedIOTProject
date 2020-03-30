@@ -55,32 +55,32 @@ main.obj: /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/drivers/S
 main.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stddef.h
 main.obj: ../Driver/GPIOInit.h
 main.obj: ../Driver/pinDefinintions.h
-main.obj: ../Driver/pinDefinintions.h
-main.obj: ../Driver/ePaper.h
-main.obj: ../Driver/GPIOInit.h
-main.obj: ../Driver/pinDefinintions.h
-main.obj: ../Driver/SPIinit.h
-main.obj: ../Driver/pinDefinintions.h
-main.obj: ../Driver/../buffer.h
-main.obj: ../grx/graphics.h
+main.obj: ../LabelEngine/labelEngine.h
 main.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdio.h
 main.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/_ti_config.h
 main.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/linkage.h
 main.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdarg.h
-main.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/string.h
-main.obj: ../grx/graphic_types.h
-main.obj: ../grx/../Driver/ePaper.h
-main.obj: ../grx/../Driver/GPIOInit.h
-main.obj: ../grx/../Driver/pinDefinintions.h
-main.obj: ../grx/../Driver/SPIinit.h
-main.obj: ../grx/../Driver/pinDefinintions.h
-main.obj: ../grx/../fonts/resources.h
-main.obj: ../fonts/resources.h
-main.obj: ../LabelEngine/labelEngine.h
 main.obj: /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/utils/json/json.h
 main.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdlib.h
+main.obj: /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/string.h
 main.obj: /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/utils/json/json_engine.h
 main.obj: ../LabelEngine/label_types.h
+main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/pinDefinintions.h
+main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/ePaper.h
+main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/GPIOInit.h
+main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/pinDefinintions.h
+main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/SPIinit.h
+main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/pinDefinintions.h
+main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/../buffer.h
+main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/grx/graphics.h
+main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/grx/graphic_types.h
+main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/grx/../Driver/ePaper.h
+main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/grx/../Driver/GPIOInit.h
+main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/grx/../Driver/pinDefinintions.h
+main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/grx/../Driver/SPIinit.h
+main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/grx/../Driver/pinDefinintions.h
+main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/grx/../fonts/resources.h
+main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/fonts/resources.h
 
 ../main.c: 
 /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdint.h: 
@@ -137,29 +137,29 @@ main.obj: ../LabelEngine/label_types.h
 /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stddef.h: 
 ../Driver/GPIOInit.h: 
 ../Driver/pinDefinintions.h: 
-../Driver/pinDefinintions.h: 
-../Driver/ePaper.h: 
-../Driver/GPIOInit.h: 
-../Driver/pinDefinintions.h: 
-../Driver/SPIinit.h: 
-../Driver/pinDefinintions.h: 
-../Driver/../buffer.h: 
-../grx/graphics.h: 
+../LabelEngine/labelEngine.h: 
 /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdio.h: 
 /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/_ti_config.h: 
 /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/linkage.h: 
 /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdarg.h: 
-/home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/string.h: 
-../grx/graphic_types.h: 
-../grx/../Driver/ePaper.h: 
-../grx/../Driver/GPIOInit.h: 
-../grx/../Driver/pinDefinintions.h: 
-../grx/../Driver/SPIinit.h: 
-../grx/../Driver/pinDefinintions.h: 
-../grx/../fonts/resources.h: 
-../fonts/resources.h: 
-../LabelEngine/labelEngine.h: 
 /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/utils/json/json.h: 
 /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdlib.h: 
+/home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/string.h: 
 /home/andres/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/utils/json/json_engine.h: 
 ../LabelEngine/label_types.h: 
+/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/pinDefinintions.h: 
+/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/ePaper.h: 
+/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/GPIOInit.h: 
+/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/pinDefinintions.h: 
+/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/SPIinit.h: 
+/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/pinDefinintions.h: 
+/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/Driver/../buffer.h: 
+/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/grx/graphics.h: 
+/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/grx/graphic_types.h: 
+/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/grx/../Driver/ePaper.h: 
+/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/grx/../Driver/GPIOInit.h: 
+/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/grx/../Driver/pinDefinintions.h: 
+/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/grx/../Driver/SPIinit.h: 
+/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/grx/../Driver/pinDefinintions.h: 
+/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/grx/../fonts/resources.h: 
+/home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/fonts/resources.h: 
