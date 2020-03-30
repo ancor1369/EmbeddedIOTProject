@@ -81,6 +81,7 @@ main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphi
 main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/grx/../Driver/pinDefinintions.h
 main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/grx/../fonts/resources.h
 main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/fonts/resources.h
+main.obj: ../LabelEngine/../cJSON/cJSON.h
 
 ../main.c: 
 /home/andres/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdint.h: 
@@ -163,3 +164,4 @@ main.obj: /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphi
 /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/grx/../Driver/pinDefinintions.h: 
 /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/grx/../fonts/resources.h: 
 /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/NodeGraphics/ePaperDriver/fonts/resources.h: 
+../LabelEngine/../cJSON/cJSON.h: 

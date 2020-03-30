@@ -114,6 +114,7 @@ SUBDIRS := \
 . \
 Driver \
 LabelEngine \
+cJSON \
 fonts \
 grx \
 

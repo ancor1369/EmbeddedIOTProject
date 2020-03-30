@@ -16,6 +16,8 @@
 #include "grx/graphics.h"
 #include "fonts/resources.h"
 
+#include "../cJSON/cJSON.h"
+
 /*
  * This method is the only one I expose.
  * This method takes the JSON object and
