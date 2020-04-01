@@ -22,7 +22,8 @@ void printLabel(void);
 
 int8_t createLabel(const char *object)
 {
-    const cJSON *ProductID = NULL;
+    const cJSON *value = NULL;
+
     int status = 0;
     void *valueBuff = NULL;
 
@@ -33,64 +34,82 @@ int8_t createLabel(const char *object)
         status = 0;
         goto end;
     }
-    ProductID = cJSON_GetObjectItemCaseSensitive(jobj, "ProductID");
-    if(cJSON_IsString(ProductID) && (ProductID->valuestring != NULL))
+    value = cJSON_GetObjectItemCaseSensitive(jobj, "ProductID");
+    if(cJSON_IsString(value) && (value->valuestring != NULL))
     {
-        strcpy(resultLabel.ProductID, ProductID->valuestring);
+        strcpy(resultLabel.ProductID, value->valuestring);
     }
 
+    value = cJSON_GetObjectItemCaseSensitive(jobj, "PriceDollar");
+    if(cJSON_IsString(value) && (value->valuestring != NULL))
+    {
+        strcpy(resultLabel.PriceDollar, value->valuestring);
+    }
+
+    value = cJSON_GetObjectItemCaseSensitive(jobj, "PriceDollar");
+    if(cJSON_IsString(value) && (value->valuestring != NULL))
+    {
+        strcpy(resultLabel.PriceDollar, value->valuestring);
+    }
+
+    value = cJSON_GetObjectItemCaseSensitive(jobj, "PriceCents");
+    if(cJSON_IsString(value) && (value->valuestring != NULL))
+    {
+        strcpy(resultLabel.PriceCents, value->valuestring);
+    }
+
+    value = cJSON_GetObjectItemCaseSensitive(jobj, "Description");
+    if(cJSON_IsString(value) && (value->valuestring != NULL))
+    {
+        strcpy(resultLabel.Description, value->valuestring);
+    }
+
+    value = cJSON_GetObjectItemCaseSensitive(jobj, "URL");
+    if(cJSON_IsString(value) && (value->valuestring != NULL))
+    {
+        strcpy(resultLabel.URL, value->valuestring);
+    }
+
+    value = cJSON_GetObjectItemCaseSensitive(jobj, "SKU");
+    if(cJSON_IsString(value) && (value->valuestring != NULL))
+    {
+        strcpy(resultLabel.SKU, value->valuestring);
+    }
+
+    value = cJSON_GetObjectItemCaseSensitive(jobj, "Model");
+    if(cJSON_IsString(value) && (value->valuestring != NULL))
+    {
+        strcpy(resultLabel.Model, value->valuestring);
+    }
+
+    value = cJSON_GetObjectItemCaseSensitive(jobj, "DueDate");
+    if(cJSON_IsString(value) && (value->valuestring != NULL))
+    {
+        strcpy(resultLabel.DueDate, value->valuestring);
+    }
+
+    value = cJSON_GetObjectItemCaseSensitive(jobj, "LayoutName");
+    if(cJSON_IsString(value) && (value->valuestring != NULL))
+    {
+        strcpy(resultLabel.LayoutName, value->valuestring);
+    }
+
+    value = cJSON_GetObjectItemCaseSensitive(jobj, "Update");
+     if(cJSON_IsString(value) && (value->valuestring != NULL))
+     {
+         strcpy(resultLabel.Update, value->valuestring);
+     }
+     value = cJSON_GetObjectItemCaseSensitive(jobj, "Blink");
+      if(cJSON_IsString(value) && (value->valuestring != NULL))
+      {
+          strcpy(resultLabel.Blink, value->valuestring);
+      }
 
     end:
     cJSON_Delete(jobj);
     return status;
 }
 
-//int8_t createLabel(const char *object)
-//{
-//    retVal = Json_createTemplate(&labelTemplateHandle, labelTemplate, strlen(labelTemplate));
-//    if(retVal != 0)
-//    {
-//        //Error
-//        return -1;
-//    }
-//
-//    retVal = Json_createObject(&labelObjectHandle, labelTemplateHandle,0);
-//    if(retVal != 0)
-//    {
-//        //Error
-//        return -1;
-//    }
-//
-//    //Start parsing the information
-//    retVal = Json_parse(labelObjectHandle, object, strlen(object));
-//    if(retVal != 0)
-//    {
-//        //error
-//        return -1;
-//    }
-//
-//    //This section of code needs to be done over all the attributes of the JSON
-//    retVal = Json_getValue(labelObjectHandle, "\"ProductID\"", NULL, valueSize);
-//    if(retVal != 0)
-//    {
-//        //error
-//        return -1;
-//    }
-//
-//    valueBuff = calloc(1,valueSize+1);
-//
-//    retVal = Json_getValue(labelObjectHandle, "\"ProductID\"", valueBuff, valueSize);
-//    if(retVal != 0)
-//    {
-//        //error
-//        return -1;
-//    }
-//
-//    //Make sure the values are located in place
-//    strcpy(resultLabel.ProductID, valueBuff);
-//
-//    return 0;
-//}
 
 void printLabel(void)
 {

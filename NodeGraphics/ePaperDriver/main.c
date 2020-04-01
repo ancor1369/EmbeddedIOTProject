@@ -39,11 +39,26 @@
 
 #include "LabelEngine/labelEngine.h"
 
-#define test                \
-"{"                         \
-  "\"ProductID\": \"45\""    \
-"}"
+//
+//#define test                \
+//"{"                         \
+//  "\"ProductID\": \"45\""    \
+//"}"
 
+#define test                                                        \
+"{"                                                                 \
+ "\"ProductID\": \"46\","                                           \
+ "\"PriceDollar\": \"244\","                                        \
+ "\"PriceCents\": \"97\","                                          \
+ "\"Description\": \"Scientific calculator for small numbers\","    \
+ "\"URL\": \"https://bit.ly/largo1\","                              \
+ "\"SKU\": \"4532321\","                                            \
+ "\"Model\": \"FM7548\","                                           \
+ "\"DueDate\": \"11/22/18\","                                       \
+ "\"LayoutName\": \"RegularTag\","                                  \
+ "\"Update\": \"true\","                                            \
+ "\"Blink\": \"False\""                                             \
+"}"
 
 
 int main(void)
