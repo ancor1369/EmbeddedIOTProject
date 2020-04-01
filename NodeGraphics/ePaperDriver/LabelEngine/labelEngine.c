@@ -114,8 +114,41 @@ int8_t createLabel(const char *object)
 void printLabel(void)
 {
     gfxInit();
+    //Holds data temporarily
+    char temp[30];
+    int16_t chrLen;
+    int8_t position;
+    char *second;
 
-    gfxWriteText(&FONT_ubuntu_bold_16, 115, 0, resultLabel.ProductID);
+
+    //Get the second row of the description of the product, Finds the first space to make sure
+    //characters are not cut in the middle of a word.
+    if(strlen(resultLabel.Description)>=32)
+    {
+        second = memchr(resultLabel.Description+28, ' ', strlen(resultLabel.Description+28));
+        position = strlen(resultLabel.Description) - strlen(second);
+        memcpy(temp, resultLabel.Description, position);
+        gfxWriteText(&FONT_ubuntu_bold_16, 115, 0, temp);
+        gfxWriteText(&FONT_ubuntu_bold_16, 100, 0, second);
+    }
+    else
+    {
+        gfxWriteText(&FONT_ubuntu_bold_16, 115, 0, resultLabel.Description);
+    }
+
+
+    //This fraction locates the code where it is needed to create
+    //The illusion of full dollars plus cents in an smaller font
+    chrLen = strlen(resultLabel.PriceDollar);
+    chrLen *=33;
+    gfxWriteText(&FONT_ubuntu_medium_48, 24, 0, resultLabel.PriceDollar);
+    gfxWriteText(&FONT_ubuntu_bold_24, 58, chrLen, resultLabel.PriceCents);
+    memset(temp,0x00,sizeof(temp));
+
+    gfxWriteText(&FONT_ubuntu_bold_16, 20, 0, "SKU: ");
+    gfxWriteText(&FONT_ubuntu_bold_16, 20, 44, resultLabel.SKU);//The label is always the same, thus it uses a constant offset
+    gfxWriteText(&FONT_ubuntu_bold_16, 0, 0, "ModeL: ");
+    gfxWriteText(&FONT_ubuntu_bold_16, 0, 66, resultLabel.Model);//The label is always the same, thus it uses a constant offset
 
 //    gfxWriteText(&FONT_ubuntu_bold_16, 115, 0, "Scientific calculator for large");
 //    gfxWriteText(&FONT_ubuntu_bold_16, 100, 0, "and digital part");

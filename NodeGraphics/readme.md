@@ -27,4 +27,9 @@ they created for E-Paper.
 
 ## A complete demo image
 
+Inspiration and code boost thanks to arturlangner 
+ https://github.com/arturlangner/Waveshare-ePaper-C-library
+
 ![image](https://user-images.githubusercontent.com/25968721/77941827-bf5ec800-7288-11ea-9eb0-99843cad2773.png)
+
+

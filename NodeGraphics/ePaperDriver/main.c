@@ -48,9 +48,9 @@
 #define test                                                        \
 "{"                                                                 \
  "\"ProductID\": \"46\","                                           \
- "\"PriceDollar\": \"244\","                                        \
+ "\"PriceDollar\": \"5\","                                        \
  "\"PriceCents\": \"97\","                                          \
- "\"Description\": \"Scientific calculator for small numbers\","    \
+ "\"Description\": \"Scientific calculator that is able to print long lines\","    \
  "\"URL\": \"https://bit.ly/largo1\","                              \
  "\"SKU\": \"4532321\","                                            \
  "\"Model\": \"FM7548\","                                           \
@@ -72,27 +72,6 @@ int main(void)
 
     printLabel();
 
-
-    //Start the engine which starts the EPAPER screen and then
-    //send a message the the screen
-//    gfxInit();
-//    gfxWriteText(&FONT_ubuntu_bold_16, 115, 0, "Scientific calculator for large");
-//    gfxWriteText(&FONT_ubuntu_bold_16, 100, 0, "and digital part");
-//    gfxWriteText(&FONT_ubuntu_medium_48, 24, 0, "545");
-//    gfxWriteText(&FONT_ubuntu_bold_24, 58, 100, "98");
-//    gfxWriteText(&FONT_ubuntu_bold_16, 20, 0, "SKU: 4568, 12/13/2020");
-//    gfxWriteText(&FONT_ubuntu_bold_16, 0, 0, "Model: MFX4587");
-//
-////    LabelJSON object;
-////
-////    object.Description = "Scientific calculator for large and digital part";
-////    object.PriceDollar = "545";
-////    object.PriceCents = "98";
-////    object.SKU = "456879";
-////    object.DueDate = "12/13/2020";
-////    object.Model = "MX4579";
-//
-//    updateEPD();
 
     PCM_gotoLPM0();
     __no_operation();

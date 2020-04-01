@@ -40,15 +40,15 @@
 
 
 typedef struct {
-    char ProductID[10];
-    char PriceDollar[4];
-    char PriceCents[3];
-    char Description[60];
-    char URL[50];
-    char SKU[6];
-    char Model[20];
-    char DueDate[10];
-    char LayoutName[10];
+    char ProductID[8];
+    char PriceDollar[8];
+    char PriceCents[8];
+    char Description[64];
+    char URL[32];
+    char SKU[16];
+    char Model[24];
+    char DueDate[18];
+    char LayoutName[16];
     char Update[4];
     char Blink[4];
 } LabelJSON;
