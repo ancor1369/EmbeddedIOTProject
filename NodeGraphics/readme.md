@@ -23,3 +23,13 @@ on the screen. Thanks to arturlangnerbu the grate explanation in his post and th
 they created for E-Paper.
 
 ![image](https://user-images.githubusercontent.com/25968721/77834247-bd2a2b80-7119-11ea-8aaf-d25a87daa721.png)
+
+
+## A complete demo image
+
+Inspiration and code boost thanks to arturlangner 
+ https://github.com/arturlangner/Waveshare-ePaper-C-library
+
+![image](https://user-images.githubusercontent.com/25968721/77941827-bf5ec800-7288-11ea-9eb0-99843cad2773.png)
+
+
