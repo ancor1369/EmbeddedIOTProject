@@ -31,19 +31,7 @@
 
 #include "Driver/SPIinit.h"
 #include "Driver/GPIOInit.h"
-//#include "Driver/pinDefinintions.h"
-//#include "Driver/ePaper.h"
-//#include "grx/graphics.h"
-//#include "fonts/resources.h"
-//#include "LabelEngine/labelEngine.h"
-
 #include "LabelEngine/labelEngine.h"
-
-//
-//#define test                \
-//"{"                         \
-//  "\"ProductID\": \"45\""    \
-//"}"
 
 #define test                                                        \
 "{"                                                                 \

@@ -8,6 +8,7 @@
 #include <ti/devices/msp432p4xx/driverlib/driverlib.h>
 #include <ti/drivers/SPI.h>
 
+
 #define EPD_READY   GPIO_PIN0
 #define EPD_RESET   GPIO_PIN4
 #define EPD_DC      GPIO_PIN6
