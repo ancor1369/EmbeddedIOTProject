@@ -31,6 +31,7 @@
 
 #include "Driver/SPIinit.h"
 #include "Driver/GPIOInit.h"
+#include "Driver/UARTInit.h"
 #include "LabelEngine/labelEngine.h"
 
 #define test                                                        \
@@ -53,13 +54,18 @@ int main(void)
 {
     SPI_Init();
     GPIO_Init();
+    UART_Init();
+
+    //createLabel(test);
 
 
-    createLabel(test);
+    //printLabel();
 
 
-    printLabel();
-
+    while(1)
+    {
+        MAP_PCM_gotoLPM0();
+    }
 
     PCM_gotoLPM0();
     __no_operation();

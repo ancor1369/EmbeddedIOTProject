@@ -1,3 +1,4 @@
-#include <ti/drivers/UART.h>
+#include "pinDefinintions.h"
+
 
 void UART_Init(void);
