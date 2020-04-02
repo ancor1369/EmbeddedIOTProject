@@ -12,6 +12,7 @@
   "Blink": "False"
 }
 
+
 {
   "ProductID": string,
   "PriceDollar": int32,
