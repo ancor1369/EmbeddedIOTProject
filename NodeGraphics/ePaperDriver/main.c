@@ -32,7 +32,7 @@
 #include "Driver/SPIinit.h"
 #include "Driver/GPIOInit.h"
 #include "Driver/UARTInit.h"
-#include "LabelEngine/labelEngine.h"
+//#include "LabelEngine/labelEngine.h"
 
 #define test                                                        \
 "{"                                                                 \
