@@ -1,0 +1,356 @@
+[
+  {
+    "downloadLink": "api/bundle?vid=msp430ware__3.80.09.03&download=true",
+    "makeofflineLink": "api/bundles?vids=msp430ware__3.80.09.03",
+    "removeofflineLink": "api/resources?id=2TwZNcQf5bapIA&path=Software/MSP430Ware/Libraries/Graphics Library/Example Projects&removeoffline=true",
+    "_id": "2TwZNcQf5bapIA",
+    "_originalJsonFile": "msp430ware_3_80_09_03/.metadata/.tirex/content.tirex.json",
+    "devtools": [
+      "MSP-EXP430F5529LP",
+      "MSP-EXP430F5529"
+    ],
+    "link": "api/linkTo/2TwZNcQf5bapIA?extname=.projectspec",
+    "linkType": "local",
+    "name": "Empty_Project_MSP430F5xx_6xx_Grlib_Example",
+    "packageUId": "msp430ware__3.80.09.03",
+    "resourceType": "projectSpec",
+    "tags": [
+      "API",
+      "Graphics",
+      "Graphics Library",
+      "Library",
+      "Software",
+      "grlib"
+    ],
+    "type": "resource",
+    "text": "Empty_Project_MSP430F5xx_6xx_Grlib_Example",
+    "url": "/api/resources?path=Software/MSP430Ware/Libraries/Graphics%20Library/Example%20Projects&package=c2000ware_software_package__2.01.00.00::digital_power_c2000ware_sdk_software_package__2.00.01.00::motor_control_c2000ware_sdk_software_package__2.01.00.00::sitara__1.02.00.00::ascstudio__1.0.0.0::com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::energia.boards.cc13xx__5.20.0::energia.boards.cc3220emt__5.6.2::energia.core__18.0.0::energia.boards.msp432r__5.25.2::energia.tool.arm-none-eabi-gcc__6.3.1-20170620::energia.tool.ino2cpp__1.0.6::arm.gnu__9.2.1::com.ti.mmwave_automotive_toolbox__2.9.1::com.ti.mmwave_industrial_toolbox__4.2.1::msp430ware__3.80.09.03::powerSUITE_software_package__2.05.01.00::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC13X0_SDK__3.20.00.23::com.ti.SIMPLELINK_CC13X2_26X2_SDK__3.40.00.02::com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_CC32XX_SDK__3.40.00.05::com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_MSP432E4_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.ti154stack_linux_x64__3.30.00.12::tirtos_cc13xx_cc26xx__2.21.00.06::tirtos_tivac__2.16.00.08::tm4c__2.1.4.178::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04::xdctools__3.60.02.34",
+    "importProject": "api/importProject/2TwZNcQf5bapIA",
+    "packageOrder": 111,
+    "offline": "true"
+  },
+  {
+    "downloadLink": "api/bundle?vid=msp430ware__3.80.09.03&download=true",
+    "makeofflineLink": "api/bundles?vids=msp430ware__3.80.09.03",
+    "removeofflineLink": "api/resources?id=2Tw2mRC7fe88bI&path=Software/MSP430Ware/Libraries/Graphics Library/Example Projects&removeoffline=true",
+    "_id": "2Tw2mRC7fe88bI",
+    "_originalJsonFile": "msp430ware_3_80_09_03/.metadata/.tirex/content.tirex.json",
+    "devtools": [
+      "MSP-EXP430FR5969"
+    ],
+    "link": "api/linkTo/2Tw2mRC7fe88bI?extname=.projectspec",
+    "linkType": "local",
+    "name": "Empty_Project_MSP430FR57xx_Grlib_Example",
+    "packageUId": "msp430ware__3.80.09.03",
+    "resourceType": "projectSpec",
+    "tags": [
+      "API",
+      "Graphics",
+      "Graphics Library",
+      "Library",
+      "Software",
+      "grlib"
+    ],
+    "type": "resource",
+    "text": "Empty_Project_MSP430FR57xx_Grlib_Example",
+    "url": "/api/resources?path=Software/MSP430Ware/Libraries/Graphics%20Library/Example%20Projects&package=c2000ware_software_package__2.01.00.00::digital_power_c2000ware_sdk_software_package__2.00.01.00::motor_control_c2000ware_sdk_software_package__2.01.00.00::sitara__1.02.00.00::ascstudio__1.0.0.0::com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::energia.boards.cc13xx__5.20.0::energia.boards.cc3220emt__5.6.2::energia.core__18.0.0::energia.boards.msp432r__5.25.2::energia.tool.arm-none-eabi-gcc__6.3.1-20170620::energia.tool.ino2cpp__1.0.6::arm.gnu__9.2.1::com.ti.mmwave_automotive_toolbox__2.9.1::com.ti.mmwave_industrial_toolbox__4.2.1::msp430ware__3.80.09.03::powerSUITE_software_package__2.05.01.00::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC13X0_SDK__3.20.00.23::com.ti.SIMPLELINK_CC13X2_26X2_SDK__3.40.00.02::com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_CC32XX_SDK__3.40.00.05::com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_MSP432E4_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.ti154stack_linux_x64__3.30.00.12::tirtos_cc13xx_cc26xx__2.21.00.06::tirtos_tivac__2.16.00.08::tm4c__2.1.4.178::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04::xdctools__3.60.02.34",
+    "importProject": "api/importProject/2Tw2mRC7fe88bI",
+    "packageOrder": 111,
+    "offline": "true"
+  },
+  {
+    "downloadLink": "api/bundle?vid=msp430ware__3.80.09.03&download=true",
+    "makeofflineLink": "api/bundles?vids=msp430ware__3.80.09.03",
+    "removeofflineLink": "api/resources?id=2TwRM0SUV2hyaY&path=Software/MSP430Ware/Libraries/Graphics Library/Example Projects&removeoffline=true",
+    "_id": "2TwRM0SUV2hyaY",
+    "_originalJsonFile": "msp430ware_3_80_09_03/.metadata/.tirex/content.tirex.json",
+    "devtools": [
+      "MSP-EXP430FR5969"
+    ],
+    "link": "api/linkTo/2TwRM0SUV2hyaY?extname=.projectspec",
+    "linkType": "local",
+    "name": "Empty_Project_MSP430FR5xx_6xx_Grlib_Example",
+    "packageUId": "msp430ware__3.80.09.03",
+    "resourceType": "projectSpec",
+    "tags": [
+      "API",
+      "Graphics",
+      "Graphics Library",
+      "Library",
+      "Software",
+      "grlib"
+    ],
+    "type": "resource",
+    "text": "Empty_Project_MSP430FR5xx_6xx_Grlib_Example",
+    "url": "/api/resources?path=Software/MSP430Ware/Libraries/Graphics%20Library/Example%20Projects&package=c2000ware_software_package__2.01.00.00::digital_power_c2000ware_sdk_software_package__2.00.01.00::motor_control_c2000ware_sdk_software_package__2.01.00.00::sitara__1.02.00.00::ascstudio__1.0.0.0::com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::energia.boards.cc13xx__5.20.0::energia.boards.cc3220emt__5.6.2::energia.core__18.0.0::energia.boards.msp432r__5.25.2::energia.tool.arm-none-eabi-gcc__6.3.1-20170620::energia.tool.ino2cpp__1.0.6::arm.gnu__9.2.1::com.ti.mmwave_automotive_toolbox__2.9.1::com.ti.mmwave_industrial_toolbox__4.2.1::msp430ware__3.80.09.03::powerSUITE_software_package__2.05.01.00::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC13X0_SDK__3.20.00.23::com.ti.SIMPLELINK_CC13X2_26X2_SDK__3.40.00.02::com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_CC32XX_SDK__3.40.00.05::com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_MSP432E4_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.ti154stack_linux_x64__3.30.00.12::tirtos_cc13xx_cc26xx__2.21.00.06::tirtos_tivac__2.16.00.08::tm4c__2.1.4.178::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04::xdctools__3.60.02.34",
+    "importProject": "api/importProject/2TwRM0SUV2hyaY",
+    "packageOrder": 111,
+    "offline": "true"
+  },
+  {
+    "downloadLink": "api/bundle?vid=msp430ware__3.80.09.03&download=true",
+    "makeofflineLink": "api/bundles?vids=msp430ware__3.80.09.03",
+    "removeofflineLink": "api/resources?id=2TwNJqqp6N4_6o&path=Software/MSP430Ware/Libraries/Graphics Library/Example Projects&removeoffline=true",
+    "_id": "2TwNJqqp6N4_6o",
+    "_originalJsonFile": "msp430ware_3_80_09_03/.metadata/.tirex/content.tirex.json",
+    "devtools": [
+      "MSP-EXP430G2",
+      "MSP-EXP430G2ET"
+    ],
+    "link": "api/linkTo/2TwNJqqp6N4_6o?extname=.projectspec",
+    "linkType": "local",
+    "name": "Empty_Project__No_Driverlib_Grlib_Example",
+    "packageUId": "msp430ware__3.80.09.03",
+    "resourceType": "projectSpec",
+    "tags": [
+      "API",
+      "Graphics",
+      "Graphics Library",
+      "Library",
+      "Software",
+      "grlib"
+    ],
+    "type": "resource",
+    "text": "Empty_Project__No_Driverlib_Grlib_Example",
+    "url": "/api/resources?path=Software/MSP430Ware/Libraries/Graphics%20Library/Example%20Projects&package=c2000ware_software_package__2.01.00.00::digital_power_c2000ware_sdk_software_package__2.00.01.00::motor_control_c2000ware_sdk_software_package__2.01.00.00::sitara__1.02.00.00::ascstudio__1.0.0.0::com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::energia.boards.cc13xx__5.20.0::energia.boards.cc3220emt__5.6.2::energia.core__18.0.0::energia.boards.msp432r__5.25.2::energia.tool.arm-none-eabi-gcc__6.3.1-20170620::energia.tool.ino2cpp__1.0.6::arm.gnu__9.2.1::com.ti.mmwave_automotive_toolbox__2.9.1::com.ti.mmwave_industrial_toolbox__4.2.1::msp430ware__3.80.09.03::powerSUITE_software_package__2.05.01.00::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC13X0_SDK__3.20.00.23::com.ti.SIMPLELINK_CC13X2_26X2_SDK__3.40.00.02::com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_CC32XX_SDK__3.40.00.05::com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_MSP432E4_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.ti154stack_linux_x64__3.30.00.12::tirtos_cc13xx_cc26xx__2.21.00.06::tirtos_tivac__2.16.00.08::tm4c__2.1.4.178::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04::xdctools__3.60.02.34",
+    "importProject": "api/importProject/2TwNJqqp6N4_6o",
+    "packageOrder": 111,
+    "offline": "true"
+  },
+  {
+    "downloadLink": "api/bundle?vid=msp430ware__3.80.09.03&download=true",
+    "makeofflineLink": "api/bundles?vids=msp430ware__3.80.09.03",
+    "removeofflineLink": "api/resources?id=2TwoPKw9Lcfj2Y&path=Software/MSP430Ware/Libraries/Graphics Library/Example Projects&removeoffline=true",
+    "_id": "2TwoPKw9Lcfj2Y",
+    "_originalJsonFile": "msp430ware_3_80_09_03/.metadata/.tirex/content.tirex.json",
+    "devtools": [
+      "MSP-EXP430F5438"
+    ],
+    "link": "api/linkTo/2TwoPKw9Lcfj2Y?extname=.projectspec",
+    "linkType": "local",
+    "name": "MSP-EXP430F5438_Grlib_Example",
+    "packageUId": "msp430ware__3.80.09.03",
+    "resourceType": "projectSpec",
+    "tags": [
+      "API",
+      "Graphics",
+      "Graphics Library",
+      "Library",
+      "Software",
+      "grlib"
+    ],
+    "type": "resource",
+    "text": "MSP-EXP430F5438_Grlib_Example",
+    "url": "/api/resources?path=Software/MSP430Ware/Libraries/Graphics%20Library/Example%20Projects&package=c2000ware_software_package__2.01.00.00::digital_power_c2000ware_sdk_software_package__2.00.01.00::motor_control_c2000ware_sdk_software_package__2.01.00.00::sitara__1.02.00.00::ascstudio__1.0.0.0::com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::energia.boards.cc13xx__5.20.0::energia.boards.cc3220emt__5.6.2::energia.core__18.0.0::energia.boards.msp432r__5.25.2::energia.tool.arm-none-eabi-gcc__6.3.1-20170620::energia.tool.ino2cpp__1.0.6::arm.gnu__9.2.1::com.ti.mmwave_automotive_toolbox__2.9.1::com.ti.mmwave_industrial_toolbox__4.2.1::msp430ware__3.80.09.03::powerSUITE_software_package__2.05.01.00::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC13X0_SDK__3.20.00.23::com.ti.SIMPLELINK_CC13X2_26X2_SDK__3.40.00.02::com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_CC32XX_SDK__3.40.00.05::com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_MSP432E4_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.ti154stack_linux_x64__3.30.00.12::tirtos_cc13xx_cc26xx__2.21.00.06::tirtos_tivac__2.16.00.08::tm4c__2.1.4.178::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04::xdctools__3.60.02.34",
+    "importProject": "api/importProject/2TwoPKw9Lcfj2Y",
+    "packageOrder": 111,
+    "offline": "true"
+  },
+  {
+    "downloadLink": "api/bundle?vid=msp430ware__3.80.09.03&download=true",
+    "makeofflineLink": "api/bundles?vids=msp430ware__3.80.09.03",
+    "removeofflineLink": "api/resources?id=2TwEAoEqJpdBVw&path=Software/MSP430Ware/Libraries/Graphics Library/Example Projects&removeoffline=true",
+    "_id": "2TwEAoEqJpdBVw",
+    "_originalJsonFile": "msp430ware_3_80_09_03/.metadata/.tirex/content.tirex.json",
+    "devtools": [
+      "MSP-EXP430F5529LP",
+      "MSP-EXP430F5529"
+    ],
+    "link": "api/linkTo/2TwEAoEqJpdBVw?extname=.projectspec",
+    "linkType": "local",
+    "name": "MSP-EXP430F5529LP_Grlib_Example",
+    "packageUId": "msp430ware__3.80.09.03",
+    "resourceType": "projectSpec",
+    "tags": [
+      "API",
+      "Graphics",
+      "Graphics Library",
+      "Library",
+      "Software",
+      "grlib"
+    ],
+    "type": "resource",
+    "text": "MSP-EXP430F5529LP_Grlib_Example",
+    "url": "/api/resources?path=Software/MSP430Ware/Libraries/Graphics%20Library/Example%20Projects&package=c2000ware_software_package__2.01.00.00::digital_power_c2000ware_sdk_software_package__2.00.01.00::motor_control_c2000ware_sdk_software_package__2.01.00.00::sitara__1.02.00.00::ascstudio__1.0.0.0::com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::energia.boards.cc13xx__5.20.0::energia.boards.cc3220emt__5.6.2::energia.core__18.0.0::energia.boards.msp432r__5.25.2::energia.tool.arm-none-eabi-gcc__6.3.1-20170620::energia.tool.ino2cpp__1.0.6::arm.gnu__9.2.1::com.ti.mmwave_automotive_toolbox__2.9.1::com.ti.mmwave_industrial_toolbox__4.2.1::msp430ware__3.80.09.03::powerSUITE_software_package__2.05.01.00::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC13X0_SDK__3.20.00.23::com.ti.SIMPLELINK_CC13X2_26X2_SDK__3.40.00.02::com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_CC32XX_SDK__3.40.00.05::com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_MSP432E4_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.ti154stack_linux_x64__3.30.00.12::tirtos_cc13xx_cc26xx__2.21.00.06::tirtos_tivac__2.16.00.08::tm4c__2.1.4.178::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04::xdctools__3.60.02.34",
+    "importProject": "api/importProject/2TwEAoEqJpdBVw",
+    "packageOrder": 111,
+    "offline": "true"
+  },
+  {
+    "downloadLink": "api/bundle?vid=msp430ware__3.80.09.03&download=true",
+    "makeofflineLink": "api/bundles?vids=msp430ware__3.80.09.03",
+    "removeofflineLink": "api/resources?id=2TwX_vanWzn2Es&path=Software/MSP430Ware/Libraries/Graphics Library/Example Projects&removeoffline=true",
+    "_id": "2TwX_vanWzn2Es",
+    "_originalJsonFile": "msp430ware_3_80_09_03/.metadata/.tirex/content.tirex.json",
+    "devtools": [
+      "MSP-EXP430F5529LP",
+      "MSP-EXP430F5529"
+    ],
+    "link": "api/linkTo/2TwX_vanWzn2Es?extname=.projectspec",
+    "linkType": "local",
+    "name": "MSP-EXP430F5529_Grlib_Example",
+    "packageUId": "msp430ware__3.80.09.03",
+    "resourceType": "projectSpec",
+    "tags": [
+      "API",
+      "Graphics",
+      "Graphics Library",
+      "Library",
+      "Software",
+      "grlib"
+    ],
+    "type": "resource",
+    "text": "MSP-EXP430F5529_Grlib_Example",
+    "url": "/api/resources?path=Software/MSP430Ware/Libraries/Graphics%20Library/Example%20Projects&package=c2000ware_software_package__2.01.00.00::digital_power_c2000ware_sdk_software_package__2.00.01.00::motor_control_c2000ware_sdk_software_package__2.01.00.00::sitara__1.02.00.00::ascstudio__1.0.0.0::com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::energia.boards.cc13xx__5.20.0::energia.boards.cc3220emt__5.6.2::energia.core__18.0.0::energia.boards.msp432r__5.25.2::energia.tool.arm-none-eabi-gcc__6.3.1-20170620::energia.tool.ino2cpp__1.0.6::arm.gnu__9.2.1::com.ti.mmwave_automotive_toolbox__2.9.1::com.ti.mmwave_industrial_toolbox__4.2.1::msp430ware__3.80.09.03::powerSUITE_software_package__2.05.01.00::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC13X0_SDK__3.20.00.23::com.ti.SIMPLELINK_CC13X2_26X2_SDK__3.40.00.02::com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_CC32XX_SDK__3.40.00.05::com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_MSP432E4_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.ti154stack_linux_x64__3.30.00.12::tirtos_cc13xx_cc26xx__2.21.00.06::tirtos_tivac__2.16.00.08::tm4c__2.1.4.178::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04::xdctools__3.60.02.34",
+    "importProject": "api/importProject/2TwX_vanWzn2Es",
+    "packageOrder": 111,
+    "offline": "true"
+  },
+  {
+    "downloadLink": "api/bundle?vid=msp430ware__3.80.09.03&download=true",
+    "makeofflineLink": "api/bundles?vids=msp430ware__3.80.09.03",
+    "removeofflineLink": "api/resources?id=2TwQgU6POYq7C0&path=Software/MSP430Ware/Libraries/Graphics Library/Example Projects&removeoffline=true",
+    "_id": "2TwQgU6POYq7C0",
+    "_originalJsonFile": "msp430ware_3_80_09_03/.metadata/.tirex/content.tirex.json",
+    "devtools": [
+      "MSP-EXP430FR4133"
+    ],
+    "link": "api/linkTo/2TwQgU6POYq7C0?extname=.projectspec",
+    "linkType": "local",
+    "name": "MSP-EXP430FR4133_Grlib_Example",
+    "packageUId": "msp430ware__3.80.09.03",
+    "resourceType": "projectSpec",
+    "tags": [
+      "API",
+      "Graphics",
+      "Graphics Library",
+      "Library",
+      "Software",
+      "grlib"
+    ],
+    "type": "resource",
+    "text": "MSP-EXP430FR4133_Grlib_Example",
+    "url": "/api/resources?path=Software/MSP430Ware/Libraries/Graphics%20Library/Example%20Projects&package=c2000ware_software_package__2.01.00.00::digital_power_c2000ware_sdk_software_package__2.00.01.00::motor_control_c2000ware_sdk_software_package__2.01.00.00::sitara__1.02.00.00::ascstudio__1.0.0.0::com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::energia.boards.cc13xx__5.20.0::energia.boards.cc3220emt__5.6.2::energia.core__18.0.0::energia.boards.msp432r__5.25.2::energia.tool.arm-none-eabi-gcc__6.3.1-20170620::energia.tool.ino2cpp__1.0.6::arm.gnu__9.2.1::com.ti.mmwave_automotive_toolbox__2.9.1::com.ti.mmwave_industrial_toolbox__4.2.1::msp430ware__3.80.09.03::powerSUITE_software_package__2.05.01.00::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC13X0_SDK__3.20.00.23::com.ti.SIMPLELINK_CC13X2_26X2_SDK__3.40.00.02::com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_CC32XX_SDK__3.40.00.05::com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_MSP432E4_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.ti154stack_linux_x64__3.30.00.12::tirtos_cc13xx_cc26xx__2.21.00.06::tirtos_tivac__2.16.00.08::tm4c__2.1.4.178::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04::xdctools__3.60.02.34",
+    "importProject": "api/importProject/2TwQgU6POYq7C0",
+    "packageOrder": 111,
+    "offline": "true"
+  },
+  {
+    "downloadLink": "api/bundle?vid=msp430ware__3.80.09.03&download=true",
+    "makeofflineLink": "api/bundles?vids=msp430ware__3.80.09.03",
+    "removeofflineLink": "api/resources?id=2Tw0fr94wIOinQ&path=Software/MSP430Ware/Libraries/Graphics Library/Example Projects&removeoffline=true",
+    "_id": "2Tw0fr94wIOinQ",
+    "_originalJsonFile": "msp430ware_3_80_09_03/.metadata/.tirex/content.tirex.json",
+    "devtools": [
+      "MSP-EXP430FR5969"
+    ],
+    "link": "api/linkTo/2Tw0fr94wIOinQ?extname=.projectspec",
+    "linkType": "local",
+    "name": "MSP-EXP430FR5969_Grlib_Example",
+    "packageUId": "msp430ware__3.80.09.03",
+    "resourceType": "projectSpec",
+    "tags": [
+      "API",
+      "Graphics",
+      "Graphics Library",
+      "Library",
+      "Software",
+      "grlib"
+    ],
+    "type": "resource",
+    "text": "MSP-EXP430FR5969_Grlib_Example",
+    "url": "/api/resources?path=Software/MSP430Ware/Libraries/Graphics%20Library/Example%20Projects&package=c2000ware_software_package__2.01.00.00::digital_power_c2000ware_sdk_software_package__2.00.01.00::motor_control_c2000ware_sdk_software_package__2.01.00.00::sitara__1.02.00.00::ascstudio__1.0.0.0::com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::energia.boards.cc13xx__5.20.0::energia.boards.cc3220emt__5.6.2::energia.core__18.0.0::energia.boards.msp432r__5.25.2::energia.tool.arm-none-eabi-gcc__6.3.1-20170620::energia.tool.ino2cpp__1.0.6::arm.gnu__9.2.1::com.ti.mmwave_automotive_toolbox__2.9.1::com.ti.mmwave_industrial_toolbox__4.2.1::msp430ware__3.80.09.03::powerSUITE_software_package__2.05.01.00::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC13X0_SDK__3.20.00.23::com.ti.SIMPLELINK_CC13X2_26X2_SDK__3.40.00.02::com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_CC32XX_SDK__3.40.00.05::com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_MSP432E4_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.ti154stack_linux_x64__3.30.00.12::tirtos_cc13xx_cc26xx__2.21.00.06::tirtos_tivac__2.16.00.08::tm4c__2.1.4.178::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04::xdctools__3.60.02.34",
+    "importProject": "api/importProject/2Tw0fr94wIOinQ",
+    "packageOrder": 111,
+    "offline": "true"
+  },
+  {
+    "downloadLink": "api/bundle?vid=msp430ware__3.80.09.03&download=true",
+    "makeofflineLink": "api/bundles?vids=msp430ware__3.80.09.03",
+    "removeofflineLink": "api/resources?id=2Tw7juG1L06aT4&path=Software/MSP430Ware/Libraries/Graphics Library/Example Projects&removeoffline=true",
+    "_id": "2Tw7juG1L06aT4",
+    "_originalJsonFile": "msp430ware_3_80_09_03/.metadata/.tirex/content.tirex.json",
+    "devtools": [
+      "MSP-EXP430FR5969"
+    ],
+    "link": "api/linkTo/2Tw7juG1L06aT4?extname=.projectspec",
+    "linkType": "local",
+    "name": "MSP-EXP430FR5969_Grlib_Example_Sharp128",
+    "packageUId": "msp430ware__3.80.09.03",
+    "resourceType": "projectSpec",
+    "tags": [
+      "API",
+      "Graphics",
+      "Graphics Library",
+      "Library",
+      "Software",
+      "grlib"
+    ],
+    "type": "resource",
+    "text": "MSP-EXP430FR5969_Grlib_Example_Sharp128",
+    "url": "/api/resources?path=Software/MSP430Ware/Libraries/Graphics%20Library/Example%20Projects&package=c2000ware_software_package__2.01.00.00::digital_power_c2000ware_sdk_software_package__2.00.01.00::motor_control_c2000ware_sdk_software_package__2.01.00.00::sitara__1.02.00.00::ascstudio__1.0.0.0::com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::energia.boards.cc13xx__5.20.0::energia.boards.cc3220emt__5.6.2::energia.core__18.0.0::energia.boards.msp432r__5.25.2::energia.tool.arm-none-eabi-gcc__6.3.1-20170620::energia.tool.ino2cpp__1.0.6::arm.gnu__9.2.1::com.ti.mmwave_automotive_toolbox__2.9.1::com.ti.mmwave_industrial_toolbox__4.2.1::msp430ware__3.80.09.03::powerSUITE_software_package__2.05.01.00::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC13X0_SDK__3.20.00.23::com.ti.SIMPLELINK_CC13X2_26X2_SDK__3.40.00.02::com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_CC32XX_SDK__3.40.00.05::com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_MSP432E4_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.ti154stack_linux_x64__3.30.00.12::tirtos_cc13xx_cc26xx__2.21.00.06::tirtos_tivac__2.16.00.08::tm4c__2.1.4.178::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04::xdctools__3.60.02.34",
+    "importProject": "api/importProject/2Tw7juG1L06aT4",
+    "packageOrder": 111,
+    "offline": "true"
+  },
+  {
+    "downloadLink": "api/bundle?vid=msp430ware__3.80.09.03&download=true",
+    "makeofflineLink": "api/bundles?vids=msp430ware__3.80.09.03",
+    "removeofflineLink": "api/resources?id=2TwxcyJvO0C4Tk&path=Software/MSP430Ware/Libraries/Graphics Library/Example Projects&removeoffline=true",
+    "_id": "2TwxcyJvO0C4Tk",
+    "_originalJsonFile": "msp430ware_3_80_09_03/.metadata/.tirex/content.tirex.json",
+    "devtools": [
+      "MSP-EXP430G2",
+      "MSP-EXP430G2ET"
+    ],
+    "link": "api/linkTo/2TwxcyJvO0C4Tk?extname=.projectspec",
+    "linkType": "local",
+    "name": "MSP-EXP430G2_Grlib_Example",
+    "packageUId": "msp430ware__3.80.09.03",
+    "resourceType": "projectSpec",
+    "tags": [
+      "API",
+      "Graphics",
+      "Graphics Library",
+      "Library",
+      "Software",
+      "grlib"
+    ],
+    "type": "resource",
+    "text": "MSP-EXP430G2_Grlib_Example",
+    "url": "/api/resources?path=Software/MSP430Ware/Libraries/Graphics%20Library/Example%20Projects&package=c2000ware_software_package__2.01.00.00::digital_power_c2000ware_sdk_software_package__2.00.01.00::motor_control_c2000ware_sdk_software_package__2.01.00.00::sitara__1.02.00.00::ascstudio__1.0.0.0::com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::energia.boards.cc13xx__5.20.0::energia.boards.cc3220emt__5.6.2::energia.core__18.0.0::energia.boards.msp432r__5.25.2::energia.tool.arm-none-eabi-gcc__6.3.1-20170620::energia.tool.ino2cpp__1.0.6::arm.gnu__9.2.1::com.ti.mmwave_automotive_toolbox__2.9.1::com.ti.mmwave_industrial_toolbox__4.2.1::msp430ware__3.80.09.03::powerSUITE_software_package__2.05.01.00::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC13X0_SDK__3.20.00.23::com.ti.SIMPLELINK_CC13X2_26X2_SDK__3.40.00.02::com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_CC32XX_SDK__3.40.00.05::com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_MSP432E4_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.ti154stack_linux_x64__3.30.00.12::tirtos_cc13xx_cc26xx__2.21.00.06::tirtos_tivac__2.16.00.08::tm4c__2.1.4.178::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04::xdctools__3.60.02.34",
+    "importProject": "api/importProject/2TwxcyJvO0C4Tk",
+    "packageOrder": 111,
+    "offline": "true"
+  },
+  {
+    "downloadLink": "api/bundle?vid=msp430ware__3.80.09.03&download=true",
+    "makeofflineLink": "api/bundles?vids=msp430ware__3.80.09.03",
+    "removeofflineLink": "api/resources?id=2TwGF7RM9oYO0A&path=Software/MSP430Ware/Libraries/Graphics Library/Example Projects&removeoffline=true",
+    "_id": "2TwGF7RM9oYO0A",
+    "_originalJsonFile": "msp430ware_3_80_09_03/.metadata/.tirex/content.tirex.json",
+    "devtools": [
+      "MSP-EXP430G2",
+      "MSP-EXP430G2ET"
+    ],
+    "link": "api/linkTo/2TwGF7RM9oYO0A?extname=.projectspec",
+    "linkType": "local",
+    "name": "MSP-EXP430G2_Grlib_Example_Sharp128",
+    "packageUId": "msp430ware__3.80.09.03",
+    "resourceType": "projectSpec",
+    "tags": [
+      "API",
+      "Graphics",
+      "Graphics Library",
+      "Library",
+      "Software",
+      "grlib"
+    ],
+    "type": "resource",
+    "text": "MSP-EXP430G2_Grlib_Example_Sharp128",
+    "url": "/api/resources?path=Software/MSP430Ware/Libraries/Graphics%20Library/Example%20Projects&package=c2000ware_software_package__2.01.00.00::digital_power_c2000ware_sdk_software_package__2.00.01.00::motor_control_c2000ware_sdk_software_package__2.01.00.00::sitara__1.02.00.00::ascstudio__1.0.0.0::com.ti.AWS_CC32XX__3.30.00.03::com.ti.AWS_MSP432E4__3.30.00.03::com.ti.AZURE_CC32XX__3.30.00.02::com.ti.AZURE_MSP432E4__3.30.00.02::energia.boards.cc13xx__5.20.0::energia.boards.cc3220emt__5.6.2::energia.core__18.0.0::energia.boards.msp432r__5.25.2::energia.tool.arm-none-eabi-gcc__6.3.1-20170620::energia.tool.ino2cpp__1.0.6::arm.gnu__9.2.1::com.ti.mmwave_automotive_toolbox__2.9.1::com.ti.mmwave_industrial_toolbox__4.2.1::msp430ware__3.80.09.03::powerSUITE_software_package__2.05.01.00::com.ti.SAIL__1.50.00.00::com.ti.SIMPLELINK_AUDIO_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_BLE_PLUGIN_AZURE_GATEWAY_EXAMPLE_PACK__3.20.00.22::com.ti.SIMPLELINK_CC13X0_SDK__3.20.00.23::com.ti.SIMPLELINK_CC13X2_26X2_SDK__3.40.00.02::com.ti.SIMPLELINK_CC2640R2_SDK__3.40.00.10::com.ti.SIMPLELINK_CC2640R2_SDK_BLE_EXAMPLE_PACK__1.50.00.62::com.ti.SIMPLELINK_CC32XX_SDK__3.40.00.05::com.ti.SIMPLELINK_MSP432_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_BLE_PLUGIN__3.20.00.24::com.ti.SIMPLELINK_MSP432_SDK_WIFI_PLUGIN__2.40.00.22::com.ti.SIMPLELINK_MSP432E4_SDK__3.40.01.02::com.ti.SIMPLELINK_SDK_LVGL_PLUGIN__3.30.00.06::com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08::com.ti.SIMPLELINK_SDK_TI_15_4_STACK_PLUGIN__2.20.00.05::com.ti.SIMPLELINK_SDK_VOICE_DETECTION_PLUGIN__1.50.00.15::com.ti.SIMPLELINK_ZIGBEE_SDK_PLUGIN__2.20.00.06::com.ti.ti154stack_linux_x64__3.30.00.12::tirtos_cc13xx_cc26xx__2.21.00.06::tirtos_tivac__2.16.00.08::tm4c__2.1.4.178::com.ti.WATSON_CC32XX__1.20.00.04::com.ti.WATSON_MSP432E4__1.20.00.04::xdctools__3.60.02.34",
+    "importProject": "api/importProject/2TwGF7RM9oYO0A",
+    "packageOrder": 111,
+    "offline": "true"
+  }
+]

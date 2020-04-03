@@ -1,0 +1,22 @@
+$ wget https://releases.linaro.org/components/toolchain/binaries/latest-7/armv8l-linux-gnueabihf/gcc-linaro-7.4.1-2019.02-x86_64_armv8l-linux-gnueabihf.tar.xz 
+$ tar -xvf gcc-linaro-7.4.1-2019.02-x86_64_armv8l-linux-gnueabihf.tar.xz 
+$ echo $PATH 
+...:/usr/local/bin:... 
+$ sudo mv gcc-linaro-7.4.1-2019.02-x86_64_armv8l-linux-gnueabihf /usr/local/bin/ 
+[sudo] password for andres:   
+$ cd /usr/local/bin 
+/usr/local/bin$ sudo ln -s gcc-linaro-7.4.1-2019.02-x86_64_armv8l-linux-gnueabihf/bin/armv8l-linux-gnueabihf-g++ Linaro-g++ 
+[sudo] password for andres:  
+:/usr/local/bin$ sudo ln -s gcc-linaro-7.4.1-2019.02-x86_64_armv8l-linux-gnueabihf/bin/armv8l-linux-gnueabihf-gcc Linaro-gcc 
+:/usr/local/bin$ sudo ln -s gcc-linaro-7.4.1-2019.02-x86_64_armv8l-linux-gnueabihf/bin/armv8l-linux-gnueabihf-gdb Linaro-gdb 
+:/usr/local/bin$ sudo ln -s gcc-linaro-7.4.1-2019.02-x86_64_armv8l-linux-gnueabihf/bin/armv8l-linux-gnueabihf-as Linaro-as 
+:/usr/local/bin$ sudo ln -s gcc-linaro-7.4.1-2019.02-x86_64_armv8l-linux-gnueabihf/bin/armv8l-linux-gnueabihf-gfortran Linaro-gfortran 
+:/usr/local/bin$ ll 
+total 28 
+drwxr-xr-x  5 root   root   4096 Oct 26 21:57 ./ 
+drwxr-xr-x 12 root   root   4096 Sep 29 20:31 ../
+lrwxrwxrwx  1 root   root     84 Oct 26 23:59 Linaro-as -> gcc-linaro-7.4.1-2019.02-x86_64_armv8l-linux-gnueabihf/bin/armv8l-linux-gnueabihf-as* 
+lrwxrwxrwx  1 root   root     85 Oct 26 21:57 Linaro-g++ -> gcc-linaro-7.4.1-2019.02-x86_64_armv8l-linux-gnueabihf/bin/armv8l-linux-gnueabihf-g++*
+lrwxrwxrwx  1 root   root     85 Oct 26 21:57 Linaro-gcc -> gcc-linaro-7.4.1-2019.02-x86_64_armv8l-linux-gnueabihf/bin/armv8l-linux-gnueabihf-gcc*
+lrwxrwxrwx  1 root   root     85 Oct 26 23:22 Linaro-gdb -> gcc-linaro-7.4.1-2019.02-x86_64_armv8l-linux-gnueabihf/bin/armv8l-linux-gnueabihf-gdb*
+lrwxrwxrwx  1 root   root     90 Oct 26 23:59 Linaro-gfortran -> gcc-linaro-7.4.1-2019.02-x86_64_armv8l-linux-gnueabihf/bin/armv8l-linux-gnueabihf-gfortran* 

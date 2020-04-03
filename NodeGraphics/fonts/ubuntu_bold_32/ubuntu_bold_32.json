@@ -1,0 +1,150 @@
+{
+    "config": {
+        "base": 40,
+        "bold": 0,
+        "charHeight": 49,
+        "charSpacing": 0,
+        "face": "Ubuntu",
+        "italic": 0,
+        "lineSpacing": 0,
+        "size": 32,
+        "smooth": 0,
+        "textureFile": "ubuntu_bold_32.PNG",
+        "textureHeight": 42,
+        "textureWidth": 252
+    },
+    "kerning": [
+    ],
+    "symbols": [
+        {
+            "height": 38,
+            "id": 36,
+            "width": 20,
+            "x": 0,
+            "xadvance": 24,
+            "xoffset": 2,
+            "y": 1,
+            "yoffset": 7
+        },
+        {
+            "height": 6,
+            "id": 45,
+            "width": 12,
+            "x": 20,
+            "xadvance": 14,
+            "xoffset": 1,
+            "y": 18,
+            "yoffset": 24
+        },
+        {
+            "height": 42,
+            "id": 47,
+            "width": 21,
+            "x": 32,
+            "xadvance": 19,
+            "xoffset": -1,
+            "y": 0,
+            "yoffset": 6
+        },
+        {
+            "height": 32,
+            "id": 48,
+            "width": 22,
+            "x": 53,
+            "xadvance": 24,
+            "xoffset": 1,
+            "y": 3,
+            "yoffset": 9
+        },
+        {
+            "height": 30,
+            "id": 49,
+            "width": 14,
+            "x": 75,
+            "xadvance": 24,
+            "xoffset": 3,
+            "y": 4,
+            "yoffset": 10
+        },
+        {
+            "height": 31,
+            "id": 50,
+            "width": 21,
+            "x": 89,
+            "xadvance": 24,
+            "xoffset": 1,
+            "y": 3,
+            "yoffset": 9
+        },
+        {
+            "height": 32,
+            "id": 51,
+            "width": 20,
+            "x": 110,
+            "xadvance": 24,
+            "xoffset": 1,
+            "y": 3,
+            "yoffset": 9
+        },
+        {
+            "height": 30,
+            "id": 52,
+            "width": 22,
+            "x": 130,
+            "xadvance": 24,
+            "xoffset": 1,
+            "y": 4,
+            "yoffset": 10
+        },
+        {
+            "height": 31,
+            "id": 53,
+            "width": 19,
+            "x": 152,
+            "xadvance": 24,
+            "xoffset": 2,
+            "y": 4,
+            "yoffset": 10
+        },
+        {
+            "height": 31,
+            "id": 54,
+            "width": 20,
+            "x": 171,
+            "xadvance": 24,
+            "xoffset": 2,
+            "y": 4,
+            "yoffset": 10
+        },
+        {
+            "height": 30,
+            "id": 55,
+            "width": 20,
+            "x": 191,
+            "xadvance": 24,
+            "xoffset": 2,
+            "y": 4,
+            "yoffset": 10
+        },
+        {
+            "height": 32,
+            "id": 56,
+            "width": 20,
+            "x": 211,
+            "xadvance": 24,
+            "xoffset": 2,
+            "y": 3,
+            "yoffset": 9
+        },
+        {
+            "height": 31,
+            "id": 57,
+            "width": 21,
+            "x": 231,
+            "xadvance": 24,
+            "xoffset": 1,
+            "y": 3,
+            "yoffset": 9
+        }
+    ]
+}

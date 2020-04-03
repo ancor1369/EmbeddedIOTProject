@@ -1,0 +1,7 @@
+#Fri, 14 Feb 2020 23:07:06 -0500
+#Ant properties
+#Fri Feb 14 23:07:06 EST 2020
+p.Version=1.0.0
+
+dvt.activity.name=RTOS Analyzer/Task Profile
+dvt.factory.activity=${dvt.basepath}common/analysis/usecases/dvt/SA_TaskAnalysis.control.xml
