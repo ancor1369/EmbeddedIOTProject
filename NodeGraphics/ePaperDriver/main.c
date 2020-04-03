@@ -31,19 +31,8 @@
 
 #include "Driver/SPIinit.h"
 #include "Driver/GPIOInit.h"
-//#include "Driver/pinDefinintions.h"
-//#include "Driver/ePaper.h"
-//#include "grx/graphics.h"
-//#include "fonts/resources.h"
+#include "Driver/UARTInit.h"
 //#include "LabelEngine/labelEngine.h"
-
-#include "LabelEngine/labelEngine.h"
-
-//
-//#define test                \
-//"{"                         \
-//  "\"ProductID\": \"45\""    \
-//"}"
 
 #define test                                                        \
 "{"                                                                 \
@@ -65,13 +54,18 @@ int main(void)
 {
     SPI_Init();
     GPIO_Init();
+    UART_Init();
+
+    //createLabel(test);
 
 
-    createLabel(test);
+    //printLabel();
 
 
-    printLabel();
-
+    while(1)
+    {
+        MAP_PCM_gotoLPM0();
+    }
 
     PCM_gotoLPM0();
     __no_operation();
