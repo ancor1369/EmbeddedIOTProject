@@ -110,8 +110,10 @@ void EUSCIA2_IRQHandler(void)
             {
                 MAP_UART_transmitData(EUSCI_A2_BASE, buffer[i]);
             }
-            createLabel(buffer);
-            printLabel();
+            if(createLabel(buffer)==2)
+            {
+                printLabel();
+            }
             counter = 0;
             //clear the buffer
             memset(buffer,0x00,sizeof(buffer));
