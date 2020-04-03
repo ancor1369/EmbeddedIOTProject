@@ -30,8 +30,7 @@ Queue_Handle qHandle1 = NULL;
 
 ssize_t bytes_read;
 UART_Handle uart;
-
-char enter[] = "\r\n";
+uint8_t enter = 0x0D;
 
 uint8_t bigIndex = 0; //index in the big array
 uint8_t packetIndex = 0; //Index in the package

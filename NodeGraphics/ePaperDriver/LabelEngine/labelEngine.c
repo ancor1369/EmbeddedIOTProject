@@ -25,85 +25,98 @@ int8_t createLabel(const char *object)
     const cJSON *value = NULL;
 
     int status = 0;
-    void *valueBuff = NULL;
 
 
     cJSON *jobj = cJSON_Parse(object);
     if(jobj == NULL)
     {
-        status = 0;
+        status = 1;
         goto end;
     }
     value = cJSON_GetObjectItemCaseSensitive(jobj, "ProductID");
     if(cJSON_IsString(value) && (value->valuestring != NULL))
     {
         strcpy(resultLabel.ProductID, value->valuestring);
+        status = 2;
+    }
+
+
+    value = cJSON_GetObjectItemCaseSensitive(jobj, "PriceDollar");
+    if(cJSON_IsString(value) && (value->valuestring != NULL))
+    {
+        strcpy(resultLabel.PriceDollar, value->valuestring);
+        status = 2;
     }
 
     value = cJSON_GetObjectItemCaseSensitive(jobj, "PriceDollar");
     if(cJSON_IsString(value) && (value->valuestring != NULL))
     {
         strcpy(resultLabel.PriceDollar, value->valuestring);
-    }
-
-    value = cJSON_GetObjectItemCaseSensitive(jobj, "PriceDollar");
-    if(cJSON_IsString(value) && (value->valuestring != NULL))
-    {
-        strcpy(resultLabel.PriceDollar, value->valuestring);
+        status = 2;
     }
 
     value = cJSON_GetObjectItemCaseSensitive(jobj, "PriceCents");
     if(cJSON_IsString(value) && (value->valuestring != NULL))
     {
         strcpy(resultLabel.PriceCents, value->valuestring);
+        status = 2;
     }
 
     value = cJSON_GetObjectItemCaseSensitive(jobj, "Description");
     if(cJSON_IsString(value) && (value->valuestring != NULL))
     {
         strcpy(resultLabel.Description, value->valuestring);
+        status = 2;
     }
 
     value = cJSON_GetObjectItemCaseSensitive(jobj, "URL");
     if(cJSON_IsString(value) && (value->valuestring != NULL))
     {
         strcpy(resultLabel.URL, value->valuestring);
+        status = 2;
     }
 
     value = cJSON_GetObjectItemCaseSensitive(jobj, "SKU");
     if(cJSON_IsString(value) && (value->valuestring != NULL))
     {
         strcpy(resultLabel.SKU, value->valuestring);
+        status = 2;
     }
 
     value = cJSON_GetObjectItemCaseSensitive(jobj, "Model");
     if(cJSON_IsString(value) && (value->valuestring != NULL))
     {
         strcpy(resultLabel.Model, value->valuestring);
+        status = 2;
     }
 
     value = cJSON_GetObjectItemCaseSensitive(jobj, "DueDate");
     if(cJSON_IsString(value) && (value->valuestring != NULL))
     {
         strcpy(resultLabel.DueDate, value->valuestring);
+        status = 2;
     }
 
     value = cJSON_GetObjectItemCaseSensitive(jobj, "LayoutName");
     if(cJSON_IsString(value) && (value->valuestring != NULL))
     {
         strcpy(resultLabel.LayoutName, value->valuestring);
+        status = 2;
     }
 
     value = cJSON_GetObjectItemCaseSensitive(jobj, "Update");
-     if(cJSON_IsString(value) && (value->valuestring != NULL))
-     {
-         strcpy(resultLabel.Update, value->valuestring);
-     }
-     value = cJSON_GetObjectItemCaseSensitive(jobj, "Blink");
-      if(cJSON_IsString(value) && (value->valuestring != NULL))
-      {
-          strcpy(resultLabel.Blink, value->valuestring);
-      }
+    if(cJSON_IsString(value) && (value->valuestring != NULL))
+    {
+        strcpy(resultLabel.Update, value->valuestring);
+        status = 2;
+    }
+
+    value = cJSON_GetObjectItemCaseSensitive(jobj, "Blink");
+    if(cJSON_IsString(value) && (value->valuestring != NULL))
+    {
+        strcpy(resultLabel.Blink, value->valuestring);
+        status = 2;
+    }
 
     end:
     cJSON_Delete(jobj);
