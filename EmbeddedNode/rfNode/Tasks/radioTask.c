@@ -303,9 +303,9 @@ void radioTaskFunction(UArg *arg0,UArg *arg1)
                //Receive the message from the Queue to then be sent over the RF Interface
               memcpy(txPacket.payload,&packet,sizeof(packet));
               txPacket.payload[0] = DeviceAddress;//0x41; //This is the address of this device. This might come from a confile
-              txPacket.payload[1] = ConcentratorAddress;//
-              txPacket.payload[2] = 0x01;
-              txPacket.payload[3] = 0x01;
+              txPacket.payload[1] = ConcentratorAddress;// Addresss of the concentrator
+              txPacket.payload[2] = 0x01; //Package x of Total
+              txPacket.payload[3] = 0x01; //Total of packages
                while(!sendOK)
                {
                    /* Set Tx absolute time to current time + 1000ms */
