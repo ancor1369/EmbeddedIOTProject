@@ -6,6 +6,7 @@ http://localhost:7000/product
 
 this is the object to make a post and a patch
 
+```json
 {
     "ProductID": "49",
     "Name": "Screen",
@@ -20,3 +21,4 @@ this is the object to make a post and a patch
     "Update": "true",
     "Blink": "False"
 }
+```
