@@ -105,14 +105,14 @@ app.patch('/product',(req,res)=>{
 
 app.get('/label',(req,res)=>{
   console.log('getlabel');
-  product.find({}).then((result)=>{
+  label.find({}).then((result)=>{
       res.send(result);
   });    
 });
 
-app.get('/label/:labelID',(req,res)=>{
-  var id = req.params.labelID;    
-  label.find({labelID:id}).then((result)=>{
+app.get('/label/:labelNumber',(req,res)=>{
+  var id = req.params.labelNumber;    
+  label.find({labelNumber:Number}).then((result)=>{
       res.send(result);
   }).catch((err)=>{
       res.send(err);
@@ -124,16 +124,12 @@ app.post('/label',(req,res)=>{
   //If it can no create a new device, it will
   //update the existing one    
   console.log('postlabel');
-  var body = _.pick(req.body,['labelID','labelnumber']);    
-  var avl = false;
-  if(body.SKU === "000")
-  {
-      avl = true;
-  }   
+  var body = _.pick(req.body,['LabelNumber','LabelName']);    
+ 
   var newlabel = new label({
       
-      labelID:body.labelID,
-      labelName:body.labelName
+      LabelNumber:body.LabelNumber,
+      LabelName:body.LabelName
       
   });    
   console.log(newlabel);
@@ -148,10 +144,10 @@ app.post('/label',(req,res)=>{
 app.patch('/label',(req,res)=>{
   //makes the update of the product
   console.log('patchlabel');
-  var body = _.pick(req.body,['labelID','labelName']);   
-  label.findOneAndUpdate({labelID:body.ProductID},{
+  var body = _.pick(req.body,['labelNumber','labelName']);   
+  label.findOneAndUpdate({labelNumber:body.labelNumber},{
        
-    labelID:body.labelID,
+    labelNumber:body.labelNumber,
     labelName:body.labelName
    
   }).then((result)=>{
