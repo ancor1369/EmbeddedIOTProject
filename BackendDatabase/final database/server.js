@@ -1,6 +1,6 @@
 const express = require('express'); 
 const app = express(); 
-app.use(require("cors")()) 
+//app.use(require("cors")()) 
 app.use(require('body-parser').json()) 
 const _ = require('lodash');
 var {product} = require('./models/product');
@@ -37,7 +37,7 @@ app.post('/product',(req,res)=>{
   //If it can no create a new device, it will
   //update the existing one    
   console.log('postproduct');
-  var body = _.pick(req.body,['ProductID','Name','','priceDollar','pricecents',
+  var body = _.pick(req.body,['ProductID','Name','','PriceDollar','PriceCents',
   'Model','blink','Update','LayoutName','SKU','URL','Description','DueDate']);    
   var avl = false;
   if(body.SKU === "000")
@@ -49,7 +49,7 @@ app.post('/product',(req,res)=>{
       ProductID:body.ProductID,
       Name:body.Name,
       PriceDollar:body.PriceDollar,
-      PriceCents:body.pricecents,
+      PriceCents:body.PriceCents,
       Description:body.Description,
       URL:body.URL,
       SKU:body.SKU,
@@ -73,6 +73,8 @@ app.post('/product',(req,res)=>{
 app.patch('/product',(req,res)=>{
   //makes the update of the product
   console.log('patchproduct');
+  var body = _.pick(req.body,['ProductID','Name','','priceDollar','pricecents',
+  'Model','blink','Update','LayoutName','SKU','URL','Description','DueDate']);   
   product.findOneAndUpdate({ProductID:body.ProductID},{
        
     ProductID:body.ProductID,
@@ -87,7 +89,7 @@ app.patch('/product',(req,res)=>{
     LayoutName:body.LayoutName,
     Update:body.Update,
     Blink:body.blink,
-    Available: avl
+    Available: body.avl
    
   
   }).then((result)=>{
