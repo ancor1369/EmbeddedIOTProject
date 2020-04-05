@@ -4,6 +4,7 @@ const app = express();
 app.use(require('body-parser').json()) 
 const _ = require('lodash');
 var {product} = require('./models/product');
+var {label} = require('./models/label');
 var {mongoose} = require('./db/mongoose');
 const port = 7000;
 
@@ -92,6 +93,67 @@ app.patch('/product',(req,res)=>{
     Available: body.avl
    
   
+  }).then((result)=>{
+      console.log('result');
+      res.send(result);
+  }).catch((error)=>{
+      console.log('error');
+      res.send(error);
+  });
+});
+
+
+app.get('/label',(req,res)=>{
+  console.log('getlabel');
+  product.find({}).then((result)=>{
+      res.send(result);
+  });    
+});
+
+app.get('/label/:labelID',(req,res)=>{
+  var id = req.params.labelID;    
+  label.find({labelID:id}).then((result)=>{
+      res.send(result);
+  }).catch((err)=>{
+      res.send(err);
+  })
+
+});
+
+app.post('/label',(req,res)=>{
+  //If it can no create a new device, it will
+  //update the existing one    
+  console.log('postlabel');
+  var body = _.pick(req.body,['labelID','labelnumber']);    
+  var avl = false;
+  if(body.SKU === "000")
+  {
+      avl = true;
+  }   
+  var newlabel = new label({
+      
+      labelID:body.labelID,
+      labelName:body.labelName
+      
+  });    
+  console.log(newlabel);
+  newlabel.save().then((result)=>{
+      res.send(result);
+  },(error)=>{ console.log('error');
+      res.status(400).send(error);
+      
+  });
+});
+
+app.patch('/label',(req,res)=>{
+  //makes the update of the product
+  console.log('patchlabel');
+  var body = _.pick(req.body,['labelID','labelName']);   
+  label.findOneAndUpdate({labelID:body.ProductID},{
+       
+    labelID:body.labelID,
+    labelName:body.labelName
+   
   }).then((result)=>{
       console.log('result');
       res.send(result);
