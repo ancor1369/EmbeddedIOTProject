@@ -1,24 +1,19 @@
-//#include <iostream>
-//#include <fstream>
 
-#include <cpprest/http_client.h>
-#include <cpprest/filestream.h>
-//#include <cpprest/ppltasks.h>
-
-//using namespace std;
-using namespace utility;                    // Common utilities like string conversions
-using namespace web;                        // Common features like URIs.
-using namespace web::http;                  // Common HTTP functionality
-using namespace web::http::client;          // HTTP client features
-using namespace concurrency::streams;       // Asynchronous streams
-
-
-
-
+#include "restDriver/restDriver.h"
 
 
 int main()
 {
+
+	restDriver driver;
+
+	std::string server = "http://localhost:7000/";
+	std::string endpoint = "/product/50";
+
+	driver.setServer(server);
+	driver.setEndPoint(endpoint);
+
+	std::cout << driver.getMethod() << std::endl;
 
 //Non workin
 
@@ -71,13 +66,13 @@ int main()
 	//This section compiles and work correctly!
 
 
-	  http_client client(U("http://localhost:7000/product/50"));
-
-	  client.request(methods::GET).then([](http_response response){
-	    if(response.status_code() == status_codes::OK){
-	      auto body = response.extract_string().get();
-	      std::cout << body<< std::endl;
-	    }}).wait();
+//	  http_client client(U("http://localhost:7000/product/50"));
+//
+//	  client.request(methods::GET).then([](http_response response){
+//	    if(response.status_code() == status_codes::OK){
+//	      auto body = response.extract_string().get();
+//	      std::cout << body<< std::endl;
+//	    }}).wait();
 
 
 	///Working code
