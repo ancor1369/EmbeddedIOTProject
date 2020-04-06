@@ -1,0 +1,11 @@
+#include <iostream>
+
+#include "include/rest-cpp/restc-cpp.h"
+
+
+int main()
+{
+	std::cout<< "Hello world";
+
+
+}

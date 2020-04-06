@@ -1,0 +1,14 @@
+#include <iostream>
+
+#include "include/rest-cpp/restc-cpp.h"
+
+using namespace std;
+using namespace restc_cpp;
+
+int main()
+{
+	std::cout<< "Hello world";
+
+
+
+}

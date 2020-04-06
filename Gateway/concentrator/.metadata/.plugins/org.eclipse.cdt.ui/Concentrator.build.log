@@ -1,0 +1,6 @@
+12:15:37 **** Incremental Build of configuration Debug for project Concentrator ****
+make all 
+make: Nothing to be done for 'all'.
+
+12:15:37 Build Finished. 0 errors, 0 warnings. (took 78ms)
+

@@ -1,0 +1,11 @@
+LaunchTargetManager/configs/Concentrator=org.eclipse.launchbar.core.launchTargetType.local\:Local
+LaunchTargetManager/configs/New\ configuration=org.eclipse.launchbar.core.launchTargetType.local\:Local
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=linux
+configDescList=org.eclipse.launchbar.core.descriptorType.default\:New configuration,org.eclipse.launchbar.core.descriptorType.default\:Concentrator
+eclipse.preferences.version=1
+org.eclipse.launchbar.core.descriptorType.default\:Concentrator/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:Concentrator/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+org.eclipse.launchbar.core.descriptorType.default\:New\ configuration/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:New\ configuration/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local

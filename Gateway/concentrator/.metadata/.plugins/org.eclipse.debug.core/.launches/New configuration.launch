@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.tcf.te.tcf.launch.type.remote.app">
+    <stringAttribute key="org.eclipse.debug.core.source_locator_memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#10;&lt;sourceLookupDirector&gt;&#10;    &lt;sourceContainers duplicates=&quot;false&quot;&gt;&#10;        &lt;container memento=&quot;AbsolutePath&quot; typeId=&quot;org.eclipse.cdt.debug.core.containerType.absolutePath&quot;/&gt;&#10;        &lt;container memento=&quot;programRelativePath&quot; typeId=&quot;org.eclipse.cdt.debug.core.containerType.programRelativePath&quot;/&gt;&#10;        &lt;container memento=&quot;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; standalone=&amp;quot;no&amp;quot;?&amp;gt;&amp;#10;&amp;lt;project referencedProjects=&amp;quot;true&amp;quot;/&amp;gt;&amp;#10;&quot; typeId=&quot;org.eclipse.cdt.debug.core.containerType.project&quot;/&gt;&#10;    &lt;/sourceContainers&gt;&#10;&lt;/sourceLookupDirector&gt;&#10;"/>
+    <stringAttribute key="org.eclipse.tcf.te.launch.UUID" value="ceaef5fe-fc25-4c33-b058-33a68ef200e9"/>
+    <stringAttribute key="org.eclipse.tcf.te.launch.lastLaunched" value="1586050497571"/>
+    <stringAttribute key="org.eclipse.tcf.te.launch.referencedProjects" value="&lt;referencedProjects&gt;&#10;&#9;&lt;referencedProject type=&quot;org.eclipse.tcf.te.launch.core.interfaces.IReferencedProjectItem&quot;&gt;&#10;&#9;&#9;{&#10;  &quot;enabled&quot;: true,&#10;  &quot;project_name&quot;: &quot;Concentrator&quot;&#10;}&#10;&#9;&lt;/referencedProject&gt;&#10;&lt;/referencedProjects&gt;&#10;"/>
+    <booleanAttribute key="org.eclipse.tcf.te.tcf.processes.core.process_attach_children" value="true"/>
+    <booleanAttribute key="org.eclipse.tcf.te.tcf.processes.core.process_stop_at_main" value="true"/>
+</launchConfiguration>

@@ -1,0 +1,15 @@
+12:15:27 **** Incremental Build of configuration Debug for project Concentrator ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.o" -o "main.o" "../main.cpp"
+Finished building: ../main.cpp
+ 
+Building target: Concentrator
+Invoking: Cross G++ Linker
+g++  -o "Concentrator"  ./main.o   -lcrypto -lssl -lcpprest -lboost_system
+Finished building target: Concentrator
+ 
+12:15:37 **** Incremental Build of configuration Debug for project Concentrator ****
+make all 
+make: Nothing to be done for 'all'.
