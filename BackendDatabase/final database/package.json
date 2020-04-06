@@ -16,6 +16,7 @@
     "lodash": "^4.17.15",
     "mongoose": "^5.9.4",
     "parse-data-uri": "^0.2.0",
+    "patch-package": "^6.2.2",
     "validation-utils": "^4.0.2",
     "validator": "^12.2.0"
   },
