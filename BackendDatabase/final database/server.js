@@ -219,7 +219,7 @@ app.patch('/label',(req,res)=>{
       res.send(error);
   });
 });
-
+// mapping deviced and labelnumber
 
 app.get('/labelproduct',(req,res)=>{
   console.log('getlabelproduct');
@@ -229,8 +229,9 @@ app.get('/labelproduct',(req,res)=>{
 });
 
 app.get('/labelproduct/:labelNumber',(req,res)=>{
-  var id = req.params.labelNumber;    
-  labelproduct.find({labelNumber:Number}).then((result)=>{
+  var id = req.params.labelNumber; 
+  var id = req.params.DeviceID;  
+  labelproduct.find({labelNumber:DeviceID}).then((result)=>{
       res.send(result);
   }).catch((err)=>{
       res.send(err);
