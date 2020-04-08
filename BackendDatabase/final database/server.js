@@ -311,7 +311,7 @@ app.get('/productforlabel',(req,res)=>{
 
 app.get('/productForLabel/:labelNumber',(req,res)=>{
   var id = req.params.labelNumber;    
-  labelproduct.find({labelNumber:Number}).then((result)=>{
+  productForLabel.find({labelNumber:Number}).then((result)=>{
       res.send(result);
   }).catch((err)=>{
       res.send(err);
