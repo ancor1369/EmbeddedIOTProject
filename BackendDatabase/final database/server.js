@@ -223,7 +223,7 @@ app.patch('/label',(req,res)=>{
 
 app.get('/labelproduct',(req,res)=>{
   console.log('getlabelproduct');
-  label.find({}).then((result)=>{
+  labelproduct.find({}).then((result)=>{
       res.send(result);
   });    
 });
