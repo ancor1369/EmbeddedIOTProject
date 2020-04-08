@@ -5,7 +5,7 @@ var productForLabel=mongoose.model('productForLabel',{
     LabelNumber:{type:types.String,
     required:true,unique:true},
 
-    ProductSKU:types.String,
+    DeviceID:types.String,
        
 });
 
