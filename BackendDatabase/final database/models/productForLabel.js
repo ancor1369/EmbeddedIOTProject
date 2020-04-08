@@ -9,4 +9,4 @@ var productForLabel=mongoose.model('productForLabel',{
        
 });
 
-module.exports={labelproduct};
+module.exports={productForLabel};
