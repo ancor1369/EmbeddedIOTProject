@@ -142,6 +142,28 @@ app.post('/label',(req,res)=>{
   });
 });
 
+app.put('/label',(req,res)=>{
+  //If it can no create a new device, it will
+  //update the existing one    
+  console.log('postlabel');
+  var body = _.pick(req.body,['LabelNumber','LabelName']);    
+ 
+  var newlabel = new label({
+      
+      LabelNumber:body.LabelNumber,
+      LabelName:body.LabelName
+      
+  });    
+  console.log(newlabel);
+  newlabel.save().then((result)=>{
+      res.send(result);
+  },(error)=>{ console.log('error');
+      res.status(400).send(error);
+      
+  });
+});
+
+
 app.patch('/label',(req,res)=>{
   //makes the update of the product
   console.log('patchlabel');
@@ -199,6 +221,29 @@ app.post('/labelproduct',(req,res)=>{
   });
 });
 
+// edit a labelproduct using put
+
+app.put('/labelproduct',(req,res)=>{
+  //If it can no create a new device, it will
+  //update the existing one    
+  console.log('postlabelproduct');
+  var body = _.pick(req.body,['LabelNumber','ProductSKU']);    
+ 
+  var newlabel = new labelproduct({
+      
+      LabelNumber:body.LabelNumber,
+      ProductSKU:body.ProductSKU
+      
+  });    
+  console.log(newlabel);
+  newlabel.save().then((result)=>{
+      res.send(result);
+  },(error)=>{ console.log('error');
+      res.status(400).send(error);
+      
+  });
+});
+
 app.patch('/labelproduct',(req,res)=>{
   //makes the update of the product
   console.log('patchlabelproduct');
@@ -220,7 +265,7 @@ app.patch('/labelproduct',(req,res)=>{
 
 
 var listener = app.listen(port, () => {
-  console.log('Your app is listening on port ' + listener.address().port);
+console.log('Your app is listening on port ' + listener.address().port);
 });
 
 
