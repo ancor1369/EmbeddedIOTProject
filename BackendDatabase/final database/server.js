@@ -72,6 +72,44 @@ app.post('/product',(req,res)=>{
   });
 });
 
+app.put('/product',(req,res)=>{
+  //If it can no create a new device, it will
+  //update the existing one    
+  console.log('postproduct');
+  var body = _.pick(req.body,['ProductID','Name','','PriceDollar','PriceCents',
+  'Model','blink','Update','LayoutName','SKU','URL','Description','DueDate']);    
+  var avl = false;
+  if(body.SKU === "000")
+  {
+      avl = true;
+  }   
+  var newproduct = new product({
+      
+      ProductID:body.ProductID,
+      Name:body.Name,
+      PriceDollar:body.PriceDollar,
+      PriceCents:body.PriceCents,
+      Description:body.Description,
+      URL:body.URL,
+      SKU:body.SKU,
+      Model:body.Model,
+      DueDate:body.DueDate,
+      LayoutName:body.LayoutName,
+      Update:body.Update,
+      Blink:body.blink,
+      Available:body.avl
+
+  });    
+  console.log(newproduct);
+  newproduct.save().then((result)=>{
+      res.send(result);
+  },(error)=>{ console.log('error');
+      res.status(400).send(error);
+      
+  });
+});
+
+
 app.patch('/product',(req,res)=>{
   //makes the update of the product
   console.log('patchproduct');
