@@ -1,0 +1,14 @@
+#include "../JSON/json.hpp"
+
+using nlohmann::json;
+
+#define message "CA00{\"CXT\":\"PRO\",\"Object\":{\"DeviceID\":\"01\"}}"
+
+namespace ns
+{
+	struct incommingMessage
+	{
+		std::string cxt;
+		std::string object;
+	};
+}

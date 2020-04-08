@@ -1,4 +1,4 @@
-12:15:27 **** Incremental Build of configuration Debug for project Concentrator ****
+14:15:49 **** Incremental Build of configuration Debug for project Concentrator ****
 make all 
 Building file: ../main.cpp
 Invoking: Cross G++ Compiler
@@ -7,9 +7,204 @@ Finished building: ../main.cpp
  
 Building target: Concentrator
 Invoking: Cross G++ Linker
-g++  -o "Concentrator"  ./main.o   -lcrypto -lssl -lcpprest -lboost_system
+g++  -o "Concentrator"  ./restDriver/restDriver.o  ./main.o   -lcrypto -lssl -lcpprest -lboost_system
 Finished building target: Concentrator
  
-12:15:37 **** Incremental Build of configuration Debug for project Concentrator ****
+14:16:01 **** Incremental Build of configuration Debug for project Concentrator ****
 make all 
 make: Nothing to be done for 'all'.
+14:16:08 **** Incremental Build of configuration Debug for project Concentrator ****
+make all 
+make: Nothing to be done for 'all'.
+14:19:25 **** Incremental Build of configuration Debug for project Concentrator ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.o" -o "main.o" "../main.cpp"
+Finished building: ../main.cpp
+ 
+Building target: Concentrator
+Invoking: Cross G++ Linker
+g++  -o "Concentrator"  ./restDriver/restDriver.o  ./main.o   -lcrypto -lssl -lcpprest -lboost_system
+Finished building target: Concentrator
+ 
+14:20:12 **** Incremental Build of configuration Debug for project Concentrator ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.o" -o "main.o" "../main.cpp"
+Finished building: ../main.cpp
+ 
+Building target: Concentrator
+Invoking: Cross G++ Linker
+g++  -o "Concentrator"  ./restDriver/restDriver.o  ./main.o   -lcrypto -lssl -lcpprest -lboost_system
+Finished building target: Concentrator
+ 
+14:22:32 **** Incremental Build of configuration Debug for project Concentrator ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.o" -o "main.o" "../main.cpp"
+Finished building: ../main.cpp
+ 
+Building target: Concentrator
+Invoking: Cross G++ Linker
+g++  -o "Concentrator"  ./restDriver/restDriver.o  ./main.o   -lcrypto -lssl -lcpprest -lboost_system
+Finished building target: Concentrator
+ 
+15:00:44 **** Incremental Build of configuration Debug for project Concentrator ****
+make all 
+make: Nothing to be done for 'all'.
+15:03:02 **** Incremental Build of configuration Debug for project Concentrator ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.o" -o "main.o" "../main.cpp"
+Finished building: ../main.cpp
+ 
+Building target: Concentrator
+Invoking: Cross G++ Linker
+g++  -o "Concentrator"  ./restDriver/restDriver.o  ./main.o   -lcrypto -lssl -lcpprest -lboost_system
+Finished building target: Concentrator
+ 
+15:04:17 **** Incremental Build of configuration Debug for project Concentrator ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.o" -o "main.o" "../main.cpp"
+Finished building: ../main.cpp
+ 
+Building target: Concentrator
+Invoking: Cross G++ Linker
+g++  -o "Concentrator"  ./restDriver/restDriver.o  ./main.o   -lcrypto -lssl -lcpprest -lboost_system
+Finished building target: Concentrator
+ 
+15:04:49 **** Incremental Build of configuration Debug for project Concentrator ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.o" -o "main.o" "../main.cpp"
+Finished building: ../main.cpp
+ 
+Building target: Concentrator
+Invoking: Cross G++ Linker
+g++  -o "Concentrator"  ./restDriver/restDriver.o  ./main.o   -lcrypto -lssl -lcpprest -lboost_system
+Finished building target: Concentrator
+ 
+15:07:19 **** Incremental Build of configuration Debug for project Concentrator ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.o" -o "main.o" "../main.cpp"
+Finished building: ../main.cpp
+ 
+Building target: Concentrator
+Invoking: Cross G++ Linker
+g++  -o "Concentrator"  ./restDriver/restDriver.o  ./main.o   -lcrypto -lssl -lcpprest -lboost_system
+Finished building target: Concentrator
+ 
+15:09:05 **** Incremental Build of configuration Debug for project Concentrator ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.o" -o "main.o" "../main.cpp"
+Finished building: ../main.cpp
+ 
+Building target: Concentrator
+Invoking: Cross G++ Linker
+g++  -o "Concentrator"  ./restDriver/restDriver.o  ./main.o   -lcrypto -lssl -lcpprest -lboost_system
+Finished building target: Concentrator
+ 
+15:09:16 **** Incremental Build of configuration Debug for project Concentrator ****
+make all 
+make: Nothing to be done for 'all'.
+15:09:29 **** Incremental Build of configuration Debug for project Concentrator ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.o" -o "main.o" "../main.cpp"
+Finished building: ../main.cpp
+ 
+Building target: Concentrator
+Invoking: Cross G++ Linker
+g++  -o "Concentrator"  ./restDriver/restDriver.o  ./main.o   -lcrypto -lssl -lcpprest -lboost_system
+Finished building target: Concentrator
+ 
+15:10:06 **** Incremental Build of configuration Debug for project Concentrator ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.o" -o "main.o" "../main.cpp"
+Finished building: ../main.cpp
+ 
+Building target: Concentrator
+Invoking: Cross G++ Linker
+g++  -o "Concentrator"  ./restDriver/restDriver.o  ./main.o   -lcrypto -lssl -lcpprest -lboost_system
+Finished building target: Concentrator
+ 
+15:11:15 **** Incremental Build of configuration Debug for project Concentrator ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.o" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘int main()’:
+../main.cpp:44:81: error: no matching function for call to ‘nlohmann::basic_json<>::parse(nlohmann::basic_json<>)’
+  auto internal = nlohmann::json::parse(inMessage["Object"].get<nlohmann::json>());
+                                                                                 ^
+In file included from ../main.cpp:3:0:
+../nlohmann/json.hpp:20745:23: note: candidate: static nlohmann::basic_json<ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType, NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer> nlohmann::basic_json<ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType, NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer>::parse(nlohmann::detail::input_adapter&&, nlohmann::basic_json<ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType, NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer>::parser_callback_t, bool) [with ObjectType = std::map; ArrayType = std::vector; StringType = std::__cxx11::basic_string<char>; BooleanType = bool; NumberIntegerType = long int; NumberUnsignedType = long unsigned int; NumberFloatType = double; AllocatorType = std::allocator; JSONSerializer = nlohmann::adl_serializer; nlohmann::basic_json<ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType, NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer>::parser_callback_t = std::function<bool(int, nlohmann::detail::parser<nlohmann::basic_json<> >::parse_event_t, nlohmann::basic_json<>&)>]
+     static basic_json parse(detail::input_adapter&& i,
+                       ^~~~~
+../nlohmann/json.hpp:20745:23: note:   no known conversion for argument 1 from ‘nlohmann::basic_json<>’ to ‘nlohmann::detail::input_adapter&&’
+../nlohmann/json.hpp:20877:23: note: candidate: template<class IteratorType, typename std::enable_if<std::is_base_of<std::random_access_iterator_tag, typename std::iterator_traits<_Iterator>::iterator_category>::value, int>::type <anonymous> > static nlohmann::basic_json<ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType, NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer> nlohmann::basic_json<ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType, NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer>::parse(IteratorType, IteratorType, nlohmann::basic_json<ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType, NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer>::parser_callback_t, bool) [with IteratorType = IteratorType; typename std::enable_if<std::is_base_of<std::random_access_iterator_tag, typename std::iterator_traits<_InputIterator>::iterator_category>::value, int>::type <anonymous> = <enumerator>; ObjectType = std::map; ArrayType = std::vector; StringType = std::__cxx11::basic_string<char>; BooleanType = bool; NumberIntegerType = long int; NumberUnsignedType = long unsigned int; NumberFloatType = double; AllocatorType = std::allocator; JSONSerializer = nlohmann::adl_serializer]
+     static basic_json parse(IteratorType first, IteratorType last,
+                       ^~~~~
+../nlohmann/json.hpp:20877:23: note:   template argument deduction/substitution failed:
+../main.cpp:44:81: note:   candidate expects 4 arguments, 1 provided
+  auto internal = nlohmann::json::parse(inMessage["Object"].get<nlohmann::json>());
+                                                                                 ^
+../main.cpp:45:51: error: expected primary-expression before ‘>’ token
+  std::cout << internal["DeviceID"].get<std::string>()<<std::endl;
+                                                   ^
+../main.cpp:45:53: error: expected primary-expression before ‘)’ token
+  std::cout << internal["DeviceID"].get<std::string>()<<std::endl;
+                                                     ^
+make: *** [main.o] Error 1
+subdir.mk:18: recipe for target 'main.o' failed
+"make all" terminated with exit code 2. Build might be incomplete.
+15:12:05 **** Incremental Build of configuration Debug for project Concentrator ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.o" -o "main.o" "../main.cpp"
+Finished building: ../main.cpp
+ 
+Building target: Concentrator
+Invoking: Cross G++ Linker
+g++  -o "Concentrator"  ./restDriver/restDriver.o  ./main.o   -lcrypto -lssl -lcpprest -lboost_system
+Finished building target: Concentrator
+ 
+15:14:43 **** Incremental Build of configuration Debug for project Concentrator ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.o" -o "main.o" "../main.cpp"
+Finished building: ../main.cpp
+ 
+Building target: Concentrator
+Invoking: Cross G++ Linker
+g++  -o "Concentrator"  ./restDriver/restDriver.o  ./main.o   -lcrypto -lssl -lcpprest -lboost_system
+Finished building target: Concentrator
+ 
+15:38:40 **** Incremental Build of configuration Debug for project Concentrator ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.o" -o "main.o" "../main.cpp"
+Finished building: ../main.cpp
+ 
+Building target: Concentrator
+Invoking: Cross G++ Linker
+g++  -o "Concentrator"  ./restDriver/restDriver.o  ./main.o   -lcrypto -lssl -lcpprest -lboost_system
+Finished building target: Concentrator
+ 

@@ -2,3 +2,5 @@
 1586053245528	Delete resource 'Concentrator/source'
 1586054464784	Delete resource 'Concentrator/rest-cpp'
 1586100884910	Delete resource 'Concentrator/results.html'
+1586364463148	Delete resource 'Concentrator/json'
+1586368458882	Delete resource 'Concentrator/nlohmann/json.hpp'

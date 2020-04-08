@@ -1,0 +1,21 @@
+#include "../JSON/json.hpp"
+
+using nlohmann::json;
+
+
+namespace messageParser
+{
+	struct internalMessage
+	{
+		std::string DeviceID;
+	};
+
+
+	struct incommingMessage
+	{
+		std::string cxt;
+		std::string object;
+	};
+
+
+}

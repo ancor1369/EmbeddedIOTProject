@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;Concentrator/Models/MessageModels&apos; to &apos;MessageModels.h&apos;" description="Rename resource &apos;MessageModels&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Models/MessageModels" name="MessageModels.h" stamp="1586365339846" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;Concentrator/JSON&apos; to &apos;nlohmann&apos;" description="Rename resource &apos;JSON&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="JSON" name="nlohmann" stamp="1586368060961" updateReferences="true"/>
+</session>

@@ -1,0 +1,30 @@
+//#include "../JSON/json.hpp"
+//
+//using nlohmann::json;
+
+
+namespace ms
+{
+	struct internalMessage
+	{
+		std::string DeviceID;
+	};
+
+
+	struct incommingMessage
+	{
+		std::string cxt;
+		std::string object;
+	};
+
+	void to_json(json& j, const incommingMessage& im)
+	{
+		j = json{{"CXT", im.cxt},{"Object", im.object}};
+	}
+
+	void from_json(const json& j, incommingMessage& im)
+	{
+		j.at("CXT").get_to(im.cxt);
+		j.at("Object").get_to(im.object);
+	}
+}
