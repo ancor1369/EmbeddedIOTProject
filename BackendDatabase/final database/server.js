@@ -6,6 +6,7 @@ const _ = require('lodash');
 var {product} = require('./models/product');
 var {label} = require('./models/label');
 var {labelproduct} = require('./models/labelproduct');
+var {productForLabel} = require('./models/productForLabel');
 var {mongoose} = require('./db/mongoose');
 const port = 7000;
 
@@ -309,9 +310,9 @@ app.get('/productforlabel',(req,res)=>{
   });    
 });
 
-app.get('/productForLabel/:labelNumber',(req,res)=>{
-  var id = req.params.labelNumber;    
-  productForLabel.find({labelNumber:Number}).then((result)=>{
+app.get('/productForLabel/:DeviceID',(req,res)=>{
+  var id = req.params.DeviceID;    
+  productForLabel.find({DeviceID:id}).then((result)=>{
       res.send(result);
   }).catch((err)=>{
       res.send(err);
