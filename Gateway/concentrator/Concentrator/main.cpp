@@ -25,18 +25,28 @@ int main()
 	std::cout<<message<<std::endl;
 
 
-	ms::incommingMessage p = {"PRO","{\"DeviceID\":\"01\"}"};
+	std::string msg = message;
+	std::string sender = msg.substr(0,4);
 
-	nlohmann::json jj = p;
+	std::cout << "this is the header of the message: " + sender << std::endl;
 
-	std::cout << jj << std::endl;
+	std::string msgObject = msg.substr(4,msg.length());
 
-	std::cout<<"From created object"<<std::endl;
-	std::cout<<jj["Object"].get<std::string>()<<std::endl;
+	std::cout << "Trimmed message: " + msgObject << std::endl;
 
-	nlohmann::json internalObject = jj["Object"].get<std::string>();
+//	ms::incommingMessage p = {"PRO","{\"DeviceID\":\"01\"}"};
+//
+//	nlohmann::json jj = p;
+//
+//	std::cout << jj << std::endl;
+//
+//	std::cout<<"From created object"<<std::endl;
+//	std::cout<<jj["Object"].get<std::string>()<<std::endl;
+//
+//	nlohmann::json internalObject = jj["Object"].get<std::string>();
 
-	auto inMessage = nlohmann::json::parse(messages);
+	//auto inMessage = nlohmann::json::parse(messages);
+	auto inMessage = nlohmann::json::parse(msgObject);
 
 	std::cout<<"From parsed message"<<std::endl;
 	std::cout<<inMessage["Object"].get<nlohmann::json>()<<std::endl;

@@ -1,9 +1,0 @@
-#include <iostream>
-
-#include <cpprest/http_client.h>
-#include <cpprest/filestream.h>
-
-int main()
-{
-	std::cout<< "Hello world";
-}
