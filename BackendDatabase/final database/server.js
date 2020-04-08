@@ -300,6 +300,24 @@ app.patch('/labelproduct',(req,res)=>{
   });
 });
 
+//Create an endpoint called productForLabel with GET that takes as a parameter the following object
+
+app.get('/productforlabel',(req,res)=>{
+  console.log('getlabelproduct');
+  labelproduct.find({}).then((result)=>{
+      res.send(result);
+  });    
+});
+
+app.get('/labelproduct/:labelNumber',(req,res)=>{
+  var id = req.params.labelNumber;    
+  labelproduct.find({labelNumber:Number}).then((result)=>{
+      res.send(result);
+  }).catch((err)=>{
+      res.send(err);
+  })
+
+});
 
 
 var listener = app.listen(port, () => {
