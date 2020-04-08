@@ -142,6 +142,28 @@ app.post('/label',(req,res)=>{
   });
 });
 
+app.put('/label',(req,res)=>{
+  //If it can no create a new device, it will
+  //update the existing one    
+  console.log('postlabel');
+  var body = _.pick(req.body,['LabelNumber','LabelName']);    
+ 
+  var newlabel = new label({
+      
+      LabelNumber:body.LabelNumber,
+      LabelName:body.LabelName
+      
+  });    
+  console.log(newlabel);
+  newlabel.save().then((result)=>{
+      res.send(result);
+  },(error)=>{ console.log('error');
+      res.status(400).send(error);
+      
+  });
+});
+
+
 app.patch('/label',(req,res)=>{
   //makes the update of the product
   console.log('patchlabel');
