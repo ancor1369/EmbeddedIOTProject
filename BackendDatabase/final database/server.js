@@ -309,9 +309,9 @@ app.get('/productForLabel',(req,res)=>{
   });    
 });
 
-app.get('/productForLabel/:Deviceid',(req,res)=>{ 
-  var id = req.params.Deviceid;  
-  productForLabel.find({Deviceid:id}).then((result)=>{
+app.get('/productForLabel/:DeviceID',(req,res)=>{ 
+  var id = req.params.DeviceId;  
+  productForLabel.find({DeviceID:id}).then((result)=>{
       res.send(result);
   }).catch((err)=>{
       res.send(err);
