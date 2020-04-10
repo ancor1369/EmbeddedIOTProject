@@ -219,7 +219,7 @@ app.patch('/label',(req,res)=>{
       res.send(error);
   });
 });
-// mapping deviceid and labelnumber
+
 
 app.get('/labelproduct',(req,res)=>{
   console.log('getlabelproduct');
