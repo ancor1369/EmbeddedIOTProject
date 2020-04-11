@@ -22,6 +22,7 @@ private:
 
 	std::string serverURL;
 	std::string endpoint;
+	std::string jsonParameterObject;
 
 public:
 
@@ -42,6 +43,10 @@ public:
 		endpoint = value;
 	}
 
+	void setJsonObjectString(std::string value)
+	{
+		jsonParameterObject = value;
+	}
 
 };
 

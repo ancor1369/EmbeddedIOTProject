@@ -24,10 +24,15 @@ std::string restDriver::getMethod()
 	  http_client client(U(this->serverURL));
 	  uri_builder builder(U(this->endpoint));
 
-	  pplx::task<std::string> requestTask = client.request(methods::GET, builder.to_string()).then([](http_response response){
-	    if(response.status_code() == status_codes::OK){
-	      auto body = response.extract_string().get();
-	      return body;
+
+	  pplx::task<std::string> requestTask =
+			  client.request(methods::GET, builder.to_string(),jsonParameterObject, "application/json; charset=utf-8", pplx::cancellation_token::none()).
+			  then([](http_response response)
+		{
+			if(response.status_code() == status_codes::OK)
+			{
+			  auto body = response.extract_string().get();
+			  return body;
 	    }});
 
 	 requestTask.wait();

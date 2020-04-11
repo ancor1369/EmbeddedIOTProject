@@ -16,12 +16,14 @@ int main()
 	restDriver driver;
 
 	std::string server = "http://localhost:7000/";
-	std::string endpoint = "/product/50";
+	//std::string endpoint = "/product/50";
+	std::string endpoint = "demoProduct";
 
 	driver.setServer(server);
 	driver.setEndPoint(endpoint);
 
-	std::cout << driver.getMethod() << std::endl;
+
+	//std::cout << driver.getMethod() << std::endl;
 	std::cout<<message<<std::endl;
 
 
@@ -50,6 +52,15 @@ int main()
 
 	std::cout<<"From parsed message"<<std::endl;
 	std::cout<<inMessage["Object"].get<nlohmann::json>()<<std::endl;
+
+	auto data = inMessage["Object"].get<nlohmann::json>();
+
+
+	//This is to send the get method. First I need to set the JSON object to be sent on the
+    //call and then I will get the response out of it.
+	driver.setJsonObjectString(data.dump());
+	std::cout << driver.getMethod() << std::endl;
+
 
 	auto internal = inMessage["Object"].get<nlohmann::json>();
 	std::cout << internal["DeviceID"].get<std::string>()<<std::endl;
