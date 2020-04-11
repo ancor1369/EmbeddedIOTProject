@@ -302,22 +302,6 @@ app.patch('/labelproduct',(req,res)=>{
 
 //Create an endpoint called productForLabel with GET that takes as a parameter the deviceid object
 
-app.get('/productForLabel',(req,res)=>{
-  console.log('getproductForLabel');
-  productForLabel.find({}).then((result)=>{
-      res.send(result);
-  });    
-});
-
-app.get('/productForLabel/:DeviceID',(req,res)=>{ 
-  var id = req.params.DeviceId;  
-  productForLabel.find({DeviceID:id}).then((result)=>{
-      res.send(result);
-  }).catch((err)=>{
-      res.send(err);
-  })
-
-});
 
 var listener = app.listen(port, () => {
 console.log('Your app is listening on port ' + listener.address().port);
