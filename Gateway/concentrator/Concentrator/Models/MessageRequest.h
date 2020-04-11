@@ -21,6 +21,7 @@ public:
 	void setRequestObject(std::string value)
 	{
 		requestObject = value;
+		driver.setJsonObjectString(value);
 	};
 
 	void setSender(std::string value)
@@ -33,6 +34,10 @@ public:
 		return response;
 	}
 
+	std::string getSender()
+	{
+		return sender;
+	}
 
 private:
 	std::string requestObject;
