@@ -7,7 +7,8 @@
 
 #include "MessageRequest.h"
 
-MessageRequest::MessageRequest() {
+MessageRequest::MessageRequest()
+{
 	//I initialize all the variables so that
 	//They are all void to make sure I can test then before
 	//calling the critical methods!
