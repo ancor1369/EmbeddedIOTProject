@@ -35,6 +35,19 @@ Non workin
 	});
 
 
+//	ms::incommingMessage p = {"PRO","{\"DeviceID\":\"01\"}"};
+//
+//	nlohmann::json jj = p;
+//
+//	std::cout << jj << std::endl;
+//
+//	std::cout<<"From created object"<<std::endl;
+//	std::cout<<jj["Object"].get<std::string>()<<std::endl;
+//
+//	nlohmann::json internalObject = jj["Object"].get<std::string>();
+
+	//auto inMessage = nlohmann::json::parse(messages);
+
 
 
 
@@ -118,3 +131,55 @@ Non workin
 
 	    	infile.close();
 	    }
+	    
+	    
+	    
+	    
+	    //////////////////Working Code to send information to the backend
+	    
+	    
+	    
+	    
+	    
+	    std::cout<<message<<std::endl;
+
+
+	std::string msg = message;
+	std::string sender = msg.substr(0,4);
+
+	std::cout << "this is the header of the message: " + sender << std::endl;
+
+	std::string msgObject = msg.substr(4,msg.length());
+
+	std::cout << "Trimmed message: " + msgObject << std::endl;
+
+
+	auto inMessage = nlohmann::json::parse(msgObject);
+
+	std::cout<<"From parsed message"<<std::endl;
+	std::cout<<inMessage["Object"].get<nlohmann::json>()<<std::endl;
+
+	auto data = inMessage["Object"].get<nlohmann::json>();
+
+
+	//Organize the code needed to make a call to the Rest API
+	restDriver driver;
+
+	std::string server = "http://localhost:7000/";
+	std::string endpoint = "demoProduct";
+
+	driver.setServer(server);
+	driver.setEndPoint(endpoint);
+
+	//This is to send the get method. First I need to set the JSON object to be sent on the
+    //call and then I will get the response out of it.
+	driver.setJsonObjectString(data.dump());
+	std::cout << driver.getMethod() << std::endl;
+
+
+	auto internal = inMessage["Object"].get<nlohmann::json>();
+	std::cout << internal["DeviceID"].get<std::string>()<<std::endl;
+
+	ms1::internalMessage inMsg = inMessage["Object"].get<ms1::internalMessage>();
+	std::cout<<inMsg.DeviceID<<std::endl;
+	

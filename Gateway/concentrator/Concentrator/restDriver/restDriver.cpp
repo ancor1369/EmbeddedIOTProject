@@ -16,6 +16,10 @@ restDriver::~restDriver() {
 	// TODO Auto-generated destructor stub
 }
 
+//This single method makes the hard work to connect to the Rest API
+//and send all the parameters to retreive the information saved in the
+//database. Now it is an issue of using this code wisely to handle all the
+//incoming messages.
 
 std::string restDriver::getMethod()
 {
