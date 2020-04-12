@@ -7,6 +7,7 @@
 #include <chrono>
 #include <pthread.h>
 
+//These are example messages
 #define message "CA00{\"CXT\":\"PRO\",\"Object\":{\"DeviceID\":\"01\"}}"
 #define message1 "CA00{\"CXT\":\"PRO\",\"Object\":{\"DeviceID\":\"02\"}}"
 
@@ -32,18 +33,10 @@ void *readDataFromSerial(void * param)
 	std::string inputMessage;
 	while(1)
 	{
-		try
-		{
-			std::cin>>inputMessage;
-			parse.setRawMessage(inputMessage);
-			lista.push_back(MessageRequest(parse.getParsedMsg(),parse.getSender()));
-			std::this_thread::sleep_for(std::chrono::milliseconds(500));
-		}
-		catch(const std::exception &e)
-		{
-			std::cout<<"Exeption: ";
-			std::cout<<e.what()<<std::endl;
-		}
+		std::cin>>inputMessage;
+		parse.setRawMessage(inputMessage);
+		lista.push_back(MessageRequest(parse.getParsedMsg(),parse.getSender()));
+		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 	}
 }
 
