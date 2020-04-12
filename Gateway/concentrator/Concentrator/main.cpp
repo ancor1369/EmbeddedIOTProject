@@ -24,13 +24,27 @@ int main()
 	parse.setRawMessage(message1);
 	lista.push_back(MessageRequest(parse.getParsedMsg(),parse.getSender()));
 
-	for(it = lista.begin(); it != lista.end(); it++)
+
+	//This should be done in a different thread so that it is taking care of
+	//the pending, its job is to make sure the requests are done and taken back to
+	//the location where they belong to
+	while(lista.size()>0)
 	{
-		it->sendRequest();
-		std::cout<<it->getResponse()<<std::endl;
-		if(it->getResponse() != "")
+		for(it = lista.begin(); it != lista.end(); it++)
 		{
-			lista.erase(it);
+			it->sendRequest();
+			//This simulates the data sending facility
+			//over the UART interface
+			std::cout<<it->getResponse()<<std::endl;
+
+		}
+		//Remove those messages that are already responded
+		for(it = lista.begin(); it != lista.end(); it++)
+		{
+			if(it->getResponse() != "")
+			{
+				lista.erase(it);
+			}
 		}
 	}
 

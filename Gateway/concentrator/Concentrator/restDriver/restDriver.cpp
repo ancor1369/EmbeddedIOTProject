@@ -39,8 +39,18 @@ std::string restDriver::getMethod()
 			  return body;
 	    }});
 
-	 requestTask.wait();
+	 try
+	 {
+		 requestTask.wait();
+		 result = requestTask.get();
+	 }
+	 catch(const std::exception &e)
+	 {
+		 std::cout << "Error: ";
+		 std::cout<<e.what() << std::endl;
+		 result = "";
+	 }
 
-	 result = requestTask.get();
+
 	 return result;
 }
