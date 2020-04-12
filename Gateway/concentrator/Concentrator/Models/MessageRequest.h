@@ -14,20 +14,9 @@
 
 class MessageRequest {
 public:
-	MessageRequest();
+	MessageRequest(std::string reqObj, std::string snd);
 
 	void sendRequest();
-
-	void setRequestObject(std::string value)
-	{
-		requestObject = value;
-		driver.setJsonObjectString(value);
-	};
-
-	void setSender(std::string value)
-	{
-		sender = value;
-	}
 
 	std::string getResponse()
 	{

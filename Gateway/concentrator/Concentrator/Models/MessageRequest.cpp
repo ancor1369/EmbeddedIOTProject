@@ -7,16 +7,14 @@
 
 #include "MessageRequest.h"
 
-MessageRequest::MessageRequest()
+MessageRequest::MessageRequest(std::string reqObj, std::string snd) : requestObject(reqObj), sender(snd)
 {
-	//I initialize all the variables so that
-	//They are all void to make sure I can test then before
-	//calling the critical methods!
 	this->response = "";
-	this->sender="";
-	this->requestObject="";
+	this->sender=snd;
+	this->requestObject=reqObj;
 	driver.setServer(server);
 	driver.setEndPoint(endpoint);
+	driver.setJsonObjectString(reqObj);
 }
 
 void MessageRequest::sendRequest()
