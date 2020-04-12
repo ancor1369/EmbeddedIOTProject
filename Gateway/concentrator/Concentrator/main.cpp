@@ -18,10 +18,6 @@ Parser parse;
 std::list<MessageRequest> lista;
 std::list<MessageRequest>::iterator it;
 
-//Data stecture to make test of threads
-std::list<std::string> listaMessages;
-std::list<std::string>::iterator itm;
-
 //Creating the threads that will make sure the software will
 //make its task continuously
 
@@ -34,77 +30,59 @@ void *readDataFromSerial(void * param)
 {
 
 	std::string inputMessage;
-	//Infine runnig thread,
-	//This is to be administrated
-	//by the operative system, I will set an
-	//sleep function so that it does not high jack the processor
 	while(1)
 	{
-		std::cin>>inputMessage;
-		listaMessages.push_back(inputMessage);
-		std::this_thread::sleep_for(std::chrono::milliseconds(500));
+		try
+		{
+			std::cin>>inputMessage;
+			parse.setRawMessage(inputMessage);
+			lista.push_back(MessageRequest(parse.getParsedMsg(),parse.getSender()));
+			std::this_thread::sleep_for(std::chrono::milliseconds(500));
+		}
+		catch(const std::exception &e)
+		{
+			std::cout<<"Exeption: ";
+			std::cout<<e.what()<<std::endl;
+		}
 	}
 }
 
+/*
+ * This thread takes the information in the
+ * list, makes the requests and finally, if the
+ * request has a response, it will remove it from
+ * the list and then leaves everything ready to
+ * continue to process the incoming information
+ */
 void *processData(void * param)
 {
 	while(1)
 	{
-		for(itm = listaMessages.begin(); itm != listaMessages.end(); itm++)
-		{
-			std::cout<<*itm <<std::endl;
-		}
 
-		//Delete the processed messages;
-		for(itm = listaMessages.begin(); itm != listaMessages.end(); itm++)
+		it = lista.begin();
+		while(it != lista.end())
 		{
-			if(listaMessages.size()!=1)
+			it->sendRequest();
+			if(it->getResponse() != "")
 			{
-				listaMessages.erase(itm);
+				std::cout<<it->getResponse()<<std::endl;
+				lista.erase(it++);
+			}
+			else
+			{
+				++it;
 			}
 		}
 		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 	}
 }
 
-
-
-
+/*
+ * This is the main code of the application where I start
+ * the threads that will make sure the application will be running.
+ */
 int main()
 {
-	//Simulate how the messages arrive to the system, they are
-	//added to the container list and then the internal method is called
-	//to make the actual request
-//	parse.setRawMessage(message);
-//	lista.push_back(MessageRequest(parse.getParsedMsg(),parse.getSender()));
-//	parse.setRawMessage(message1);
-//	lista.push_back(MessageRequest(parse.getParsedMsg(),parse.getSender()));
-//
-//
-//	//This should be done in a different thread so that it is taking care of
-//	//the pending, its job is to make sure the requests are done and taken back to
-//	//the location where they belong to
-//	while(lista.size()>0)
-//	{
-//		for(it = lista.begin(); it != lista.end(); it++)
-//		{
-//			it->sendRequest();
-//			//This simulates the data sending facility
-//			//over the UART interface
-//			std::cout<<it->getResponse()<<std::endl;
-//
-//		}
-//		//Remove those messages that are already responded
-//		for(it = lista.begin(); it != lista.end(); it++)
-//		{
-//			if(it->getResponse() != "")
-//			{
-//				lista.erase(it);
-//			}
-//		}
-//	}
-
-
 	pthread_t rThread;
 	pthread_t sThread;
 
@@ -120,15 +98,12 @@ int main()
 		return 1;
 	}
 
-
-	//Run for ever to keep the aplication alive
+	//Run for ever to keep the application alive
 	while(1)
 	{
-		//std::cout<<"tick"<<std::endl;
+		std::cout<<"tick"<<std::endl;
 		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 	}
-
-
 
 	return 0;
 }
