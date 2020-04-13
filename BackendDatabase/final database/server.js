@@ -300,7 +300,31 @@ app.patch('/labelproduct',(req,res)=>{
   });
 });
 
+});
 
+// Adventure.findOne({ type: 'iphone' }, function (err, adventure) {});
+app.get('/productForLabel',(req,res)=>{
+  var body = _.pick(req.body,['DeviceID']);
+ console.log(body.DeviceID)  
+  labelproduct.findOne({LabelNumber:body.DeviceID}).then((result)=>{
+   product.findOne({ProductSKU:result.ProductSKU}).then((result1)=>{
+
+    //ProductSKU.findOne({ProductSKU:result.ProductSKU})
+    
+    res.send(result1);
+
+   }).catch((err)=>{
+
+
+    //console.log('product');
+    
+  })
+     res.send(result);
+  }).catch((err)=>{
+   res.send(err);
+ })
+
+});
 
 var listener = app.listen(port, () => {
 console.log('Your app is listening on port ' + listener.address().port);
