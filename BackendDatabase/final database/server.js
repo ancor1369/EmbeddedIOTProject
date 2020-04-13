@@ -362,8 +362,8 @@ app.get('/productForLabel',(req,res)=>{
 
 
     
- //  })
-   //   res.send(result);
+  })
+     res.send(result);
  // }).catch((err)=>{
   //    res.send(err);
  // })
