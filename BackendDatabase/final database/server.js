@@ -348,6 +348,7 @@ app.get('/demoProduct',(req,res)=>{
 
 });
 
+
 // Adventure.findOne({ type: 'iphone' }, function (err, adventure) {});
 app.get('/productForLabel',(req,res)=>{
   var body = _.pick(req.body,['DeviceID']);
@@ -358,9 +359,6 @@ app.get('/productForLabel',(req,res)=>{
     console.log('result');
 
    }).catch((err)=>{
-
-
-
     
   })
      res.send(result);
@@ -373,6 +371,3 @@ app.get('/productForLabel',(req,res)=>{
 var listener = app.listen(port, () => {
 console.log('Your app is listening on port ' + listener.address().port);
 });
-
-
-
