@@ -25,9 +25,62 @@ using json = nlohmann::json;
 Parser parse;
 std::list<MessageRequest> lista;
 std::list<MessageRequest>::iterator it;
+int serial_port = 0;
 
 //Creating the threads that will make sure the software will
 //make its task continuously
+
+
+void initSerialInterface()
+{
+	///////Serial interface integration
+
+	//Integration thanks to: https://blog.mbedded.ninja/programming/operating-systems/linux/linux-serial-ports-using-c-cpp/
+
+	//create the serial interface
+	serial_port = open("/dev/ttyACM0", O_RDWR);
+
+	struct termios tty;
+
+	if(tcgetattr(serial_port, &tty) != 0)
+	{
+		std::cout << "Error opening the serial port" << std::endl;
+	}
+
+	//Integration of the serial interface
+
+	tty.c_cflag &= ~PARENB; // Clear parity bit, disabling parity (most common)
+	tty.c_cflag &= ~CSTOPB; // Clear stop field, only one stop bit used in communication (most common)
+	tty.c_cflag |= CS8; // 8 bits per byte (most common)
+	tty.c_cflag &= ~CRTSCTS; // Disable RTS/CTS hardware flow control (most common)
+	tty.c_cflag |= CREAD | CLOCAL; // Turn on READ & ignore ctrl lines (CLOCAL = 1)
+
+	tty.c_lflag &= ~ICANON;
+	tty.c_lflag &= ~ECHO; // Disable echo
+	tty.c_lflag &= ~ECHOE; // Disable erasure
+	tty.c_lflag &= ~ECHONL; // Disable new-line echo
+	tty.c_lflag &= ~ISIG; // Disable interpretation of INTR, QUIT and SUSP
+	tty.c_iflag &= ~(IXON | IXOFF | IXANY); // Turn off s/w flow ctrl
+	tty.c_iflag &= ~(IGNBRK|BRKINT|PARMRK|ISTRIP|INLCR|IGNCR|ICRNL); // Disable any special handling of received bytes
+
+	tty.c_oflag &= ~OPOST; // Prevent special interpretation of output bytes (e.g. newline chars)
+	tty.c_oflag &= ~ONLCR; // Prevent conversion of newline to carriage return/line feed
+
+	tty.c_cc[VTIME] = 10;    // Wait for up to 1s (10 deciseconds), returning as soon as any data is received.
+	tty.c_cc[VMIN] = 1;
+
+	// Set in/out baud rate to be 115200
+	cfsetispeed(&tty, B115200);
+	cfsetospeed(&tty, B115200);
+
+	// Save tty settings, also checking for error
+	if (tcsetattr(serial_port, TCSANOW, &tty) != 0)
+	{
+	    printf("Error %i from tcsetattr: %s\n", errno, strerror(errno));
+	}
+}
+
+
 
 /*
  * This thread function reads the information from the
@@ -37,14 +90,52 @@ std::list<MessageRequest>::iterator it;
 void *readDataFromSerial(void * param)
 {
 
+	initSerialInterface();
+	// Allocate memory for read buffer, set size according to your needs
+	char read_buf [264];
+	memset(&read_buf, '\0', sizeof(read_buf));
+	// Read bytes. The behavior of read() (e.g. does it block?,
+	// how long does it block for?) depends on the configuration
+	// settings above, specifically VMIN and VTIME
+	int n = 0, spot = 0;
+	char buf = '\0';
+
 	std::string inputMessage;
 	while(1)
 	{
-		std::cin>>inputMessage;
-		parse.setRawMessage(inputMessage);
-		lista.push_back(MessageRequest(parse.getParsedMsg(),parse.getSender()));
+		//std::cin>>inputMessage;
+
+		try{
+		do
+		{
+			n= read(serial_port, &buf, 1);
+			sprintf(&read_buf[spot], "%c", buf);
+			spot += n;
+		}
+		while(buf != 0xD && n >0);
+		}
+		catch(const std::exception &e)
+		{
+			std::cout<<e.what()<<std::endl;
+		}
+		if(buf == 0x0D)
+		{
+			inputMessage =  std::string(read_buf);
+			std::cout << inputMessage << std::endl;
+			//parse.setRawMessage(inputMessage);
+			//lista.push_back(MessageRequest(parse.getParsedMsg(),parse.getSender()));
+		}
 		std::this_thread::sleep_for(std::chrono::milliseconds(500));
+		//clean the receiver buffer to make sure no extrange data is there and restart all the variables
+		memset(&read_buf,'\0',sizeof(read_buf));
+		buf = '\0';
+		spot = 0;
+		n = 0;
+		inputMessage = "";
+
 	}
+
+	close(serial_port);
 }
 
 /*
@@ -83,96 +174,32 @@ void *processData(void * param)
  */
 int main()
 {
-//	pthread_t rThread;
-//	pthread_t sThread;
-//
-//	if(pthread_create(&rThread,NULL,readDataFromSerial,NULL))
-//	{
-//		std::cout<<"Error creating thread, Ending program!"<<std::endl;
-//		return 1;
-//	}
-//
-//	if(pthread_create(&sThread,NULL,processData,NULL))
-//	{
-//		std::cout<<"Error creating thread, Ending program!"<<std::endl;
-//		return 1;
-//	}
-//
-//	//Run for ever to keep the application alive
-//	//In a real time operative system, this would be replaced
-//	//by scheduler taking care of the tasks going on
-//	while(1)
-//	{
-//		std::cout<<"tick"<<std::endl;
-//		std::this_thread::sleep_for(std::chrono::milliseconds(500));
-//	}
+	pthread_t rThread;
+	pthread_t sThread;
 
-
-	///////Serial interface integration
-
-	//Integration thanks to: https://blog.mbedded.ninja/programming/operating-systems/linux/linux-serial-ports-using-c-cpp/
-
-	//create the serial interface
-	int serial_port = open("/dev/ttyACM0", O_RDWR);
-
-	struct termios tty;
-
-	if(tcgetattr(serial_port, &tty) != 0)
+	if(pthread_create(&rThread,NULL,readDataFromSerial,NULL))
 	{
-		std::cout << "Error opening the serial port" << std::endl;
+		std::cout<<"Error creating thread, Ending program!"<<std::endl;
+		return 1;
 	}
 
-	//Integration of the serial interface
-
-	tty.c_cflag &= ~PARENB; // Clear parity bit, disabling parity (most common)
-	tty.c_cflag &= ~CSTOPB; // Clear stop field, only one stop bit used in communication (most common)
-	tty.c_cflag |= CS8; // 8 bits per byte (most common)
-	tty.c_cflag &= ~CRTSCTS; // Disable RTS/CTS hardware flow control (most common)
-	tty.c_cflag |= CREAD | CLOCAL; // Turn on READ & ignore ctrl lines (CLOCAL = 1)
-
-	tty.c_lflag &= ~ICANON;
-	tty.c_lflag &= ~ECHO; // Disable echo
-	tty.c_lflag &= ~ECHOE; // Disable erasure
-	tty.c_lflag &= ~ECHONL; // Disable new-line echo
-	tty.c_lflag &= ~ISIG; // Disable interpretation of INTR, QUIT and SUSP
-	tty.c_iflag &= ~(IXON | IXOFF | IXANY); // Turn off s/w flow ctrl
-	tty.c_iflag &= ~(IGNBRK|BRKINT|PARMRK|ISTRIP|INLCR|IGNCR|ICRNL); // Disable any special handling of received bytes
-
-	tty.c_oflag &= ~OPOST; // Prevent special interpretation of output bytes (e.g. newline chars)
-	tty.c_oflag &= ~ONLCR; // Prevent conversion of newline to carriage return/line feed
-
-	tty.c_cc[VTIME] = 100;    // Wait for up to 1s (10 deciseconds), returning as soon as any data is received.
-	tty.c_cc[VMIN] = 1;
-
-	// Set in/out baud rate to be 115200
-	cfsetispeed(&tty, B115200);
-	cfsetospeed(&tty, B115200);
-
-	// Save tty settings, also checking for error
-	if (tcsetattr(serial_port, TCSANOW, &tty) != 0)
+	if(pthread_create(&sThread,NULL,processData,NULL))
 	{
-	    printf("Error %i from tcsetattr: %s\n", errno, strerror(errno));
+		std::cout<<"Error creating thread, Ending program!"<<std::endl;
+		return 1;
 	}
 
-	// Allocate memory for read buffer, set size according to your needs
-	char read_buf [264];
-	memset(&read_buf, '\0', sizeof(read_buf));
-
-	// Read bytes. The behaviour of read() (e.g. does it block?,
-	// how long does it block for?) depends on the configuration
-	// settings above, specifically VMIN and VTIME
-	int n = 0, spot = 0;
-	char buf = '\0';
-	do
+	//Run for ever to keep the application alive
+	//In a real time operative system, this would be replaced
+	//by scheduler taking care of the tasks going on
+	while(1)
 	{
-		n= read(serial_port, &buf, 1);
-		sprintf(&read_buf[spot], "%c", buf);
-		spot += n;
-	}while(buf != 0xD && n >0);
+		std::cout<<"tick"<<std::endl;
+		std::this_thread::sleep_for(std::chrono::milliseconds(500));
+	}
 
-	std::cout<<read_buf<<std::endl;
 
-	close(serial_port);
+
 
 	return 0;
 }
