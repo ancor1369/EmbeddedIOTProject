@@ -300,17 +300,20 @@ app.patch('/labelproduct',(req,res)=>{
   });
 });
 
-});
+
 
 // Adventure.findOne({ type: 'iphone' }, function (err, adventure) {});
 app.get('/productForLabel',(req,res)=>{
   var body = _.pick(req.body,['DeviceID']);
  console.log(body.DeviceID)  
-  labelproduct.findOne({LabelNumber:body.DeviceID}).then((result)=>{
-   product.findOne({ProductSKU:result.ProductSKU}).then((result1)=>{
+  labelproduct.findOne({LabelNumber:body.DeviceID}).then((result)=>{ 
+   
+   console.log(result.ProductSKU)
+   
+   product.findOne({SKU:result.ProductSKU}).then((result1)=>{
 
     //ProductSKU.findOne({ProductSKU:result.ProductSKU})
-    
+    console.log(result1)
     res.send(result1);
 
    }).catch((err)=>{
@@ -319,7 +322,7 @@ app.get('/productForLabel',(req,res)=>{
     //console.log('product');
     
   })
-     res.send(result);
+    // res.send(result);
   }).catch((err)=>{
    res.send(err);
  })
