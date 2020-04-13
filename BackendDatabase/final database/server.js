@@ -352,7 +352,7 @@ app.get('/demoProduct',(req,res)=>{
 app.get('/productForLabel',(req,res)=>{
   var body = _.pick(req.body,['DeviceID']);
  console.log(body.DeviceID)  
-  //labelproduct.findOne({LabelNumber:body.DeviceID}).then((result)=>{
+  labelproduct.findOne({LabelNumber:body.DeviceID}).then((result)=>{
   // product.findOne({}).then((result)=>{
 
 
