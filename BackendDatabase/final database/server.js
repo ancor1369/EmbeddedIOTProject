@@ -354,8 +354,8 @@ app.get('/productForLabel',(req,res)=>{
  console.log(body.DeviceID)  
   labelproduct.findOne({LabelNumber:body.DeviceID}).then((result)=>{
    product.findOne({}).then((result)=>{
-
-
+    
+    console.log('result');
 
    }).catch((err)=>{
 
