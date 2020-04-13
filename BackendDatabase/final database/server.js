@@ -303,6 +303,36 @@ app.patch('/labelproduct',(req,res)=>{
 //Create an endpoint called productForLabel with GET that takes as a parameter the deviceid object
 
 
+
+// Adventure.findOne({ type: 'iphone' }, function (err, adventure) {});
+app.get('/productForLabel',(req,res)=>{
+  var body = _.pick(req.body,['DeviceID']);
+ console.log(body.DeviceID)  
+  labelproduct.findOne({LabelNumber:body.DeviceID}).then((result)=>{ 
+   
+   console.log(result.ProductSKU)
+   
+   product.findOne({SKU:result.ProductSKU}).then((result1)=>{
+
+    //ProductSKU.findOne({ProductSKU:result.ProductSKU})
+    console.log(result1)
+    res.send(result1);
+
+   }).catch((err)=>{
+
+
+    //console.log('product');
+    
+  })
+    // res.send(result);
+  }).catch((err)=>{
+   res.send(err);
+ })
+
+});
+
+
+
 app.get('/demoProduct',(req,res)=>{
   //makes the update of the product
   console.log('demoProduct');
@@ -346,27 +376,10 @@ app.get('/demoProduct',(req,res)=>{
   
   res.send(dummyObject);
 
-});
 
 
-// Adventure.findOne({ type: 'iphone' }, function (err, adventure) {});
-app.get('/productForLabel',(req,res)=>{
-  var body = _.pick(req.body,['DeviceID']);
- console.log(body.DeviceID)  
-  labelproduct.findOne({LabelNumber:body.DeviceID}).then((result)=>{
-   product.findOne({}).then((result)=>{
-    
-    console.log('result');
 
-   }).catch((err)=>{
-    
-  })
-     res.send(result);
-  }).catch((err)=>{
-   res.send(err);
- })
 
-});
 
 var listener = app.listen(port, () => {
 console.log('Your app is listening on port ' + listener.address().port);
