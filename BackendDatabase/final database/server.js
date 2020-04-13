@@ -229,7 +229,7 @@ app.get('/labelproduct',(req,res)=>{
 });
 
 app.get('/labelproduct/:labelNumber',(req,res)=>{
-  var id = req.params.labelNumber;    
+  var id = req.params.labelNumber;   
   labelproduct.find({labelNumber:Number}).then((result)=>{
       res.send(result);
   }).catch((err)=>{
@@ -300,6 +300,8 @@ app.patch('/labelproduct',(req,res)=>{
   });
 });
 
+//Create an endpoint called productForLabel with GET that takes as a parameter the deviceid object
+
 
 
 // Adventure.findOne({ type: 'iphone' }, function (err, adventure) {});
@@ -329,9 +331,56 @@ app.get('/productForLabel',(req,res)=>{
 
 });
 
+
+
+app.get('/demoProduct',(req,res)=>{
+  //makes the update of the product
+  console.log('demoProduct');
+  var body = _.pick(req.body,['DeviceID']);  
+  
+  console.log(body);
+  
+  if(body.DeviceID == '01')
+  {
+    var dummyObject = {
+      ProductID: "46",
+      PriceDollar: "25",
+      PriceCents: "99",
+      Description: "Scientific calculator for small numbers and really long",
+      SKU: "4532321",
+      Model: "FM7548",
+      DueDate: "11/22/18",
+      LayoutName: "RegularTag",
+      Update: "true",
+      Blink: "False"
+    }
+  }
+  else if(body.DeviceID == '02')
+  {
+    var dummyObject = {
+      ProductID: "64",
+      PriceDollar: "18",
+      PriceCents: "97",
+      Description: "Gainming mouse",
+      SKU: "455214",
+      Model: "GM8547",
+      DueDate: "11/22/18",
+      LayoutName: "RegularTag",
+      Update: "true",
+      Blink: "False"
+    }
+  }
+  else{
+    dummyObject = {};
+  }
+  
+  res.send(dummyObject);
+
+
+
+
+
+
 var listener = app.listen(port, () => {
 console.log('Your app is listening on port ' + listener.address().port);
 });
-
-
-

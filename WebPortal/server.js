@@ -9,6 +9,8 @@ http.createServer(function(req,res){
     if(pathname == '/')
     {
         pathname = "/dashboard.html"
+
+        
     }    
 
     fs.readFile(__dirname + pathname, function(err,data)
