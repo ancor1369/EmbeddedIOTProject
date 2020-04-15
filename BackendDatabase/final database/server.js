@@ -314,9 +314,9 @@ app.get('/demoProduct',(req,res)=>{
   {
     var dummyObject = {
       ProductID: "46",
-      PriceDollar: "25",
+      PriceDollar: "45",
       PriceCents: "99",
-      Description: "Scientific calculator for small numbers and really long",
+      Description: "Gaming keyboard with LED ilumination",
       SKU: "4532321",
       Model: "FM7548",
       DueDate: "11/22/18",

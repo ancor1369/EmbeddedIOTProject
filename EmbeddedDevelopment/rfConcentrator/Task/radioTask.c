@@ -285,7 +285,8 @@ void radioTask(UArg arg0, UArg arg1)
             memcpy(txPacket.payload,&bufferReceiver->buffer,sizeof(bufferReceiver->buffer));
             txPacket.len = sizeof(bufferReceiver->buffer);
             txPacket.absTime = absTime + EasyLink_ms_To_RadioTime(100);
-            UART_write(uart, &bufferReceiver->buffer, sizeof(bufferReceiver->buffer));
+            //Just comment this lien to avoid the concnetrator to write when sending packages
+            //UART_write(uart, &bufferReceiver->buffer, sizeof(bufferReceiver->buffer));
             EasyLink_transmitAsync(&txPacket, echoTxDoneCb);
              /* Wait for Tx to complete. A Successful TX will cause the echoTxDoneCb
               * to be called and the echoDoneSem to be released, so we must

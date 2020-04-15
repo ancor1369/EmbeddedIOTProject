@@ -156,16 +156,23 @@ void *readDataFromSerial(void * param)
  */
 void *processData(void * param)
 {
+
+	std::string response;
+
+
 	while(1)
 	{
-
 		it = lista.begin();
 		while(it != lista.end())
 		{
 			it->sendRequest();
 			if(it->getResponse() != "")
 			{
-				std::cout<<it->getResponse()<<std::endl;
+				response = it->getSender()+it->getResponse() + "\r";
+				std::cout<<response<<std::endl;
+				std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+				write(serial_port,response.c_str(),response.size());
+
 				lista.erase(it++);
 			}
 			else
