@@ -14,6 +14,9 @@
 #include <termio.h> //Posix terminal control
 #include <unistd.h> //write(), read(), close()
 
+#include <stdio.h>
+#include <string.h>
+
 //#include <iostream>
 //#include <fstream>
 //#include <SerialStream.h>
@@ -96,68 +99,35 @@ void *readDataFromSerial(void * param)
 {
 
 	initSerialInterface();
-	// Allocate memory for read buffer, set size according to your needs
-
-
-	//std::string inputMessage;
-	//while(1)
-	//{
-		//std::cin>>inputMessage;
-
-//		char read_buf [264];
-//		memset(&read_buf, '\0', sizeof(read_buf));
-//		// Read bytes. The behavior of read() (e.g. does it block?,
-//		// how long does it block for?) depends on the configuration
-//		// settings above, specifically VMIN and VTIME
-//		int n = 0, spot = 0;
-//		char buf = '\0';
-//
-//		try{
-//		do
-//		{
-//			n= read(serial_port, &buf, 1);
-//			sprintf(&read_buf[spot], "%c", buf);
-//			spot += n;
-//		}
-//		while(buf != 0xD && n >0);
-//		}
-//		catch(const std::exception &e)
-//		{
-//			std::cout<<e.what()<<std::endl;
-//		}
-//		if(buf == 0x0D)
-//		{
-//			inputMessage =  std::string(read_buf);
-//			std::cout << inputMessage << std::endl;
-//			//parse.setRawMessage(inputMessage);
-//			//lista.push_back(MessageRequest(parse.getParsedMsg(),parse.getSender()));
-//		}
-//		//std::this_thread::sleep_for(std::chrono::milliseconds(500));
-//		//clean the receiver buffer to make sure no extrange data is there and restart all the variables
-////		memset(&read_buf,'\0',sizeof(read_buf));
-////		buf = '\0';
-////		spot = 0;
-////		n = 0;
-////		inputMessage = "";
-
-	//}
-
 	try
 	{
+
+		std::string inputMessage;
+		std::string temMessage;
 		do {
-			unsigned char buf[80];
+			char buf[16];
 			int rdlen;
 			rdlen = read(serial_port, buf, sizeof(buf) - 1);
 			if (rdlen > 0) {
 				buf[rdlen] = 0;
-				printf("Read %d: \"%s\"\n", rdlen, buf);
+				//printf("Read %d: \"%s\"\n", rdlen, buf);
 
-				unsigned char   *p;
-				printf("Read %d:", rdlen);
-				for (p = buf; rdlen-- > 0; p++)
-					printf(" 0x%x", *p);
-				printf("\n");
-
+				if(buf[0] != 0x00)
+				{
+					inputMessage += std::string(buf);
+				}
+				else
+				{
+					if(inputMessage != "")
+					{
+						//Finally here I can get the full message as required to be processed
+						std::cout << inputMessage << std::endl;
+						//Push the message to be processed
+						parse.setRawMessage(inputMessage);
+						lista.push_back(MessageRequest(parse.getParsedMsg(),parse.getSender()));
+					}
+					inputMessage = "";
+				}
 
 			} else if (rdlen < 0) {
 				printf("Error from read: %d: %s\n", rdlen, strerror(errno));
