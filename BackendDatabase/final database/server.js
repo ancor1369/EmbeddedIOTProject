@@ -312,71 +312,28 @@ app.get('/productForLabel',(req,res)=>{
    
    console.log(result.ProductSKU)
    
-   product.findOne({SKU:result.ProductSKU}).then((result1)=>{
+   product.findOne({SKU:result.ProductSKU}).then((result1)=>{   
 
-    //ProductSKU.findOne({ProductSKU:result.ProductSKU})
-    console.log(result1)
-    res.send(result1);
+    var resultObject = {
+      ProductID: result1.ProductID,
+      PriceDollar: result1.PriceDollar,
+      PriceCents: result1.PriceCents,
+      Description: result1.Description,
+      SKU: result1.SKU,
+      Model: result1.Model,
+      DueDate: result1.DueDate,
+      LayoutName: result1.LayoutName,
+      Update: result1.Update,
+      Blink: result1.Blink
+    };    
+    res.send(resultObject);
 
-   }).catch((err)=>{
-
-
-    //console.log('product');
+   }).catch((err)=>{    
     
-  })
-    // res.send(result);
+  })    
   }).catch((err)=>{
    res.send(err);
  })
-
-});
-
-
-
-app.get('/demoProduct',(req,res)=>{
-  //makes the update of the product
-  console.log('demoProduct');
-  var body = _.pick(req.body,['DeviceID']);  
-  
-  console.log(body);
-  
-  if(body.DeviceID == '01')
-  {
-    var dummyObject = {
-      ProductID: "46",
-      PriceDollar: "45",
-      PriceCents: "99",
-      Description: "Gaming keyboard with LED ilumination",
-      SKU: "4532321",
-      Model: "FM7548",
-      DueDate: "11/22/18",
-      LayoutName: "RegularTag",
-      Update: "true",
-      Blink: "False"
-    }
-  }
-  else if(body.DeviceID == '02')
-  {
-    var dummyObject = {
-      ProductID: "64",
-      PriceDollar: "18",
-      PriceCents: "97",
-      Description: "Gainming mouse",
-      SKU: "455214",
-      Model: "GM8547",
-      DueDate: "11/22/18",
-      LayoutName: "RegularTag",
-      Update: "true",
-      Blink: "False"
-    }
-  }
-  else{
-    dummyObject = {};
-  }
-  
-  res.send(dummyObject);
-
-
 
 });
 
