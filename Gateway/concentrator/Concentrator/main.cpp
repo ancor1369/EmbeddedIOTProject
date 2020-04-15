@@ -98,6 +98,8 @@ void initSerialInterface()
 void *readDataFromSerial(void * param)
 {
 
+	//https://stackoverflow.com/questions/6947413/how-to-open-read-and-write-from-serial-port-in-c
+	//Receiving algorithm thanks to the above post
 	initSerialInterface();
 	try
 	{
