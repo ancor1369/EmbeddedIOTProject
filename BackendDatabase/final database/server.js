@@ -20,15 +20,30 @@ app.use(function(req, res, next)
 
 app.get('/product',(req,res)=>{
   console.log('getproduct');
-  product.find({}).then((result)=>{
-      res.send(result);
+  product.find({}).then((result1)=>{
+    console.log(result1);
+    res.send(result1);    
   });    
 });
 
 app.get('/product/:ProductID',(req,res)=>{
   var id = req.params.ProductID;    
   product.find({ProductID:id}).then((result)=>{
-      res.send(result);
+    //Takes only the first element and leaves only interesting fields 
+    var result1 = result[0];     
+    var resultObject = {
+      ProductID: result1.ProductID,
+      PriceDollar: result1.PriceDollar,
+      PriceCents: result1.PriceCents,
+      Description: result1.Description,
+      SKU: result1.SKU,
+      Model: result1.Model,
+      DueDate: result1.DueDate,
+      LayoutName: result1.LayoutName,
+      Update: result1.Update,
+      Blink: result1.Blink
+    };
+      res.send(resultObject);
   }).catch((err)=>{
       res.send(err);
   })
@@ -63,9 +78,21 @@ app.post('/product',(req,res)=>{
       Available:body.avl
 
   });    
-  console.log(newproduct);
-  newproduct.save().then((result)=>{
-      res.send(result);
+  
+  newproduct.save().then((result1)=>{  
+    var resultObject = {
+      ProductID: result1.ProductID,
+      PriceDollar: result1.PriceDollar,
+      PriceCents: result1.PriceCents,
+      Description: result1.Description,
+      SKU: result1.SKU,
+      Model: result1.Model,
+      DueDate: result1.DueDate,
+      LayoutName: result1.LayoutName,
+      Update: result1.Update,
+      Blink: result1.Blink
+    };
+   res.send(resultObject);
   },(error)=>{ console.log('error');
       res.status(400).send(error);
       
@@ -113,14 +140,14 @@ app.put('/product',(req,res)=>{
 app.patch('/product',(req,res)=>{
   //makes the update of the product
   console.log('patchproduct');
-  var body = _.pick(req.body,['ProductID','Name','','priceDollar','pricecents',
-  'Model','blink','Update','LayoutName','SKU','URL','Description','DueDate']);   
+  var body = _.pick(req.body,['ProductID','Name','','PriceDollar','PriceCents',
+  'Model','Blink','Update','LayoutName','SKU','URL','Description','DueDate']);   
   product.findOneAndUpdate({ProductID:body.ProductID},{
        
     ProductID:body.ProductID,
     Name:body.Name,
     PriceDollar:body.PriceDollar,
-    PriceCents:body.pricecents,
+    PriceCents:body.PriceCents,
     Description:body.Description,
     URL:body.URL,
     SKU:body.SKU,
@@ -128,13 +155,28 @@ app.patch('/product',(req,res)=>{
     DueDate:body.DueDate,
     LayoutName:body.LayoutName,
     Update:body.Update,
-    Blink:body.blink,
+    Blink:body.Blink,
     Available: body.avl
    
   
   }).then((result)=>{
-      console.log('result');
-      res.send(result);
+      product.findOne({ProductID:body.ProductID}).then((result1)=>{
+        var resultObject = {
+          ProductID: result1.ProductID,
+          PriceDollar: result1.PriceDollar,
+          PriceCents: result1.PriceCents,
+          Description: result1.Description,
+          SKU: result1.SKU,
+          Model: result1.Model,
+          DueDate: result1.DueDate,
+          LayoutName: result1.LayoutName,
+          Update: result1.Update,
+          Blink: result1.Blink
+        };   
+        res.send(resultObject);
+      });
+      //console.log('result');
+      //res.send(result);
   }).catch((error)=>{
       console.log('error');
       res.send(error);
@@ -312,71 +354,28 @@ app.get('/productForLabel',(req,res)=>{
    
    console.log(result.ProductSKU)
    
-   product.findOne({SKU:result.ProductSKU}).then((result1)=>{
+   product.findOne({SKU:result.ProductSKU}).then((result1)=>{   
 
-    //ProductSKU.findOne({ProductSKU:result.ProductSKU})
-    console.log(result1)
-    res.send(result1);
+    var resultObject = {
+      ProductID: result1.ProductID,
+      PriceDollar: result1.PriceDollar,
+      PriceCents: result1.PriceCents,
+      Description: result1.Description,
+      SKU: result1.SKU,
+      Model: result1.Model,
+      //DueDate: result1.DueDate,
+      LayoutName: result1.LayoutName,
+      Update: result1.Update,
+      Blink: result1.Blink
+    };    
+    res.send(resultObject);
 
-   }).catch((err)=>{
-
-
-    //console.log('product');
+   }).catch((err)=>{    
     
-  })
-    // res.send(result);
+  })    
   }).catch((err)=>{
    res.send(err);
  })
-
-});
-
-
-
-app.get('/demoProduct',(req,res)=>{
-  //makes the update of the product
-  console.log('demoProduct');
-  var body = _.pick(req.body,['DeviceID']);  
-  
-  console.log(body);
-  
-  if(body.DeviceID == '01')
-  {
-    var dummyObject = {
-      ProductID: "46",
-      PriceDollar: "45",
-      PriceCents: "99",
-      Description: "Gaming keyboard with LED ilumination",
-      SKU: "4532321",
-      Model: "FM7548",
-      DueDate: "11/22/18",
-      LayoutName: "RegularTag",
-      Update: "true",
-      Blink: "False"
-    }
-  }
-  else if(body.DeviceID == '02')
-  {
-    var dummyObject = {
-      ProductID: "64",
-      PriceDollar: "18",
-      PriceCents: "97",
-      Description: "Gainming mouse",
-      SKU: "455214",
-      Model: "GM8547",
-      DueDate: "11/22/18",
-      LayoutName: "RegularTag",
-      Update: "true",
-      Blink: "False"
-    }
-  }
-  else{
-    dummyObject = {};
-  }
-  
-  res.send(dummyObject);
-
-
 
 });
 

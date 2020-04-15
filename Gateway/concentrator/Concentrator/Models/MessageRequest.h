@@ -9,7 +9,8 @@
 #include "../restDriver/restDriver.h"
 
 #define server "http://localhost:7000/"
-#define endpoint "demoProduct"
+//#define endpoint "demoProduct"
+#define endpoint "productForLabel"
 
 
 class MessageRequest {
