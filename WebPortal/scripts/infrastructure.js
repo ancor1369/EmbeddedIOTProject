@@ -10,5 +10,16 @@ btnCreate.textContent = 'Create Product';
 
     app.append(btnCreate);
     app.append(container);
+var buttonCreate = document.getElementById('btnCreate');
+var CreateModal = document.getElementById('createModal');
+var CancelModal = document.getElementById('btnCancel');
 
-    loadProductsTable();
+buttonCreate.onclick = function()
+{
+    CreateModal.style.display = "block";
+}
+CancelModal.onclick = function()
+{
+    CreateModal.style.display = "none";
+}
+loadProductsTable();

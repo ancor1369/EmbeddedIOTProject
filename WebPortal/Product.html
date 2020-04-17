@@ -1,94 +1,166 @@
-<!doctype html>
-<html lang="en">
+  <!doctype html>
+  <html lang="en">
+      
+          <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>
+            smart  E-Paper management 
+          </title>
+
+          <!-- Bootstrap core CSS-->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Date picker -->
+    <link rel="stylesheet" href="datepicker.min.css">
+
+    <!-- Page level plugin CSS-->
+    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin.css" rel="stylesheet"> 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     
-        <head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>
-           smart  E-Paper management 
-        </title>
-
-        <!-- Bootstrap core CSS-->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
-  <!-- Date picker -->
-  <link rel="stylesheet" href="datepicker.min.css">
-
-  <!-- Page level plugin CSS-->
-  <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-
-  <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet"> 
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-  
-        </head>
-       
-    <body>
-    
-        <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-
-            <a class="navbar-brand mr-1" href="index.html">E-Paper Management</a>
+          </head>
         
-            <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-              <i class="fas fa-bars"></i>
-            </button>
-          
-        </nav>   
+      <body>
+      
+          <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-        <div id="wrapper"> 
-        <!-- Sidebar -->
-      <ul class="sidebar navbar-nav">
+              <a class="navbar-brand mr-1" href="index.html">E-Paper Management</a>
+          
+              <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+                <i class="fas fa-bars"></i>
+              </button>
+            
+          </nav>   
+
+          <div id="wrapper"> 
+          <!-- Sidebar -->
+        <ul class="sidebar navbar-nav">
+
+          <li class="nav-item active">
+            <a class="nav-link" href="product.html">
+              <i class="fas fa-fw fa-tachometer-alt"></i>
+              <span>Product</span>
+            </a>
+        </li>            
 
         <li class="nav-item active">
-          <a class="nav-link" href="product.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Product</span>
+          <a class="nav-link" href="LabelProduct.html">
+            <i class="fas fa-fw fa-shopping-basket"></i>
+            <span>Label - Product</span>
           </a>
-      </li>            
-
-      <li class="nav-item active">
-        <a class="nav-link" href="LabelProduct.html">
-          <i class="fas fa-fw fa-shopping-basket"></i>
-          <span>Label - Product</span>
-        </a>
-      </li>                 
+        </li>                 
 
 
-        </ul>      
-        <div id="content-wraper">
+          </ul>      
+          <div id="content-wraper">
 
-        </div>    
+          </div>    
+
+    </div>
+  <div id="createModal" class="modal">
+    <div class="modal-dialog" role="documen">
+      <div class="modal-content">
+        <div class="modal-header">
+
+        <h5 class="modal-title">Create Product</h5>
+
+
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-6">
+
+            
+              <label for="txtProductID">*Product ID </label>
+              <input class="form-control" id="txtProducID" placeholder="Enter Product ID">
+            
+              <label for="txtProductName">*Product Name </label>
+              <input class="form-control" id="txtProductName" placeholder="Enter Product Name">
+              
+              <label for="txtPriceDollar">*Product Price Dollar </label>
+              <input class="form-control" id="txtPriceDollar" placeholder="Enter Price Dollar">
+                
+              <label for="txtPriceCents">*Product Price Cents </label>
+              <input class="form-control" id="txtPriceCents" placeholder="Enter Price Cents">
+                 
+              <label for="txtDescription">*Product Description</label>
+              <input class="form-control" id="txtDescription" placeholder="Enter Product Description">
+
+              <label for="txtURL">*Product URL </label>
+              <input class="form-control" id="txtURL" placeholder="Enter Product URL">         
+                      
+                    
+                                
+            
+            </div>
+        
+            <div class="col-sm-6">
+            <label for="txtSKU">*Product SKU </label>
+              <input class="form-control" id="txtSKU" placeholder="Enter Product SKU">
+              
+              <label for="txtModel">*Product model </label>
+                <input class="form-control" id="txtModel" placeholder="Enter Product Model">
+
+                
+              <label for="txtDueDate">*Product Due Date </label>
+                <input class="form-control" id="txtDueDate" placeholder="Product Due Date">
+                
+              <label for="txtLayoutName">*Product Layout Name </label>
+                <input class="form-control" id="txtLayoutName" placeholder="Enter Product Layout Name">
+                
+              <label for="txtUpdate">*Update </Label>
+                <input class="form-control" id="txtUpdate" placeholder="Enter Update, true or false">
+                
+              <label for="txtBlink">*Label Blink  </Label>
+                <input class="form-control" id="txtBlink" placeholder="Enter label blink">
+                
+
+          </div>
+        </div>
+      </div>
+  <div class="model-footer">
+    <button type="button" class="btn btn-primary" id="btnCreateProduct">Save changes</button>
+    <button type="button" class="btn btn-secondary" data-diminish="modal" id="btnCancel">Cancel</button>
+  </div>
 
   </div>
-  <script src="scripts/productHandler.js"></script>
-  <script src="scripts/infrastructure.js"></script>
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </div>
 
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    </div>
+  </div>
 
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin.min.js"></script>
+    <script src="scripts/productHandler.js"></script>
+    <script src="scripts/infrastructure.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-   <!-- Page level plugin JavaScript-->
-   <script src="vendor/datatables/jquery.dataTables.js"></script>
-   <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-   <!-- Demo scripts for this page-->
-   <script src="js/demo/datatables-demo.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
 
-   <!-- Date Picker -->
-   <script src="datepicker.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
 
-    </body>
-</html>
+    <!-- Demo scripts for this page-->
+    <script src="js/demo/datatables-demo.js"></script>
+
+    <!-- Date Picker -->
+    <script src="datepicker.min.js"></script>
+
+      </body>
+  </html>
