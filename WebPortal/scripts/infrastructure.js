@@ -1,4 +1,4 @@
-loadProductsTable();
+
 // make a call to the backend database.
 const app = document.getElementById('content-wraper');
 const container = document.createElement('div');
