@@ -63,9 +63,10 @@ request.onload = function()
             td2.textContent = obj.Name;
             
             var td3 = document.createElement('td');
-            td3.textContent = obj.PriceDollar;var tre = document.createElement('tr');
+            td3.textContent = obj.PriceDollar;
+            // var tre = document.createElement('tr');
             var td4 = document.createElement('tr');
-            td4.textContent = obj.ProductID;
+            td4.textContent = obj.PriceCents;
             var td5 = document.createElement('td');
             const edit = document.createElement('button');
             edit.setAttribute('class','btn btn-primary');
