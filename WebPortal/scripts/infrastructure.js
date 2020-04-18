@@ -14,7 +14,8 @@ var buttonCreate = document.getElementById('btnCreate');
 var CreateModal = document.getElementById('createModal');
 var CancelModal = document.getElementById('btnCancel');
 
-
+var emptyCreateAlert = document.getElementById('createIncompletealert');
+emptyCreateAlert.style.display = "none";
 
 
 
@@ -27,26 +28,30 @@ CancelModal.onclick = function()
     CreateModal.style.display = "none";
 }
 // button id for creating a new product. 
-var CreateProduct = document.getElementsById('btnCreateProduct');
+var CreateProduct = document.getElementById('btnCreateProduct');
 CreateProduct.onclick = function()
 {
-    var prdID = document.getElementsById('txtProductID');
-    var prdName = document.getElementsById('txtProductName');
-    var prdPriceDollar= document.getElementsById('txtPriceDollar');
-    var prdPriceCent = document.getElementsById('txtPriceCent');
-    var prDescription = document.getElementsById('txtDescription');
-    var prdURL = document.getElementsById('txtURL');
-    var prdSKU = document.getElementsById('txtSKU');
-    var prdModel = document.getElementsById('txtModel');
-    var prdDueDate = document.getElementsById('txtDueDate');
-    var prdLayout = document.getElementsById('txtLayoutName');
-    var prdUpdate = document.getElementsById('txtUpdate');
-    var prdBlink = document.getElementsById('txtBlink');
+    var prdID = document.getElementById('txtProductID');
+    var prdName = document.getElementById('txtProductName');
+    var prdPriceDollar= document.getElementById('txtPriceDollar');
+    var prdPriceCent = document.getElementById('txtPriceCent');
+    var prDescription = document.getElementById('txtDescription');
+    var prdURL = document.getElementById('txtURL');
+    var prdSKU = document.getElementById('txtSKU');
+    var prdModel = document.getElementById('txtModel');
+    var prdDueDate = document.getElementById('txtDueDate');
+    var prdLayout = document.getElementById('txtLayoutName');
+    var prdUpdate = document.getElementById('txtUpdate');
+    var prdBlink = document.getElementById('txtBlink');
 
-    if(prdID.value == ''|| prdName.value == ''|| prdPriceDollar.value == ''|| prdPriceCent.value == '' || prdDescription.value == ''||
-     prdUpdate.value == '' || prdUpdate.value == '' || prdBlink)
-     {
-
+    if(prdID.value == ''|| prdName.value == ''|| prdPriceDollar.value == ''|| prdPriceCent.value == '' || prDescription.value == ''||
+        prdURL.value == '' || prdSKU.value == '' ||prdModel.value == '' ||prdLayout.value == '' ||prdDueDate.value == '' ||
+        prdUpdate.value == '' || prdUpdate.value == '' || prdBlink.value == '')
+    {
+        emptyCreateAlert.style.display ="block";
+        setTimeout(()=>{
+        emptyCreateAlert.style.display = "none";
+        },3000);
         
      } 
     
