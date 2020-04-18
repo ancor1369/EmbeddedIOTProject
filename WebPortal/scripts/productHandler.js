@@ -95,7 +95,22 @@ request.send();
 
 
 
+    function postProduct(message)
+    {
+        var postMaker = new XMLHttpRequest();
+        postMaker.open('POST','http://localhost:7000/product');
+    postMaker.setRequestHeader('Content-type','application/json; charset=UTF-8');
+    postMaker.send(message);
+    postMaker.onload = function(parameter)
+    {
+        console.log(parameter);
+        if(parameter.target.status == 200)
+        {
+            location.reload();
+        }
+    }
 
+    }
 
 
 

@@ -34,7 +34,7 @@ CreateProduct.onclick = function()
     var prdID = document.getElementById('txtProductID');
     var prdName = document.getElementById('txtProductName');
     var prdPriceDollar= document.getElementById('txtPriceDollar');
-    var prdPriceCent = document.getElementById('txtPriceCent');
+    var prdPriceCent = document.getElementById('txtPriceCents');
     var prDescription = document.getElementById('txtDescription');
     var prdURL = document.getElementById('txtURL');
     var prdSKU = document.getElementById('txtSKU');
@@ -55,7 +55,38 @@ CreateProduct.onclick = function()
         
      } 
     
-    
+   else{
+       var message = JSON.stringify({
+            ProductID: prdID.value,
+            Name: prdName.value,
+            PriceDollar:prdPriceDollar.value,
+            PriceCents:prdPriceCent.value,
+            Description:prDescription.value,
+            URL:prdURL.value,
+            SKU:prdSKU.value,
+            Model:prdModel.value,
+            DueDate:prdDueDate.value,
+            LayoutName:prdLayout.value,
+            Update:prdUpdate.value,
+            Blink:prdBlink.value
+
+
+       })
+       postProduct(message);
+        prdID.value="";
+        prdName.value="";
+        prdPriceDollar.value="";
+        prdPriceCent.value="";
+        prdDescription.value="";
+        prdURL.value="";
+        prdSKU.value="";
+        prdModel.value="";
+        prdDescription.value="";
+        prdLayout.value="";
+        prdUpdate.value="";
+        prdBlink.value="";
+
+   } 
 }
 
 
