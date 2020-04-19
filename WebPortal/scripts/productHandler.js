@@ -105,11 +105,11 @@ function loadProductsTable()
                             var txUpdate = document.getElementById('txtEditUpdate');
                             var txBlink = document.getElementById('txtEditBlink');
                             
-
-                            txtPrdID.value = productData.productID;
+                            console.log(productData);
+                            txtPrdID.value = productData.ProductID;
                             txtProductName.value = productData.Name;
                             txtDollar.value = productData.PriceDollar;
-                            txCents.value = productData.priceCents;
+                            txCents.value = productData.PriceCents;
                             txDescription.value = productData.Description;
                             txURL.value = productData.URL;
                             txSKU.value = productData.SKU;
@@ -117,9 +117,7 @@ function loadProductsTable()
                             txDue.value = productData.DueDate;
                             txLayout.value = productData.LayoutName;
                             txUpdate.value = productData.Update;
-                            txBlink.value = productData.Blink;
-                            
-                            
+                            txBlink.value = productData.Blink;  
                             
                             
                             editModal.style.display="block";

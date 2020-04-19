@@ -18,6 +18,9 @@ var CancelModal = document.getElementById('btnCancel');
 
 var emptyCreateAlert = document.getElementById('CreateIncompletealert');
 emptyCreateAlert.style.display = "none";
+
+var editErrorModal = document.getElementById('EditIncompletealert');
+editErrorModal.style.display = 'none';
 //control for edit model
 var editModal = document.getElementById('editModal');
 
