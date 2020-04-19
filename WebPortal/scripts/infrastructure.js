@@ -8,15 +8,18 @@ btnCreate.setAttribute('class','btn btn-primary');
 btnCreate.setAttribute('id','btnCreate');
 btnCreate.textContent = 'Create Product';
 
-    app.append(btnCreate);
-    app.append(container);
+app.append(btnCreate);
+app.append(container);
+    //control for creating a model
 var buttonCreate = document.getElementById('btnCreate');
-var CreateModal = document.getElementById('createModal');
+var CreateModal = document.getElementById('CreatModal');
 var CancelModal = document.getElementById('btnCancel');
+//to get the alert for
 
-var emptyCreateAlert = document.getElementById('createIncompletealert');
+var emptyCreateAlert = document.getElementById('CreateIncompletealert');
 emptyCreateAlert.style.display = "none";
-
+//control for edit model
+var editModal = document.getElementById('editModal');
 
 
 buttonCreate.onclick = function()
@@ -28,7 +31,7 @@ CancelModal.onclick = function()
     CreateModal.style.display = "none";
 }
 // button id for creating a new product. 
-var CreateProduct = document.getElementById('btnCreateProduct');
+var CreateProduct = document.getElementById('btnCreatProduct');
 CreateProduct.onclick = function()
 {
     var prdID = document.getElementById('txtProductID');
@@ -81,6 +84,7 @@ CreateProduct.onclick = function()
         prdURL.value="";
         prdSKU.value="";
         prdModel.value="";
+        prdDueDate.value="";
         prdDescription.value="";
         prdLayout.value="";
         prdUpdate.value="";

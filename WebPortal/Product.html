@@ -21,7 +21,7 @@
     <!-- Page level plugin CSS-->
     <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
-    <!-- Custom styles for this template-->
+    <  !-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet"> 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -68,25 +68,26 @@
           </div>    
 
     </div>
-  <div id="createModal" class="modal">
+
+  <div id="CreatModal" class="modal">
     <div class="modal-dialog" role="documen">
       <div class="modal-content">
         <div class="modal-header">
 
         <h5 class="modal-title">Create Product</h5>
-
-
         </div>
         <div class="modal-body">
+
+           
 <!-- <!addition to get an alert -->
-<div id="createIncompletealert" class="alert alert-dismissible alert-warning">
+<div id="CreateIncompletealert" class="alert alert-dismissible alert-warning">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   <h4 class="alert-heading">warning!</h4>
   <p class="mb=0">please fill the fields correctly <a href="#" class="alert-link"></a>.</p>
 
 
 </div>
-
+<!-- addition to get an alert-->
 
           <div class="row">
             <div class="col-sm-6">
@@ -98,11 +99,11 @@
               <label for="txtProductName">*Product Name </label>
               <input class="form-control" id="txtProductName" placeholder="Enter Product Name">
               
-              <label for="txtPriceDollar">*Product Price Dollar </label>
-              <input class="form-control" id="txtPriceDollar" placeholder="Enter Price Dollar">
+              <label for="txtDollar">*Product Price Dollar </label>
+              <input class="form-control" id="txtDollar" placeholder="Enter Price Dollar">
                 
-              <label for="txtPriceCents">*Product Price Cents </label>
-              <input class="form-control" id="txtPriceCents" placeholder="Enter Price Cents">
+              <label for="txtCents">*Product Price Cents </label>
+              <input class="form-control" id="txtCents" placeholder="Enter Price Cents">
                  
               <label for="txtDescription">*Product Description</label>
               <input class="form-control" id="txtDescription" placeholder="Enter Product Description">
@@ -140,15 +141,98 @@
         </div>
       </div>
   <div class="model-footer">
-    <button type="button" class="btn btn-primary" id="btnCreateProduct">Save changes</button>
+    <button type="button" class="btn btn-primary" id="btnCreatProduct">Save changes</button>
     <button type="button" class="btn btn-secondary" data-diminish="modal" id="btnCancel">Cancel</button>
+  
   </div>
+</div>
+</div>
+ </div>
+</div>
 
-  </div>
-  </div>
 
+
+
+<div id="editModal" class="modal">
+  <div class="modal-dialog" role="documen">
+    <div class="modal-content">
+      <div class="modal-header">
+
+      <h5 class="modal-title">Edit Product</h5>
+      </div>
+      <div class="modal-body">
+
+         
+      <!-- <!addition to get an alert -->
+      <div id="EditIncompletealert" class="alert alert-dismissible alert-warning">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <h4 class="alert-heading">warning!</h4>
+      <p class="mb=0">please fill the fields correctly <a href="#" class="alert-link"></a>.</p>
+
+
+      </div>
+<!-- addition to get an alert-->
+
+        <div class="row">
+          <div class="col-sm-6">
+
+          
+            <label for="txtEditProductID">*Product ID </label>
+            <input class="form-control" id="txtEditProductID" placeholder="Enter Product ID">
+          
+            <label for="txtEditProductName">*Product Name </label>
+            <input class="form-control" id="txtEditProductName" placeholder="Enter Product Name">
+            
+            <label for="txtEditDollar">*Product Price Dollar </label>
+            <input class="form-control" id="txtEditDollar" placeholder="Enter Price Dollar">
+              
+            <label for="txtEditCents">*Product Price Cents </label>
+            <input class="form-control" id="txtEditCents" placeholder="Enter Price Cents">
+               
+            <label for="txtEditDescription">*Product Description</label>
+            <input class="form-control" id="txtEditDescription" placeholder="Enter Product Description">
+
+            <label for="txtEditURL">*Product URL </label>
+            <input class="form-control" id="txtEditURL" placeholder="Enter Product URL">         
+                    
+                  
+                              
+          
+          </div>
+      
+          <div class="col-sm-6">
+          <label for="txtEditSKU">*Product SKU </label>
+            <input class="form-control" id="txtEditSKU" placeholder="Enter Product SKU">
+            
+            <label for="txtEditModel">*Product model </label>
+              <input class="form-control" id="txtEditModel" placeholder="Enter Product Model">
+
+              
+            <label for="txtEditDueDate">*Product Due Date </label>
+              <input class="form-control" id="txtEditDueDate" placeholder="Product Due Date">
+              
+            <label for="txtEditLayoutName">*Product Layout Name </label>
+              <input class="form-control" id="txtEditLayoutName" placeholder="Enter Product Layout Name">
+              
+            <label for="txtEditUpdate">*Update </Label>
+              <input class="form-control" id="txtEditUpdate" placeholder="Enter Update, true or false">
+              
+            <label for="txtEditBlink">*Label Blink  </Label>
+              <input class="form-control" id="txtEditBlink" placeholder="Enter label blink">
+              
+
+        </div>
+      </div>
     </div>
-  </div>
+<div class="model-footer">
+  <button type="button" class="btn btn-primary" id="btnEditProduct">Save changes</button>
+  <button type="button" class="btn btn-secondary" data-diminish="modal" id="btnEditCancel">Cancel</button>
+
+</div>
+</div>
+</div>
+</div>
+</div>
 
     <script src="scripts/productHandler.js"></script>
     <script src="scripts/infrastructure.js"></script>
