@@ -130,10 +130,10 @@ function loadProductsTable()
                             var txURL = document.getElementById('txtEditURL');
                             var txSKU = document.getElementById('txtEditSKU');
                             var txEdit = document.getElementById('txtEditModel');
-                            var txDue = document.getElementById('txtEditDueDate');
-                            var txLayout = document.getElementById('txtEditLayoutName');
-                            var txUpdate = document.getElementById('txtEditUpdate');
-                            var txBlink = document.getElementById('txtEditBlink');
+                            // var txDue = document.getElementById('txtEditDueDate');
+                            // var txLayout = document.getElementById('txtEditLayoutName');
+                            // var txUpdate = document.getElementById('txtEditUpdate');
+                            // var txBlink = document.getElementById('txtEditBlink');
                             
                             console.log(productData);
                             txtPrdID.value = productData.ProductID;
@@ -144,10 +144,10 @@ function loadProductsTable()
                             txURL.value = productData.URL;
                             txSKU.value = productData.SKU;
                             txEdit.value = productData.Model;
-                            txDue.value = productData.DueDate;
-                            txLayout.value = productData.LayoutName;
-                            txUpdate.value = productData.Update;
-                            txBlink.value = productData.Blink;  
+                            // txDue.value = productData.DueDate;
+                            // txLayout.value = productData.LayoutName;
+                            // txUpdate.value = productData.Update;
+                            // txBlink.value = productData.Blink;  
                             
                             
                             editModal.style.display="block";
@@ -212,7 +212,7 @@ function postProduct(message)
     postMaker.setRequestHeader('Content-type','application/json; charset=UTF-8');
     postMaker.send(message);
     postMaker.onload = function(parameter)
-    {s
+    {
         console.log(parameter);
         if(parameter.target.status == 200)
         {

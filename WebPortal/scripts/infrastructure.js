@@ -70,14 +70,14 @@ CreateProduct.onclick = function()
     var prdURL = document.getElementById('txtURL');
     var prdSKU = document.getElementById('txtSKU');
     var prdModel = document.getElementById('txtModel');
-    var prdDueDate = document.getElementById('txtDueDate');
-    var prdLayout = document.getElementById('txtLayoutName');
-    var prdUpdate = document.getElementById('txtUpdate');
-    var prdBlink = document.getElementById('txtBlink');
+    // var prdDueDate = document.getElementById('txtDueDate');
+    // var prdLayout = document.getElementById('txtLayoutName');
+    // var prdUpdate = document.getElementById('txtUpdate');
+    // var prdBlink = document.getElementById('txtBlink');
 
     if(prdID.value == ''|| prdName.value == ''|| prdPriceDollar.value == ''|| prdPriceCent.value == '' || prDescription.value == ''||
-        prdURL.value == '' || prdSKU.value == '' ||prdModel.value == '' ||prdLayout.value == '' ||prdDueDate.value == '' ||
-        prdUpdate.value == '' || prdUpdate.value == '' || prdBlink.value == '')
+        prdURL.value == '' || prdSKU.value == '' ||prdModel.value == '' )        
+        //prdDueDate.value == '' ||   prdUpdate.value == '' || prdBlink.value == '' || prdLayout.value == '')
     {
         emptyCreateAlert.style.display ="block";
         setTimeout(()=>{
@@ -96,10 +96,10 @@ CreateProduct.onclick = function()
             URL:prdURL.value,
             SKU:prdSKU.value,
             Model:prdModel.value,
-            DueDate:prdDueDate.value,
-            LayoutName:prdLayout.value,
-            Update:prdUpdate.value,
-            Blink:prdBlink.value
+            DueDate:'01-01-2020', //prdDueDate.value,
+            LayoutName:'regulartag',//prdLayout.value,
+            Update:'true',//prdUpdate.value,
+            Blink:'true', //prdBlink.value
 
 
        })
@@ -131,14 +131,15 @@ buttonEdit.onclick = function()
     var prdURL = document.getElementById('txtEditURL');
     var prdSKU = document.getElementById('txtEditSKU');
     var prdModel = document.getElementById('txtEditModel');
-    var prdDueDate = document.getElementById('txtEditDueDate');
-    var prdLayout = document.getElementById('txtEditLayoutName');
-    var prdUpdate = document.getElementById('txtEditUpdate');
-    var prdBlink = document.getElementById('txtEditBlink');
+    // var prdDueDate = document.getElementById('txtEditDueDate');
+    // var prdLayout = document.getElementById('txtEditLayoutName');
+    // var prdUpdate = document.getElementById('txtEditUpdate');
+    // var prdBlink = document.getElementById('txtEditBlink');
 
     if(prdID.value == ''|| prdName.value == ''|| prdPriceDollar.value == ''|| prdPriceCent.value == '' || prDescription.value == ''||
-        prdURL.value == '' || prdSKU.value == '' ||prdModel.value == '' ||prdLayout.value == '' ||prdDueDate.value == '' ||
-        prdUpdate.value == '' || prdUpdate.value == '' || prdBlink.value == '')
+        prdURL.value == '' || prdSKU.value == '' ||prdModel.value == '')
+        
+        //||prdDueDate.value == '' || prdLayout.value == '' || prdUpdate.value == '' || prdBlink.value == '')
     {
         editErrorModal.style.display = "black";
         setTimeout(()=>{
@@ -149,16 +150,16 @@ else
 {
     var PathcObject = JSON.stringify(
         {
-            Blink: prdBlink.value,
+            Blink: 'true',//prdBlink.value,
             ProductID: prdID.value,
             Name: prdName.value,
             Description: prDescription.value,
             URL:prdURL.value,
             SKU: prdSKU.value,
             Model: prdModel.value,
-            DueDate: prdDueDate.value,
-            LayoutName: prdLayout.value,
-            Update: prdUpdate.value,
+            DueDate: '1-1-2020',//prdDueDate.value,
+            LayoutName: 'regulartag',//prdLayout.value,
+            Update: 'true',//prdUpdate.value,
             PriceDollar: prdPriceDollar.value,
             PriceCents: prdPriceCent.value,
             
