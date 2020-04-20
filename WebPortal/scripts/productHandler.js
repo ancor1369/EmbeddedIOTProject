@@ -182,7 +182,7 @@ function postProduct(message)
     postMaker.setRequestHeader('Content-type','application/json; charset=UTF-8');
     postMaker.send(message);
     postMaker.onload = function(parameter)
-    {
+    {s
         console.log(parameter);
         if(parameter.target.status == 200)
         {
@@ -192,7 +192,23 @@ function postProduct(message)
 
 }
 
+function editProduct(message)
+{
+    var patchREquest = new XMLHttpRequest();
+    var URL = 'http://localhost:7000/product';
+    patchREquest.open('PATCH', URL , true);
+    patchREquest.setRequestHeader('Content-Type','application/json; charset=UTF-8');
+    patchREquest.send(message);
 
+    patchREquest.onload = function(response)
+    {
+        console.log(response);
+        if(response.target.status == 200)
+        {
+            location.reload();
+        }
+    }
+}
 
 
 
