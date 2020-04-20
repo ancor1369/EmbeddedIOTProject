@@ -7,13 +7,17 @@ const port = process.env.PORT || 3001;
 
 http.createServer(function(req,res){
     pathname = url.parse(req.url).pathname;
+
     
-    if(pathname == '/')
-    {
-        pathname = "/dashboard.html"
+   
+    //pathname = '/Product.html';
+
+    // if(pathname == '/')
+    // {
+    //     pathname = "/dashboard.html"
 
         
-    }    
+    // }    
 
     fs.readFile(__dirname + pathname, function(err,data)
     {       
