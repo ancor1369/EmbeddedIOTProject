@@ -3,7 +3,7 @@ var url = require('url');
 var querystring = require('querystring');
 var fs = require('fs');
 
-
+const port = process.env.PORT || 3001;
 
 http.createServer(function(req,res){
     pathname = url.parse(req.url).pathname;
@@ -29,5 +29,5 @@ http.createServer(function(req,res){
             res.end();
         }
     })
-}).listen(3001);
+}).listen(port);
 

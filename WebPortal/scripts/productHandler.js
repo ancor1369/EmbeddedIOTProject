@@ -60,11 +60,11 @@ function loadProductsTable()
                 tr.appendChild(th4);
                 tr.appendChild(th5);
                 
-
+                
 
 
             var request = new XMLHttpRequest();
-            request.open('GET','http://localhost:7000/product',true);
+            request.open('GET','https://pricerapi.azurewebsites.net/product',true);
             request.onload = function()
             {
                 var data = JSON.parse(this.response);
@@ -171,7 +171,7 @@ function loadProductsTable()
                     return new Promise((resolve,reject)=>
                     {
                         var productGetter = new XMLHttpRequest();
-                        var endPoint = 'http://localhost:7000/product/' + prdID;
+                        var endPoint = 'https://pricerapi.azurewebsites.net/product/' + prdID;
                         console.log(endPoint);
                        productGetter.open('GET',endPoint);
                        productGetter.setRequestHeader('content-Type','application/jsonl charset=UTF-8');
@@ -208,7 +208,7 @@ function loadProductsTable()
 function postProduct(message)
 {
     var postMaker = new XMLHttpRequest();
-    postMaker.open('POST','http://localhost:7000/product');
+    postMaker.open('POST','https://pricerapi.azurewebsites.net/product');
     postMaker.setRequestHeader('Content-type','application/json; charset=UTF-8');
     postMaker.send(message);
     postMaker.onload = function(parameter)
@@ -225,7 +225,7 @@ function postProduct(message)
 function editProduct(message)
 {
     var patchREquest = new XMLHttpRequest();
-    var URL = 'http://localhost:7000/product';
+    var URL = 'https://pricerapi.azurewebsites.net/product';
     patchREquest.open('PATCH', URL , true);
     patchREquest.setRequestHeader('Content-Type','application/json; charset=UTF-8');
     patchREquest.send(message);

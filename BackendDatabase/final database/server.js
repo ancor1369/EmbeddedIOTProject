@@ -8,8 +8,9 @@ var {label} = require('./models/label');
 var {labelproduct} = require('./models/labelproduct');
 var {mongoose} = require('./db/mongoose');
 
-const port = 7000;
+//const port = 7000;
 
+const port = process.env.PORT || 7000;
 
 
 app.use(function(req, res, next)
