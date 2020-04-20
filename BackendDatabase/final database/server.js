@@ -7,7 +7,10 @@ var {product} = require('./models/product');
 var {label} = require('./models/label');
 var {labelproduct} = require('./models/labelproduct');
 var {mongoose} = require('./db/mongoose');
+
 const port = 7000;
+
+
 
 app.use(function(req, res, next)
 {

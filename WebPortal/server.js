@@ -3,6 +3,8 @@ var url = require('url');
 var querystring = require('querystring');
 var fs = require('fs');
 
+
+
 http.createServer(function(req,res){
     pathname = url.parse(req.url).pathname;
     
