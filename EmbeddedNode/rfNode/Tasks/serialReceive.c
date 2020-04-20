@@ -12,7 +12,7 @@ char i;
 mqd_t tQm = NULL;
 
 //Testing purposes
-char whatsNew[] = "    {\"CXT\":\"PRO\",\"Object\":{\"DeviceID\":\"01\"}}";
+char whatsNew[] = "    {\"CXT\":\"PRO\",\"Object\":{\"DeviceID\":\"02\"}}";
 
 /*
  *  ======== gpioButtonFxn0 ========

@@ -74,7 +74,7 @@ PIN_Config pinTable[] = {
 };
 
 #define RFEASYLINKECHO_PAYLOAD_LENGTH     40
-#define DeviceAddress                     0x43 //This one needs to change according to the device where it is deployed
+#define DeviceAddress                     0x44 //This one needs to change according to the device where it is deployed
 #define ConcentratorAddress               0X41
 
 
