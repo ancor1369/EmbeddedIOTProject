@@ -41,7 +41,9 @@ app.get('/product/:ProductID',(req,res)=>{
       DueDate: result1.DueDate,
       LayoutName: result1.LayoutName,
       Update: result1.Update,
-      Blink: result1.Blink
+      Blink: result1.Blink,
+      Name: result1.Name,
+      URL: result1.URL
     };
       res.send(resultObject);
   }).catch((err)=>{
