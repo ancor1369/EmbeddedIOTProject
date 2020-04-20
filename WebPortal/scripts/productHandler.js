@@ -20,10 +20,22 @@ function loadProductsTable()
                 const thead = document.createElement('thead');
                 const tfoot = document.createElement('tfoot');
                 const tr = document.createElement('tr');
+                
+                
                 const th1 = document.createElement('th');
                 th1.textContent ='Product ID';
+
+                const th6 = document.createElement('th');
+                th6.textContent ='Product SKU';
+
+                
+                
                 const th2 = document.createElement('th');
                 th2.textContent = 'Product Name';
+
+                const th7 = document.createElement('th');
+                th7.textContent ='Product Description';
+
                 const th3 = document.createElement('th');
                 th3.textContent = 'Price Dollar';
                 const th4 = document.createElement('th');
@@ -41,10 +53,15 @@ function loadProductsTable()
                 tfoot.appendChild(tr);
                 thead.appendChild(tr);
                 tr.appendChild(th1);
-                tr.appendChild(th2);
+                tr.appendChild(th6);                
+                tr.appendChild(th2);                
+                tr.appendChild(th7);
                 tr.appendChild(th3);
                 tr.appendChild(th4);
                 tr.appendChild(th5);
+                
+
+
 
             var request = new XMLHttpRequest();
             request.open('GET','http://localhost:7000/product',true);
@@ -61,8 +78,18 @@ function loadProductsTable()
                         var td1 = document.createElement('td');
                         td1.textContent = obj.ProductID; 
                         const PrdID = obj.ProductID;
+
+                        var td6 = document.createElement('td');
+                        td6.textContent = obj.SKU;
+
+
                         var td2 = document.createElement('td');
                         td2.textContent = obj.Name;
+
+                         var td7 = document.createElement('td');
+                         td7.textContent = obj.Description;
+
+
                         
                         var td3 = document.createElement('td');
                         td3.textContent = obj.PriceDollar;
@@ -79,12 +106,15 @@ function loadProductsTable()
                         td5.appendChild(edit);
 
                         tre.appendChild(td1);
+                        tre.appendChild(td6);
                         tre.appendChild(td2);
+                        tre.appendChild(td7);
                         tre.appendChild(td3);
                         tre.appendChild(td4);
                         tre.appendChild(td5);
                         edit.appendChild(sp);
                         tbody.appendChild(tre);
+
                         
                     edit.onclick = function()
                     {
