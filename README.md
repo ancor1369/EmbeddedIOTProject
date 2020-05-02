@@ -64,14 +64,26 @@ The message needs to travel again from the API, to the Label passing by the same
 
 I want to thank to some projects that have been on the web and in GitHub that really helped to give a boost to this project.
 
-* E-Paper screen vendor initialization code: https://www.crystalfontz.com/products/document/3967/CFAP104212E00213_bring_up_code.zip
+* E-Paper screen vendor initialization code: 
+
+https://www.crystalfontz.com/products/document/3967/CFAP104212E00213_bring_up_code.zip
 * E-Paper image engine by arturlangner:
+
+
 http://m0agx.eu/2018/02/10/waveshare-epaper-display-library/
-* Creating fonts for E-Paper screens by arturlangner: http://m0agx.eu/2018/02/10/making-graphics-and-fonts-for-embedded-systems/
-* cJSON JSON library suitable to use in microcontrollers by Dave Gamble: https://github.com/DaveGamble/cJSON
+* Creating fonts for E-Paper screens by arturlangner: 
+
+http://m0agx.eu/2018/02/10/making-graphics-and-fonts-for-embedded-systems/
+* cJSON JSON library suitable to use in microcontrollers by Dave Gamble: 
+
+https://github.com/DaveGamble/cJSON
 * Font builder to generate C resource files.
+
+
 https://github.com/arturlangner/fontbuilder
 * E-Paper engine library
+
+
 https://github.com/arturlangner/Waveshare-ePaper-C-library
 * A Rest Library from Microsoft for C++
 
