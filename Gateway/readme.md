@@ -5,6 +5,6 @@
 https://github.com/Microsoft/cpprestsdk/wiki
 https://microsoft.github.io/cpprestsdk/namespaces.html
 
-## A Json Library to trat data
+## A Json Library to deal with data
 
 https://github.com/nlohmann/json
