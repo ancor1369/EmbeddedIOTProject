@@ -11,53 +11,54 @@ The project done for the Embedded Systems Engineering Design course resolves a p
 
 
 ## Introduction
-Physical retail stores run operations in extensive floors where they expose the merchandise they sell to their customers organized on shelves. The exposition of the products have requirements regarding the information the client needs to be provided with.  For example, it is important to show the price of the product, the Stoking Keeping Unit, SKU, model name and of course a description of the product being sold. Since pricing is a parameter that is so fluctuant, that stores are making price changes very often, resulting in personal dedicated exclusively to this task, which takes time, resources and prevents those employees to provide customer service when needed. 
+Physical retail stores run operations in extensive floors where they expose the merchandise they sell to their customers organized on shelves. The exposition of the products have requirements regarding the information the client needs to be provided with. For example, it is important to show the price of the product, the Stoking Keeping Unit, SKU, model name and, of course, a description of the product being sold. Since pricing is a parameter that is so fluctuant, that stores are making price changes very often, resulting in personal dedicated exclusively to this task, which takes time, resources and prevents those employees from providing customer service when needed. 
 
-The main users for this system are the stores themselves, their operation will be faster and more straightforward, so that they can order their personnel to focus on their regular floor tasks.
+The main users for this system are the stores themselves. Their operation will be faster and more straightforward so that they can order their personnel to focus on their regular floor tasks.
 
 The system built have the following features:
-Use of a very low energy consumption display to optimize battery life
-Labels need to communicate over a wireless link
-The system needs to support as many independent labels as possible
-It shall have a concentrator device that can handle many labels connected
-The concentrator shall have a software that connects and interacts with a central server to retrieve the information to be shown
-The system shall have a noSQL data storage to manage the information of products 
-The system shall have a website where the information of products can be managed
+1. Use of a very low energy consumption display to optimize battery life
+2. Labels need to communicate over a wireless link
+3. The system needs to support as many independent labels as possible
+4. It shall have a concentrator device that can handle many labels connected
+5. The concentrator shall have a software that connects and interacts with a central server to retrieve the information to be shown
+6. The system shall have a noSQL data storage to manage the information of products 
+7. The system shall have a website where the information of products can be managed
 
 ## Our solution
+
 The solution proposed for this project is composed of many different pieces working together.
+For the final user, the solution we are proposing will be seen as a simple website where the store’s price or product manager will log in and will manage the characteristics of the products. It is a simple concept where they just have to do what they already do when they send price updates to stores, but instead of the local store manager to allocate personal and print every updated price as it is required with the traditional approach, they will be just notified of the change, because the electronic labels located at each product will be updated when it is necessary.
 
-For the final user, the solution we are proposing will be seen as a simple website where the store’s price or product manager will log in and will manage the characteristics of the products. It is a simple concept where they just have to do what they already do when they send price updates to stores, but instead of the a loca store manager to allocate personal and print every updated price as it is required with the traditional approach, they will be just notified of the change, because the electronic labels located at each product will be updated when it is necessary.
-
-The proposed solution solves this operative needs by providing all the necessary infrastructure to enable automatic price updating. This is done upon the deployment of these labels in each one of the branches that compose a retail chain of sellers.
+The proposed solution solves this operative needs by providing all the infrastructure required to enable automatic price updating.
 
 # General architecture
+
 The following diagram shows how this solution is deployed and what are the most important parts that need to be created.
 
 ![image](https://user-images.githubusercontent.com/25968721/80862404-d5262b00-8c42-11ea-83f0-0c2e9fc09b52.png)
 
-The solution is made by a big number of labels that are wirelessly connected to an access point concentrator, where they will ask information about information updates. The concentrator is connected to a dedicated software running on a computer that will receive the messages coming from each label and will make sure each message obtains its answer. For each query, there will be an API call to a Rest server in the cloud to retrieve the information of each label. Once each query has its answer, the software will send the information back to the requester and will remove the message from the listing.
+A large number of labels make a solution. The labels are wirelessly connected to an access point concentrator, where they will ask information about information updates. The concentrator is connected to a dedicated software running on a computer that will receive the messages coming from each label and will make sure each message obtains its answer. For each query, there will be an API call to a Rest server to retrieve the information of each label. Once each query has its answer, the software will send the information back to the requester and will remove the message from the listing.
 
 On the other hand, the final user will connect to the system’s website to manage the product information, so that when the labels request for product updates, the new information is available to be served.
 
-In the cloud part, the solution has a Restful API that connects to a database and exposes the data to both the concentrator software and the web site. 
+In the cloud part, the solution has a Restful API that connects to a database and exposes the data to both the concentrator software and the web site.
 
-The web site connects to the Restful API for administration purposes. So that the final user can change prices and make modifications as desired.
+The web site connects to the Restful API for administration purposes so that the final user can change prices and make modifications as desired.
+
 
 ## Messaging schema
 
 ![image](https://user-images.githubusercontent.com/25968721/80862420-f5ee8080-8c42-11ea-80e4-350dd00c70cf.png)
 
-All the communication chain is represented with JSON objects no matter what is the physical layer on which the messages are traveling. So each node of the communication chain needs to interpret the message to extract some sort of information.
+All the communication chain is represented with JSON objects no matter what is the physical layer on which the messages are travelling. So each node of the communication chain needs to interpret the message to extract some information.
 
-Between the label and concentrator the messages are chunked in smaller pieces of message because the wireless link imposes restrictions in the size of messages that can be sent every single time, so the label needs to take the message and chunk it into smaller pieces, the concentrator, receives the message and reconstructs it to obtain the original message.
+The messages are chunked between the label and concentrator because the wireless link imposes restrictions in the size of messages that can be sent. So the label needs to take the message and chunk it into smaller pieces, the concentrator, receives the message and reconstructs it to obtain the original message.
 
 The concentrator passes the message received on the wireless interface through its serial interface to the Linux gateway, where the messages are stored in a data structure to be able to ask for each request and keep the solution compliant with the asynchronous nature of Rest calls.
 
-The Linux gateway holds every message sent by the labels, it keeps track of the sender address, the message they sent, and the answer obtained after the API sends back the response. The Linux Gateway will send Rest calls with each message from the labels and will get the answers, once those answers arrive, the Gateway will send the answer back and will delete the message from its listing.
+The Linux gateway holds every message sent by the labels, it keeps track of the sender address, the message they sent, and the answer obtained after the API sends back the response. The Linux Gateway will send Rest calls with each message from the labels and will get the answers, once those answers arrive, the Gateway will send the answer-back and will delete the message from its listing.
 
-The message needs to travel again from the API to the Label passing by the same physical layers, that means that the response message will be chunked and reconstructed in the label again.
-
+The message needs to travel again from the API, to the Label passing by the same physical layers.  That means that the response message will be chunked and reconstructed in the label again
 
 ### References
 
