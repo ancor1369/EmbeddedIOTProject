@@ -74,7 +74,10 @@ https://github.com/arturlangner/fontbuilder
 * E-Paper engine library
 https://github.com/arturlangner/Waveshare-ePaper-C-library
 * A Rest Library from Microsoft for C++
+
 https://github.com/Microsoft/cpprestsdk/wiki
+
+
 https://microsoft.github.io/cpprestsdk/namespaces.html
 
 * A Json Library to deal with data
