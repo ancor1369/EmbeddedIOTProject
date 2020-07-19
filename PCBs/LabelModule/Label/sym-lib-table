@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name PowerManagement)(type Legacy)(uri /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/PCBs/Libraries/PowerManagement.lib)(options "")(descr ""))
+)
