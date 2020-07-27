@@ -1,3 +1,5 @@
 (sym_lib_table
   (lib (name PowerManagement)(type Legacy)(uri /home/andres/Documents/EMBT/FinalProject/EmbeddedIOTProject/PCBs/Libraries/PowerManagement.lib)(options "")(descr ""))
+  (lib (name Radiocontrolli)(type Legacy)(uri ${KIPRJMOD}/Radiocontrolli.lib)(options "")(descr ""))
+  (lib (name CrystalFontz)(type Legacy)(uri ${KIPRJMOD}/CrystalFontz.lib)(options "")(descr ""))
 )
